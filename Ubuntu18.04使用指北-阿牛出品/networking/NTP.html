@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>时间同步</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="networking.html" title="联网"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="dhcp.html" title="动态主机配置协议（DHCP）"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="DPDK.html" title="数据平面开发套件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">时间同步</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+NTP是用于通过网络同步时间的TCP / IP协议。</font><font style="vertical-align: inherit;">基本上，客户端从服务器请求当前时间，并使用它来设置自己的时钟。
+</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+在这个简单的描述背后，存在很多复杂性 - 有NTP服务器层，第一层NTP服务器连接到原子钟，第二层和第三层服务器分散实际处理请求的负载。</font><font style="vertical-align: inherit;">此外，客户端软件比您想象的复杂得多 - 它必须分解通信延迟，并以不会扰乱服务器上运行的所有其他进程的方式调整时间。</font><font style="vertical-align: inherit;">幸运的是，所有这些复杂性对你来说都是隐藏的！
+</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        Ubuntu默认使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">timedatectl / timesyncd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来同步时间，用户可以选择使用chrony来</font></font><a class="xref" href="NTP.html#timeservers" title="服务网络时间协议"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务网络时间协议</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+</font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="NTP.html#timedate-info" title="同步系统时间"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步系统时间</font></font></a></li>
+<li class="links"><a class="xref" href="NTP.html#timeservers" title="服务网络时间协议"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务网络时间协议</font></font></a></li>
+<li class="links"><a class="xref" href="NTP.html#ntp-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="timedate-info"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步系统时间</font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		由于Ubuntu 16.04 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">timedatectl / timesyncd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（属于systemd的一部分）取代了大部分的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ntpdate / ntp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	</font></font></p>
+<p class="para">
+        <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">timeyncd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认可用，不仅替换</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ntpdate</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，还</font><font style="vertical-align: inherit;">替换</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chrony</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（或以前的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ntpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font><font style="vertical-align: inherit;">的客户端部分</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">所以，对单次行动的顶部</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用ntpdate</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提供引导和网络激活，现在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">timesyncd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认定期检查，并保持您的本地时间同步。</font><font style="vertical-align: inherit;">它还在本地存储时间更新，以便在重新启动后单调提升（如果适用）。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		如果</font><font style="vertical-align: inherit;">安装了</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chrony，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">则</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">timedatectl会</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">退回以让chrony保持时间。</font><font style="vertical-align: inherit;">这将确保没有两个时间同步服务正在战斗。</font><font style="vertical-align: inherit;">虽然不再建议使用，但这仍然适用于</font><font style="vertical-align: inherit;">安装的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ntpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，以保留您通过升级获得的任何类型的旧行为/配置。</font><font style="vertical-align: inherit;">但它也暗示，从以前的版本升级ntp / ntpdate可能仍然会安装，因此会禁用新的基于systemd的服务。
+	</font></font></p>
+<p class="para">
+        <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ntpdate</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">被认为是不推荐使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">timedatectl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（或</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chrony</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">），因此默认情况下不再安装。</font><font style="vertical-align: inherit;">timesyncd通常会做正确的事情，让你的时间保持同步，而</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chrony</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将帮助处理更复杂的案例。</font><font style="vertical-align: inherit;">但是，如果您有一些已知的特殊ntpdate用例，请考虑以下事项：
+        </font></font></p><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              如果您需要一次性同步使用：</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chronyd -q</font></font></span>
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              如果您需要一次性检查，而无需设置时间：</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chronyd -Q</font></font></span>
+            </p>
+          </li>
+</ul></div>
+	<p></p>
+</div>
+<div class="sect3 sect" id="timedate-config"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置timedatectl和timesyncd</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以使用</font><span class="cmd command"><font style="vertical-align: inherit;">timedatectl status</font></span><font style="vertical-align: inherit;">检查</font><font style="vertical-align: inherit;">
+		通过</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">timedatectl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">timesyncd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置的时间和时间的当前</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">状态</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ timedatectl状态</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                       当地时间：2018-02-23 08:47:13 UTC</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                   世界时间：Fr 2018-02-23 08:47:13 UTC</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                         RTC时间：Fr 2018-02-23 08:47:13</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                        时区：等/ UTC（UTC，+0000）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        系统时钟同步：是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ systemd-timesyncd.service active：是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  当地TZ的RTC：没有</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+如果chrony正在运行，它将自动切换到：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[...]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ systemd-timesyncd.service active：no</font></font><font></font>
+      </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+通过</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">timedatectl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，管理员可以控制时区，系统时钟应该如何与hwclock相关，以及是否应该启用永久同步。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">更多详细信息，</font><font style="vertical-align: inherit;">请参阅</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">man timedatectl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        timesyncd本身仍然是一项普通服务，因此您可以通过更详细地检查其状态。
+</font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ systemctl status systemd-timesyncd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  systemd-timesyncd.service  - 网络时间同步</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   已加载：已加载（/lib/systemd/system/systemd-timesyncd.service;已启用;供应商预设：已启用）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   活跃：从2018-02-23 08:55:46 UTC开始活跃（正在运行）; </font><font style="vertical-align: inherit;">10年前</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     文档：man：systemd-timesyncd.service（8）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 主PID：3744（systemd-timesyn）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   状态：“已同步到时间服务器91.189.89.198:123（ntp.ubuntu.com）。”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    任务：2（限制：4915）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   CGroup：/system.slice/systemd-timesyncd.service</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+           | -3744 / lib / systemd / systemd-timesyncd</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2月23日08:55:46仿生测试systemd [1]：启动网络时间同步...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2月23日08:55:46仿生测试systemd [1]：开始网络时间同步。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2月23日08:55:46 bionic-test systemd-timesyncd [3744]：与时间服务器91.189.89.198:123（ntp.ubuntu.com）同步。</font></font><font></font>
+</pre></div>
+<p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以在</font><span class="file filename"><font style="vertical-align: inherit;">/etc/systemd/timesyncd.conf中</font></span><font style="vertical-align: inherit;">指定</font><font style="vertical-align: inherit;">
+        用于获取</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">timedatectl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">timesyncd的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">时间的名称服务器</font><font style="vertical-align: inherit;">，其他配置文件可以存储在</font><span class="file filename"><font style="vertical-align: inherit;">/etc/systemd/timesyncd.conf.d/中</font></span><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">NTP =和FallbackNTP =的条目是空格分隔列表。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参阅</font><span class="cmd command"><font style="vertical-align: inherit;">man timesyncd.conf</font></span><font style="vertical-align: inherit;">。
+</font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="cmd command"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="timeservers"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务网络时间协议</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       如果除了同步系统之外，您还需要提供NTP信息，则需要NTP服务器。</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chrony</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ntpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">open-ntp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有几种选择</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">推荐的解决方案是</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chrony</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+   </font></font></p></div>
+<div class="sect3 sect" id="chrony"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chrony（d）</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   NTP守护程序chronyd计算系统时钟的漂移和偏移量并不断调整它，因此没有大的修正可能导致例如日志不一致。</font><font style="vertical-align: inherit;">成本是一点处理能力和内存，但对于现代服务器，这通常可以忽略不计。
+   </font></font></p></div></div>
+</div></div>
+<div class="sect3 sect" id="chrony-installation"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   要安装chrony，请在终端提示符下输入：
+   </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt安装chrony</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       这将提供两个二进制文件：
+        </font></font></p><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              chronyd  - 通过NTP协议同步和提供服务的实际守护程序
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              chronyc  -  chrony守护程序的命令行界面
+            </font></font></p>
+          </li>
+</ul></div>
+   <p></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="timeservers-conf"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chronyd配置</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/chrony/chrony.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以添加/删除服务器行。</font><font style="vertical-align: inherit;">默认情况下，这些服务器配置为
+  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃使用NTP池项目中的服务器。</font><font style="vertical-align: inherit;">由Ubuntu技术委员会批准</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃on 2011-02-08（LP：＃104525）。</font><font style="vertical-align: inherit;">请访问http://www.pool.ntp.org/join.html</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃ 更多信息。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+pool 0.ubuntu.pool.ntp.org iburst</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+pool 1.ubuntu.pool.ntp.org iburst</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+pool 2.ubuntu.pool.ntp.org iburst</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+pool 3.ubuntu.pool.ntp.org iburst</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      有关</font><font style="vertical-align: inherit;">配置选项的更多详细信息，</font><font style="vertical-align: inherit;">请参阅</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">man chrony.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">更改任何配置文件后，您必须重新启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chrony</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+	  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart chrony.service</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   池2.ubuntu.pool.ntp.org以及ntp.ubuntu.com如果需要也支持ipv6。</font><font style="vertical-align: inherit;">如果需要强制ipv6，还有ipv6.ntp.ubuntu.com，默认情况下没有配置。
+</font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="ntp-status"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查看状态</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  使用chronyc查看查询chrony守护程序的状态。</font><font style="vertical-align: inherit;">例如，获取当前可用和所选时间源的概述。
+  </font></font></p>
+<p class="para">
+  </p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chronyc来源</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+MS名称/ IP地址Stratum Poll Reach LastRx Last sample</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+================================================== =============================</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^ + gamma.rueckgr.at 2 8 377 135 -1048us [-1048us] +/- 29ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  2b.ncomputers.org 2 8 377 204 -1141us [-1124us] +/- 50ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^ + www.kashra.com 2 8 377 139 + 3483us [+ 3483us] +/- 18ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^ + stratum2-4.NTP.TechFak.U&gt; 2 8 377 143 -2090us [-2073us] +/- 19ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  zepto.mcl.gg 2 7 377 9 -774us [-774us] +/- 29ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  mirrorhost.pw 2 7 377 78 -660us [-660us] +/- 53ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  atto.mcl.gg 2 7 377 8 -823us [-823us] +/- 50ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  static.140.107.46.78.cli&gt; 2 8 377 9 -1503us [-1503us] +/- 45ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  4.53.160.75 2 8 377 137 -11ms [-11ms] +/- 117ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  37.44.185.42 3 7 377 10 -3274us [-3274us] +/- 70ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  bagnikita.com 2 7 377 74 + 3131us [+ 3131us] +/- 71ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  europa.ellipse.net 2 8 377 204 -790us [-773us] +/- 97ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  tethys.hot-chilli.net 2 8 377 141 -797us [-797us] +/- 59ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  66-232-97-8.static.hvvc。&gt; 2 7 377 206 + 1669us [+ 1686us] +/- 133ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^ + 85.199.214.102 1 8 377 205 + 175us [+ 192us] +/- 12ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^ * 46-243-26-34.tangos.nl 1 8 377 141 -123us [-106us] +/- 10ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  pugot.canonical.com 2 8 377 21 -95us [-95us] +/- 57ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  alphyn.canonical.com 2 6 377 23 -1569us [-1569us] +/- 79ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  golem.canonical.com 2 7 377 92 -1018us [-1018us] +/- 31ms</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^  -  chilipepper.canonical.com 2 8 377 21 -1106us [-1106us] +/- 27ms</font></font><font></font>
+</span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chronyc sourcestats</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+210来源数量= 20</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+名称/ IP地址NP NR跨度频率频率偏移偏移标准开发</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+================================================== ============================</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+gamma.rueckgr.at 25 15 32m -0.007 0.142 -878us 106us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2b.ncomputers.org 26 16 35m -0.132 0.283 -1169us 256us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+www.kashra.com 25 15 32m -0.092 0.259 + 3426us 195us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+stratum2-4.NTP.TechFak.U&gt; 25 14 32m -0.018 0.130 -2056us 96us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+zepto.mcl.gg 13 11 21m +0.148 0.196 -683us 66us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mirrorhost.pw 6 5 645 +0.117 0.445 -591us 19us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+atto.mcl.gg 21 13 25m -0.069 0.199 -904us 103us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+static.140.107.46.78.cli&gt; 25 18 34m -0.005 0.094 -1526us 78us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4.53.160.75 25 10 32m +0.412 0.110 -11ms 84us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+37.44.185.42 24 12 30m -0.983 0.173 -3718us 122us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+bagnikita.com 17 7 31m -0.132 0.217 + 3527us 139us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+europa.ellipse.net 26 15 35m +0.038 0.553 -473us 424us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+tethys.hot-chilli.net 25 11 32m -0.094 0.110 -864us 88us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+66-232-97-8.static.hvvc。&gt; 20 11 35m -0.116 0.165 + 1561us 109us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+85.199.214.102 26 11 35m -0.054 0.390 + 129us 343us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+46-243-26-34.tangos.nl 25 16 32m +0.129 0.297 -307us 198us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+pugot.canonical.com 25 14 34m -0.271 0.176 -143us 135us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+alphyn.canonical.com 17 11 1100 -0.087 0.360 -1749us 114us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+golem.canonical.com 23 12 30m +0.057 0.370 -988us 229us</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+chilipepper.canonical.com 25 18 34m -0.084 0.224 -1116us 169us</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      某些chronyc命令具有特权，无法在不明确允许的情况下通过网络运行。</font><font style="vertical-align: inherit;">见</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指挥和监控访问</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">人chrony.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">了解更多详情。</font><font style="vertical-align: inherit;">本地管理员</font><font style="vertical-align: inherit;">通常</font><font style="vertical-align: inherit;">可以使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，因为这将授予他访问本地管理套接字</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/run/chrony/chronyd.sock的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">权限</font><font style="vertical-align: inherit;">。
+  </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="ntp-pps"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PPS支持</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      Chrony原生支持各种PPS类型。</font><font style="vertical-align: inherit;">它可以使用内核PPS API以及PTP硬件时钟。</font><font style="vertical-align: inherit;">大多数通用GPS接收器可以通过</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GPSD</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">进行利用</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">后者（可能更多）可以通过</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SHM</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">套接字</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">访问</font><font style="vertical-align: inherit;">（推荐）。</font><font style="vertical-align: inherit;">所有这些都可以用来增加chrony的额外高质量时间源，以获得更好的准确度，抖动，漂移，长短期精度（通常每种时钟类型都擅长其中一种，但非完美的其他）。</font><font style="vertical-align: inherit;">有关配置的更多详细信息，请参阅下面列出的一些外部PPS / GPSD资源。
+  </font></font></p></div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="ntp-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+  	    <p class="para">
+            <a href="https://chrony.tuxfamily.org/faq.html" class="ulink" title="https://chrony.tuxfamily.org/faq.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chrony FAQ</font></font></a>
+        </p>
+      </li>
+<li class="list itemizedlist">
+  	    <p class="para">
+          <a href="http://www.ntp.org/" class="ulink" title="http://www.ntp.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ntp.org，网络时间协议项目的主页</font></font></a>
+        </p>
+      </li>
+<li class="list itemizedlist">
+  	    <p class="para">
+            <a href="http://www.pool.ntp.org/" class="ulink" title="http://www.pool.ntp.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pool.ntp.org projecti，是一个庞大的时间服务器虚拟集群。</font></font></a>
+        </p>
+      </li>
+<li class="list itemizedlist">
+  	    <p class="para">
+            <a href="https://www.freedesktop.org/software/systemd/man/timedatectl.html" class="ulink" title="https://www.freedesktop.org/software/systemd/man/timedatectl.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于timedatectl的Freedesktop.org信息</font></font></a>
+        </p>
+      </li>
+<li class="list itemizedlist">
+  	    <p class="para">
+            <a href="https://www.freedesktop.org/software/systemd/man/systemd-timesyncd.service.html#" class="ulink" title="https://www.freedesktop.org/software/systemd/man/systemd-timesyncd.service.html#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于systemd-timesyncd服务的Freedesktop.org信息</font></font></a>
+        </p>
+      </li>
+<li class="list itemizedlist">
+  	    <p class="para">
+            <a href="http://www.catb.org/gpsd/gpsd-time-service-howto.html#_feeding_chrony_from_gpsd" class="ulink" title="http://www.catb.org/gpsd/gpsd-time-service-howto.html#_feeding_chrony_from_gpsd"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">从GPSD喂养时间</font></font></a>
+        </p>
+      </li>
+<li class="list itemizedlist">
+  	    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关</font><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a href="https://help.ubuntu.com/community/UbuntuTime" class="ulink" title="https://help.ubuntu.com/community/UbuntuTime"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu Time</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> wiki页面。
+        </font></font></p>
+      </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="dhcp.html" title="动态主机配置协议（DHCP）"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="DPDK.html" title="数据平面开发套件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

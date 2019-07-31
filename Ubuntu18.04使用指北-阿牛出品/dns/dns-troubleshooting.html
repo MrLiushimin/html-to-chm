@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>故障排除</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="dns.html" title="域名服务（DNS）"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名服务（DNS）</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="dns-configuration.html" title="组态"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="dns-references.html" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障排除</font></font></h1></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	本节介绍了在DNS和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BIND9</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">出现问题时帮助确定原因的方法</font><font style="vertical-align: inherit;">。 
+	</font></font></p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="dns-troubleshooting.html#dns-testing" title="测试"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试</font></font></a></li>
+<li class="links"><a class="xref" href="dns-troubleshooting.html#dns-logging" title="记录"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">记录</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="dns-testing"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试</font></font></h2></div>
+<div class="region">
+<div class="contents"></div>
+<div class="sect3 sect" id="dns-resolv.conf"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的resolv.conf</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    测试</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BIND9的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第一步</font><font style="vertical-align: inherit;">是将名称服务器的IP地址添加到主机解析器。</font><font style="vertical-align: inherit;">应配置主名称服务器以及另一个主机以进行双重检查。</font><font style="vertical-align: inherit;">有关向网络客户端添加名称服务器地址的详细信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="network-configuration.html#dns-client-configuration" title="DNS客户端配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DNS客户端配置</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，然后检查文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/resolv.conf是否</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含（对于此示例）：
+	    </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">名称服务器192.168.1.10</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+nameserver 192.168.1.11</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            在127. *监听的名称服务器负责将自己的IP地址添加到resolv.conf（使用resolvconf）。</font><font style="vertical-align: inherit;">这是通过文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / default / bind9</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将RESOLVCONF = no更改为RESOLVCONF = yes来完成的。
+            </font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      如果主节点不可用，您还应该添加辅助名称服务器的IP地址。
+	      </font></font></p>
+	    </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="dns-testing-dig"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">挖</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    如果您安装了</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dnsutils</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包，则可以使用DNS查找实用程序</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">挖掘</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来测试您的设置
+	     </font><font style="vertical-align: inherit;">： 
+	    </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	        安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BIND9后，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dig</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对回环接口，以确保它正在侦听端口53.从终端提示符：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dig -x 127.0.0.1</font></font></span>
+</pre></div>
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	        您应该在命令输出中看到类似于以下内容的行：
+	        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">;; </font><font style="vertical-align: inherit;">查询时间：1毫秒</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+;; </font><font style="vertical-align: inherit;">服务器：192.168.1.10＃53（192.168.1.10）</font></font><font></font>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		如果您已将</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BIND9</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置</font><font style="vertical-align: inherit;">为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">缓存</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">名称服务器，则“挖掘”外部域以检查查询时间：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">挖掘ubuntu.com</font></font></span>
+</pre></div>
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	        请注意命令输出结束时的查询时间：
+	        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">;; </font><font style="vertical-align: inherit;">查询时间：49毫秒
+</font></font></pre></div>
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	        经过第二次挖掘后，应该有所改进：
+	        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">;; </font><font style="vertical-align: inherit;">查询时间：1毫秒
+</font></font></pre></div>
+	      </li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="dns-testing-ping"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">平</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            现在，为了演示应用程序如何使用DNS来解析主机名，请使用
+ 	     </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ping</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序发送ICMP回送请求。</font><font style="vertical-align: inherit;">从终端提示输入：
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ping example.com</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    这将测试名称服务器是否可以将名称</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ns.example.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">解析为</font><font style="vertical-align: inherit;">IP地址。</font><font style="vertical-align: inherit;">命令输出应类似于：
+	    </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PING ns.example.com（192.168.1.10）56（84）字节的数据。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+来自192.168.1.10的64字节：icmp_seq = 1 ttl = 64时间= 0.800毫秒</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+来自192.168.1.10的64字节：icmp_seq = 2 ttl = 64时间= 0.813 ms</font></font><font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="dns-testing-configuration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命名checkzone</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    测试区域文件的一种好方法是使用</font><font style="vertical-align: inherit;">随</font><span class="app application"><font style="vertical-align: inherit;">bind9</font></span><font style="vertical-align: inherit;">包</font><font style="vertical-align: inherit;">安装</font><font style="vertical-align: inherit;">的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">named-checkzone</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用 
+	     </font><font style="vertical-align: inherit;">程序。</font><font style="vertical-align: inherit;">此实用程序允许您在重新启动</font><span class="app application"><font style="vertical-align: inherit;">BIND9</font></span><font style="vertical-align: inherit;">并进行实时更改</font><font style="vertical-align: inherit;">之前确保配置正确</font><font style="vertical-align: inherit;">。
+	    </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	        要测试我们的示例前向区域文件，请从命令提示符输入以下内容：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">named-checkzone example.com /etc/bind/db.example.com</font></font></span>
+</pre></div>
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	        如果一切配置正确，您应该看到类似于的输出：
+	        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">zone example.com/IN：已加载序列号6</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+好</font></font><font></font>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	        同样，要测试反向区域文件，请输入以下内容：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">named-checkzone 1.168.192.in-addr.arpa /etc/bind/db.192</font></font></span>
+</pre></div>
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	        输出应类似于：
+	        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">区域1.168.192.in-addr.arpa/IN：已加载序列号3</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+好</font></font><font></font>
+</pre></div>
+	      </li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	     <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您的区域文件</font><font style="vertical-align: inherit;">
+	     的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">序列号</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可能会有所不同。
+	     </font></font></p>
+	    </div></div></div></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="dns-logging"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">记录</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+	  <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BIND9</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">具有多种日志配置选项。</font><font style="vertical-align: inherit;">有两个主要选择。</font><font style="vertical-align: inherit;">该 
+	   </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通道</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项配置，其中原木去，和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">类别</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项决定信息登录。
+	  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  如果未配置日志记录选项，则默认选项为： 
+	  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">记录{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     category default {default_syslog; </font><font style="vertical-align: inherit;">default_debug; </font><font style="vertical-align: inherit;">};</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     category unmatched {null; </font><font style="vertical-align: inherit;">};</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+};</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  本节介绍如何配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BIND9</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以将</font><font style="vertical-align: inherit;">与DNS查询相关的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">调试</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">消息</font><font style="vertical-align: inherit;">发送</font><font style="vertical-align: inherit;">到单独的文件。 
+	  </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      首先，我们需要配置一个通道来指定将消息发送到哪个文件。</font><font style="vertical-align: inherit;">编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/bind/named.conf.local</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	      并添加以下内容： 
+	      </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">记录{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    channel query.log {      </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        文件“/var/log/query.log”;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        严重性调试3; </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    }; </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+};</font></font><font></font>
+</pre></div>	    
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      接下来，配置一个类别以将所有DNS查询发送到查询文件：
+	      </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">记录{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    channel query.log {      </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        文件“/var/log/query.log”; </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        严重性调试3; </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    }; </font></font><font></font>
+    <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">类别查询{query.log; </font><font style="vertical-align: inherit;">};</font></font></span> <font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+};</font></font><font></font>
+</pre></div>	    
+	    </li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    注意：</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">debug</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项可以设置为1到3.如果未指定级别，则级别1是默认值。
+	    </font></font></p>
+	  </div></div></div></div>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      由于</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">named守护程序</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">作为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">绑定</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户</font><font style="vertical-align: inherit;">运行，因此</font><font style="vertical-align: inherit;">
+	      必须创建</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/log/query.log</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件并更改所有权：
+	      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo touch /var/log/query.log </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chown bind /var/log/query.log</font></font></span>
+</pre></div>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">named</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护程序可以写入新日志文件之前，</font><font style="vertical-align: inherit;">
+	      必须更新</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件。</font><font style="vertical-align: inherit;">首先，编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apparmor.d/usr.sbin.named</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并添加：
+	      </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/log/query.log w，
+</font></font></pre></div>
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      接下来，重新加载配置文件：
+	      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cat /etc/apparmor.d/usr.sbin.named | </font><font style="vertical-align: inherit;">sudo apparmor_parser -r</font></font></span>
+</pre></div>
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+               有关</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="apparmor.html" title="AppArmor的"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor</font></font></a>
+	      </p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      现在重新启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BIND9</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以使更改生效：
+	      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart bind9.service</font></font></span>
+</pre></div>
+	    </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  您应该看到文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/log/query.log</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">填充查询信息。</font><font style="vertical-align: inherit;">这是 
+	   </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BIND9日志记录选项的一个简单示例</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有关高级选项的介绍，请参阅</font></font><a class="xref" href="dns-references.html#dns-more-info" title="更多信息"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更多信息</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	  </font></font></p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="dns-configuration.html" title="组态"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="dns-references.html" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

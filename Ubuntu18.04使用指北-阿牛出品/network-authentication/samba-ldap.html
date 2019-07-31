@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Samba和LDAP</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="network-authentication.html" title="网络身份验证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络身份验证</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="openldap-server.html" title="OpenLDAP服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="kerberos.html" title="Kerberos的"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba和LDAP</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	本节介绍Samba与LDAP的集成。</font><font style="vertical-align: inherit;">Samba服务器的角色将是“独立”服务器的角色，除了包含Samba运行所需的用户，组和计算机帐户信息之外，LDAP目录还将提供身份验证层（以3种可能的角色中的任何一种） ）。</font><font style="vertical-align: inherit;">先决条件是配置了可以接受身份验证请求的目录的OpenLDAP服务器。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">满足此要求的详细信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="openldap-server.html" title="OpenLDAP服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenLDAP服务器</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">完成此部分后，您需要确定Samba要为您做什么具体的事情，然后相应地进行配置。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	本指南假设LDAP和Samba服务在同一服务器上运行，因此每当在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下更改某些内容时都使用SASL EXTERNAL身份验证</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果那不是您的方案，则必须在LDAP服务器上运行这些ldap命令。</font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="samba-ldap.html#samba-ldap-installation" title="软件安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件安装</font></font></a></li>
+<li class="links"><a class="xref" href="samba-ldap.html#samba-ldap-openldap-configuration" title="LDAP配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LDAP配置</font></font></a></li>
+<li class="links"><a class="xref" href="samba-ldap.html#samba-ldap-samba-configuration" title="Samba配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba配置</font></font></a></li>
+<li class="links"><a class="xref" href="samba-ldap.html#samba-ldap-resources" title="资源"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="samba-ldap-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	将Samba与LDAP集成时需要两个包：</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">samba</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-tools</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	严格来说，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不需要smbldap-tools</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包，但除非你有其他方法来管理LDAP上下文中的各种Samba实体（用户，组，计算机），否则你应该安装它。  
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	立即安装这些包：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install samba smbldap-tools</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="samba-ldap-openldap-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LDAP配置</font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	我们现在将配置LDAP服务器，以便它可以容纳Samba数据。</font><font style="vertical-align: inherit;">我们将在本节中执行三项任务：
+	</font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">导入架构</font></font></p>
+		</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">索引一些条目</font></font></p>
+		</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加对象</font></font></p>
+		</li>
+</ol></div></div>
+</div>
+<div class="sect3 sect" id="samba-ldap-openldap-configuration-samba-schema"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba架构</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      	为了将OpenLDAP用作Samba的后端，逻辑上，DIT需要使用能够正确描述Samba数据的属性。</font><font style="vertical-align: inherit;">可以通过引入Samba LDAP模式来获取此类属性。</font><font style="vertical-align: inherit;">我们现在就这样做。
+      	</font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		有关模式及其安装的更多信息，请参阅</font></font><a class="xref" href="openldap-server.html#openldap-configuration" title="修改slapd配置数据库"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改slapd配置数据库</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+		</font></font></p>
+	</div></div></div></div>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		该模式位于现已安装的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">samba</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包中，并且已采用ldif格式。</font><font style="vertical-align: inherit;">我们可以用一个简单的命令导入它：
+		</font></font></p>
+        
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">zcat /usr/share/doc/samba/examples/LDAP/samba.ldif.gz | </font><font style="vertical-align: inherit;">sudo ldapadd -Q -Y EXTERNAL -H ldapi：///</font></font></span>
+</pre></div>
+
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要查询和查看此新架构：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapsearch -Q -LLL -Y EXTERNAL -H ldapi：/// -b cn = schema，cn = config'cn = * samba *'</font></font></span>
+</pre></div>
+
+	</li>
+</ol></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="samba-ldap-openldap-configuration-samba-indices"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">桑巴指数</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	既然slapd知道Samba属性，我们可以根据它们设置一些索引。</font><font style="vertical-align: inherit;">当客户端在DIT上执行过滤搜索时，索引条目是一种提高性能的方法。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下内容</font><font style="vertical-align: inherit;">
+	创建文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">samba_indices.ldif</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dn：olcDatabase = {1} mdb，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+changetype：修改</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+替换：olcDbIndex</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：objectClass eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：uidNumber，gidNumber eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：loginShell eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：uid，cn eq，sub</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：memberUid eq，sub</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：member，uniqueMember eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：sambaSID eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：sambaPrimaryGroupSID eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：sambaGroupType eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：sambaSIDList eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：sambaDomainName eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：默认子，eq</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapmodify</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序加载新索引：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapmodify -Q -Y EXTERNAL -H ldapi：/// -f samba_indices.ldif</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如果一切顺利，您应该使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapsearch</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查看新索引</font><font style="vertical-align: inherit;">：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapsearch -Q -LLL -Y EXTERNAL -H \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ldapi：/// -b cn = config olcDatabase = {1} mdb olcDbIndex</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="samba-ldap-openldap-configuration-populating"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加Samba LDAP对象</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	接下来，配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-tools</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包以匹配您的环境。</font><font style="vertical-align: inherit;">该软件包附带一个名为</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的配置帮助程序脚本</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">但是，在运行它之前，您应该决定</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/samba/smb.conf中的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">两个重要配置设置</font><font style="vertical-align: inherit;">：
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist" style="list-style-type: disc">
+<li class="list itemizedlist">
+		<p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">netbios name</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：如何知道此服务器。</font><font style="vertical-align: inherit;">默认值派生自服务器的主机名，但截断为15个字符。</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">workgroup</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：此服务器的工作组名称，或者，如果您以后决定将其设置为域控制器，则这将是域。</font></font></p>
+		</li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">现在做出这些选择很重要，因为</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将使用它们来生成稍后将存储在LDAP目录中的配置。</font><font style="vertical-align: inherit;">如果您</font><font style="vertical-align: inherit;">现在</font><font style="vertical-align: inherit;">运行
+	 </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并稍后在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/samba/smb.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更改这些值，</font><font style="vertical-align: inherit;">
+	则会出现不一致。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一旦您对</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">netbios名称</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">工作组</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">感到满意</font><font style="vertical-align: inherit;">，请</font><font style="vertical-align: inherit;">通过运行配置脚本</font><font style="vertical-align: inherit;">继续生成</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-tools</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置，该脚本将询问您一些问题：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo smbldap-config</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一些更重要的：</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+			<p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">工作组名称</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：必须与</font><font style="vertical-align: inherit;">稍后</font><font style="vertical-align: inherit;">在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/samba/smb.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置的内容相匹配
+			 </font><font style="vertical-align: inherit;">。</font></font></p>
+		</li>
+<li class="list itemizedlist">
+			<p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldap后缀</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：必须与配置LDAP服务器时选择的ldap后缀相匹配。</font></font></p>
+		</li>
+<li class="list itemizedlist">
+			<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他ldap后缀：它们都与</font><font style="vertical-align: inherit;">上面的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldap后缀相关</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">例如，对于
+			 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldap用户后缀，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您应该使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou = People</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+		</li>
+<li class="list itemizedlist">
+			<p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldap master bind dn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">bind password</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：使用rootDN凭据。</font></font></p>
+		</li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	然后，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-populate</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">脚本将添加Samba所需的LDAP对象。</font><font style="vertical-align: inherit;">首先使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapcat</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">备份DIT是个好主意</font><font style="vertical-align: inherit;">：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo slapcat -l backup.ldif</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	备份后，继续填充目录。</font><font style="vertical-align: inherit;">它会要求您输入“domain root”用户的密码，该用户也是存储在LDAP中的“root”用户：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo smbldap-populate -g 10000 -u 10000 -r 10000</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">该</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-g</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-u</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-r</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参数告诉
+	 </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap工具</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">从哪里开始的LDAP用户的数字UID和GID分配。</font><font style="vertical-align: inherit;">您应该选择一个与本地</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / passwd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户</font><font style="vertical-align: inherit;">不重叠的范围开始
+	 </font><font style="vertical-align: inherit;">。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	您可以通过执行</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo smbldap-populate -e samba.ldif</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来创建包含新Samba对象的LDIF文件</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这使您可以查看更改，确保一切正确。</font><font style="vertical-align: inherit;">如果是，请在没有'-e'开关的情况下重新运行脚本。</font><font style="vertical-align: inherit;">或者，您可以采用LDIF文件并按常规导入其数据。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	您的LDAP目录现在具有对Samba用户进行身份验证的必要信息。
+	</font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="samba-ldap-samba-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	有多种方法可以配置Samba。</font><font style="vertical-align: inherit;">有关一些常见配置的详细信息，请参阅</font></font><a class="xref" href="samba.html" title="桑巴"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要配置Samba以使用LDAP，请编辑其配置文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/samba/smb.conf，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注释掉默认的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">passdb后端</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参数并添加一些与ldap相关的参数。</font><font style="vertical-align: inherit;">确保使用运行</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-populate</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">时使用的相同值</font><font style="vertical-align: inherit;">：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#passdb backend = tdbsam</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   workgroup =示例</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#LDAP设置</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   passdb backend = ldapsam：ldap：// hostname</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   ldap suffix = dc = example，dc = com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   ldap用户后缀= ou =人</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   ldap group suffix = ou = Groups</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   ldap machine suffix = ou =计算机</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   ldap idmap suffix = ou = Idmap</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   ldap admin dn = cn = admin，dc = example，dc = com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   ＃如果未配置TLS / SSL，则为＃或off</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   ldap ssl = start tls</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   ldap passwd sync = yes</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	更改值以匹配您的环境。
+	</font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包附带</font><font style="vertical-align: inherit;">的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smb.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">很长，并且有很多配置示例。</font><font style="vertical-align: inherit;">在没有任何注释的情况下可视化它的简单方法是运行</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">testparm -s</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+	</div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	现在告诉Samba有关rootDN用户的密码（在安装slapd软件包期间设置的密码）：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo smbpasswd -W</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	作为让LDAP用户能够连接到samba并进行身份验证的最后一步，我们需要这些用户也作为“unix”用户显示在系统中。</font><font style="vertical-align: inherit;">一种方法是使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libnss-ldap</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">详细说明可以在</font></font><a class="xref" href="openldap-server.html#openldap-auth-config" title="LDAP身份验证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LDAP身份验证</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分找到，但我们只需要NSS部分。
+	</font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+			<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libnss-ldap</font></font></span></p>
+			<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install libnss-ldap</font></font></pre></div>
+			<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">无需使用LDAP rootDN登录凭据，因此您可以跳过该步骤。</font></font></p>
+		</li>
+<li class="steps">
+			<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为NSS配置LDAP配置文件：</font></font></p>
+			<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo auth-client-config -t nss -p lac_ldap</font></font></pre></div>
+		</li>
+<li class="steps">
+			<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">重启Samba服务：</font></font></p>
+			<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart smbd.service nmbd.service</font></font></pre></div>
+		</li>
+<li class="steps">
+			<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要快速测试设置，请查看</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">getent是否</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以列出Samba组：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">getent group</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+账户运营商：*：548：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+打印操作员：*：550：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+备份操作员：*：551：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+复制器：*：552：</font></font><font></font>
+</span>
+</pre></div>
+		</li>
+</ol></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如果您希望在新的LDAP支持的Samba中包含现有的LDAP用户，那么他们当然也需要获得一些额外的Samba特定属性。</font><font style="vertical-align: inherit;">该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的smbpasswd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序可以为你做这个：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo smbpasswd -a username</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	系统将提示您输入密码。</font><font style="vertical-align: inherit;">它将被视为该用户的新密码。</font><font style="vertical-align: inherit;">使它与以前一样是合理的。</font><font style="vertical-align: inherit;">请注意，此命令不能用于在LDAP中从头开始创建新用户（除非您使用的是</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapsam：trusted</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapsam：editposix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，本指南未介绍）。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	要管理用户，组和计算机帐户，请使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-tools</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包</font><font style="vertical-align: inherit;">提供的实用</font><font style="vertical-align: inherit;">程序。</font><font style="vertical-align: inherit;">这里有些例子：
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist" style="list-style-type: disc">
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要添加具有主目录的新用户：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo smbldap-useradd -a -P -m username</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		该</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-a</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项将桑巴属性和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-P</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项调用 
+		 </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-passwd中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用的用户后，将创建允许你输入用户密码。</font><font style="vertical-align: inherit;">最后，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-m</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建一个本地主目录。</font><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">getent</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令</font><font style="vertical-align: inherit;">测试</font><font style="vertical-align: inherit;">：
+		</font></font></p>
+		<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">getent passwd用户名</font></font></pre></div>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果没有得到响应，则</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libnss-ldap</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置不正确。</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要删除用户：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo smbldap-userdel用户名</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		在上面的命令中，使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-r</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项删除用户的主目录。
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要添加组：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo smbldap-groupadd -a groupname</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		对于</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-useradd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-a</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加了Samba属性。
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要使现有用户成为组的成员：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo smbldap-groupmod -m username groupname</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		该</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-m</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项可以通过逗号分隔的格式列出他们一次添加多个用户。
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要从组中删除用户：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo smbldap-groupmod -x username groupname</font></font></span>
+</pre></div>
+
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要添加Samba计算机帐户：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo smbldap-useradd -t 0 -w username</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">username</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换</font><font style="vertical-align: inherit;">为工作站的名称。</font><font style="vertical-align: inherit;">所述</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-t 0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项创建机器帐户没有延迟，而</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-w</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项指定用户作为计算机帐户。</font><font style="vertical-align: inherit;">另外，请注意</font><span class="file filename"><font style="vertical-align: inherit;">/etc/samba/smb.conf中</font></span><font style="vertical-align: inherit;">的 
+		 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">add machine脚本</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参数</font><font style="vertical-align: inherit;">已更改为使用</font><span class="app application"><font style="vertical-align: inherit;">smbldap-useradd</font></span><font style="vertical-align: inherit;">。
+		</font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+		</li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-tools</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包中</font><font style="vertical-align: inherit;">
+	有一些实用</font><font style="vertical-align: inherit;">程序，这里没有介绍。</font><font style="vertical-align: inherit;">这是一个完整的清单：
+	</font></font></p>
+<div class="code"><pre class="contents "><a href="http://manpages.ubuntu.com/manpages/en/man8/smbldap-groupadd.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/smbldap-groupadd.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-groupadd </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man8/smbldap-groupdel.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/smbldap-groupdel.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-groupdel </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man8/smbldap-groupmod.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/smbldap-groupmod.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-groupmod </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man8/smbldap-groupshow.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/smbldap-groupshow.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-groupshow </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man8/smbldap-passwd.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/smbldap-passwd.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-passwd </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man8/smbldap-populate.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/smbldap-populate.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-populate </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man8/smbldap-useradd.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/smbldap-useradd.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-useradd </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man8/smbldap-userdel.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/smbldap-userdel.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-userdel </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man8/smbldap-userinfo.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/smbldap-userinfo.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-userinfo </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man8/smbldap-userlist.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/smbldap-userlist.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-userlist </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man8/smbldap-usermod.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/smbldap-usermod.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-usermod </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man8/smbldap-usershow.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/smbldap-usershow.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbldap-usershow</font></font></a>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="samba-ldap-resources"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		有关安装和配置Samba的详细信息，请参阅</font><font style="vertical-align: inherit;">此Ubuntu Server Guide的</font></font><a class="xref" href="samba.html" title="桑巴"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		上游</font></font><a href="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/" class="ulink" title="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba HOWTO集合中</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有多个地方记录了LDAP和Samba
+		 </font><font style="vertical-align: inherit;">。
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		关于上面，具体参见</font></font><a href="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/passdb.html" class="ulink" title="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/passdb.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">passdb部分</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		虽然日期（2007年），</font></font><a href="http://download.gna.org/smbldap-tools/docs/samba-ldap-howto/" class="ulink" title="http://download.gna.org/smbldap-tools/docs/samba-ldap-howto/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux Samba-OpenLDAP HOWTO</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含有价值的笔记。
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"></font><a href="https://help.ubuntu.com/community/Samba#samba-ldap" class="ulink" title="https://help.ubuntu.com/community/Samba#samba-ldap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba Ubuntu社区文档的</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+		主页</font><font style="vertical-align: inherit;">有很多链接到可能证明有用的文章。
+		</font></font></p>
+		</li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="openldap-server.html" title="OpenLDAP服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="kerberos.html" title="Kerberos的"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

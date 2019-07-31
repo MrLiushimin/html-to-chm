@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>准备安装</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><style type="text/css" adt="123"></style><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style><link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"><script>//console.log('a')
+</script><script>//remove 17173 video ad
+doAdblock();
+function doAdblock(){
+    (function() {
+        function A() {}
+        A.prototype = {
+            rules: {
+                '17173_in':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFile(Customer)?\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_in_20150522.swf"
+                },
+                '17173_out':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFileFirstpage\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_out_20150522.swf"
+                },
+                '17173_live':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream(_firstpage)?\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_stream_20150522.swf"
+                },
+                '17173_live_out':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream_(custom)?Out\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173.out.Live.swf"
+                }
+            },
+            _done: null,
+            get done() {
+                if(!this._done) {
+                    this._done = new Array();
+                }
+                return this._done;
+            },
+            addAnimations: function() {
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                style.innerHTML = 'object,embed{\
+                -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;\
+                -ms-animation-duration:.001s;-ms-animation-name:playerInserted;\
+                -o-animation-duration:.001s;-o-animation-name:playerInserted;\
+                animation-duration:.001s;animation-name:playerInserted;}\
+                @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}';
+                document.getElementsByTagName('head')[0].appendChild(style);
+            },
+            animationsHandler: function(e) {
+                if(e.animationName === 'playerInserted') {
+                    this.replace(e.target);
+                }
+            },
+            replace: function(elem) {
+                if(this.done.indexOf(elem) != -1) return;
+                this.done.push(elem);
+                var player = elem.data || elem.src;
+                if(!player) return;
+                var i, find, replace = false;
+                for(i in this.rules) {
+                    find = this.rules[i]['find'];
+                    if(find.test(player)) {
+                        replace = this.rules[i]['replace'];
+                        if('function' === typeof this.rules[i]['preHandle']) {
+                            this.rules[i]['preHandle'].bind(this, elem, find, replace, player)();
+                        }else{
+                            this.reallyReplace.bind(this, elem, find, replace)();
+                        }
+                        break;
+                    }
+                }
+            },
+            reallyReplace: function(elem, find, replace) {
+                elem.data && (elem.data = elem.data.replace(find, replace)) || elem.src && ((elem.src = elem.src.replace(find, replace)) && (elem.style.display = 'block'));
+                var b = elem.querySelector("param[name='movie']");
+                this.reloadPlugin(elem);
+            },
+            reloadPlugin: function(elem) {
+                var nextSibling = elem.nextSibling;
+                var parentNode = elem.parentNode;
+                parentNode.removeChild(elem);
+                var newElem = elem.cloneNode(true);
+                this.done.push(newElem);
+                if(nextSibling) {
+                    parentNode.insertBefore(newElem, nextSibling);
+                } else {
+                    parentNode.appendChild(newElem);
+                }
+            },
+            init: function() {
+                var handler = this.animationsHandler.bind(this);
+                document.body.addEventListener('webkitAnimationStart', handler, false);
+                document.body.addEventListener('msAnimationStart', handler, false);
+                document.body.addEventListener('oAnimationStart', handler, false);
+                document.body.addEventListener('animationstart', handler, false);
+                this.addAnimations();
+            }
+        };
+        new A().init();
+    })();
+}
+//remove baidu search ad
+if(document.URL.indexOf('www.baidu.com') >= 0){
+    if(document && document.getElementsByTagName && document.getElementById && document.body){
+        var aa = function(){
+            var all = document.body.querySelectorAll("#content_left div,#content_left table");
+            for(var i = 0; i < all.length; i++){
+                if(/display:\s?(table|block)\s!important/.test(all[i].getAttribute("style"))){all[i].style.display= "none";all[i].style.visibility='hidden';}
+            }
+            all = document.body.querySelectorAll('.result.c-container[id="1"]');
+            //if(all.length == 1) return;
+            for(var i = 0; i < all.length; i++){
+                if(all[i].innerHTML && all[i].innerHTML.indexOf('广告')>-1){
+                    all[i].style.display= "none";all[i].style.visibility='hidden';
+                }
+            }
+        }
+        aa();
+        document.getElementById('wrapper_wrapper').addEventListener('DOMSubtreeModified',aa)
+    };
+}
+//remove sohu video ad
+if (document.URL.indexOf("tv.sohu.com") >= 0){
+    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+}
+//remove 56.com video ad
+if (document.URL.indexOf("56.com") >= 0){
+    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+}
+//fore iqiyi enable html5 player function
+if (document.URL.indexOf("iqiyi.com") >= 0){
+    if (document.cookie.indexOf("player_forcedType=h5_VOD")==-1){
+        document.cookie='player_forcedType=h5_VOD'
+        if(localStorage.reloadTime && Date.now() - parseInt(localStorage.reloadTime)<60000){
+            console.log('no reload')
+        }else{
+            location.reload()
+            localStorage.reloadTime = Date.now();
+        }
+    }
+}
+</script><style type="text/css">object,embed{                -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;                -ms-animation-duration:.001s;-ms-animation-name:playerInserted;                -o-animation-duration:.001s;-o-animation-name:playerInserted;                animation-duration:.001s;animation-name:playerInserted;}                @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu的文档</font></font></font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助维基</font></font></font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  &nbsp;» </font></font></font></font><a class="trail" href="../index.html" title="Ubuntu的服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  &nbsp;» </font></font></font></font><a class="trail" href="installation.html" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  &nbsp;»</font></font></font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="installation.html" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></font></font></a><a class="nextlinks-next" href="installing-live-server.html" title="使用实时服务器安装程序安装 "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">准备安装</font></font></font></font></h1></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      本节介绍在开始安装之前要考虑的各个方面。 </font></font></font></font></p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="preparing-to-install.html#system-requirements" title="系统要求"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">系统要求</font></font></font></font></a></li>
+<li class="links"><a class="xref" href="preparing-to-install.html#intro-server-differences" title="服务器和桌面差异"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器和桌面差异</font></font></font></font></a></li>
+<li class="links"><a class="xref" href="preparing-to-install.html#backing-up" title="备份"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">备份</font></font></font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="system-requirements"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">系统要求</font></font></font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                          Ubuntu 18.04 LTS服务器版支持四（4）种主要架构：AMD64，ARM，POWER8，LinuxONE和z Systems（虽然本手册不涉及在LinuxONE或z Systems上的安装，请参阅</font></font></font></font><a href="https://wiki.ubuntu.com/S390X/InstallationGuide" class="ulink" title="https://wiki.ubuntu.com/S390X/InstallationGuide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">专用指南</font></font></font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）。
+                        </font></font></font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                          Ubuntu Server 18.04 LTS引入了一个新的安装程序，即“实时服务器”安装程序（有时称为“Ubiquity for Servers”或简称“subiquity”），它提供了更多用户友好和更快的安装体验。</font></font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在撰写本文时，它仅支持AMD64处理器，不支持LVM或RAID或其他更复杂的存储选项，也不支持重复使用您正在安装的系统磁盘上的现有分区</font><font style="vertical-align: inherit;">。</font></font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">它还需要访问Ubuntu的存档，可能通过代理。</font></font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果这些限制意味着您无法使用实时服务器安装程序</font><font style="vertical-align: inherit;">，则以前的基于Debian的安装程序的安装程序仍然可用。
+                        </font></font></font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                        下表列出了推荐的硬件规格。</font></font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根据您的需要，您可能会以低于此为目标进行管理</font><font style="vertical-align: inherit;">。</font></font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">但是，如果他们忽略这些建议，大多数用户都会感到沮丧。</font></font></font></font></p>
+<div class="table">
+<div class="title"><h3><span class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">建议的最低要求</font></font></font></font></span></h3></div>
+<table summary="Recommended Minimum Requirements" style="border: solid 1px;">
+<thead>
+<tr>
+<th class="td-colsep" style="vertical-align: middle;" rowspan="2"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装类型</font></font></font></font></p></th>
+<th class="td-colsep" style="vertical-align: middle;" rowspan="2"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装方法</font></font></font></font></p></th>
+<th class="td-colsep" style="vertical-align: middle;" rowspan="2"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中央处理器</font></font></font></font></p></th>
+<th class="td-colsep" style="vertical-align: middle;" rowspan="2"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内存</font></font></font></font></p></th>
+<th style="text-align: center;" colspan="2"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">硬盘空间</font></font></font></font></p></th>
+</tr>
+<tr>
+<th class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基础系统</font></font></font></font></p></th>
+<th><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">已安装所有任务</font></font></font></font></p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="td-colsep" rowspan="2"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器（标准）</font></font></font></font></p></td>
+<td class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Debian的安装程序</font></font></font></font></p></td>
+<td class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1千兆赫兹</font></font></font></font></p></td>
+<td class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">512兆字节</font></font></font></font></p></td>
+<td class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1.5千兆字节</font></font></font></font></p></td>
+<td><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.5千兆字节</font></font></font></font></p></td>
+</tr>
+<tr class="shade">
+<td class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">直播服务器</font></font></font></font></p></td>
+<td class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1千兆赫（仅限AMD64）</font></font></font></font></p></td>
+<td class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1千兆字节</font></font></font></font></p></td>
+<td class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1.5千兆字节</font></font></font></font></p></td>
+<td><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不适用</font></font></font></font></p></td>
+</tr>
+<tr>
+<td class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器（最小）</font></font></font></font></p></td>
+<td class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Debian的安装程序</font></font></font></font></p></td>
+<td class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">300兆赫兹</font></font></font></font></p></td>
+<td class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">384兆字节</font></font></font></font></p></td>
+<td class="td-colsep"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1.5千兆字节</font></font></font></font></p></td>
+<td><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.5千兆字节</font></font></font></font></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+				Server Edition为各种服务器应用程序提供了通用基础。</font></font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">它是一种极简主义设计，为所需服务提供平台，例如文件/打印服务，虚拟主机，电子邮件托管等。 
+				</font></font></font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="intro-server-differences"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器和桌面差异</font></font></font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu Server Edition</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和 
+     </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu Desktop Edition</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+    之间存在一些差异</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">应该注意的是，两个版本都使用相同的 
+     </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apt</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">存储库，这使得</font><font style="vertical-align: inherit;"> 
+    在Desktop Edition上</font><font style="vertical-align: inherit;">安装</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">应用程序与在Server Edition上</font><font style="vertical-align: inherit;">安装</font><span class="em emphasis"><font style="vertical-align: inherit;">服务器</font></span><font style="vertical-align: inherit;">应用程序</font><font style="vertical-align: inherit;">一样容易</font><font style="vertical-align: inherit;">。
+    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    两个版本之间的差异是Server Edition和安装过程中缺少X窗口环境。
+    </font></font></p>
+<p class="para">
+    </p>
+</div>
+<div class="sect3 sect" id="intro-kernel-diffs"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内核差异：</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 10.10及更早版本实际上有不同的内核用于服务器和桌面版本。</font><font style="vertical-align: inherit;">Ubuntu不再具有单独的-server和-generic内核风格。</font><font style="vertical-align: inherit;">这些已合并为单一内核风格，以帮助减少发布期间的维护负担。
+      </font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    在64位处理器上运行64位版本的Ubuntu时，您不受内存寻址空间的限制。
+	    </font></font></p>
+	  </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	要查看所有内核配置选项，可以查看</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/boot/config-4.14.0-server</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">此外，</font></font><a href="http://www.kroah.com/lkn/" class="ulink" title="http://www.kroah.com/lkn/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nutshell</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中的</font><a href="http://www.kroah.com/lkn/" class="ulink" title="http://www.kroah.com/lkn/"><font style="vertical-align: inherit;">Linux Kernel</font></a><font style="vertical-align: inherit;">是可用选项的绝佳资源。
+	</font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="backing-up"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">备份</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist"><li class="list itemizedlist">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  在安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu Server Edition</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">之前，</font><font style="vertical-align: inherit;">您应该确保备份系统上的所有数据。</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="backups.html" title="备份"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">备份</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以获取备份选项。
+	</font></font></p>
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	  如果这不是您的计算机上第一次安装操作系统，则可能需要重新分区磁盘以为Ubuntu腾出空间。 
+	</font></font></p>
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	  无论何时对磁盘进行分区，如果出现错误或在分区过程中出现问题，您应该准备丢失磁盘上的所有内容。</font><font style="vertical-align: inherit;">安装中使用的程序非常可靠，大多数已经使用多年，但它们也执行破坏性操作。
+        </font></font></p>
+      </li></ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="installation.html" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="installing-live-server.html" title="使用实时服务器安装程序安装 "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font></font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关详细信息</font></font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请参阅</font></font></font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">法律</font></font></font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font></font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队维基页面</font></font></font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要报告此服务器指南文档中</font></font></font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font></font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提交错误报告</font></font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div><div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div><div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

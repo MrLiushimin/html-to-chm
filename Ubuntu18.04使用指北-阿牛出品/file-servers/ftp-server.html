@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FTP服务器</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="file-servers.html" title="文件服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件服务器</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="file-servers.html" title="文件服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="network-file-system.html" title="网络文件系统（NFS）"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FTP服务器</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          文件传输协议（FTP）是用于在计算机之间下载文件的TCP协议。</font><font style="vertical-align: inherit;">过去，它也被用于上传，但由于该方法不使用加密，因此用户凭据以及以明文形式传输的数据很容易被截获。</font><font style="vertical-align: inherit;">所以，如果你在这里寻找一种方式来上传和安全地下载文件，请参见上一节</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的OpenSSH</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在</font></font><a class="xref" href="remote-administration.html" title="远程管理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">远程管理</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来代替。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          FTP适用于客户端/服务器模型。</font><font style="vertical-align: inherit;">服务器组件称为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FTP守护程序</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">它不断侦听来自远程客户端的FTP请求。</font><font style="vertical-align: inherit;">收到请求后，它会管理登录并设置连接。</font><font style="vertical-align: inherit;">在会话期间，它执行FTP客户端发送的任何命令。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以通过两种方式管理对FTP服务器的访问：</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist compact">
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">匿名</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">经过身份验证</font></font></p>
+            </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          在匿名模式下，远程客户端可以使用名为“anonymous”或“ftp”的默认用户帐户访问FTP服务器，并发送电子邮件地址作为密码。</font><font style="vertical-align: inherit;">在Authenticated模式下，用户必须拥有帐户和密码。</font><font style="vertical-align: inherit;">后一种选择非常不安全，除特殊情况外不应使用。</font><font style="vertical-align: inherit;">如果您希望安全地传输文件，请参阅OpenSSH-Server部分中的SFTP。</font><font style="vertical-align: inherit;">用户对FTP服务器目录和文件的访问权限取决于为登录时使用的帐户定义的权限。</font><font style="vertical-align: inherit;">作为一般规则，FTP守护程序将隐藏FTP服务器的根目录并将其更改为FTP主目录。
+          </font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="ftp-server.html#vsftpd-ftp-server-installation" title="vsftpd  -  FTP服务器安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd  -  FTP服务器安装</font></font></a></li>
+<li class="links"><a class="xref" href="ftp-server.html#vsftpd-anonymous-configuration" title="匿名FTP配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">匿名FTP配置</font></font></a></li>
+<li class="links"><a class="xref" href="ftp-server.html#vsftpd-userauth-configuration" title="用户验证的FTP配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户验证的FTP配置</font></font></a></li>
+<li class="links"><a class="xref" href="ftp-server.html#vsftpd-security" title="保护FTP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保护FTP</font></font></a></li>
+<li class="links"><a class="xref" href="ftp-server.html#vsftpd-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="vsftpd-ftp-server-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd  -  FTP服务器安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+            <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是Ubuntu中提供的FTP守护进程。</font><font style="vertical-align: inherit;">它易于安装，设置和维护。</font><font style="vertical-align: inherit;">要安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+            您可以运行以下命令：
+            </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install vsftpd</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="vsftpd-anonymous-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">匿名FTP配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                默认情况下，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">没有</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置为允许匿名下载。</font><font style="vertical-align: inherit;">如果您希望</font><font style="vertical-align: inherit;">通过更改以下</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">启用匿名下载编辑</font><span class="file filename"><font style="vertical-align: inherit;">/etc/vsftpd.conf</font></span><font style="vertical-align: inherit;">：
+                </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">anonymous_enable =是
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                在安装过程中，将</font><font style="vertical-align: inherit;">创建</font><font style="vertical-align: inherit;">一个</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ftp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户，其主目录为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv / ftp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这是默认的FTP目录。
+                </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                如果您希望更改此位置，</font><font style="vertical-align: inherit;">
+                例如</font><font style="vertical-align: inherit;">，在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv / files / ftp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中，只需在另一个位置创建一个目录并更改</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ftp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户的主目录：
+                </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mkdir / srv / files / ftp </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo usermod -d / srv / files / ftp ftp</font></font></span> 
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                进行更改后重新启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+                </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart vsftpd.service</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                最后，</font><font style="vertical-align: inherit;">如果您希望使用默认值，请将您希望</font><font style="vertical-align: inherit;">通过匿名FTP提供的任何文件和目录复制到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv / files / ftp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv / ftp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+                </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="vsftpd-userauth-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户验证的FTP配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                默认情况下，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置为对系统用户进行身份验证并允许他们下载文件。</font><font style="vertical-align: inherit;">如果您希望用户能够上传文件，请编辑
+                 </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/vsftpd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+                </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WRITE_ENABLE = YES
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                现在重启</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+                </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart vsftpd.service</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                现在，当系统用户登录到FTP时，他们将从他们的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录</font><font style="vertical-align: inherit;">开始，在 
+                 </font><font style="vertical-align: inherit;">那里他们可以下载，上传，创建目录等。
+                </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                同样，默认情况下，不允许匿名用户将文件上载到FTP服务器。</font><font style="vertical-align: inherit;">要更改此设置，您应取消注释以下行，然后重新启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+                </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">anon_upload_enable = YES
+</font></font></pre></div>
+<div class="note note-warning" title="警告"><div class="inner"><div class="region"><div class="contents">
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  启用匿名FTP上载可能会带来极大的安全风险。</font><font style="vertical-align: inherit;">最好不要在直接从Internet访问的服务器上启用匿名上载。
+                  </font></font></p>
+                </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                配置文件包含许多配置参数。</font><font style="vertical-align: inherit;">配置文件中提供了有关每个参数的信息。</font><font style="vertical-align: inherit;">或者，您可以参考手册页</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">man 5 vsftpd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以获取每个参数的详细信息。 
+                </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="vsftpd-security"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保护FTP</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/vsftpd.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+                  有一些选项</font><font style="vertical-align: inherit;">可以帮助使</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更安全。</font><font style="vertical-align: inherit;">例如，通过取消注释，可以将用户限制为其主目录：
+                  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chroot_local_user = YES
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  您还可以将特定用户列表限制为其主目录：
+                  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chroot_list_enable = YES</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+chroot_list_file =的/ etc / vsftpd.chroot_list</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  取消注释上述选项后，创建一个</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/vsftpd.chroot_list，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+                  其中包含每行一个用户列表。</font><font style="vertical-align: inherit;">然后重启</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+                  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart vsftpd.service</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  此外，</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / ftpusers</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件是</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不允许</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> FTP访问</font><font style="vertical-align: inherit;">的用户列表</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">默认列表包括root，daemon，nobody等。要为其他用户禁用FTP访问，只需将它们添加到列表中即可。
+                  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  FTP也可以使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FTPS</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加密</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">与</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SFTP</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不同</font><font style="vertical-align: inherit;">，
+                   </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FTPS</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是基于安全套接字层（SSL）的FTP。  </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SFTP</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是通过加密</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSH</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">连接的</font><font style="vertical-align: inherit;">类似FTP的会话</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">一个主要的区别是SFTP的用户需要</font><font style="vertical-align: inherit;">在系统上</font><font style="vertical-align: inherit;">拥有一个</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">shell</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">帐户，而不是一个 
+                   </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nologin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">贝壳。</font><font style="vertical-align: inherit;">为所有用户提供shell可能不适用于某些环境，例如共享Web主机。</font><font style="vertical-align: inherit;">但是，可以将此类帐户限制为仅SFTP并禁用shell交互。</font><font style="vertical-align: inherit;">有关更多信息，请参阅OpenSSH-Server部分。
+                  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  要配置</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FTPS</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/vsftpd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并在底部添加：
+                  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ssl_enable =是
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  另外，请注意证书和密钥相关选项：
+                  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rsa_cert_file =的/ etc / SSL /证书/ SSL-CERT-snakeoil.pem</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+rsa_private_key_file =的/ etc / SSL /私人/ SSL-CERT-snakeoil.key</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  默认情况下，这些选项设置为</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ssl-cert</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+                  包</font><font style="vertical-align: inherit;">提供的证书和密钥</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">在生产环境中，应将这些替换为为特定主机生成的证书和密钥。</font><font style="vertical-align: inherit;">有关证书的更多信息，请参阅</font></font><a class="xref" href="certificates-and-security.html" title="证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">证书</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+                  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  现在重启</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，非匿名用户将被迫使用 
+                   </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">FTPS</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+                  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart vsftpd.service</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  要允许具有</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ usr / sbin / nologin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> shell的用户</font><font style="vertical-align: inherit;">访问FTP，但没有shell访问权限，请编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / shells</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nologin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> shell：
+                  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃/ etc / shells：有效的登录shell</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/斌/ CSH</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/ bin / sh的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+在/ usr / bin中/ ES</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+在/ usr / bin中/ KSH</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/斌/ KSH</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+在/ usr / bin中/ RC</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+在/ usr / bin中/ tcsh的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/斌/ tcsh的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+在/ usr / bin中/ ESH</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/斌/破折号</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/斌/庆典</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/斌/ rbash</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+在/ usr / bin中/屏幕</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/ usr / sbin目录/ nologin的</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  这是必要的，因为默认情况下</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用PAM进行身份验证，而 
+                   </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/pam.d/vsftpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件包含：
+                  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">auth需要pam_shells.so
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">shell</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> PAM模块限制对</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / shells</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+                  文件中</font><font style="vertical-align: inherit;">列出</font><font style="vertical-align: inherit;">
+                  的</font><span class="em emphasis"><font style="vertical-align: inherit;">shell的</font></span><font style="vertical-align: inherit;">访问</font><font style="vertical-align: inherit;">。
+                  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  最流行的FTP客户端可以配置为使用FTPS进行连接。</font><font style="vertical-align: inherit;">该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lftp的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令行FTP客户端必须使用FTPS和能力。
+                  </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="vsftpd-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+                      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                      有关</font><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参见</font></font><a href="http://vsftpd.beasts.org/vsftpd_conf.html" class="ulink" title="http://vsftpd.beasts.org/vsftpd_conf.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd网站</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+                      </font></font></p>
+                    </li>
+<li class="list itemizedlist">
+                      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                      有关详细的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/vsftpd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项，请参见 
+                       </font></font><a href="http://manpages.ubuntu.com/manpages/bionic/en/man5/vsftpd.conf.5.html" class="ulink" title="http://manpages.ubuntu.com/manpages/bionic/en/man5/vsftpd.conf.5.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vsftpd.conf手册页</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+                      </font></font></p>
+                    </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="file-servers.html" title="文件服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="network-file-system.html" title="网络文件系统（NFS）"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

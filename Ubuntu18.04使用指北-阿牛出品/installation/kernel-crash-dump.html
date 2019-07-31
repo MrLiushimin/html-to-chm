@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>内核崩溃转储</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="installation.html" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="advanced-installation.html" title="高级安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="../package-management/package-management.html" title="包管理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内核崩溃转储</font></font></h1></div>
+<div class="region">
+<div class="contents"></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#kernel-dump-introduction" title="介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">介绍</font></font></a></li>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#kernel-crash-dump-mechanisms" title="内核崩溃转储机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内核崩溃转储机制</font></font></a></li>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#Installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a></li>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#kernel-dump-configuration" title="组态"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></a></li>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#verification" title="验证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">验证</font></font></a></li>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#kdump-testing" title="测试崩溃转储机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试崩溃转储机制</font></font></a></li>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#kdump-resources" title="资源"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="kernel-dump-introduction"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">介绍</font></font></h2></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        内核崩溃转储是指每当内核执行中断时复制到磁盘的易失性内存（RAM）内容的一部分。</font><font style="vertical-align: inherit;">以下事件可能导致内核中断：
+         </font></font></p><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内核恐慌</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不可屏蔽中断（NMI）</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">机器检查例外（MCE）</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">硬件故障</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">人工干预</font></font></p></li>
+</ul></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	 对于其中一些事件（恐慌，NMI），内核将自动做出反应并通过</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kexec</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">触发崩溃转储机制</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">在其他情况下，需要手动干预以捕获存储器。</font><font style="vertical-align: inherit;">每当发生上述事件之一时，找出根本原因以防止它再次发生是很重要的。</font><font style="vertical-align: inherit;">可以通过检查复制的存储器内容来确定原因。
+        </font></font><p></p></div></div>
+</div></div>
+<div class="sect2 sect" id="kernel-crash-dump-mechanisms"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内核崩溃转储机制</font></font></h2></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	当发生内核恐慌时，内核依赖于</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kexec</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">机制来在系统启动时分配的预先保留的内存部分中快速重新启动内核的新实例（参见下文）。</font><font style="vertical-align: inherit;">这允许现有存储区保持不变，以便将其内容安全地复制到存储器。
+        </font></font></p></div></div>
+</div></div>
+<div class="sect2 sect" id="Installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      使用以下命令安装内核崩溃转储实用程序：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install linux-crashdump</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">从16.04开始，默认情况下启用内核崩溃转储机制。</font><font style="vertical-align: inherit;">在安装过程中，系统将提示您使用以下对话框。</font><font style="vertical-align: inherit;">除非另有选择，否则将启用kdump机制。
+        </font></font></p>
+      </div></div></div></div>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">| ------------------------ | </font><font style="vertical-align: inherit;">配置kdump-tools | ------------------------ |</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ | </font><font style="vertical-align: inherit;">|</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ | </font><font style="vertical-align: inherit;">|</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ | </font><font style="vertical-align: inherit;">如果选择此选项，将启用kdump-tools机制。</font><font style="vertical-align: inherit;">A |</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ | </font><font style="vertical-align: inherit;">仍然需要重新启动才能启用crashkernel内核</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ | </font><font style="vertical-align: inherit;">参数。</font><font style="vertical-align: inherit;">|</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ | </font><font style="vertical-align: inherit;">|</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ | </font><font style="vertical-align: inherit;">是否应该默认启用kdump-tools？</font><font style="vertical-align: inherit;">|</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ | </font><font style="vertical-align: inherit;">|</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ |                    </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;是&gt;</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">                        &lt;否&gt; |</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ | </font><font style="vertical-align: inherit;">|</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ | ------------------------------------------------- -------------------------- |</font></font><font></font>
+        </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          如果您需要手动启用该功能，可以使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dpkg-reconfigure kdump-tools</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令并对问题回答“是”。</font><font style="vertical-align: inherit;">您还可以</font><font style="vertical-align: inherit;">通过包含以下行</font><font style="vertical-align: inherit;">来编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / default / kdump-tools</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+</font></font></p><div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">USE_KDUMP = 1
+</font></font></pre></div>
+      <p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      如果自安装linux-crashdump软件包后仍未完成重新引导，则需要重新引导才能激活crashkernel = boot参数。</font><font style="vertical-align: inherit;">重启后，kdump-tools将启用并激活。
+      </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        如果在重启后启用kdump-tools，则只需发出</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdump-config load</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令即可激活kdump机制。
+      </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="kernel-dump-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        除了本地转储之外，现在可以使用远程转储功能使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSH</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NFS</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">协议</font><font style="vertical-align: inherit;">将内核故障转储发送到远程服务器</font><font style="vertical-align: inherit;">。
+      </font></font></p></div>
+<div class="sect3 sect" id="local-dump"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本地内核崩溃转储</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          除非选择了远程协议，否则将自动配置本地转储并保持使用。</font><font style="vertical-align: inherit;">存在许多配置选项，并在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / default / kdump-tools</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中进行了详细记录。
+        </font></font></p></div></div>
+</div></div>
+<div class="sect3 sect" id="ssh-dump"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">远程内核崩溃使用SSH协议转储</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          要使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSH</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">协议</font><font style="vertical-align: inherit;">启用远程转储</font><font style="vertical-align: inherit;">，</font><font style="vertical-align: inherit;">必须按以下方式修改</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / default / kdump-tools</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃------------------------------------------------- --------------------------</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃远程转储设施：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#SSH  - 将接收转储的远程服务器的用户名和主机名</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃和dmesg文件。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃SSH_KEY  - 用于登录远程的ssh私钥的完整路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#server。</font><font style="vertical-align: inherit;">使用kdump-config传播将公钥发送给</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃远程服务器</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#HOSTTAG  - 选择是否将IP地址的主机名用作的前缀</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+将文件发送到远程服务器时的#timestamped目录。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃'ip'是默认值。</font></font><font></font>
+<span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSH = “Ubuntu的@内核转储，netcrash”</font></font></span>
+        </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要定义的唯一必需变量是SSH。</font><font style="vertical-align: inherit;">它必须使用{username} @ {remote server}格式包含远程服务器的用户名和主机名。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSH_KEY可用于提供要使用的现有私钥。</font><font style="vertical-align: inherit;">否则，</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdump-config propagate</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令将创建一个新的密钥对。</font><font style="vertical-align: inherit;">HOSTTAG变量可用于使用系统的主机名作为要创建的远程目录的前缀而不是IP地址。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下示例显示了如何使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdump-config传播</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来创建新密钥对并将其传播到远程服务器：
+        </font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo kdump-config传播</font></font></span><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+需要生成一个新的ssh密钥......</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+主机'kdump-netcrash（192.168.1.74）'的真实性无法建立。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ECDSA密钥指纹为SHA256：iMp + 5Y28qhbd + tevFCWrEXykDd4dI3yN4OVlu3CBBQ4。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+您确定要继续连接（是/否）吗？</font><font style="vertical-align: inherit;">是</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ubuntu @ kdump-netcrash的密码： </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+将ssh密钥/root/.ssh/kdump_id_rsa传播到服务器ubuntu @ kdump-netcrash</font></font><font></font>
+        </pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        为了成功将公钥发送到服务器，将需要远程服务器上使用的帐户的密码</font></font><p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        所述</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内核转储-配置显示</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令可用于确认的kdump正确配置为使用SSH协议：
+        </font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdump-config显示</font></font></span><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+DUMP_MODE：kdump</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+USE_KDUMP：1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+KDUMP_SYSCTL：kernel.panic_on_oops = 1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+KDUMP_COREDIR：/ var / crash</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+crashkernel地址：0x2c000000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   / var / lib / kdump / vmlinuz：/boot/vmlinuz-4.4.0-10-generic的符号链接</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+kdump initrd： </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   /var/lib/kdump/initrd.img：/var/lib/kdump/initrd.img-4.4.0-10-generic的符号链接</font></font><font></font>
+<span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSH：ubuntu @ kdump-netcrash</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+SSH_KEY：/root/.ssh/kdump_id_rsa</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+HOSTTAG：ip</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+当前状态：准备好kdump</font></font></span>
+        </pre></div><p></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="nfs-dump"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">远程内核崩溃使用NFS协议转储</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          要使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NFS</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">协议</font><font style="vertical-align: inherit;">启用远程转储</font><font style="vertical-align: inherit;">，</font><font style="vertical-align: inherit;">必须按以下方式修改</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / default / kdump-tools</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#NFS  - 配置为接收的NFS服务器的主机名和挂载点</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃崩溃转储。</font><font style="vertical-align: inherit;">语法必须为{HOSTNAME}：{MOUNTPOINT}</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃（例如remote：/ var / crash）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font>
+<span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NFS = “内核转储-netcrash：在/ var /死机”</font></font></span>
+          </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">与SSH协议一样，HOSTTAG变量可用于将主机名替换为IP地址作为远程目录的前缀。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所述</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内核转储-配置显示</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令可用于确认的kdump正确配置为使用NFS协议：
+        </font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdump-config显示</font></font></span><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+DUMP_MODE：kdump</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+USE_KDUMP：1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+KDUMP_SYSCTL：kernel.panic_on_oops = 1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+KDUMP_COREDIR：/ var / crash</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+crashkernel地址：0x2c000000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   / var / lib / kdump / vmlinuz：/boot/vmlinuz-4.4.0-10-generic的符号链接</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+kdump initrd： </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   /var/lib/kdump/initrd.img：/var/lib/kdump/initrd.img-4.4.0-10-generic的符号链接</font></font><font></font>
+<span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NFS：kdump-netcrash：/ var / crash</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+HOSTTAG：主机名</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+当前状态：准备好kdump</font></font></span>
+      </pre></div><p></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="verification"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">验证</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      要确认已启用内核转储机制，需要验证一些事项。</font><font style="vertical-align: inherit;">首先，确认存在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crashkernel</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">引导参数（注意：以下行已拆分为两行以适合此文档的格式：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cat / proc / cmdline</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+BOOT_IMAGE = / vmlinuz-3.2.0-17-server root = / dev / mapper / PreciseS-root ro</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ crashkernel = 384M-2G：64M，2G-：128M</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        该</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crashkernel</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参数的语法如下： 
+        </font></font></p><div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crashkernel = &lt;范围1&gt;：&lt;尺寸1&gt; [，&lt;范围2&gt;：&lt;size2个&gt;，...] [@偏移]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    range = start- [end]'start'是包容性的，'end'是独占的。</font></font><font></font>
+        </pre></div>
+	<p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+因此，对于在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ proc / cmdline中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找到的crashkernel参数，</font><font style="vertical-align: inherit;">我们将：
+</font></font></p><div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crashkernel = 384M-2G：64M，2G-：128M
+</font></font></pre></div>
+	<p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以上值表示：</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果RAM小于384M，则不保留任何内容（这是“救援”情况）</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果RAM大小介于386M和2G（不包括）之间，则保留64M</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果RAM大小大于2G，则保留128M</font></font></p></li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      其次，通过执行以下操作验证内核是否为kdump内核保留了所请求的内存区域：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dmesg | </font><font style="vertical-align: inherit;">grep -i崩溃</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[0.000000]为崩溃内核保留64MB内存（800MB）（系统内存：1023MB）</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      最后，如前所述，</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdump-config show</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令显示kdump-tools配置的当前状态：
+      </font></font></p><div class="screen"><pre class="contents ">        <span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdump-config显示
+</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> DUMP_MODE：kdump</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+USE_KDUMP：1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+KDUMP_SYSCTL：kernel.panic_on_oops = 1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+KDUMP_COREDIR：/ var / crash</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+crashkernel地址：0x2c000000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   / var / lib / kdump / vmlinuz：/boot/vmlinuz-4.4.0-10-generic的符号链接</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+kdump initrd： </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      /var/lib/kdump/initrd.img：/var/lib/kdump/initrd.img-4.4.0-10-generic的符号链接</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+当前状态：准备好kdump</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+kexec命令：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      / sbin / kexec -p --command-line =“BOOT_IMAGE = / vmlinuz-4.4.0-10-generic root = / dev / mapper / VividS  -  vg-root ro debug break = init console = ttyS0,115200 irqpoll maxcpus = 1 nousb systemd.unit = kdump-tools.service“--initrd = / var / lib / kdump / initrd.img / var / lib / kdump / vmlinuz</font></font><font></font>
+      </pre></div>
+      <p></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="kdump-testing"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试崩溃转储机制</font></font></h2></div>
+<div class="region"><div class="contents">
+<div class="note note-warning" title="警告"><div class="inner"><div class="region"><div class="contents">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	测试崩溃转储机制将导致</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">系统重启。</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在某些情况下，如果系统负载很重，这可能会导致数据丢失。</font><font style="vertical-align: inherit;">如果要测试机制，请确保系统处于空闲状态或负载很轻。
+	</font></font></p>
+      </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过查看</font><span class="file filename"><font style="vertical-align: inherit;">/ proc / sys / kernel / sysrq</font></span><font style="vertical-align: inherit;">内核参数</font><font style="vertical-align: inherit;">的值来</font><font style="vertical-align: inherit;">
+	验证是否</font><font style="vertical-align: inherit;">已启用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SysRQ</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">机制
+	 </font><font style="vertical-align: inherit;">： 
+	</font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cat / proc / sys / kernel / sysrq</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      如果</font><font style="vertical-align: inherit;">返回</font><font style="vertical-align: inherit;">值</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，则禁用转储然后重新引导功能。</font><font style="vertical-align: inherit;">大于</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的值</font><font style="vertical-align: inherit;">表示启用了sysrq功能的子集。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">选项和默认值的详细说明，</font><font style="vertical-align: inherit;">请参见</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/sysctl.d/10-magic-sysrq.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">使用以下命令启用转储然后重新启动测试：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo sysctl -w kernel.sysrq = 1</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      一旦完成，你必须成为root用户，因为仅使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是不够的。</font><font style="vertical-align: inherit;">作为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">root</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      用户，您必须发出命令</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">echo c&gt; / proc / sysrq-trigger</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果使用网络连接，则将失去与系统的联系。</font><font style="vertical-align: inherit;">这就是为什么在连接到系统控制台时进行测试更好的原因。</font><font style="vertical-align: inherit;">这具有使内核转储过程可见的优点。
+      </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      典型的测试输出应如下所示：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo -s</font></font></span><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ubuntu的[sudo]密码： </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">回波C&gt;的/ proc / sysrq的触发</font></font></span><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[31.659002] SysRq：触发崩溃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[31.659749] BUG：无法在（null）处理内核NULL指针解除引用</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[31.662668] IP：[&lt;ffffffff8139f166&gt;] sysrq_handle_crash + 0x16 / 0x20</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[31.662668] PGD 3bfb9067 PUD 368a7067 PMD 0 </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[31.662668]哎呀：0002 [＃1] SMP </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[31.662668] CPU 1 </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+....</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      输出的其余部分被截断，但您应该看到系统重新启动并在日志中的某个位置，您将看到以下行：
+      </font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开始：从内核崩溃中保存vmcore ...</font></font></pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      完成后，系统将重新启动到正常运行模式。</font><font style="vertical-align: inherit;">然后，您将在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / crash</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录中</font><font style="vertical-align: inherit;">找到Kernel Crash Dump文件及相关子目录</font><font style="vertical-align: inherit;">：
+      </font></font><p></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ls / var / crash</font></font></span><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+201809240744 kexec_cmd linux-image-4.15.0-34-generic-201809240744.crash</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      如果由于OOM（内存不足）错误导致转储无效，请尝试通过编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/default/grub.d/kdump-tools.cfg来</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">增加预留内存量</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">例如，要保留512兆字节：
+      </font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GRUB_CMDLINE_LINUX_DEFAULT =“$ GRUB_CMDLINE_LINUX_DEFAULT crashkernel = 384M-：512M”
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      运行</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo update-grub</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然后重新启动，然后再次测试。
+      </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="kdump-resources"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      内核崩溃转储是一个很大的主题，需要熟悉linux内核。</font><font style="vertical-align: inherit;">您可以在此处找到有关该主题的更多信息：
+      </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para">
+              <a href="http://www.kernel.org/doc/Documentation/kdump/kdump.txt" class="ulink" title="http://www.kernel.org/doc/Documentation/kdump/kdump.txt"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kdump内核文档</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <a href="http://people.redhat.com/~anderson/" class="ulink" title="http://people.redhat.com/~anderson/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">崩溃工具</font></font></a>
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <a href="http://www.dedoimedo.com/computers/crash-analyze.html" class="ulink" title="http://www.dedoimedo.com/computers/crash-analyze.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分析Linux内核崩溃</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（基于Fedora，它仍然提供了内核转储分析的一个很好的演练）
+              </font></font></p>
+            </li>
+</ul></div>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="advanced-installation.html" title="高级安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="package-management.html" title="包管理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

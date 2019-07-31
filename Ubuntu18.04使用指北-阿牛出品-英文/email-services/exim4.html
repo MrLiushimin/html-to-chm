@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Exim4</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="email-services.html" title="Email Services">Email Services</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="postfix.html" title="Postfix">Previous</a><a class="nextlinks-next" href="dovecot-server.html" title="Dovecot Server">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Exim4</h1></div>
+<div class="region">
+<div class="contents"><p class="para">
+            <span class="app application">Exim4</span> is another Message Transfer
+            Agent (MTA) developed at the University of Cambridge for use
+            on Unix systems connected to the Internet. Exim can be
+            installed in place of <span class="app application">sendmail</span>,
+            although the configuration of
+            <span class="app application">exim</span> is quite different to
+            that of <span class="app application">sendmail</span>.
+          </p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="exim4.html#exim4-installation" title="Installation">Installation</a></li>
+<li class="links"><a class="xref" href="exim4.html#exim4-configuration" title="Configuration">Configuration</a></li>
+<li class="links"><a class="xref" href="exim4.html#exim4-smtp-auth" title="SMTP Authentication">SMTP Authentication</a></li>
+<li class="links"><a class="xref" href="exim4.html#exim4-sasl" title="Configuring SASL">Configuring SASL</a></li>
+<li class="links"><a class="xref" href="exim4.html#exim4-references" title="References">References</a></li>
+</ul></div>
+<div class="sect2 sect" id="exim4-installation"><div class="inner">
+<div class="hgroup"><h2 class="title">Installation</h2></div>
+<div class="region"><div class="contents"><p class="para">
+            To install <span class="app application">exim4</span>, run the following command:
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install exim4</span>
+</pre></div>
+            </p></div></div>
+</div></div>
+<div class="sect2 sect" id="exim4-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Configuration</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+            To configure <span class="app application">Exim4</span>, run the following command:
+	    </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo dpkg-reconfigure exim4-config</span>
+</pre></div>
+<p class="para">
+            The user interface will be displayed. The user interface
+            lets you configure many parameters. For example, In
+            <span class="app application">Exim4</span> the configuration files are
+            split among multiple files. If you wish to have them in one
+            file you can configure accordingly in this user interface.
+            </p>
+<p class="para">
+            All the parameters you configure in the user interface are
+            stored in
+            <span class="file filename">/etc/exim4/update-exim4.conf.conf</span> file.
+            If you wish to re-configure, either you re-run the
+            configuration wizard or manually edit this file
+            using your favorite editor. Once you configure, you can run
+            the following command to generate the master configuration
+            file:
+	    </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo update-exim4.conf</span>
+</pre></div>
+<p class="para">
+            The master configuration file, is generated and
+            it is stored in
+            <span class="file filename">/var/lib/exim4/config.autogenerated</span>. 
+            </p>
+<div class="note note-warning" title="Warning"><div class="inner"><div class="region"><div class="contents">
+            <p class="para">
+            At any time, you should not edit the master configuration
+            file,
+            <span class="file filename">/var/lib/exim4/config.autogenerated</span>
+            manually. It is updated automatically every time you run
+            <span class="cmd command">update-exim4.conf</span>
+            </p>
+            </div></div></div></div>
+<p class="para">
+            You can run the following command to start
+            <span class="app application">Exim4</span> daemon.
+	    </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl start exim4.service</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="exim4-smtp-auth"><div class="inner">
+<div class="hgroup"><h2 class="title">SMTP Authentication</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+	  This section covers configuring Exim4 to use SMTP-AUTH with TLS and SASL.
+	  </p>
+<p class="para">
+          The first step is to create a certificate for use with TLS. Enter the following into a terminal prompt: 
+	  </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo /usr/share/doc/exim4-base/examples/exim-gencert</span>
+</pre></div>
+<p class="para">
+	  Now Exim4 needs to be configured for TLS by editing <span class="file filename">/etc/exim4/conf.d/main/03_exim4-config_tlsoptions</span>
+	   add the following:
+	  </p>
+<div class="code"><pre class="contents ">MAIN_TLS_ENABLE = yes
+</pre></div>
+<p class="para">
+	   Next you need to configure <span class="app application">Exim4</span> to use the <span class="app application">saslauthd</span>
+	   for authentication. Edit <span class="file filename">/etc/exim4/conf.d/auth/30_exim4-config_examples</span> and uncomment
+           the <span class="em emphasis">plain_saslauthd_server</span> and <span class="em emphasis">login_saslauthd_server</span> sections:
+	  </p>
+<div class="code"><pre class="contents "> plain_saslauthd_server:
+   driver = plaintext
+   public_name = PLAIN
+   server_condition = ${if saslauthd{{$auth2}{$auth3}}{1}{0}}
+   server_set_id = $auth2
+   server_prompts = :
+   .ifndef AUTH_SERVER_ALLOW_NOTLS_PASSWORDS
+   server_advertise_condition = ${if eq{$tls_cipher}{}{}{*}}
+   .endif
+#
+ login_saslauthd_server:
+   driver = plaintext
+   public_name = LOGIN
+   server_prompts = "Username:: : Password::"
+   # don't send system passwords over unencrypted connections
+   server_condition = ${if saslauthd{{$auth1}{$auth2}}{1}{0}}
+   server_set_id = $auth1
+   .ifndef AUTH_SERVER_ALLOW_NOTLS_PASSWORDS
+   server_advertise_condition = ${if eq{$tls_cipher}{}{}{*}}
+   .endif
+</pre></div>
+<p class="para">
+          Additionally, in order for outside mail client to be able to connect to new exim server, new user needs to be added into exim by using the following commands.
+          </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo /usr/share/doc/exim4-base/examples/exim-adduser</span>
+</pre></div>
+<p class="para">Users should protect the new exim password files with the following commands.</p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo chown root:Debian-exim /etc/exim4/passwd</span>
+<span class="cmd command">sudo chmod 640 /etc/exim4/passwd</span>
+</pre></div>
+<p class="para">
+	  Finally, update the Exim4 configuration and restart the service:
+	  </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo update-exim4.conf</span>
+<span class="cmd command">sudo systemctl restart exim4.service</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="exim4-sasl"><div class="inner">
+<div class="hgroup"><h2 class="title">Configuring SASL</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+	  This section provides details on configuring the saslauthd to provide authentication for <span class="app application">Exim4</span>.
+	  </p>
+<p class="para">
+  	  The first step is to install the sasl2-bin package.  From a terminal prompt enter the following:
+	  </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install sasl2-bin</span>
+</pre></div>
+<p class="para">
+	  To configure saslauthd edit the /etc/default/saslauthd configuration file and set START=no to:
+	  </p>
+<div class="code"><pre class="contents ">START=yes
+</pre></div>
+<p class="para">
+	  Next the <span class="em emphasis">Debian-exim</span> user needs to be part of the <span class="em emphasis">sasl</span> group in
+          order for Exim4 to use the saslauthd service:
+	  </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo adduser Debian-exim sasl</span>
+</pre></div>
+<p class="para">
+	  Now start the <span class="app application">saslauthd</span> service:
+	  </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl start saslauthd.service</span>
+</pre></div>
+<p class="para">
+	  <span class="app application">Exim4</span> is now configured with SMTP-AUTH using TLS and SASL authentication.
+	  </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="exim4-references"><div class="inner">
+<div class="hgroup"><h2 class="title">References</h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para">
+              See <a href="http://www.exim.org/" class="ulink" title="http://www.exim.org/">exim.org</a> for more information.
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              There is also an <a href="http://www.uit.co.uk/content/exim-smtp-mail-server" class="ulink" title="http://www.uit.co.uk/content/exim-smtp-mail-server">Exim4 Book</a> available.
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              Another resource is the <a href="https://help.ubuntu.com/community/Exim4" class="ulink" title="https://help.ubuntu.com/community/Exim4">Exim4 Ubuntu Wiki </a> page.
+              </p>
+            </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="postfix.html" title="Postfix">Previous</a><a class="nextlinks-next" href="dovecot-server.html" title="Dovecot Server">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

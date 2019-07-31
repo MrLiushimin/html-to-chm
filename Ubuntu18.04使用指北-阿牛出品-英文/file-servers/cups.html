@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CUPS - Print Server</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="file-servers.html" title="File Servers">File Servers</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="iscsi-initiator.html" title="iSCSI Initiator">Previous</a><a class="nextlinks-next" href="../email-services/email-services.html" title="Email Services">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">CUPS - Print Server</h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+            The primary mechanism for Ubuntu printing and print services is the 
+			<span class="em em-bold emphasis">Common UNIX Printing System</span> (CUPS). 
+			This printing system is a freely available, portable printing layer 
+			which has become the new standard for printing in most Linux 
+			distributions.
+          </p>
+<p class="para">
+          CUPS manages print jobs and queues and provides network printing using 
+		  the standard Internet Printing Protocol (IPP), while offering support 
+		  for a very large range of printers, from dot-matrix to laser and many 
+		  in between.  CUPS also supports PostScript Printer Description (PPD) and 
+		  auto-detection of network printers, and features a simple web-based 
+		  configuration and administration tool. 
+          </p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="cups.html#cups-installation" title="Installation">Installation</a></li>
+<li class="links"><a class="xref" href="cups.html#cups-configuration" title="Configuration">Configuration</a></li>
+<li class="links"><a class="xref" href="cups.html#cups-web" title="Web Interface">Web Interface</a></li>
+<li class="links"><a class="xref" href="cups.html#cups-references" title="References">References</a></li>
+</ul></div>
+<div class="sect2 sect" id="cups-installation"><div class="inner">
+<div class="hgroup"><h2 class="title">Installation</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+            To install CUPS on your Ubuntu computer, simply use <span class="app application">sudo</span> with the <span class="app application">apt</span> command and give the packages to install as the first parameter. A complete CUPS install has many package dependencies, but they may all be specified on the same command line.  Enter the following at a terminal prompt to install CUPS:
+          </p>
+<p class="para">
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install cups</span>
+</pre></div>
+          </p>
+<p class="para">
+          Upon authenticating with your user password, the packages should be downloaded
+		  and installed without error. Upon the conclusion of installation, the CUPS server 
+		  will be started automatically. 
+ 	  </p>
+<p class="para">
+          For troubleshooting purposes, you can access CUPS 
+		  server errors via the error log file at: <span class="file filename">/var/log/cups/error_log</span>.
+		  If the error log does not show enough information to troubleshoot any problems you
+		  encounter, the verbosity of the CUPS log can be increased by changing the <span class="em em-bold emphasis">LogLevel</span> directive in the configuration file (discussed below)
+		  to "debug" or even "debug2", which logs everything, from the default of "info".  If 
+		  you make this change, remember to change it back once you've solved your problem, to 
+		  prevent the log file from becoming overly large.
+          </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="cups-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Configuration</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+            The Common UNIX Printing System server's behavior is configured through the 
+			directives contained in the file <span class="file filename">/etc/cups/cupsd.conf</span>.  
+			The CUPS configuration file follows the same syntax as the primary configuration 
+			file for the Apache HTTP server, so users familiar with editing Apache's 
+			configuration file should feel at ease when editing the CUPS configuration 
+			file. Some examples of settings you may wish to change initially will be 
+			presented here.
+          </p>
+<div class="note note-tip" title="Tip"><div class="inner"><div class="region"><div class="contents">
+               <p class="para">Prior to editing the configuration file, you should make a copy of 
+			   the original file and protect it from writing, so you will have the original 
+			   settings as a reference, and to reuse as necessary.
+               </p>
+               <p class="para">Copy the <span class="file filename">/etc/cups/cupsd.conf</span> file and protect it 
+			   from writing with the following commands, issued at a terminal prompt:
+               </p>
+               </div></div></div></div>
+<p class="para">
+<div class="screen"><pre class="contents "><span class="cmd command">sudo cp /etc/cups/cupsd.conf /etc/cups/cupsd.conf.original</span>
+<span class="cmd command">sudo chmod a-w /etc/cups/cupsd.conf.original</span>
+</pre></div>
+               </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+                <p class="para">
+                <span class="em em-bold emphasis">ServerAdmin</span>: To configure the email 
+				address of the designated administrator of the CUPS server, simply 
+				edit the <span class="file filename">/etc/cups/cupsd.conf</span> configuration file 
+				with your preferred text editor, and add or modify the <span class="em emphasis">ServerAdmin</span> line accordingly.  For example, 
+				if you are the Administrator for the CUPS server, and your e-mail 
+				address is 'bjoy@somebigco.com', then you would modify the ServerAdmin 
+				line to appear as such:
+                </p>
+                <p class="para">
+<div class="screen"><pre class="contents ">ServerAdmin bjoy@somebigco.com
+</pre></div>
+                </p>
+                </li>
+<li class="list itemizedlist">
+                <p class="para">
+                <span class="em em-bold emphasis">Listen</span>: By default on Ubuntu, the CUPS 
+				server installation listens only on the loopback interface at IP address 
+				<span class="em emphasis">127.0.0.1</span>. In order to instruct the 
+				CUPS server to listen on an actual network adapter's IP address, you must 
+				specify either a hostname, the IP address, or optionally, an IP 
+				address/port pairing via the addition of a Listen directive.  For example, 
+				if your CUPS server resides on a local network at the IP address <span class="em emphasis">192.168.10.250</span> and you'd like to make it 
+				accessible to the other systems on this subnetwork, you would edit the 
+				<span class="file filename">/etc/cups/cupsd.conf</span> and add a Listen 
+				directive, as such:
+                </p>
+                <p class="para">
+<div class="screen"><pre class="contents ">Listen 127.0.0.1:631           # existing loopback Listen
+Listen /var/run/cups/cups.sock # existing socket Listen
+Listen 192.168.10.250:631      # Listen on the LAN interface, Port 631 (IPP)
+</pre></div>
+                </p>
+                <p class="para">
+                In the example above, you may comment out or remove the reference to the 
+				Loopback address (127.0.0.1) if you do not wish <span class="app application">cupsd
+				</span> to listen on that interface, but would rather have it only 
+				listen on the Ethernet interfaces of the Local Area Network (LAN). To enable 
+				listening for all network interfaces for which a certain hostname is bound, 
+				including the Loopback, you could create a Listen entry for the hostname 
+				<span class="em emphasis">socrates</span> as such:
+                </p>
+                <p class="para">
+<div class="screen"><pre class="contents ">Listen socrates:631  # Listen on all interfaces for the hostname 'socrates'
+</pre></div>
+                </p> 
+				<p class="para">or by omitting the Listen directive and using <span class="em emphasis">Port</span> instead, as in:</p>
+<p class="para">
+<div class="screen"><pre class="contents ">Port 631  # Listen on port 631 on all interfaces
+</pre></div>
+</p>
+                </li>
+</ul></div>
+<p class="para">
+                For more examples of configuration directives in the CUPS server 
+				configuration file, view the associated system manual page by entering the 
+				following command at a terminal prompt:
+               </p>
+<p class="para">
+<div class="screen"><pre class="contents "><span class="cmd command">man cupsd.conf</span>
+</pre></div>
+               </p>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+                <p class="para">
+                Whenever you make changes to the <span class="file filename">/etc/cups/cupsd.conf</span> configuration file, you'll need to restart the CUPS server by typing the following command at a terminal prompt:
+                </p>
+                </div></div></div></div>
+<p class="para">
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart cups.service</span>
+</pre></div>
+                </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="cups-web"><div class="inner">
+<div class="hgroup"><h2 class="title">Web Interface</h2></div>
+<div class="region"><div class="contents">
+<div class="note note-tip" title="Tip"><div class="inner"><div class="region"><div class="contents">
+	    <p class="para">
+	    CUPS can be configured and monitored using a web interface, which by default is available at <a href="http://localhost:631/admin" class="ulink" title="http://localhost:631/admin">http://localhost:631/admin</a>.  The web interface can be used to perform all printer management tasks.
+	    </p>
+	  </div></div></div></div>
+<p class="para">
+	  In order to perform administrative tasks via the web interface, you must either have the root account enabled on your server, or authenticate as a user in the <span class="em emphasis">lpadmin</span> group.  For security reasons, CUPS won't authenticate a user that doesn't have a password.
+	  </p>
+<p class="para">
+	  To add a user to the <span class="em emphasis">lpadmin</span> group, run at the terminal prompt:
+<div class="screen"><pre class="contents "><span class="cmd command">sudo usermod -aG lpadmin username</span>
+</pre></div>
+	  </p>
+<p class="para">
+	    Further documentation is available in the <span class="em emphasis">Documentation/Help</span> tab of the web interface.
+	  </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="cups-references"><div class="inner">
+<div class="hgroup"><h2 class="title">References</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+        <a href="http://www.cups.org/" class="ulink" title="http://www.cups.org/">CUPS Website</a>
+        </p>
+<p class="para">
+        <a href="http://wiki.debian.org/SAN/iSCSI/open-iscsi" class="ulink" title="http://wiki.debian.org/SAN/iSCSI/open-iscsi">Debian Open-iSCSI page</a>
+        </p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="iscsi-initiator.html" title="iSCSI Initiator">Previous</a><a class="nextlinks-next" href="email-services.html" title="Email Services">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

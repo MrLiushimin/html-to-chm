@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>后缀</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="email-services.html" title="电邮服务"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电子邮件服务</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="email-services.html" title="电邮服务"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="exim4.html" title="的exim4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">后缀</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+            <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是Ubuntu中的默认邮件传输代理（MTA）。</font><font style="vertical-align: inherit;">它试图快速，易于管理和保护。</font><font style="vertical-align: inherit;">它与MTA </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sendmail</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">兼容</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">本节介绍如何安装和配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">它还解释了如何使用安全连接将其设置为SMTP服务器（用于安全地发送电子邮件）。
+          </font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            本指南不涉及设置Postfix </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟域</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，有关虚拟域和其他高级配置的信息，请参阅</font></font><a class="xref" href="postfix.html#postfix-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+            </font></font></p>
+          </div></div></div></div>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="postfix.html#postfix-installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a></li>
+<li class="links"><a class="xref" href="postfix.html#postfix-configuration" title="基本配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基本配置</font></font></a></li>
+<li class="links"><a class="xref" href="postfix.html#postfix-smtp-authentication" title="SMTP验证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SMTP验证</font></font></a></li>
+<li class="links"><a class="xref" href="postfix.html#postfix-sasl" title="配置SASL"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置SASL</font></font></a></li>
+<li class="links"><a class="xref" href="postfix.html#mail-stack-delivery" title="邮件堆栈交付"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮件堆栈交付</font></font></a></li>
+<li class="links"><a class="xref" href="postfix.html#postfix-testing" title="测试"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试</font></font></a></li>
+<li class="links"><a class="xref" href="postfix.html#postfix-troubleshooting" title="故障排除"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障排除</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="postfix-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            要安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">postfix，请</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">运行以下命令：
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install postfix</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    只需在安装过程提出问题时按回车键，配置将在下一阶段更详细地完成。
+            </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="postfix-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基本配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            要配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请运行以下命令：
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo dpkg-reconfigure postfix</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            将显示用户界面。</font><font style="vertical-align: inherit;">在每个屏幕上，选择以下值：
+            </font></font></p><div class="list itemizedlist"><ul class="list itemizedlist compact">
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">互联网网站</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mail.example.com</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">史蒂夫</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mail.example.com，localhost.localdomain，localhost</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">没有</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">127.0.0.0/8 [::ffff:127.0.0.0]/104 [:: 1] / 128 192.168.0.0/24</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">0</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所有</font></font></p></li>
+</ul></div>
+            <p></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            将mail.example.com替换为您将接受电子邮件的域，将192.168.0.0/24替换为您的邮件服务器的实际网络和类范围，并使用相应的用户名进行steve。
+            </font></font></p>
+            </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            现在是决定要使用哪种邮箱格式的好时机。</font><font style="vertical-align: inherit;">默认情况下，Postfix将使用   </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mbox</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">作为邮箱格式。</font><font style="vertical-align: inherit;">您可以使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">postconf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令配置所有</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">后缀</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参数</font><font style="vertical-align: inherit;">，而不是直接编辑配置文件</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">配置参数将存储在
+             </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/postfix/main.cf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中。</font><font style="vertical-align: inherit;">稍后，如果您希望重新配置特定参数，可以运行该命令或在文件中手动更改它。
+            </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            要为</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">Maildir</font></span><font style="vertical-align: inherit;">配置邮箱格式</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：</font></font></span>
+            </p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo postconf -e'home_mailbox = Maildir /'</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            这会将新邮件放在/ home / </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">username</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> / Maildir中，因此您需要配置邮件传递代理（MDA）以使用相同的路径。
+            </font></font></p>
+            </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="postfix-smtp-authentication"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SMTP验证</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    SMTP-AUTH允许客户端通过身份验证机制（SASL）识别自身。</font><font style="vertical-align: inherit;">应使用传输层安全性（TLS）来加密身份验证过程。</font><font style="vertical-align: inherit;">经过身份验证后，SMTP服务器将允许客户端中继邮件。  
+            </font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+     	         <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                 使用SASL（Dovecot SASL）为SMTP-AUTH配置Postfix：
+		 </font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo postconf -e'smtpd_sasl_type = dovecot'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo postconf -e'smtpd_sasl_path = private / auth'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo postconf -e'smtpd_sasl_local_domain ='</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo postconf -e'smtpd_sasl_security_options = noanonymous'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo postconf -e'break_sasl_auth_clients = yes'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo postconf -e'smtpd_sasl_auth_enable = yes'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo postconf -e'smtpd_recipient_restrictions = \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+permit_sasl_authenticated，permit_mynetworks，reject_unauth_destination”</font></font><font></font>
+</pre></div>
+	        <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		所述</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smtpd_sasl_path</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置是相对于后缀队列目录的路径。
+	        </font></font></p>
+		</div></div></div></div>
+		</li>
+<li class="steps">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                接下来，生成或获取TLS的数字证书。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">详细信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="certificates-and-security.html" title="证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">证书 </font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此示例还使用证书颁发机构（CA）。</font><font style="vertical-align: inherit;">有关生成CA证书的信息，请参阅
+                 </font></font><a class="xref" href="certificates-and-security.html#certificate-authority" title="认证机构"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">证书颁发机构</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	        </font></font></p>
+		<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                通过TLS连接到邮件服务器的MUA需要识别用于TLS的证书。</font><font style="vertical-align: inherit;">这可以使用来自商业CA的证书或用户手动安装/接受的自签名证书来完成。</font><font style="vertical-align: inherit;">对于MTA到MTA，TLS证书在未经受影响的组织事先同意的情况下从未经过验证。</font><font style="vertical-align: inherit;">对于MTA到MTA TLS，除非本地策略要求，否则没有理由不使用自签名证书。</font><font style="vertical-align: inherit;">有关更多详细信息，</font><font style="vertical-align: inherit;">请参阅 
+		 </font></font><a class="xref" href="certificates-and-security.html#creating-a-self-signed-certificate" title="创建自签名证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建自签名证书</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+                </font></font></p>
+                </div></div></div></div>
+		</li>
+<li class="steps">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                获得证书后，配置Postfix以为传入和传出邮件提供TLS加密：
+                </font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo postconf -e'smtp_tls_security_level = may'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo postconf -e'smtpd_tls_security_level = may'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo postconf -e'smtp_tls_note_starttls_offer = yes'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo postconf -e'smtpd_tls_key_file = /etc/ssl/private/server.key'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo postconf -e'smtpd_tls_cert_file = /etc/ssl/certs/server.crt'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo postconf -e'smtpd_tls_loglevel = 1'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo postconf -e'smtpd_tls_received_header = yes'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo postconf -e'myhostname = mail.example.com'</font></font><font></font>
+</pre></div>
+		</li>
+<li class="steps">
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  如果您使用自己的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">证书颁发机构</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">签署证书，请输入：
+                  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo postconf -e'smtpd_tls_CAfile = /etc/ssl/certs/cacert.pem'</font></font></span>
+</pre></div>
+
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  同样，有关证书的更多详细信息，请参阅</font></font><a class="xref" href="certificates-and-security.html" title="证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">证书</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+                  </font></font></p>
+                </li>
+</ol></div></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            运行所有命令后，</font><font style="vertical-align: inherit;">为SMTP-AUTH配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，并为TLS加密创建自签名证书。
+            </font></font></p>
+            </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            现在，文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/postfix/main.cf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">应如下所示：
+	    </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃请参阅/usr/share/postfix/main.cf.dist以获得评论，更完整</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#version</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_banner = $ myhostname ESMTP $ mail_name（Ubuntu）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+biff =没有</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃appending .domain是MUA的工作。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+append_dot_mydomain =没有</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃取消注释下一行以生成“延迟邮件”警告</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#delay_warning_time = 4h</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+myhostname = server1.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+alias_maps = hash：/ etc / aliases</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+alias_database = hash：/ etc / aliases</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+myorigin = / etc / mailname</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mydestination = server1.example.com，localhost.example.com，localhost</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+relayhost =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mynetworks = 127.0.0.0/8</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mailbox_command = procmail -a“$ EXTENSION”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mailbox_size_limit = 0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+recipient_delimiter = +</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+inet_interfaces =全部</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_sasl_local_domain =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_sasl_auth_enable =是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_sasl_security_options =无名</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+broken_sasl_auth_clients =是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_recipient_restrictions =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+permit_sasl_authenticated，permit_mynetworks，reject _unauth_destination</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_tls_auth_only =没有</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtp_tls_security_level =可以</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_tls_security_level =可以</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtp_tls_note_starttls_offer =是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_tls_key_file = /etc/ssl/private/smtpd.key</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_tls_cert_file = /etc/ssl/certs/smtpd.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_tls_CAfile = /etc/ssl/certs/cacert.pem</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_tls_loglevel = 1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_tls_received_header =是</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_tls_session_cache_timeout = 3600s</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+tls_random_source = dev：/ dev / urandom</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            后缀初始配置已完成。</font><font style="vertical-align: inherit;">运行以下命令以重新启动后缀守护程序：
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl重启postfix.service</font></font></span>
+</pre></div>
+<p class="para">
+            <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font><a href="http://www.ietf.org/rfc/rfc2554.txt" class="ulink" title="http://www.ietf.org/rfc/rfc2554.txt"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">RFC2554中</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">定义的SMTP-AUTH
+             </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">它基于</font></font><a href="http://www.ietf.org/rfc/rfc2222.txt" class="ulink" title="http://www.ietf.org/rfc/rfc2222.txt"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SASL</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">但是，在使用SMTP-AUTH之前，仍然需要设置SASL身份验证。
+            </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="postfix-sasl"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置SASL</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">	              
+	    Postfix支持两个SASL实现Cyrus SASL和Dovecot SASL。</font><font style="vertical-align: inherit;">要启用Dovecot SASL，</font><font style="vertical-align: inherit;">需要安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dovecot-core</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包。</font><font style="vertical-align: inherit;">在终端提示符下输入以下内容：
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt安装dovecot-core</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 	    接下来，您需要编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/dovecot/conf.d/10-master.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">更改以下内容：
+	    </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">service auth {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  默认情况下，＃auth_socket_path指向此userdb套接字。</font><font style="vertical-align: inherit;">这通常是</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  #dovecot-lda，doveadm，可能是imap进程等使用它的默认值</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  ＃权限使其只能由root读取，但您可能需要放松它们</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  ＃permissions。</font><font style="vertical-align: inherit;">有权访问此套接字的用户可以获取列表</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  所有用户名的＃，并获得每个人的userdb查找的结果。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  unix_listener auth-userdb {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    #mode = 0600</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    #user = </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    #group = </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  }</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  #Postfix smtp-auth</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  unix_listener / var / spool / postfix / private / auth {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    mode = 0660</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    user = postfix</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    group = postfix</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  }</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            为了让</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Outlook</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">客户端使用SMTP-AUTH，在</font><font style="vertical-align: inherit;"> 
+            /etc/dovecot/conf.d/10-auth.conf </font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">身份验证机制</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分中更改以下行：
+            </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">auth_mechanisms = plain
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+           对此：
+           </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">auth_mechanisms =普通登录
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    一旦你</font><font style="vertical-align: inherit;">配置了</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dovecot就</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">重启它：
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart dovecot.service</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="mail-stack-delivery"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮件堆栈交付</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为SMTP-AUTH </font><font style="vertical-align: inherit;">
+            配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">另一个选项</font><font style="vertical-align: inherit;">是使用
+             </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mail-stack-delivery</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包（以前打包为dovecot-postfix）。</font><font style="vertical-align: inherit;">此软件包将安装 
+             </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dovecot</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以将其用于SASL身份验证和邮件传递代理（MDA）。
+            </font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              您可能希望也可能不希望在邮件服务器上运行IMAP，IMAPS，POP3或POP3S。</font><font style="vertical-align: inherit;">例如，如果您将服务器配置为邮件网关，垃圾邮件/病毒过滤器等。如果是这种情况，使用上述命令为SMTP-AUTH配置Postfix可能比使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮件堆栈传递</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更容易</font><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            要安装软件包，请在终端提示符下输入：
+            </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install mail-stack-delivery</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            您现在应该有一个正常工作的邮件服务器，但您可能希望进一步自定义一些选项。</font><font style="vertical-align: inherit;">例如，程序包使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ssl-cert</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（自签名）程序包中的证书和密钥，在生产环境中，您应使用为主机生成的证书和密钥。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">详细信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="certificates-and-security.html" title="证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">证书</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+            </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                获得主机的自定义证书和密钥后，在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/postfix/main.cf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更改以下postfix选项</font><font style="vertical-align: inherit;">以匹配新密钥：
+            </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smtpd_tls_cert_file =＃yourcertfile＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+smtpd_tls_key_file =＃yourkeyfile＃</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                而对于</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">达夫科特</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/dovecot/conf.d/10-ssl.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+            </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ssl_cert = &lt;＃yourcertfile＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ssl_key = &lt;＃yourkeyfile＃</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            然后重启Postfix：
+            </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl重启postfix.service</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="postfix-testing"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            SMTP-AUTH配置完成。</font><font style="vertical-align: inherit;">现在是时候测试设置了。 
+	    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            要查看SMTP-AUTH和TLS是否正常工作，请运行以下命令：
+            </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">telnet mail.example.com 25</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            建立与postfix邮件服务器的连接后，键入：
+            </font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ehlo mail.example.com
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          如果你看到以下几行，那么一切都很完美。</font><font style="vertical-align: inherit;">键入</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">退出</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">退出。
+          </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">250-STARTTLS</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+250-AUTH LOGIN PLAIN</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+250-AUTH =登录平原</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+250 8BITMIME</font></font><font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="postfix-troubleshooting"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障排除</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    本节介绍了在出现问题时确定原因的一些常用方法。
+	    </font></font></p></div>
+<div class="sect3 sect" id="postfix-chroot"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">逃离chroot</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	    出于安全原因</font><font style="vertical-align: inherit;">，默认情况下</font><font style="vertical-align: inherit;">
+ 	    ，Ubuntu </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包将安装到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chroot</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">环境中。</font><font style="vertical-align: inherit;">在解决问题时，这会增加更多复杂性。
+	    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          要关闭chroot操作，请在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/postfix/master.cf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件中</font><font style="vertical-align: inherit;">找到以下行
+           </font><font style="vertical-align: inherit;">：
+          </font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smtp inet n  -   -   -   -  smtpd
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  并按如下方式修改：
+          </font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smtp inet n  -  n  -   -  smtpd
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  然后，您需要重新启动Postfix才能使用新配置。</font><font style="vertical-align: inherit;">从终端提示输入：
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl重启postfix.service</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="postfix-smtps"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SMTPS</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    如果需要smtps，请编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/postfix/master.cf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并取消注释以下行：
+	  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smtps inet n  -   -   -   -  smtpd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  -o smtpd_tls_wrappermode =是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  -o smtpd_sasl_auth_enable =是</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  -o smtpd_client_restrictions = permit_sasl_authenticated，拒绝</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  -o milter_macro_daemon_name = ORIGINATING</font></font><font></font>
+	  </pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="postfix-logs"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">日志文件</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+	  <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将所有日志消息发送到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/log/mail.log</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">但是，错误和警告消息有时会在正常日志输出中丢失，因此它们也会</font><font style="vertical-align: inherit;">分别</font><font style="vertical-align: inherit;">记录到
+           </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/log/mail.err</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/log/mail.warn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 	  要查看实时输入日志的消息，可以使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tail -f</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	  命令：
+	  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tail -f /var/log/mail.err</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	可以增加日志中记录的详细信息量。</font><font style="vertical-align: inherit;">以下是一些配置选项，用于提高上述某些区域的日志级别。
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist compact">
+<li class="list itemizedlist">
+	    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    要增加</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TLS</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">活动日志记录，请将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smtpd_tls_loglevel</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">设置为</font><font style="vertical-align: inherit;">1到4之间的值。
+ 	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo postconf -e'smtpd_tls_loglevel = 4'</font></font></span>
+</pre></div>
+	  </li>
+<li class="list itemizedlist">
+	    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    如果您在从特定域发送或接收邮件时遇到问题，可以将域添加到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">debug_peer_list</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	    参数中。
+ 	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo postconf -e'debug_peer_list = problem.domain'</font></font></span>
+</pre></div>
+	  </li>
+<li class="list itemizedlist">
+	    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    您可以</font><font style="vertical-align: inherit;">通过编辑</font><span class="file filename"><font style="vertical-align: inherit;">/etc/postfix/master.cf</font></span><font style="vertical-align: inherit;"> 
+	    并</font><font style="vertical-align: inherit;">在条目后</font><font style="vertical-align: inherit;">添加</font><span class="em emphasis"><font style="vertical-align: inherit;">-v</font></span><font style="vertical-align: inherit;">来增加任何</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护程序进程</font><font style="vertical-align: inherit;">的详细程度</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">例如，编辑</font><span class="em emphasis"><font style="vertical-align: inherit;">smtp</font></span><font style="vertical-align: inherit;">条目：
+ 	    </font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smtp unix  -   -   -   -   -  smtp -v
+</font></font></pre></div>	    
+	  </li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  重要的是要注意，在进行上述日志记录更改之后，</font><font style="vertical-align: inherit;">需要重新加载</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">进程以识别新配置：</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl reload postfix.service</font></font></span>
+	  </p>
+	</div></div></div></div>
+<div class="list itemizedlist"><ul class="list itemizedlist compact"><li class="list itemizedlist">
+	    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   	    要在解决</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SASL</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">问题</font><font style="vertical-align: inherit;">时增加记录的信息量，</font><font style="vertical-align: inherit;">可以在</font><span class="file filename"><font style="vertical-align: inherit;">/etc/dovecot/conf.d/10-logging.conf中</font></span><font style="vertical-align: inherit;">设置以下选项 
+	    </font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span>
+	    </p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">auth_debug = YES</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+auth_debug_passwords = YES</font></font><font></font>
+</pre></div>
+	  </li></ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  就像</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一样，</font><font style="vertical-align: inherit;">如果更改</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dovecot</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置，则需要重新加载进程：</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl reload dovecot.service</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	  </font></font></p>
+	</div></div></div></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          上面的一些选项可以大大增加发送到日志文件的信息量。</font><font style="vertical-align: inherit;">记住在纠正问题后将日志级别恢复正常。</font><font style="vertical-align: inherit;">然后重新加载适当的守护程序以使新配置生效。
+	  </font></font></p>
+	</div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="postfix-references"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  管理</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器可能是一项非常复杂的任务。</font><font style="vertical-align: inherit;">在某些时候，您可能需要转向Ubuntu社区以获得更有经验的帮助。
+	  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  要求提供</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">帮助并参与Ubuntu服务器社区</font><font style="vertical-align: inherit;">的好地方</font><font style="vertical-align: inherit;">是</font><a href="http://freenode.net" class="ulink" title="http://freenode.net"><font style="vertical-align: inherit;">freenode</font></a><font style="vertical-align: inherit;">   上</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃ubuntu-server</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> IRC频道   </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">您还可以将消息发布到其中一个</font><a href="http://www.ubuntu.com/support/community/webforums" class="ulink" title="http://www.ubuntu.com/support/community/webforums"><font style="vertical-align: inherit;">Web论坛</font></a><font style="vertical-align: inherit;">。
+          </font></font><a href="http://freenode.net" class="ulink" title="http://freenode.net"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font><a href="http://www.ubuntu.com/support/community/webforums" class="ulink" title="http://www.ubuntu.com/support/community/webforums"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  对于深入的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">信息，Ubuntu开发人员强烈推荐：
+	   </font></font><a href="http://www.postfix-book.com/" class="ulink" title="http://www.postfix-book.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  最后，</font></font><a href="http://www.postfix.org/documentation.html" class="ulink" title="http://www.postfix.org/documentation.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网站还提供了有关所有可用配置选项的精彩文档。
+	  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      此外，</font></font><a href="https://help.ubuntu.com/community/Postfix" class="ulink" title="https://help.ubuntu.com/community/Postfix"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu Wiki Postfix</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">页面提供了更多信息。
+      </font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="email-services.html" title="电邮服务"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="exim4.html" title="的exim4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

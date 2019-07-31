@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>作为域控制器</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="samba.html" title="桑巴"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="samba-fileprint-security.html" title="保护文件和打印服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="samba-ad-integration.html" title="Active Directory集成"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">作为域控制器</font></font></h1></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    可以将Samba服务器配置为显示为Windows NT4样式的域控制器。</font><font style="vertical-align: inherit;">此配置的一个主要优点是能够集中用户和计算机凭据。</font><font style="vertical-align: inherit;">Samba还可以使用多个后端来存储用户信息。
+    </font></font></p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="samba-dc.html#samba-pdc-smbpasswd" title="主域控制器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主域控制器</font></font></a></li>
+<li class="links"><a class="xref" href="samba-dc.html#samba-bdc-smbpasswd" title="备份域控制器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">备份域控制器</font></font></a></li>
+<li class="links"><a class="xref" href="samba-dc.html#samba-dc-resources" title="资源"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="samba-pdc-smbpasswd"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主域控制器</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      本节介绍如何使用默认的smbpasswd后端将Samba配置为主域控制器（PDC）。
+      </font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          首先，</font><font style="vertical-align: inherit;">通过在终端提示符中输入以下内容</font><font style="vertical-align: inherit;">，安装Samba和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libpam-winbind</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来同步用户帐户：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt安装samba libpam-winbind</font></font></span>
+</pre></div>
+        
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          接下来，通过编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/samba/smb.conf来</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置Samba </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安全</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模式应设置为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">工作组</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">应与您的组织：
+          </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">   workgroup =示例</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   ...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   security = user</font></font><font></font>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          在评论的</font></font><span class="quote"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“域名”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分中添加或取消注释以下内容（最后一行已拆分以适合此文档的格式）：
+          </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">   域登录=是</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   登录路径= \\％N \％U \ profile</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   登录驱动器= H：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   登录home = \\％N \％U</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   登录脚本= logon.cmd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   添加机器脚本= sudo / usr / sbin / useradd -N -g机器-c机器-d</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+         / var / lib / samba -s / bin / false％u</font></font><font></font>
+</pre></div>
+
+          <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            如果您不想使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">漫游配置文件，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录登录主页</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+            和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录路径</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项。
+            </font></font></p>
+          </div></div></div></div>
+ 
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域登录：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提供netlogon服务，使Samba充当域控制器。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录路径：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将用户的Windows配置文件放入其主目录。</font><font style="vertical-align: inherit;">也可以配置</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[profiles]</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">共享将所有配置文件放在单个目录下。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">logon drive：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定主目录本地路径。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">logon home：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定主目录位置。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录脚本：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">确定用户登录后要在本地运行的脚本。脚本需要放在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[netlogon]</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">共享中。 
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加机器脚本：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一个脚本，它将自动创建</font><font style="vertical-align: inherit;">工作站加入域所需</font><font style="vertical-align: inherit;">的 
+               </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">机器信任帐户</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              在此示例中，</font><font style="vertical-align: inherit;">需要使用</font><span class="app application"><font style="vertical-align: inherit;">addgroup</font></span><font style="vertical-align: inherit;">实用程序</font><font style="vertical-align: inherit;">创建</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">计算机</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组 
+               </font><font style="vertical-align: inherit;">，有关详细信息，</font><font style="vertical-align: inherit;">请参阅</font><a class="xref" href="user-management.html#adding-deleting-users" title="添加和删​​除用户"><font style="vertical-align: inherit;">添加和删​​除用户</font></a><font style="vertical-align: inherit;">。
+              </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><a class="xref" href="user-management.html#adding-deleting-users" title="添加和删​​除用户"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+
+            </li>
+</ul></div>
+
+        </li>
+<li class="steps">
+     
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          取消注释</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[homes]</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">共享以允许</font><font style="vertical-align: inherit;">
+          映射</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录主页</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+          </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[家庭]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   comment =主页目录</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   可浏览=否</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   只读=否</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   创建掩码= 0700</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   目录掩码= 0700</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   有效用户=％S</font></font><font></font>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          配置为域控制器时</font><font style="vertical-align: inherit;">，需要配置</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[netlogon]</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">共享。</font><font style="vertical-align: inherit;">要启用共享，请取消注释：
+          </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[NETLOGON]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   comment =网络登录服务</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   path = / srv / samba / netlogon</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   客人ok =是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   只读=是</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   分享模式=没有</font></font><font></font>
+</pre></div>
+
+          <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            原始的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">netlogon</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">共享路径是</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ home / samba / netlogon</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，但根据文件系统层次结构标准（FHS）， 
+             </font></font><a href="http://www.pathname.com/fhs/pub/fhs-2.3.html#SRVDATAFORSERVICESPROVIDEDBYSYSTEM" class="ulink" title="http://www.pathname.com/fhs/pub/fhs-2.3.html#SRVDATAFORSERVICESPROVIDEDBYSYSTEM"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是系统提供的特定于站点的数据的正确位置。
+            </font></font></p>
+          </div></div></div></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          现在创建</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">netlogon</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录，以及一个空的（现在） 
+           </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">logon.cmd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">脚本文件：
+          </font></font></p> 
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mkdir -p / srv / samba / netlogon </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo touch /srv/samba/netlogon/logon.cmd</font></font></span>
+</pre></div>
+ 
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          您可以在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">logon.cmd中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">输入任何常规Windows登录脚本命令</font><span class="file filename"><font style="vertical-align: inherit;">来自</font></span><font style="vertical-align: inherit;">定义客户端的环境。
+          </font></font></p>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          重新启动Samba以启用新域控制器：
+          </font></font></p> 
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart smbd.service nmbd.service</font></font></span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          最后，还需要一些其他命令来设置适当的权限。
+          </font></font></p>
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          随着</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">被默认禁用，为了加入工作站到域，系统组需要被映射到Windows </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域管理员</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组。</font><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">net</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序，从终端输入：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo net groupmap add ntgroup =“Domain Admins”unixgroup = sysadmin rid = 512 type = d</font></font></span>
+</pre></div>
+
+          <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">系统管理员</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更改</font><font style="vertical-align: inherit;">为您喜欢的任何组。</font><font style="vertical-align: inherit;">此外，用于加入域的用户需要是</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sysadmin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组的成员，以及系统</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">管理员</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组的成员。</font><font style="vertical-align: inherit;">该</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">管理员</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组允许 
+             </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用。  
+            </font></font></p>
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            如果用户尚未拥有Samba凭据，则可以使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smbpasswd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序</font><font style="vertical-align: inherit;">添加它们，并</font><font style="vertical-align: inherit;">相应地</font><font style="vertical-align: inherit;">更改</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sysadmin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名：
+
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo smbpasswd -a sysadmin</font></font></span>
+</pre></div>
+            <p></p>
+          </div></div></div></div>
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          此外，需要向</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain Admins</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组</font><font style="vertical-align: inherit;">明确提供权限，</font><font style="vertical-align: inherit;">以允许 
+           </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加计算机脚本</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（和其他管理功能）工作。</font><font style="vertical-align: inherit;">这是通过执行：
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">net rpc rights grant -U sysadmin“EXAMPLE \ Domain Admins”SeMachineAccountPrivilege \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+SePrintOperatorPrivilege SeAddUsersPrivilege SeDiskOperatorPrivilege \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+SeRemoteShutdownPrivilege</font></font></span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          您现在应该可以将Windows客户端加入域中，方法与将它们加入到Windows服务器上运行的NT4域的方式相同。
+          </font></font></p>
+
+        </li>
+</ol></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="samba-bdc-smbpasswd"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">备份域控制器</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      使用网络上的主域控制器（PDC），最好也有备份域控制器（BDC）。</font><font style="vertical-align: inherit;">这将允许客户端在PDC变得不可用时进行身份验证。
+      </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      将Samba配置为BDC时，您需要一种方法来同步PDC的帐户信息。</font><font style="vertical-align: inherit;">有多种方法可以完成此</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">scp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rsync</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LDAP</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">作为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">passdb后端</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+      </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      使用LDAP是同步帐户信息的最强大方法，因为两个域控制器都可以实时使用相同的信息。</font><font style="vertical-align: inherit;">但是，对于少量用户和计算机帐户，设置LDAP服务器可能过于复杂。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">详细信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="samba-ldap.html" title="Samba和LDAP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba和LDAP</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+      </font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+   
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          首先，安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">samba</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libpam-winbind</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">从终端输入：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt安装samba libpam-winbind</font></font></span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          现在，编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/samba/smb.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[global]中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">取消注释以下内容</font><font style="vertical-align: inherit;">：
+          </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">   workgroup =示例</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   ...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   security = user</font></font><font></font>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        在评论的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">取消注释或添加：
+        </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">   域登录=是</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   域名主=不</font></font><font></font>
+</pre></div>
+        
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          确保用户有权读取</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / lib / samba中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的文件</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">例如，要允许 
+           </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">admin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组中的用户</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">scp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件，请输入：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chgrp -R admin / var / lib / samba</font></font></span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          接下来，同步用户帐户，使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">scp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+          从PDC </font><font style="vertical-align: inherit;">复制</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / lib / samba</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo scp -r username @ pdc：/ var / lib / samba / var / lib</font></font></span>
+</pre></div>
+
+          <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换</font><font style="vertical-align: inherit;">为有效的用户名，将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pdc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换</font><font style="vertical-align: inherit;">为实际PDC的主机名或IP地址。 
+            </font></font></p>
+          </div></div></div></div>
+
+        </li>
+<li class="steps">
+          
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          最后，重启</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">samba</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart smbd.service nmbd.service</font></font></span>
+</pre></div>
+
+        </li>
+</ol></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      您可以通过停止PDC上的Samba守护程序，然后尝试登录到加入域的Windows客户端来测试备份域控制器是否正常工作。
+      </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      另外要记住的是，如果您已将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录主页</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">配置</font><font style="vertical-align: inherit;">为PDC上的目录，并且PDC变得不可用，则对用户的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">驱动器的</font><font style="vertical-align: inherit;">访问</font><font style="vertical-align: inherit;">也将不可用。</font><font style="vertical-align: inherit;">因此，最好将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录主页</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置</font><font style="vertical-align: inherit;">为驻留在PDC和BDC的单独文件服务器上。
+      </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="samba-dc-resources"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关Samba配置的详细信息，请参阅 
+           </font></font><a href="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/" class="ulink" title="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba HOWTO集合</font></font></a>
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          该指南也有 
+           </font></font><a href="http://www.amazon.com/exec/obidos/tg/detail/-/0131882228" class="ulink" title="http://www.amazon.com/exec/obidos/tg/detail/-/0131882228"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">印刷版本</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          O'Reilly的</font></font><a href="http://www.oreilly.com/catalog/9780596007690/" class="ulink" title="http://www.oreilly.com/catalog/9780596007690/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用Samba</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">也是一个很好的参考。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <a href="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/samba-pdc.html" class="ulink" title="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/samba-pdc.html"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          Samba HOWTO Collection的</font><a href="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/samba-pdc.html" class="ulink" title="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/samba-pdc.html"><font style="vertical-align: inherit;">第4章</font></a><font style="vertical-align: inherit;">介绍了如何设置主域控制器。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <a href="http://us3.samba.org/samba/docs/man/Samba-HOWTO-Collection/samba-bdc.html" class="ulink" title="http://us3.samba.org/samba/docs/man/Samba-HOWTO-Collection/samba-bdc.html"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          Samba HOWTO Collection的</font><a href="http://us3.samba.org/samba/docs/man/Samba-HOWTO-Collection/samba-bdc.html" class="ulink" title="http://us3.samba.org/samba/docs/man/Samba-HOWTO-Collection/samba-bdc.html"><font style="vertical-align: inherit;">第5章</font></a><font style="vertical-align: inherit;">介绍了如何设置备份域控制器。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          在</font></font><a href="https://help.ubuntu.com/community/Samba" class="ulink" title="https://help.ubuntu.com/community/Samba"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu的维基桑巴</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">页。
+          </font></font></p>
+        </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="samba-fileprint-security.html" title="保护文件和打印服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="samba-ad-integration.html" title="Active Directory集成"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

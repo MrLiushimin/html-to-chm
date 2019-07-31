@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Configuration</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="dns.html" title="Domain Name Service (DNS)">Domain Name Service (DNS)</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="dns-installation.html" title="Installation">Previous</a><a class="nextlinks-next" href="dns-troubleshooting.html" title="Troubleshooting">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Configuration</h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+	  There are many ways to configure <span class="app application">BIND9</span>.  Some of the most common configurations are a caching nameserver, 
+	  primary master, and as a secondary master.
+	  </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	      <p class="para">
+	      When configured as a caching nameserver BIND9 will find the answer to name queries and remember the answer when the domain
+	      is queried again.
+	      </p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para">
+	      As a primary master server BIND9 reads the data for a zone from a file on it's host and is authoritative for that zone.
+	      </p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para">
+	      In a secondary master configuration BIND9 gets the zone data from another nameserver authoritative for the zone.
+	      </p>
+	    </li>
+</ul></div>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="dns-configuration.html#dns-configuration-overview" title="Overview">Overview</a></li>
+<li class="links"><a class="xref" href="dns-configuration.html#dns-caching-configuration" title="Caching Nameserver">Caching Nameserver</a></li>
+<li class="links"><a class="xref" href="dns-configuration.html#dns-primarymaster-configuration" title="Primary Master">Primary Master</a></li>
+<li class="links"><a class="xref" href="dns-configuration.html#dns-secondarymaster-configuration" title="Secondary Master">Secondary Master</a></li>
+</ul></div>
+<div class="sect2 sect" id="dns-configuration-overview"><div class="inner">
+<div class="hgroup"><h2 class="title">Overview</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+            The DNS configuration files are stored in the
+            <span class="file filename">/etc/bind</span> directory. The
+            primary configuration file is
+            <span class="file filename">/etc/bind/named.conf</span>.
+            </p>
+<p class="para">
+            The <span class="em emphasis">include</span> line specifies the
+            filename which contains the DNS options. The
+            <span class="em emphasis">directory</span> line in the <span class="file filename">/etc/bind/named.conf.options</span> file tells
+            DNS where to look for files. All files BIND uses will be
+            relative to this directory.
+            </p>
+<p class="para">
+            The file named <span class="file filename">/etc/bind/db.root</span> 
+            describes the root nameservers in the world. The servers
+            change over time, so the
+            <span class="file filename">/etc/bind/db.root</span> file must be maintained
+            now and then.  This is usually done as updates to the <span class="app application">bind9</span> package.
+            The <span class="em emphasis">zone</span> section defines a master
+            server, and it is stored in a file mentioned in the <span class="em emphasis">file</span> option.
+            </p>
+<p class="para">
+	    It is possible to configure the same server to be a caching name server, primary master, and secondary master.
+	    A server can be the Start of Authority (SOA) for one zone, while providing secondary service for another zone.
+	    All the while providing caching services for hosts on the local LAN.
+	    </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dns-caching-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Caching Nameserver</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+	    The default configuration is setup to act as a caching server.  All that is required is simply adding the IP Addresses 
+	    of your ISP's DNS servers.  Simply uncomment and edit the following in <span class="file filename">/etc/bind/named.conf.options</span>: 
+	    </p>
+<div class="code"><pre class="contents ">forwarders {
+                1.2.3.4;
+                5.6.7.8;
+           };
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+	    <p class="para">
+	    Replace <span class="em emphasis">1.2.3.4</span> and <span class="em emphasis">5.6.7.8</span> with the IP Adresses of actual nameservers.
+	    </p>
+	  </div></div></div></div>
+<p class="para">
+	  Now restart the DNS server, to enable the new configuration.  From a terminal prompt: 
+          </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart bind9.service</span>
+</pre></div>
+<p class="para">
+	  See <a class="xref" href="dns-troubleshooting.html#dns-testing-dig" title="dig">dig</a> for information on testing a caching DNS server.
+          </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dns-primarymaster-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Primary Master</h2></div>
+<div class="region">
+<div class="contents"><p class="para">
+	    In this section <span class="app application">BIND9</span> will be configured as the Primary Master for the domain 
+	    <span class="em emphasis">example.com</span>.  Simply replace <span class="em emphasis">example.com</span> with your
+	    FQDN (Fully Qualified Domain Name).
+	    </p></div>
+<div class="sect3 sect" id="dns-forward-zone-file"><div class="inner">
+<div class="hgroup"><h3 class="title">Forward Zone File</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+	      To add a DNS zone to BIND9, turning BIND9 into a Primary Master server, the first step is to edit
+	      <span class="file filename">/etc/bind/named.conf.local</span>:
+	      </p>
+<div class="code"><pre class="contents ">zone "example.com" {
+	type master;
+        file "/etc/bind/db.example.com";
+};
+</pre></div>
+<p class="para">
+	      (Note, if bind will be receiving automatic updates to the file as with DDNS, then use <span class="file filename">/var/lib/bind/db.example.com</span>
+	      rather than <span class="file filename">/etc/bind/db.example.com</span> both here and in the copy command below.)
+	      </p>
+<p class="para">
+	      Now use an existing zone file as a template to create the <span class="file filename">/etc/bind/db.example.com</span> file:
+	      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo cp /etc/bind/db.local /etc/bind/db.example.com</span>
+</pre></div>
+<p class="para">
+	      Edit the new zone file <span class="file filename">/etc/bind/db.example.com</span> change <span class="em emphasis">localhost.</span>
+	      to the FQDN of your server, leaving the additional "." at the end. Change <span class="em emphasis">127.0.0.1</span> to the 
+	      nameserver's IP Address and <span class="em emphasis">root.localhost</span> to a valid email address, but with a "." instead 
+	      of the usual "@" symbol, again leaving the "." at the end. Change the comment to indicate the domain that this
+	      file is for.
+	      </p>
+<p class="para">
+	      Create an <span class="em emphasis">A record</span> for the base domain, <span class="em emphasis">example.com</span>.
+	      Also, create an <span class="em emphasis">A record</span> for <span class="em emphasis">ns.example.com</span>, the name 
+	      server in this example: 
+	      </p>
+<div class="code"><pre class="contents ">;
+; BIND data file for example.com
+;
+$TTL    604800
+@       IN      SOA     example.com. root.example.com. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+        IN      A       192.168.1.10
+;
+@       IN      NS      ns.example.com.
+@       IN      A       192.168.1.10
+@       IN      AAAA    ::1
+ns      IN      A       192.168.1.10
+</pre></div>
+<p class="para">
+  	       You must increment the <span class="em emphasis">Serial Number</span> every time you make changes to the zone file. 
+	       If you make multiple changes before restarting BIND9, simply increment the Serial once.
+	       </p>
+<p class="para">
+	       Now, you can add DNS records to the bottom of the zone file.  See <a class="xref" href="dns-references.html#dns-record-types" title="Common Record Types">Common Record Types</a> for details.
+	       </p>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+	         <p class="para">
+	         Many admins like to use the last date edited as the serial of a zone, such as  <span class="em emphasis">2012010100</span>
+	         which is yyyymmddss (where <span class="em emphasis">ss</span> is the Serial Number)
+		 </p>
+	       </div></div></div></div>
+<p class="para">
+	       Once you have made changes to the zone file <span class="app application">BIND9</span> needs to be restarted for 
+	       the changes to take effect: 
+	       </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart bind9.service</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="dns-reverse-zone-file"><div class="inner">
+<div class="hgroup"><h3 class="title">Reverse Zone File</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+	      Now that the zone is setup and resolving names to IP Adresses a <span class="em emphasis">Reverse zone</span> is also required. 
+	      A Reverse zone allows DNS to resolve an address to a name.
+	      </p>
+<p class="para">
+	      Edit /etc/bind/named.conf.local and add the following: 			
+	      </p>
+<div class="code"><pre class="contents ">zone "1.168.192.in-addr.arpa" {
+        type master;
+        file "/etc/bind/db.192";
+};
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+	        <p class="para">	      
+	      	Replace <span class="em emphasis">1.168.192</span> with the first three octets of whatever network you are using. 
+	        Also, name the zone file <span class="file filename">/etc/bind/db.192</span> appropriately.  It should match the first octet of your network.
+	      	</p>
+	      </div></div></div></div>
+<p class="para">
+	      Now create the <span class="file filename">/etc/bind/db.192</span> file: 
+	      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo cp /etc/bind/db.127 /etc/bind/db.192</span>
+</pre></div>
+<p class="para">
+	      Next edit <span class="file filename">/etc/bind/db.192</span> changing the basically the same options as 
+	      <span class="file filename">/etc/bind/db.example.com</span>:
+	      </p>
+<div class="code"><pre class="contents ">;
+; BIND reverse data file for local 192.168.1.XXX net
+;
+$TTL    604800
+@       IN      SOA     ns.example.com. root.example.com. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns.
+10      IN      PTR     ns.example.com.
+</pre></div>
+<p class="para">
+	      The <span class="em emphasis">Serial Number</span> in the Reverse zone needs to be incremented on each change as well. 
+	      For each <span class="em emphasis">A record</span> you configure in <span class="file filename">/etc/bind/db.example.com</span>, that is for a different
+	      address, you need to create a <span class="em emphasis">PTR record</span> in <span class="file filename">/etc/bind/db.192</span>.
+	      </p>
+<p class="para">
+	      After creating the reverse zone file restart <span class="app application">BIND9</span>: 
+	      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart bind9.service</span>
+</pre></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="dns-secondarymaster-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Secondary Master</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+	    Once a <span class="em emphasis">Primary Master</span> has been configured a <span class="em emphasis">Secondary Master</span> is needed in 
+	    order to maintain the availability of the domain should the Primary become unavailable.
+	    </p>
+<p class="para">
+            First, on the Primary Master server, the zone transfer needs to be allowed. Add the <span class="em emphasis">allow-transfer</span> 
+	    option to the example Forward and Reverse zone definitions in <span class="file filename">/etc/bind/named.conf.local</span>: 
+	    </p>
+<div class="code"><pre class="contents ">zone "example.com" {
+        type master;
+	file "/etc/bind/db.example.com";
+        allow-transfer { 192.168.1.11; };
+};
+
+zone "1.168.192.in-addr.arpa" {
+        type master;
+        file "/etc/bind/db.192";
+	allow-transfer { 192.168.1.11; };
+};
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+	      <p class="para">
+	      Replace <span class="em emphasis">192.168.1.11</span> with the IP Address of your Secondary nameserver.
+	      </p>
+            </div></div></div></div>
+<p class="para">
+            Restart <span class="app application">BIND9</span> on the Primary Master:
+	    </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart bind9.service</span>
+</pre></div>
+<p class="para">
+            Next, on the Secondary Master, install the <span class="app application">bind9</span> package the same way as on the Primary. 
+	    Then edit the <span class="file filename">/etc/bind/named.conf.local</span> and add the following declarations for the Forward and Reverse zones:
+	    </p>
+<div class="code"><pre class="contents ">zone "example.com" {
+	type slave;
+        file "db.example.com";
+        masters { 192.168.1.10; };
+};        
+      
+zone "1.168.192.in-addr.arpa" {
+	type slave;
+        file "db.192";
+        masters { 192.168.1.10; };
+};
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+	      <p class="para">
+	      Replace <span class="em emphasis">192.168.1.10</span> with the IP Address of your Primary nameserver.
+	      </p>
+            </div></div></div></div>
+<p class="para">
+            Restart <span class="app application">BIND9</span> on the Secondary Master:
+	    </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart bind9.service</span>
+</pre></div>
+<p class="para">
+	    In <span class="file filename">/var/log/syslog</span> you should see something similar to (some lines have been split to fit the format of this document):
+	    </p>
+<div class="code"><pre class="contents ">client 192.168.1.10#39448: received notify for zone '1.168.192.in-addr.arpa'
+zone 1.168.192.in-addr.arpa/IN: Transfer started.
+transfer of '100.18.172.in-addr.arpa/IN' from 192.168.1.10#53:
+ connected using 192.168.1.11#37531
+zone 1.168.192.in-addr.arpa/IN: transferred serial 5
+transfer of '100.18.172.in-addr.arpa/IN' from 192.168.1.10#53:
+ Transfer completed: 1 messages, 
+6 records, 212 bytes, 0.002 secs (106000 bytes/sec)
+zone 1.168.192.in-addr.arpa/IN: sending notifies (serial 5)
+
+client 192.168.1.10#20329: received notify for zone 'example.com'
+zone example.com/IN: Transfer started.
+transfer of 'example.com/IN' from 192.168.1.10#53: connected using 192.168.1.11#38577
+zone example.com/IN: transferred serial 5
+transfer of 'example.com/IN' from 192.168.1.10#53: Transfer completed: 1 messages, 
+8 records, 225 bytes, 0.002 secs (112500 bytes/sec)
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+	      <p class="para">
+              Note: A zone is only transferred if the <span class="em emphasis">Serial Number</span> on the Primary is larger than the one on the Secondary. If you want to have your Primary Master DNS notifying Secondary DNS Servers of zone changes, you can add <span class="em emphasis">also-notify { ipaddress; };</span> in to <span class="file filename">/etc/bind/named.conf.local</span> as shown in the example below:
+	      </p>
+	    </div></div></div></div>
+<div class="code"><pre class="contents ">zone "example.com" {
+	type master;
+	file "/etc/bind/db.example.com";
+	allow-transfer { 192.168.1.11; };
+	also-notify { 192.168.1.11; }; 
+	};
+
+zone "1.168.192.in-addr.arpa" {
+	type master;
+	file "/etc/bind/db.192";
+	allow-transfer { 192.168.1.11; };
+	also-notify { 192.168.1.11; }; 
+	};
+	</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+	      <p class="para">
+              The default directory for non-authoritative zone files is <span class="file filename">/var/cache/bind/</span>. This directory is also configured
+              in <span class="app application">AppArmor</span> to allow the <span class="app application">named</span> daemon to write to it.  For more information on
+              AppArmor see <a class="xref" href="apparmor.html" title="AppArmor">AppArmor</a>.
+	      </p>
+	    </div></div></div></div>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="dns-installation.html" title="Installation">Previous</a><a class="nextlinks-next" href="dns-troubleshooting.html" title="Troubleshooting">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

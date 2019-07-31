@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>多路径设备</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="dm-multipath-chapter.html" title="DM-多路径"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DM-Multipath</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="device-mapper-multipathing.html" title="设备映射器多路径"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="multipath-setting-up-dm-multipath.html" title="设置DM-Multipath概述"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径设备</font></font></h1></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果没有DM-Multipath，则从服务器节点到存储控制器的每条路径都被系统视为单独的设备，即使I / O路径将同一服务器节点连接到同一存储控制器也是如此。</font><font style="vertical-align: inherit;">DM-Multipath提供了一种在逻辑上组织I / O路径的方法，方法是在底层设备之上创建单个多路径设备。</font></font></p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="multipath-devices.html#multipath-device-identifiers" title="多路径设备标识符"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径设备标识符</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-devices.html#multipath-device-names-in-cluster" title="群集中的一致多路径设备名称"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">群集中的一致多路径设备名称</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-devices.html#multipath-devices-attributes" title="多路径设备属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径设备属性</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-devices.html#multipath-devices-in-logical-volumes" title="逻辑卷中的多路径设备"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">逻辑卷中的多路径设备</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="multipath-device-identifiers"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径设备标识符</font></font></h2></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">每个多路径设备都有一个全球标识符（WWID），保证全球唯一且不变。</font><font style="vertical-align: inherit;">默认情况下，多路径设备的名称设置为其WWID。</font><font style="vertical-align: inherit;">或者，您可以</font><font style="vertical-align: inherit;">在多路径配置文件中</font><font style="vertical-align: inherit;">设置
+       </font></font><span class="em em-bold emphasis"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-user_friendly_names" title=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">user_friendly_names</font></font></a>
+      </span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项，这会导致DM-Multipath使用</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mpathn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">形式的节点唯一别名</font><font style="vertical-align: inherit;">作为名称。</font><font style="vertical-align: inherit;">例如，具有两个HBA的节点通过单个未分区FC交换机连接到具有两个端口的存储控制器，可以看到四个设备：</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / sda</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / sdb</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / sdc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / sdd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">DM-Multipath创建具有唯一WWID的单个设备，该WWID根据多路径配置将I / O重新路由到这四个底层设备。</font><font style="vertical-align: inherit;">当</font></font><span class="em em-bold emphasis"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-user_friendly_names" title=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">user_friendly_names</font></font></a></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      配置选项设置为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">yes时</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，多路径设备的名称将设置为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mpathn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">当新设备处于DM-Multipath的控制之下时，可以在</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录</font><font style="vertical-align: inherit;">下的两个不同位置看到新设备</font><font style="vertical-align: inherit;">：
+       </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / mapper / mpathn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / dm-n</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / mapper</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+            中</font><font style="vertical-align: inherit;">的设备</font><font style="vertical-align: inherit;">是在引导过程的早期创建的。</font><font style="vertical-align: inherit;">使用这些设备访问多路径设备，例如在创建逻辑卷时。</font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">任何形式为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / dm-n的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备仅供内部使用，不得使用。</font></font></p>
+          </li>
+</ul></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关多路径配置默认值的信息，包括</font></font><span class="em em-bold emphasis"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-user_friendly_names" title=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">user_friendly_names</font></font></a></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      配置选项，请参见“ </font></font><a class="link" href="multipath-dm-multipath-config-file.html#multipath-config-defaults" title="配置文件默认值"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件默认值”一</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">节</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">您还可以使用</font><font style="vertical-align: inherit;">multipath配置文件</font><font style="vertical-align: inherit;">的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">multipaths</font></span><font style="vertical-align: inherit;">部分中的</font></font><span class="em em-bold emphasis"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-alias" title=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">alias</font></font></a></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项将
+       </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">路径设备的名称设置为您选择的名称</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有关</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">路径配置文件</font><font style="vertical-align: inherit;">的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">multipaths</font></span><font style="vertical-align: inherit;">部分的</font><font style="vertical-align: inherit;">信息</font><font style="vertical-align: inherit;">，请参见章节，</font></font><a class="link" href="multipath-dm-multipath-config-file.html#multipath-config-multipath" title="配置文件多路径属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径设备配置属性</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><p></p></div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-device-names-in-cluster"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">群集中的一致多路径设备名称</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">当</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">user_friendly_names</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      配置选项设置为yes时，多路径设备的名称对于节点是唯一的，但不保证在使用多路径设备的所有节点上都是相同的。</font><font style="vertical-align: inherit;">同样，如果</font><font style="vertical-align: inherit;">在</font><span class="file filename"><font style="vertical-align: inherit;">multipath.conf</font></span><font style="vertical-align: inherit;"> 
+      配置文件</font><font style="vertical-align: inherit;">的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">multipaths</font></span><font style="vertical-align: inherit;">部分中</font><font style="vertical-align: inherit;">为设备</font><font style="vertical-align: inherit;">设置</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">别名</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">，则该名称在集群中的所有节点之间不会自动保持一致。</font><font style="vertical-align: inherit;">如果使用LVM从多路径设备创建逻辑设备，这不会造成任何困难，但如果您要求多路径设备名称在每个节点中保持一致，则建议您将</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">user_friendly_names</font></span><font style="vertical-align: inherit;">选项设置为</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">no</font></span></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并且您没有为设备配置别名。</font><font style="vertical-align: inherit;">默认情况下，如果未将</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">user_friendly_names</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置</font><font style="vertical-align: inherit;">为yes或为设备配置别名，则设备名称将是设备的WWID，它始终相同。</font><font style="vertical-align: inherit;">但是，如果希望系统定义的用户友好名称在群集中的所有节点上保持一致，则可以按照以下过程操作：</font></font></p>
+<div class="list orderedlist"><ol class="list orderedlist">
+<li class="list orderedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在一台机器上设置所有多路径设备。</font></font></p>
+        </li>
+<li class="list orderedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过运行以下命令禁用其他计算机上的所有多路径设备：</font></font></p>
+
+          <div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#systemctl stop multipath-tools.service</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#multipath -F</font></font><font></font>
+</pre></div>
+        </li>
+<li class="list orderedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / multipath / bindings</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件从第一台计算机</font><font style="vertical-align: inherit;">复制</font><font style="vertical-align: inherit;">到集群中的所有其他计算机。</font></font></p>
+        </li>
+<li class="list orderedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过运行以下命令，在群集中的所有其他计算机上重新启用multipathd守护程序：</font></font></p>
+
+          <div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#systemctl start multipath-tools.service</font></font></pre></div>
+        </li>
+</ol></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果添加新设备，则需要重复此过程。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同样，如果为要在群集中的节点之间保持一致的设备配置别名，则应</font><font style="vertical-align: inherit;">通过遵循相同的过程确保群集中每个节点</font><font style="vertical-align: inherit;">的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/multipath.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件相同：</font></font></p>
+<div class="list orderedlist"><ol class="list orderedlist">
+<li class="list orderedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在一台计算机上</font><font style="vertical-align: inherit;">的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中</font><font style="vertical-align: inherit;">配置多路径设备的别名
+           </font><font style="vertical-align: inherit;">。</font></font></p>
+        </li>
+<li class="list orderedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过运行以下命令禁用其他计算机上的所有多路径设备：</font></font></p>
+
+          <div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#systemctl stop multipath-tools.service</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#multipath -F</font></font><font></font>
+</pre></div>
+        </li>
+<li class="list orderedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件从第一台计算机</font><font style="vertical-align: inherit;">复制</font><font style="vertical-align: inherit;">到群集中的所有其他计算机。</font></font></p>
+        </li>
+<li class="list orderedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过运行以下命令，在群集中的所有其他计算机上重新启用multipathd守护程序：</font></font></p>
+
+          <div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#systemctl start multipath-tools.service</font></font></pre></div>
+        </li>
+</ol></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加新设备时，您需要重复此过程。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-devices-attributes"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径设备属性</font></font></h2></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">除了</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">user_friendly_names</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">别名</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项之外，多路径设备还有许多属性。</font><font style="vertical-align: inherit;">您可以通过在</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多</font></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">路径</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件</font><font style="vertical-align: inherit;">的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">multipaths</font></span><font style="vertical-align: inherit;">部分中</font><font style="vertical-align: inherit;">为该设备创建条目来修改特定多路径设备的这些属性</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有关</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">路径配置文件</font><font style="vertical-align: inherit;">的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">multipaths</font></span><font style="vertical-align: inherit;">部分的</font><font style="vertical-align: inherit;">信息</font><font style="vertical-align: inherit;">，请参见“ </font></font><a class="link" href="multipath-dm-multipath-config-file.html#multipath-config-multipath" title="配置文件多路径属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件多路径属性</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ”一节。</font></font></p></div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-devices-in-logical-volumes"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">逻辑卷中的多路径设备</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建多路径设备后，您可以像创建LVM物理卷时使用物理设备名称一样使用多路径设备名称。</font><font style="vertical-align: inherit;">例如，如果/ dev / mapper / mpatha是多路径设备的名称，则以下命令将/ dev / mapper / mpatha标记为物理卷。</font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#pvcreate / dev / mapper / mpatha</font></font></pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 您可以在创建LVM卷组时使用生成的LVM物理设备，就像使用任何其他LVM物理设备一样。</font></font><p></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果尝试在已配置分区的整个设备上创建LVM物理卷，则pvcreate命令将失败。</font></font></p>
+      </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建使用主动/被动多路径阵列作为基础物理设备的LVM逻辑卷时，应在</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lvm.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含过滤器，</font><font style="vertical-align: inherit;">以排除作为多路径设备基础的磁盘。</font><font style="vertical-align: inherit;">这是因为如果阵列在接收I / O时自动将活动路径更改为被动路径，则只要LVM扫描被动路径（如果未过滤这些设备），多路径将进行故障转移和故障回复。</font><font style="vertical-align: inherit;">对于需要命令使被动路径处于活动状态的主动/被动阵列，LVM会在发生此情况时打印警告消息。</font><font style="vertical-align: inherit;">要过滤LVM配置文件（lvm.conf）中的所有SCSI设备，请在文件的devices部分中包含以下过滤器。</font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">filter = [“r / block /”，“r / disk /”，“r / sd。* /”，“a /.*/”]</font></font></pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更新</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/lvm.conf后</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，必须更新</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">initrd，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以便在引导过程中将此文件复制到过滤器最重要的位置。</font><font style="vertical-align: inherit;">执行：</font></font><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">update-initramfs -u -k all</font></font></pre></div><div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">每次</font><font style="vertical-align: inherit;">更新</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/lvm.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或
+           </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/multipath.conf时</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，都应重建initrd以反映这些更改。</font><font style="vertical-align: inherit;">当需要黑名单和过滤器来维持稳定的存储配置时，这是必不可少的。</font></font></p>
+        </div></div></div></div><p></p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="device-mapper-multipathing.html" title="设备映射器多路径"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="multipath-setting-up-dm-multipath.html" title="设置DM-Multipath概述"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

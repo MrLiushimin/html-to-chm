@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>邮件过滤</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="email-services.html" title="电邮服务"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电子邮件服务</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="mailman.html" title="邮差"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="../chat-servers/chat-servers.html" title="聊天应用程序"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮件过滤</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	 今天电子邮件最大的问题之一是未经请求的批量电子邮件（UBE）问题。</font><font style="vertical-align: inherit;">这种消息也称为垃圾邮件，也可能携带病毒和其他形式的恶意软件。</font><font style="vertical-align: inherit;">根据一些报告，这些消息占互联网上所有电子邮件流量的大部分。
+	 </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	 本节将介绍将</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amavisd-new</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，
+	  </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spamassassin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ClamAV</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">与 
+	  </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮件传输代理（MTA）</font><font style="vertical-align: inherit;">集成</font><font style="vertical-align: inherit;">。  </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">还可以通过外部内容过滤器检查电子邮件的有效性。</font><font style="vertical-align: inherit;">这些过滤器有时可以确定邮件是否为垃圾邮件，而无需使用更多资源密集型应用程序进行处理。</font><font style="vertical-align: inherit;">两个常见的过滤器是 
+	  </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opendkim</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">python-policyd-spf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	 </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	     <p class="para">
+ 	     <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amavisd-new</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是一个包装程序，可以调用任意数量的内容过滤程序进行垃圾邮件检测，防病毒等。
+	     </font></font></p>
+	   </li>
+<li class="list itemizedlist">
+	     <p class="para">	
+	     <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spamassassin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用各种机制根据邮件内容过滤电子邮件。
+	     </font></font></p>
+	   </li>
+<li class="list itemizedlist">
+	     <p class="para">
+	     <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ClamAV</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是一个开源的防病毒应用程序。
+	     </font></font></p>
+	   </li>
+<li class="list itemizedlist">
+	     <p class="para">
+	     <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opendkim</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为DomainKeys Identified Mail（DKIM）标准实现了Sendmail邮件过滤器（Milter）。 
+	     </font></font></p>
+	   </li>
+<li class="list itemizedlist">
+  	     <p class="para">
+	     <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">python-policyd-spf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">启用发件人策略框架（SPF）检查</font><font style="vertical-align: inherit;">。
+	     </font></font></p>
+	   </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	 这是件拼凑在一起的方式： 
+	 </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	     <p class="para"><font style="vertical-align: inherit;"></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	     接受电子邮件</font><font style="vertical-align: inherit;">。
+	     </font></font></p>
+	   </li>
+<li class="list itemizedlist">
+	     <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在这种情况下</font><font style="vertical-align: inherit;">
+     	     ，消息通过任何外部过滤器</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opendkim</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和 
+	      </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">python-policyd-spf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">传递</font><font style="vertical-align: inherit;">。 
+   	     </font></font></p>
+	   </li>
+<li class="list itemizedlist">
+	     <p class="para">
+	     <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amavisd-new</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然后处理消息。
+	     </font></font></p>
+	   </li>
+<li class="list itemizedlist">
+	     <p class="para">
+	       <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ClamAV</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于扫描邮件。</font><font style="vertical-align: inherit;">如果邮件包含病毒， 
+	        </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将拒绝该邮件。 
+	     </font></font></p>
+	   </li>
+<li class="list itemizedlist">
+	     <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     然后，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spamassassin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将分析干净的消息，</font><font style="vertical-align: inherit;">以确定消息是否为垃圾邮件。  
+	     </font><font style="vertical-align: inherit;">然后，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spamassassin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将添加X-Header线，允许 
+    	      </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amavisd-new</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">进一步操纵消息。
+	     </font></font></p>
+	   </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	 例如，如果邮件的垃圾邮件分数超过50，则可以从队列中自动删除邮件，而不必让收件人受到打扰。</font><font style="vertical-align: inherit;">另一种处理标记消息的方法是将它们传递给邮件用户代理（MUA），允许用户在他们认为合适时处理该消息。
+	 </font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="mail-filtering.html#mail-filter-installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a></li>
+<li class="links"><a class="xref" href="mail-filtering.html#mail-filter-configuration" title="组态"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></a></li>
+<li class="links"><a class="xref" href="mail-filtering.html#mail-filter-testing" title="测试"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试</font></font></a></li>
+<li class="links"><a class="xref" href="mail-filtering.html#mail-filter-troubleshooting" title="故障排除"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障排除</font></font></a></li>
+<li class="links"><a class="xref" href="mail-filtering.html#mail-filter-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="mail-filter-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   见</font></font><a class="xref" href="postfix.html" title="后缀"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">后缀</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的安装和配置Postfix的指令。
+	   </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   要安装其余应用程序，请在终端提示符下输入以下内容：
+	   </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt安装amavisd-new spamassassin clamav-daemon </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install opendkim postfix-policyd-spf-python</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	有一些可选的软件包与</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spamassassin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">集成，</font><font style="vertical-align: inherit;">可以更好地检测垃圾邮件：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt安装pyzor剃刀</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   除主要过滤应用程序外，还需要压缩实用程序来处理某些电子邮件附件：
+   </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install arj cabextract cpio lha nomarch pax rar unrar unzip zip</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果找不到某些软件包，请检查</font><span class="file filename"><font style="vertical-align: inherit;">/etc/apt/sources.list中</font></span><font style="vertical-align: inherit;">是否启用</font><font style="vertical-align: inherit;">了</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多元软件</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">仓库</font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span></p>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您对文件进行了更改，请确保</font><font style="vertical-align: inherit;">在尝试再次安装之前</font><font style="vertical-align: inherit;">运行</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt update</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+	</div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="mail-filter-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   现在配置所有内容以协同工作并过滤电子邮件
+	   </font></font></p></div>
+<div class="sect3 sect" id="clamav-configuration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ClamAV的</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ClamAV</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+   	     的默认行为</font><font style="vertical-align: inherit;">符合我们的需求。</font><font style="vertical-align: inherit;">有关更多ClamAV配置选项，请检查</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / clamav中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的配置文件 
+	      </font><font style="vertical-align: inherit;">。
+	     </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">clamav</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户</font><font style="vertical-align: inherit;">添加</font><font style="vertical-align: inherit;">到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">amavis</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组，以便</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amavisd-new</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+ 	     能够对扫描文件进行适当的访问：
+ 	     </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo adduser clamav amavis </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo adduser amavis clamav</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="spamassassin-configuration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">过虑</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     Spamassassin会自动检测可选组件，如果存在则会使用它们。</font><font style="vertical-align: inherit;">这意味着不需要配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pyzor</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">razor</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。  
+	     </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / default / spamassassin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以激活</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spamassassin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护程序。</font><font style="vertical-align: inherit;">将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ENABLED = 0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更改</font><font style="vertical-align: inherit;">为：
+	     </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ENABLED = 1
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     现在启动守护进程：
+	     </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl启动spamassassin.service</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="amavisd-new-configuration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的amavisd-新</font></font></h3></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     首先</font><font style="vertical-align: inherit;">通过编辑 
+	      </font><span class="file filename"><font style="vertical-align: inherit;">/etc/amavis/conf.d/15-content_filter_mode在Amavisd </font></span></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-new中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">激活垃圾邮件和防病毒检测</font><font style="vertical-align: inherit;">： 	
+	     </font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用严格;</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃您可以修改此文件以通过spamassassin重新启用SPAM检查</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃并重新启用防病毒检查。</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃默认防病毒检查模式</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃取消注释下面的两行以启用它</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+@bypass_virus_checks_maps =（</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   \％bypass_virus_checks，\ @ bypass_virus_checks_acl，\ $ bypass_virus_checks_re）;</font></font><font></font>
+<font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃默认垃圾邮件检查模式</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃取消注释下面的两行以启用它</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+@bypass_spam_checks_maps =（</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   \％bypass_spam_checks，\ @ bypass_spam_checks_acl，\ $ bypass_spam_checks_re）;</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+1; </font><font style="vertical-align: inherit;">＃确保定义的回报</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     弹出垃圾邮件可能是一个坏主意，因为返回地址经常是伪造的。</font><font style="vertical-align: inherit;">默认行为是丢弃。</font><font style="vertical-align: inherit;">这是在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/amavis/conf.d/20-debian_defaults</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中</font><font style="vertical-align: inherit;">配置的，</font><font style="vertical-align: inherit;">其中</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ final_spam_destiny</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	     设置为D_DISCARD而不是D_BOUNCE。
+	     </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             此外，您可能需要调整以下选项以将更多邮件标记为垃圾邮件：
+             </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ sa_tag_level_deflt = -999; </font><font style="vertical-align: inherit;">＃在该级别或更高级别添加垃圾邮件信息标头</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ sa_tag2_level_deflt = 6.0; </font><font style="vertical-align: inherit;">＃在该级别添加“检测到垃圾邮件”标题</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ sa_kill_level_deflt = 21.0; </font><font style="vertical-align: inherit;">＃触发垃圾邮件规避行为</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ sa_dsn_cutoff_level = 4; </font><font style="vertical-align: inherit;">＃垃圾邮件级别，超过此级别不会发送DSN</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             如果服务器的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主机名</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">与域的MX记录不同，则可能需要手动设置</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ myhostname</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项。</font><font style="vertical-align: inherit;">此外，如果服务器收到多个域的邮件， 
+              </font><font style="vertical-align: inherit;">则需要自定义</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@local_domains_acl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项。</font><font style="vertical-align: inherit;">编辑 
+              </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/amavis/conf.d/50-user</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件：
+             </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ myhostname ='mail.example.com';</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+@local_domains_acl =（“example.com”，“example.org”）;</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果要覆盖多个域，可以在</font><span class="file filename"><font style="vertical-align: inherit;">/etc/amavis/conf.d/50-user中</font></span><font style="vertical-align: inherit;">使用以下</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内容</font></font></span>
+             </p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@local_domains_acl = qw（。）;
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amavisd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">后，</font><font style="vertical-align: inherit;">需要重新启动</font><span class="app application"><font style="vertical-align: inherit;">新的</font></span><font style="vertical-align: inherit;">： 
+	     </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl重启amavis.service</font></font></span>
+</pre></div>
+</div>
+<div class="sect4 sect" id="amavis-dkim-whitelist"><div class="inner">
+<div class="hgroup"><h4 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DKIM白名单</font></font></h4></div>
+<div class="region"><div class="contents">
+<p class="para">
+               <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amavisd-new</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以配置为</font><font style="vertical-align: inherit;">
+               使用有效域密钥</font><font style="vertical-align: inherit;">自动</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域地址</font><span class="em emphasis"><font style="vertical-align: inherit;">列入白名单</font></span><font style="vertical-align: inherit;">。</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/amavis/conf.d/40-policy_banks中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有一些预先配置的域 
+                </font><font style="vertical-align: inherit;">。  
+               </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+               有多种方法可以为域配置白名单：
+               </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+                   <p class="para">
+                   <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'example.com'=&gt;'WHITELIST'，：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">会将“example.com”域中的任何地址列入白名单。
+                   </font></font></p>
+                 </li>
+<li class="list itemizedlist">
+                   <p class="para">
+                   <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'.example.com'=&gt;'WHITELIST'，：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将来自</font><font style="vertical-align: inherit;">
+                   “example.com”的任何具有有效签名的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">子域中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的</font><font style="vertical-align: inherit;">任何地址列入白名单</font><font style="vertical-align: inherit;">。
+                   </font></font></p>
+                 </li>
+<li class="list itemizedlist">
+                   <p class="para">
+                   <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'.example.com / @ example.com'=&gt;'WHITELIST'，：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">example.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">签名的“example.com”子域列入白名单</font><font style="vertical-align: inherit;">。
+                   </font></font></p>
+                 </li>
+<li class="list itemizedlist">
+                   <p class="para">
+                   <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'./@example.com'=&gt;'WHITELIST'，：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加来自“example.com”的有效签名的地址。</font><font style="vertical-align: inherit;">这通常用于签署其邮件的讨论组。
+                   </font></font></p>
+                 </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+               域还可以具有多个白名单配置。</font><font style="vertical-align: inherit;">编辑完文件后，重新启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">amavisd-new</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+               </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl重启amavis.service</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+                 <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                 在此上下文中，一旦将域添加到白名单，该消息将不会收到任何防病毒或垃圾邮件过滤。</font><font style="vertical-align: inherit;">这可能是您希望的域的行为，也可能不是。
+                 </font></font></p>
+               </div></div></div></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect3 sect" id="postfix-mail-filtering-configuration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">后缀</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     对于</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">集成，请在终端提示符下输入以下内容：
+	     </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo postconf -e'content_filter = smtp-amavis：[127.0.0.1]：10024'</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     接下来编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/postfix/master.cf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并将以下内容添加到文件末尾：	
+	     </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">smtp-amavis unix  -   -   -   -  2 smtp</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtp_data_done_timeout = 1200</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtp_send_xforward_command =是</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o disable_dns_lookups =是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o max_use = 20</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+127.0.0.1:10025 inet n  -   -   -   -  smtpd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o content_filter =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o local_recipient_maps =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o relay_recipient_maps =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtpd_restriction_classes =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtpd_delay_reject =没有</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtpd_client_restrictions = permit_mynetworks，拒绝</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtpd_helo_restrictions =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtpd_sender_restrictions =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtpd_recipient_restrictions = permit_mynetworks，拒绝</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtpd_data_restrictions = reject_unauth_pipelining</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtpd_end_of_data_restrictions =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o mynetworks = 127.0.0.0 / 8</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtpd_error_sleep_time = 0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtpd_soft_error_limit = 1001</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtpd_hard_error_limit = 1000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtpd_client_connection_count_limit = 0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o smtpd_client_connection_rate_limit = 0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -o receive_override_options = no_header_body_checks，no_unknown_recipient_checks，no_milters</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     另外在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“提货”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">运输服务的</font><font style="vertical-align: inherit;">正下方添加以下两行</font><font style="vertical-align: inherit;">：
+	     </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">         -o content_filter =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+         -o receive_override_options = no_header_body_checks</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     这样可以防止生成的用于报告垃圾邮件的邮件被归类为垃圾邮件。
+	     </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     现在重启</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+	     </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl重启postfix.service</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+           现在启用了垃圾邮件和病毒检测的内容过滤功能。
+	   </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="amavisd-new-spamassassin-integration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amavisd-new和Spamassassin</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+         当将</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amavisd-new</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">与</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spamassassin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">集成时</font><font style="vertical-align: inherit;">，如果您选择通过编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/spamassassin/local.cf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来禁用贝叶斯过滤</font><font style="vertical-align: inherit;">并使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cron</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+         更新每晚规则，结果可能会导致发送大量错误消息的情况</font><font style="vertical-align: inherit;">通过amavisd-new </font><span class="app application"><font style="vertical-align: inherit;">cron</font></span><font style="vertical-align: inherit;">工作</font><font style="vertical-align: inherit;">给 
+          </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">amavis</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户</font><font style="vertical-align: inherit;">。
+         </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+         有几种方法可以处理这种情况：
+         </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+             <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             配置MDA以过滤您不希望看到的邮件。
+             </font></font></p>
+           </li>
+<li class="list itemizedlist">
+             <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             更改</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ usr / sbin / amavisd-new-cronjob</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以检查</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">use_bayes 0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">例如，编辑
+              </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ usr / sbin / amavisd-new-cronjob</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">语句</font><font style="vertical-align: inherit;">之前将以下内容添加到顶部</font><font style="vertical-align: inherit;">：
+             </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">egrep -q“^ [\ t] * use_bayes [\ t] * 0”/etc/spamassassin/local.cf&amp;&amp; exit 0
+</font></font></pre></div>
+           </li>
+</ul></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="mail-filter-testing"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   首先，测试</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amavisd-new</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> SMTP正在监听：
+	   </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">telnet localhost 10024</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+试试127.0.0.1 ......</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+连接到localhost。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+逃脱角色是'^]'。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+220 [127.0.0.1] ESMTP amavisd-新服务准备就绪</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+^]</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   在通过内容过滤器的邮件标题中，您应该看到： 
+	   </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X-垃圾级： </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+X-Virus-Scanned：Debian amavisd-example at example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+X-Spam-Status：No，hits = -2.3 tagged_above = -1000.0 required = 5.0 tests = AWL，BAYES_00</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+X-垃圾级： </font></font><font></font>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	   <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   您的输出会有所不同，但重要的是有</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X-Virus-Scanned</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和 
+	    </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X-Spam-Status</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">条目。  
+	   </font></font></p>
+	   </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="mail-filter-troubleshooting"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障排除</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   找出问题原因的最佳方法是检查日志文件。
+	   </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	       <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	       有关</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">日志记录的</font><font style="vertical-align: inherit;">说明，</font><font style="vertical-align: inherit;">请参阅 
+                </font></font><a class="xref" href="postfix.html#postfix-troubleshooting" title="故障排除"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障排除</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分。
+	       </font></font></p>
+	     </li>
+<li class="list itemizedlist">
+	       <p class="para">
+	       <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amavisd-new</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Syslog</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">向</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/log/mail.log</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">发送消息 
+	        </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">通过将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ log_level</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">添加</font><font style="vertical-align: inherit;">到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/amavis/conf.d/50-user</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并将值设置为1到5，</font><font style="vertical-align: inherit;">可以增加详细信息量 
+	        </font><font style="vertical-align: inherit;">。
+	       </font></font></p>      
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ log_level = 2;
+</font></font></pre></div>
+	     <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+ 	       <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	       当</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amavisd新</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">日志输出增加时，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spamassassin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">日志输出也会增加。
+	       </font></font></p>
+	     </div></div></div></div>
+	     </li>
+<li class="list itemizedlist">
+	       <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	       该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ClamAV的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">日志级别可以增加编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/clamav/clamd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	       并设置以下选项：
+	       </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LogVerbose为true
+</font></font></pre></div>
+	       <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	       默认情况下，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ClamAV</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">会将日志消息发送到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/log/clamav/clamav.log</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	       </font></font></p>
+	      </li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	   <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   更改应用程序日志设置后，请记住重新启动服务以使新设置生效。</font><font style="vertical-align: inherit;">此外，一旦解决了您正在排除故障的问题，最好将日志设置更改回正常状态。
+	   </font></font></p>
+	   </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="mail-filter-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   有关过滤邮件的详细信息，请参阅以下链接：
+	   </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	       <p class="para">
+               <a href="http://www.ijs.si/software/amavisd/amavisd-new-docs.html" class="ulink" title="http://www.ijs.si/software/amavisd/amavisd-new-docs.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Amavisd-新文档</font></font></a>
+	       </p>
+	     </li>
+<li class="list itemizedlist">
+	       <p class="para">
+               <a href="http://www.clamav.net/doc/latest/html/" class="ulink" title="http://www.clamav.net/doc/latest/html/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ClamAV文档</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和 
+	        </font></font><a href="http://wiki.clamav.net/Main/WebHome" class="ulink" title="http://wiki.clamav.net/Main/WebHome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ClamAV Wiki</font></font></a>
+	       </p>
+	     </li>
+<li class="list itemizedlist">
+	       <p class="para">
+               <a href="http://wiki.apache.org/spamassassin/" class="ulink" title="http://wiki.apache.org/spamassassin/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spamassassin Wiki</font></font></a>
+	       </p>
+	     </li>
+<li class="list itemizedlist">
+	       <p class="para">
+               <a href="http://sourceforge.net/apps/trac/pyzor/" class="ulink" title="http://sourceforge.net/apps/trac/pyzor/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pyzor主页</font></font></a>
+	       </p>
+	       </li>
+<li class="list itemizedlist">
+	       <p class="para">
+               <a href="http://razor.sourceforge.net/" class="ulink" title="http://razor.sourceforge.net/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">剃刀主页</font></font></a>
+  	       </p>
+	     </li>
+<li class="list itemizedlist">
+	       <p class="para">
+               <a href="http://dkim.org/" class="ulink" title="http://dkim.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DKIM.org</font></font></a>
+  	       </p>
+	     </li>
+<li class="list itemizedlist">
+	       <p class="para">
+               <a href="https://help.ubuntu.com/community/PostfixAmavisNew" class="ulink" title="https://help.ubuntu.com/community/PostfixAmavisNew"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix Amavis New</font></font></a>
+  	       </p>
+	     </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   另外，请随时</font><font style="vertical-align: inherit;">在</font><a href="http://freenode.net" class="ulink" title="http://freenode.net"><font style="vertical-align: inherit;">freenode</font></a><font style="vertical-align: inherit;">上</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃ubuntu-server</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> IRC频道中 
+	    </font><font style="vertical-align: inherit;">提问</font><font style="vertical-align: inherit;">。
+	   </font></font><a href="http://freenode.net" class="ulink" title="http://freenode.net"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="mailman.html" title="邮差"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="chat-servers.html" title="聊天应用程序"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

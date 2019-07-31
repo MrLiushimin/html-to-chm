@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>User Management</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="security.html" title="安全"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安全性</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="security.html" title="安全"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="console-security.html" title="控制台安全"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户管理</font></font></h1></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	用户管理是维护安全系统的关键部分。</font><font style="vertical-align: inherit;">无效的用户和权限管理通常会导致许多系统受到损害。</font><font style="vertical-align: inherit;">因此，了解如何通过简单有效的用户帐户管理技术保护服务器非常重要。
+	</font></font></p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="user-management.html#where-is-root" title="根在哪里？"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根在哪里？</font></font></a></li>
+<li class="links"><a class="xref" href="user-management.html#adding-deleting-users" title="添加和删​​除用户"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加和删​​除用户</font></font></a></li>
+<li class="links"><a class="xref" href="user-management.html#user-profile-security" title="用户档案安全"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户档案安全</font></font></a></li>
+<li class="links"><a class="xref" href="user-management.html#password-policy" title="密码政策"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密码政策</font></font></a></li>
+<li class="links"><a class="xref" href="user-management.html#other-security-considerations" title="其他安全考虑因素"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他安全考虑因素</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="where-is-root"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根在哪里？</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	Ubuntu开发人员在所有Ubuntu安装中默认禁用管理root帐户。</font><font style="vertical-align: inherit;">这并不意味着root帐户已被删除或可能无法访问。</font><font style="vertical-align: inherit;">它只是被赋予了一个不匹配任何可能的加密值的密码，因此可能无法直接登录。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	相反，鼓励用户使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">名称的工具</font><font style="vertical-align: inherit;">来执行系统管理职责。  </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sudo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">允许授权用户使用自己的密码暂时提升其权限，而不必知道属于root帐户的密码。</font><font style="vertical-align: inherit;">这种简单而有效的方法为所有用户操作提供了问责制，并使管理员能够精确控制用户可以使用所述权限执行的操作。   
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		如果由于某种原因您希望启用root帐户，只需给它一个密码：
+		</font></font></p>
+		<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		不支持使用root密码的配置。
+		</font></font></p>
+		</div></div></div></div>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo passwd</font></font></span>
+</pre></div>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sudo会提示您输入密码，然后要求您为root提供新密码，如下所示：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[sudo]用户名密码:( </font></font></span> <span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">输入您自己的密码）</font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">输入新的UNIX密码:( </font></font></span> <span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">输入root的新密码）</font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">重新输入新的UNIX密码:( </font></font></span> <span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">重复root的新密码）</font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">passwd：密码更新成功</font></font></span>
+</pre></div>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要禁用root帐户密码，请使用以下passwd语法：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo passwd -l root</font></font></span>
+</pre></div>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        但是，要禁用root帐户本身，请使用以下命令：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">usermod --expiredate 1</font></font></span>
+</pre></div>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		您应该阅读</font><font style="vertical-align: inherit;">手册页，阅读</font><font style="vertical-align: inherit;">有关</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sudo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的</font><font style="vertical-align: inherit;">更多信息</font><font style="vertical-align: inherit;">：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">男人sudo</font></font></span>
+</pre></div>
+		</li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			默认情况下，Ubuntu安装程序创建的初始用户是“ </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ” </font><font style="vertical-align: inherit;">组的成员，该组</font><font style="vertical-align: inherit;">作为授权的sudo用户</font><font style="vertical-align: inherit;">添加到文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / sudoers</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中。</font><font style="vertical-align: inherit;">如果您希望通过</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为任何其他帐户提供完全root访问权限</font><font style="vertical-align: inherit;">，只需将它们添加到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组即可。
+		</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="adding-deleting-users"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加和删​​除用户</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	管理本地用户和组的过程很简单，与大多数其他GNU / Linux操作系统差别很小。</font><font style="vertical-align: inherit;">Ubuntu和其他基于Debian的发行版鼓励使用“adduser”包进行帐户管理。
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要添加用户帐户，请使用以下语法，并按照提示为帐户提供密码和可识别的特征，例如全名，电话号码等。
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo adduser用户名</font></font></span>
+</pre></div>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要删除用户帐户及其主要组，请使用以下语法：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo deluser用户名</font></font></span>
+</pre></div>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		删除帐户不会删除其各自的主文件夹。</font><font style="vertical-align: inherit;">您是否希望手动删除文件夹或根据所需的保留策略保留该文件夹取决于您。  
+		</font></font></p>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		请记住，如果您未采取必要的预防措施，稍后使用与之前所有者相同的UID / GID添加的任何用户现在都可以访问此文件夹。
+		</font></font></p>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		您可能希望将这些UID / GID值更改为更合适的值，例如root帐户，甚至可能需要重新定位文件夹以避免将来发生冲突：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chown -R root：root / home / username / </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mkdir / home / archived_users / </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mv / home / username / home / archived_users /</font></font></span>
+</pre></div>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要临时锁定或解锁用户帐户，请分别使用以下语法：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo passwd -l username </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo passwd -u username</font></font></span>
+</pre></div>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要添加或删除个性化组，请分别使用以下语法：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo addgroup groupname </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo delgroup groupname</font></font></span>
+</pre></div>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要将用户添加到组，请使用以下语法：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo adduser用户名组名</font></font></span>
+</pre></div>
+		</li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="user-profile-security"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户档案安全</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	创建新用户时，adduser实用程序会创建一个名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ home / username的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">全新主目录</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">默认配置文件是在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / skel</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录中找到的内容之后建模的</font><font style="vertical-align: inherit;">，其中包含所有配置文件基础知识。  
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如果您的服务器将是多个用户的家，您应该密切关注用户主目录的权限，以确保机密性。</font><font style="vertical-align: inherit;">默认情况下，Ubuntu中的用户主目录是使用世界读/执行权限创建的。</font><font style="vertical-align: inherit;">这意味着所有用户都可以浏览和访问其他用户主目录的内容。</font><font style="vertical-align: inherit;">这可能不适合您的环境。
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要验证当前用户主目录权限，请使用以下语法：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ls -ld / home / username</font></font></span>
+</pre></div>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下输出显示目录</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ home / username</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">具有世界可读的权限：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drwxr-xr-x 2用户名username 4096 2007-10-02 20:03用户名</font></font></span>
+</pre></div>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		您可以使用以下语法删除全局可读权限：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chmod 0750 / home / username</font></font></span>
+</pre></div>
+		<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		有些人倾向于不加选择地使用递归选项（-R）来修改所有子文件夹和文件，但这不是必需的，并且可能产生其他不期望的结果。</font><font style="vertical-align: inherit;">仅父目录就足以防止对父级以下的任何内容进行未经授权的访问。
+		</font></font></p>
+		</div></div></div></div>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		更有效的方法是</font><font style="vertical-align: inherit;">在创建用户主文件夹时</font><font style="vertical-align: inherit;">修改</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">adduser</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">全局默认权限。</font><font style="vertical-align: inherit;">只需编辑文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/adduser.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并将</font></font><span class="code varname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DIR_MODE</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">变量</font><font style="vertical-align: inherit;">修改为</font><font style="vertical-align: inherit;">适当的值，以便所有新的主目录都能获得正确的权限。
+		</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DIR_MODE = 0750
+</font></font></pre></div>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		使用前面提到的任何技术更正目录权限后，请使用以下语法验证结果：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ls -ld / home / username</font></font></span>
+</pre></div>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下结果显示已删除世界可读的权限：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drwxr-x --- 2用户名username 4096 2007-10-02 20:03用户名</font></font></span>
+</pre></div>
+		</li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="password-policy"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密码政策</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	强密码策略是您安全状况最重要的方面之一。</font><font style="vertical-align: inherit;">许多成功的安全漏洞涉及简单的暴力破解和针对弱密码的字典攻击。</font><font style="vertical-align: inherit;">如果您打算提供涉及本地密码系统的任何形式的远程访问，请确保充分满足最低密码复杂性要求，最长密码生命周期以及对身份验证系统的频繁审核。
+	</font></font></p></div>
+<div class="sect3 sect" id="minimum-password-length"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最小密码长度</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	默认情况下，Ubuntu要求最小密码长度为6个字符，以及一些基本的熵检查。</font><font style="vertical-align: inherit;">这些值在文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/pam.d/common-password</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中控制，</font><font style="vertical-align: inherit;">如下所述。
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密码[success = 1 default = ignore] pam_unix.so隐藏sha512
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+如果要将最小长度调整为8个字符，请将相应的变量更改为min = 8。</font><font style="vertical-align: inherit;">修改概述如下。
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密码[success = 1 default = ignore] pam_unix.so obscure sha512 minlen = 8
+</font></font></pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                基本密码熵检查和最小长度规则不适用于使用sudo level命令设置新用户的管理员。
+                </font></font></p>
+                </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="password-expiration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密码到期</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	在创建用户帐户时，您应该制定一项策略，使其具有最小和最大密码使用期限，从而强制用户在密码过期时更改密码。
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要轻松查看用户帐户的当前状态，请使用以下语法：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chage -l username</font></font></span>
+</pre></div>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下面的输出显示了有关用户帐户的有趣事实，即没有应用任何策略：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最后密码更改：2015年1月20日</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+密码过期：永远不会</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+密码无效：从不</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+帐户到期：从不</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+密码更改之间的最小天数：0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+密码更改之间的最大天数：99999</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+密码过期前的警告天数：7</font></font></span>
+</pre></div>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要设置任何这些值，只需使用以下语法，然后按照交互式提示操作：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chage用户名</font></font></span>
+</pre></div>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		以下是如何手动将显式到期日期（-E）更改为2015年1月31日，最短密码年龄（-m）为5天，最长密码年龄（-M）为90天，不活动的示例密码到期后5天（-I），密码到期前14天的警告时间段（-W）：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chage -E 01/31/2015 -m 5 -M 90 -I 30 -W 14用户名</font></font></span>
+</pre></div>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要验证更改，请使用前面提到的相同语法：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chage -l username</font></font></span>
+</pre></div>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下输出显示已为该帐户建立的新策略：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最后密码更改：2015年1月20日</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+密码到期：2015年4月19日</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+密码无效：2015年5月19日</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+帐户到期日：2015年1月31日</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+密码更改之间的最少天数：5</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+密码更改之间的最大天数：90</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+密码过期前的警告天数：14</font></font></span>
+</pre></div>
+		</li>
+</ul></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="other-security-considerations"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他安全考虑因素</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	许多应用程序使用备用身份验证机制，即使是经验丰富的系统管理员也很容易忽略 </font><font style="vertical-align: inherit;">因此，了解和控制用户如何对服务器上的服务和应用程序进行身份验证和访问非常重要。
+	</font></font></p></div>
+<div class="sect3 sect" id="ssh-access-by-disabled-users"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">禁用用户的SSH访问</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如果用户之前已设置RSA公钥身份验证，则仅禁用/锁定用户帐户不会阻止用户远程登录服务器。</font><font style="vertical-align: inherit;">他们仍然可以获得对服务器的shell访问权限，而无需任何密码。</font><font style="vertical-align: inherit;">请记住检查用户主目录中是否有允许此类经过身份验证的SSH访问的文件，例如</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/home/username/.ssh/authorized_keys</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	删除或重命名</font><font style="vertical-align: inherit;">用户主文件夹中的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.ssh /</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录，以防止进一步的SSH身份验证功能。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	请务必检查已禁用用户是否已建立SSH连接，因为它们可能存在入站或出站连接。</font><font style="vertical-align: inherit;">杀死任何被发现的东西。
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">谁| </font><font style="vertical-align: inherit;">grep用户名</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">   （获取pts /＃终端）
+ </font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo pkill -f pts /＃</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	将SSH访问权限仅限于应拥有该用户帐户的用户帐户。</font><font style="vertical-align: inherit;">例如，您可以创建一个名为“sshlogin”的组，并将组名添加为与</font><font style="vertical-align: inherit;">位于</font><span class="file filename"><font style="vertical-align: inherit;">/ etc / ssh / sshd_config</font></span><font style="vertical-align: inherit;">文件中</font><font style="vertical-align: inherit;">的</font></font><span class="code varname"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AllowGroups</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">变量</font><font style="vertical-align: inherit;">关联的值</font><font style="vertical-align: inherit;">。
+	</font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AllowGroups sshlogin
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	然后将允许的SSH用户添加到“sshlogin”组，并重新启动SSH服务。
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo adduser用户名sshlogin </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart sshd.service</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="external-db-auth"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">外部用户数据库验证</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	大多数企业网络都需要对所有系统资源进行集中式身份验证和访 </font><font style="vertical-align: inherit;">如果已将服务器配置为针对外部数据库对用户进行身份验证，请确保在外部和本地禁用用户帐户。</font><font style="vertical-align: inherit;">这样，您可以确保无法进行本地回退身份验证。
+	</font></font></p></div></div>
+</div></div>
+</div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="security.html" title="安全"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="console-security.html" title="控制台安全"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

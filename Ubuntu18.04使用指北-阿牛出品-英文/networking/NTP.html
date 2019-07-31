@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Time Synchronization</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="networking.html" title="Networking">Networking</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="dhcp.html" title="Dynamic Host Configuration Protocol (DHCP)">Previous</a><a class="nextlinks-next" href="DPDK.html" title="Data Plane Development Kit">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Time Synchronization</h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+NTP is a TCP/IP protocol for synchronizing time over a network. Basically a client requests the current time from a server, and uses it to set its own clock.
+</p>
+<p class="para">
+Behind this simple description, there is a lot of complexity - there are tiers of NTP servers, with the tier one NTP servers connected to atomic clocks, and tier two and three servers spreading the load of actually handling requests across the Internet. Also the client software is a lot more complex than you might think - it has to factor out communication delays, and adjust the time in a way that does not upset all the other processes that run on the server. But luckily all that complexity is hidden from you!
+</p>
+<p class="para">
+        Ubuntu by default uses <span class="em emphasis">timedatectl / timesyncd</span> to synchronize time and users can optionally use chrony to <a class="xref" href="NTP.html#timeservers" title="Serve the Network Time Protocol">Serve the Network Time Protocol</a>.
+</p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="NTP.html#timedate-info" title="Synchronizing your systems time">Synchronizing your systems time</a></li>
+<li class="links"><a class="xref" href="NTP.html#timeservers" title="Serve the Network Time Protocol">Serve the Network Time Protocol</a></li>
+<li class="links"><a class="xref" href="NTP.html#ntp-references" title="References">References</a></li>
+</ul></div>
+<div class="sect2 sect" id="timedate-info"><div class="inner">
+<div class="hgroup"><h2 class="title">Synchronizing your systems time</h2></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+		Since Ubuntu 16.04 <span class="em emphasis">timedatectl / timesyncd</span> (which are part of systemd) replace most of <span class="em emphasis">ntpdate / ntp</span>.
+	</p>
+<p class="para">
+        <span class="app application">timesyncd</span> is available by default and replaces not only <span class="app application">ntpdate</span>, but also the client portion of <span class="app application">chrony</span> (or formerly <span class="app application">ntpd</span>).
+		So on top of the one-shot action that <span class="app application">ntpdate</span> provided on boot and network activation, now <span class="app application">timesyncd</span> by default regularly checks and keeps your local time in sync.
+		It also stores time updates locally, so that after reboots monotonically advances if applicable.
+	</p>
+<p class="para">
+		If <span class="app application">chrony</span> is installed <span class="app application">timedatectl</span> steps back to let chrony do the time keeping.
+        That shall ensure that no two time syncing services are fighting.
+        While no more recommended to be used, this still also applies to <span class="app application">ntpd</span> being installed to retain any kind of old behavior/config that you had through an upgrade.
+		But it also implies that on an upgrade from a former release ntp/ntpdate might still be installed and therefore renders the new systemd based services disabled.
+	</p>
+<p class="para">
+        <span class="app application">ntpdate</span> is considered deprecated in favor of <span class="app application">timedatectl</span> (or <span class="app application">chrony</span>) and thereby no more installed by default.
+        timesyncd will generally do the right thing keeping your time in sync, and <span class="app application">chrony</span> will help with more complex cases.
+        But if you had one of a few known special ntpdate use cases, consider the following:
+        <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para">
+              If you require a one-shot sync use: <span class="cmd command">chronyd -q</span>
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+              If you require a one-shot time check, without setting the time use: <span class="cmd command">chronyd -Q</span>
+            </p>
+          </li>
+</ul></div>
+	</p>
+</div>
+<div class="sect3 sect" id="timedate-config"><div class="inner">
+<div class="hgroup"><h3 class="title">Configuring timedatectl and timesyncd</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+		The current status of time and time configuration via <span class="app application">timedatectl</span> and <span class="app application">timesyncd</span> can be checked with <span class="cmd command">timedatectl status</span>.
+	</p>
+<div class="screen"><pre class="contents ">$ timedatectl status
+                       Local time: Fr 2018-02-23 08:47:13 UTC
+                   Universal time: Fr 2018-02-23 08:47:13 UTC
+                         RTC time: Fr 2018-02-23 08:47:13
+                        Time zone: Etc/UTC (UTC, +0000)
+        System clock synchronized: yes
+ systemd-timesyncd.service active: yes
+                  RTC in local TZ: no
+
+If chrony is running it will automatically switch to:
+[...]
+ systemd-timesyncd.service active: no
+      </pre></div>
+<p class="para">
+Via <span class="app application">timedatectl</span> an admin can control the timezone, how the system clock should relate to the hwclock and if permanent synronization should be enabled or not.
+See <span class="cmd command">man timedatectl</span> for more details.
+</p>
+<p class="para">
+        timesyncd itself is still a normal service, so you can check its status also more in detail via.
+<div class="screen"><pre class="contents ">$ systemctl status systemd-timesyncd
+  systemd-timesyncd.service - Network Time Synchronization
+   Loaded: loaded (/lib/systemd/system/systemd-timesyncd.service; enabled; vendor preset: enabled)
+   Active: active (running) since Fri 2018-02-23 08:55:46 UTC; 10s ago
+     Docs: man:systemd-timesyncd.service(8)
+ Main PID: 3744 (systemd-timesyn)
+   Status: "Synchronized to time server 91.189.89.198:123 (ntp.ubuntu.com)."
+    Tasks: 2 (limit: 4915)
+   CGroup: /system.slice/systemd-timesyncd.service
+           |-3744 /lib/systemd/systemd-timesyncd
+
+Feb 23 08:55:46 bionic-test systemd[1]: Starting Network Time Synchronization...
+Feb 23 08:55:46 bionic-test systemd[1]: Started Network Time Synchronization.
+Feb 23 08:55:46 bionic-test systemd-timesyncd[3744]: Synchronized to time server 91.189.89.198:123 (ntp.ubuntu.com).
+</pre></div>
+</p>
+<p class="para">
+        The nameserver to fetch time for <span class="app application">timedatectl</span> and <span class="app application">timesyncd</span> from can be specified in <span class="file filename">/etc/systemd/timesyncd.conf</span> and additional config files can be stored in <span class="file filename">/etc/systemd/timesyncd.conf.d/</span>.
+        The entries for NTP= and FallbackNTP= are space separated lists.
+        See <span class="cmd command">man timesyncd.conf</span> for more.
+</p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="timeservers"><div class="inner">
+<div class="hgroup"><h2 class="title">Serve the Network Time Protocol</h2></div>
+<div class="region">
+<div class="contents"><p class="para">
+       If in addition to synchronizing your system you also want to serve NTP information you need an NTP server. There are several options with <span class="app application">chrony</span>, <span class="app application">ntpd</span> and <span class="app application">open-ntp</span>.
+       The recommended solution is <span class="app application">chrony</span>.
+   </p></div>
+<div class="sect3 sect" id="chrony"><div class="inner">
+<div class="hgroup"><h3 class="title">chrony(d)</h3></div>
+<div class="region"><div class="contents"><p class="para">
+   The NTP daemon chronyd calculates the drift and offset of your system clock and continuously adjusts it, so there are no large corrections that could
+   lead to inconsistent logs for instance. The cost is a little processing power and memory, but for a modern server this is usually negligible.
+   </p></div></div>
+</div></div>
+<div class="sect3 sect" id="chrony-installation"><div class="inner">
+<div class="hgroup"><h3 class="title">Installation</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+   To install chrony, from a terminal prompt enter:
+   </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install chrony</span>
+</pre></div>
+<p class="para">
+       This will provide two binaries:
+        <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para">
+              chronyd - the actual daemon to sync and serve via the NTP protocol
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+              chronyc - command-line interface for chrony daemon
+            </p>
+          </li>
+</ul></div>
+   </p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="timeservers-conf"><div class="inner">
+<div class="hgroup"><h3 class="title">Chronyd Configuration</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+      Edit <span class="file filename">/etc/chrony/chrony.conf</span> to add/remove server lines.
+  By default these servers are configured:
+  </p>
+<div class="code"><pre class="contents "># Use servers from the NTP Pool Project. Approved by Ubuntu Technical Board
+# on 2011-02-08 (LP: #104525). See http://www.pool.ntp.org/join.html for
+# more information.
+pool 0.ubuntu.pool.ntp.org iburst
+pool 1.ubuntu.pool.ntp.org iburst
+pool 2.ubuntu.pool.ntp.org iburst
+pool 3.ubuntu.pool.ntp.org iburst
+</pre></div>
+<p class="para">
+      See <span class="cmd command">man chrony.conf</span> for more details on the configuration options.
+	  After changing the any of the config file you have to restart <span class="app application">chrony</span>:
+	  </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart chrony.service</span>
+</pre></div>
+<p class="para">
+	   Of the pool 2.ubuntu.pool.ntp.org as well as ntp.ubuntu.com also support ipv6 if needed.
+	   If one needs to force ipv6 there also is ipv6.ntp.ubuntu.com which is not configured by default.
+</p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="ntp-status"><div class="inner">
+<div class="hgroup"><h3 class="title">View status</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+  Use chronyc to see query the status of the chrony daemon.
+  For example to get an overview of the currently available and selected time sources.
+  </p>
+<p class="para">
+  </p>
+<div class="screen"><pre class="contents "><span class="cmd command">chronyc sources</span>
+<span class="output computeroutput">
+MS Name/IP address         Stratum Poll Reach LastRx Last sample
+===============================================================================
+^+ gamma.rueckgr.at              2   8   377   135  -1048us[-1048us] +/-   29ms
+^- 2b.ncomputers.org             2   8   377   204  -1141us[-1124us] +/-   50ms
+^+ www.kashra.com                2   8   377   139  +3483us[+3483us] +/-   18ms
+^+ stratum2-4.NTP.TechFak.U&gt;     2   8   377   143  -2090us[-2073us] +/-   19ms
+^- zepto.mcl.gg                  2   7   377     9   -774us[ -774us] +/-   29ms
+^- mirrorhost.pw                 2   7   377    78   -660us[ -660us] +/-   53ms
+^- atto.mcl.gg                   2   7   377     8   -823us[ -823us] +/-   50ms
+^- static.140.107.46.78.cli&gt;     2   8   377     9  -1503us[-1503us] +/-   45ms
+^- 4.53.160.75                   2   8   377   137    -11ms[  -11ms] +/-  117ms
+^- 37.44.185.42                  3   7   377    10  -3274us[-3274us] +/-   70ms
+^- bagnikita.com                 2   7   377    74  +3131us[+3131us] +/-   71ms
+^- europa.ellipse.net            2   8   377   204   -790us[ -773us] +/-   97ms
+^- tethys.hot-chilli.net         2   8   377   141   -797us[ -797us] +/-   59ms
+^- 66-232-97-8.static.hvvc.&gt;     2   7   377   206  +1669us[+1686us] +/-  133ms
+^+ 85.199.214.102                1   8   377   205   +175us[ +192us] +/-   12ms
+^* 46-243-26-34.tangos.nl        1   8   377   141   -123us[ -106us] +/-   10ms
+^- pugot.canonical.com           2   8   377    21    -95us[  -95us] +/-   57ms
+^- alphyn.canonical.com          2   6   377    23  -1569us[-1569us] +/-   79ms
+^- golem.canonical.com           2   7   377    92  -1018us[-1018us] +/-   31ms
+^- chilipepper.canonical.com     2   8   377    21  -1106us[-1106us] +/-   27ms
+</span>
+<span class="cmd command">chronyc sourcestats</span>
+<span class="output computeroutput">
+210 Number of sources = 20
+Name/IP Address            NP  NR  Span  Frequency  Freq Skew  Offset  Std Dev
+==============================================================================
+gamma.rueckgr.at           25  15   32m     -0.007      0.142   -878us   106us
+2b.ncomputers.org          26  16   35m     -0.132      0.283  -1169us   256us
+www.kashra.com             25  15   32m     -0.092      0.259  +3426us   195us
+stratum2-4.NTP.TechFak.U&gt;  25  14   32m     -0.018      0.130  -2056us    96us
+zepto.mcl.gg               13  11   21m     +0.148      0.196   -683us    66us
+mirrorhost.pw               6   5   645     +0.117      0.445   -591us    19us
+atto.mcl.gg                21  13   25m     -0.069      0.199   -904us   103us
+static.140.107.46.78.cli&gt;  25  18   34m     -0.005      0.094  -1526us    78us
+4.53.160.75                25  10   32m     +0.412      0.110    -11ms    84us
+37.44.185.42               24  12   30m     -0.983      0.173  -3718us   122us
+bagnikita.com              17   7   31m     -0.132      0.217  +3527us   139us
+europa.ellipse.net         26  15   35m     +0.038      0.553   -473us   424us
+tethys.hot-chilli.net      25  11   32m     -0.094      0.110   -864us    88us
+66-232-97-8.static.hvvc.&gt;  20  11   35m     -0.116      0.165  +1561us   109us
+85.199.214.102             26  11   35m     -0.054      0.390   +129us   343us
+46-243-26-34.tangos.nl     25  16   32m     +0.129      0.297   -307us   198us
+pugot.canonical.com        25  14   34m     -0.271      0.176   -143us   135us
+alphyn.canonical.com       17  11  1100     -0.087      0.360  -1749us   114us
+golem.canonical.com        23  12   30m     +0.057      0.370   -988us   229us
+chilipepper.canonical.com  25  18   34m     -0.084      0.224  -1116us   169us
+</span>
+</pre></div>
+<p class="para">
+      Certain chronyc commands are privileged and can not be run via the network without explicitly allowing them.
+      See section <span class="em emphasis">Command and monitoring access</span> in <span class="cmd command">man chrony.conf</span> for more details.
+      A local admin can use <span class="app application">sudo</span> as usually as this will grant him access to the local admin socket <span class="file filename">/var/run/chrony/chronyd.sock</span>.
+  </p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="ntp-pps"><div class="inner">
+<div class="hgroup"><h3 class="title">PPS Support</h3></div>
+<div class="region"><div class="contents"><p class="para">
+      Chrony supports various PPS types natively. It can use kernel PPS API as well as PTP hardware clock.
+      Most general GPS receivers can be leveraged via <span class="app application">GPSD</span>.
+      The latter (and potentially more) can be accessed via <span class="em emphasis">SHM</span> or via a <span class="em emphasis">socket</span> (recommended).
+      All of the above can be used to augment chrony with additional high quality time sources for better accuracy, jitter, drift, longer-or-short term accuracy (Usually each kind of clock type is good at one of those, but non-perfect at the others).
+      For more details on configuration see some of the external PPS/GPSD resource listed below.
+  </p></div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="ntp-references"><div class="inner">
+<div class="hgroup"><h2 class="title">References</h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+  	    <p class="para">
+            <a href="https://chrony.tuxfamily.org/faq.html" class="ulink" title="https://chrony.tuxfamily.org/faq.html">Chrony FAQ</a>
+        </p>
+      </li>
+<li class="list itemizedlist">
+  	    <p class="para">
+          <a href="http://www.ntp.org/" class="ulink" title="http://www.ntp.org/">ntp.org, home of the Network Time Protocol project</a>
+        </p>
+      </li>
+<li class="list itemizedlist">
+  	    <p class="para">
+            <a href="http://www.pool.ntp.org/" class="ulink" title="http://www.pool.ntp.org/">The pool.ntp.org projecti, being a big virtual cluster of timeservers.</a>
+        </p>
+      </li>
+<li class="list itemizedlist">
+  	    <p class="para">
+            <a href="https://www.freedesktop.org/software/systemd/man/timedatectl.html" class="ulink" title="https://www.freedesktop.org/software/systemd/man/timedatectl.html">Freedesktop.org info on timedatectl</a>
+        </p>
+      </li>
+<li class="list itemizedlist">
+  	    <p class="para">
+            <a href="https://www.freedesktop.org/software/systemd/man/systemd-timesyncd.service.html#" class="ulink" title="https://www.freedesktop.org/software/systemd/man/systemd-timesyncd.service.html#">Freedesktop.org info on systemd-timesyncd service</a>
+        </p>
+      </li>
+<li class="list itemizedlist">
+  	    <p class="para">
+            <a href="http://www.catb.org/gpsd/gpsd-time-service-howto.html#_feeding_chrony_from_gpsd" class="ulink" title="http://www.catb.org/gpsd/gpsd-time-service-howto.html#_feeding_chrony_from_gpsd">Feeding chrony from GPSD</a>
+        </p>
+      </li>
+<li class="list itemizedlist">
+  	    <p class="para">
+          See the <a href="https://help.ubuntu.com/community/UbuntuTime" class="ulink" title="https://help.ubuntu.com/community/UbuntuTime">Ubuntu Time</a> wiki page for more information.
+        </p>
+      </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="dhcp.html" title="Dynamic Host Configuration Protocol (DHCP)">Previous</a><a class="nextlinks-next" href="DPDK.html" title="Data Plane Development Kit">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

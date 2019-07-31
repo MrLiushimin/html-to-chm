@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Kernel Crash Dump</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="installation.html" title="Installation">Installation</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="advanced-installation.html" title="Advanced Installation">Previous</a><a class="nextlinks-next" href="../package-management/package-management.html" title="Package Management">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Kernel Crash Dump</h1></div>
+<div class="region">
+<div class="contents"></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#kernel-dump-introduction" title="Introduction">Introduction</a></li>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#kernel-crash-dump-mechanisms" title="Kernel Crash Dump Mechanism">Kernel Crash Dump Mechanism</a></li>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#Installation" title="Installation">Installation</a></li>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#kernel-dump-configuration" title="Configuration">Configuration</a></li>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#verification" title="Verification">Verification</a></li>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#kdump-testing" title="Testing the Crash Dump Mechanism">Testing the Crash Dump Mechanism</a></li>
+<li class="links"><a class="xref" href="kernel-crash-dump.html#kdump-resources" title="Resources">Resources</a></li>
+</ul></div>
+<div class="sect2 sect" id="kernel-dump-introduction"><div class="inner">
+<div class="hgroup"><h2 class="title">Introduction</h2></div>
+<div class="region"><div class="contents"><p class="para">
+        A Kernel Crash Dump refers to a portion of the contents of volatile memory (RAM) that is copied to disk whenever
+         the execution of the kernel is disrupted. The following events can cause a kernel disruption :
+         <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para">Kernel Panic</p></li>
+<li class="list itemizedlist"><p class="para">Non Maskable Interrupts (NMI)</p></li>
+<li class="list itemizedlist"><p class="para">Machine Check Exceptions (MCE)</p></li>
+<li class="list itemizedlist"><p class="para">Hardware failure</p></li>
+<li class="list itemizedlist"><p class="para">Manual intervention</p></li>
+</ul></div>
+	 For some of those events (panic, NMI) the kernel will react automatically and trigger the crash dump mechanism through <span class="em emphasis">kexec</span>. In other situations a manual intervention is required in order to capture the memory.
+	 
+	 Whenever one of the above events occurs, it is important to find out the root cause in order to prevent it from happening again.  The cause can be determined by inspecting the copied memory contents.
+        </p></div></div>
+</div></div>
+<div class="sect2 sect" id="kernel-crash-dump-mechanisms"><div class="inner">
+<div class="hgroup"><h2 class="title">Kernel Crash Dump Mechanism</h2></div>
+<div class="region"><div class="contents"><p class="para">
+	When a kernel panic occurs, the kernel relies on the <span class="em emphasis">kexec</span> mechanism to quickly reboot a new instance of the kernel in a pre-reserved section of memory that had been allocated when the system booted (see below). This permits the existing memory area to remain untouched in order to safely copy its contents to storage.
+        </p></div></div>
+</div></div>
+<div class="sect2 sect" id="Installation"><div class="inner">
+<div class="hgroup"><h2 class="title">Installation</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      The kernel crash dump utility is installed with the following command:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install linux-crashdump</span>
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">Starting with 16.04, the kernel crash dump mechanism is enabled by default. During the installation, you will be prompted with the following dialog. Unless chosen otherwise, the kdump mechanism will be enabled.
+        </p>
+      </div></div></div></div>
+<div class="screen"><pre class="contents "> |------------------------| Configuring kdump-tools |------------------------|
+ |                                                                           |
+ |                                                                           |
+ | If you choose this option, the kdump-tools mechanism will be enabled. A   |
+ | reboot is still required in order to enable the crashkernel kernel        |
+ | parameter.                                                                |
+ |                                                                           |
+ | Should kdump-tools be enabled by default?                                 |
+ |                                                                           |
+ |                    <span class="em em-bold emphasis">&lt;Yes&gt;</span>                       &lt;No&gt;                       |
+ |                                                                           |
+ |---------------------------------------------------------------------------|
+        </pre></div>
+<p class="para">
+          If you ever need to manually enable the functionality, you can use the <span class="cmd command">dpkg-reconfigure kdump-tools</span> command and answer Yes to the question. You can also edit <span class="file filename">/etc/default/kdump-tools</span> by including the following line:
+<div class="code"><pre class="contents ">USE_KDUMP=1
+</pre></div>
+      </p>
+<p class="para">
+      If a reboot has not been done since installation of the linux-crashdump package, a reboot will be required in order to activate the crashkernel= boot parameter. Upon reboot, kdump-tools will be enabled and active.
+      </p>
+<p class="para">
+        If you enable kdump-tools after a reboot, you will only need to issue the <span class="cmd command">kdump-config load</span> command to activate the kdump mechanism.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="kernel-dump-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Configuration</h2></div>
+<div class="region">
+<div class="contents"><p class="para">
+        In addition to local dump, it is now possible to use the remote dump functionality to send the kernel crash dump to a remote server, using either the <span class="em emphasis">SSH</span> or <span class="em emphasis">NFS</span> protocols.
+      </p></div>
+<div class="sect3 sect" id="local-dump"><div class="inner">
+<div class="hgroup"><h3 class="title">Local Kernel Crash Dumps</h3></div>
+<div class="region"><div class="contents"><p class="para">
+          Local dumps are configured automatically and will remain in use unless a remote protocol is chosen. Many configuration options exist and are thoroughly documented in the <span class="file filename">/etc/default/kdump-tools</span> file.
+        </p></div></div>
+</div></div>
+<div class="sect3 sect" id="ssh-dump"><div class="inner">
+<div class="hgroup"><h3 class="title">Remote Kernel Crash Dumps using the SSH protocol</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+          To enable remote dumps using the <span class="em emphasis">SSH</span> protocol, the <span class="file filename">/etc/default/kdump-tools</span> must be modified in the following manner :</p>
+<div class="code"><pre class="contents "># ---------------------------------------------------------------------------
+# Remote dump facilities:
+# SSH - username and hostname of the remote server that will receive the dump
+#       and dmesg files.
+# SSH_KEY - Full path of the ssh private key to be used to login to the remote
+#           server. use kdump-config propagate to send the public key to the
+#           remote server
+# HOSTTAG - Select if hostname of IP address will be used as a prefix to the
+#           timestamped directory when sending files to the remote server.
+#           'ip' is the default.
+<span class="em em-bold emphasis">SSH="ubuntu@kdump-netcrash"</span>
+        </pre></div>
+<p class="para">The only mandatory variable to define is SSH. It must contain the username and hostname of the remote server using the format {username}@{remote server}.</p>
+<p class="para">SSH_KEY may be used to provide an existing private key to be used. Otherwise, the <span class="cmd command">kdump-config propagate</span> command will create a new keypair. The HOSTTAG variable may be used to use the hostname of the system as a prefix to the remote directory to be created instead of the IP address. </p>
+<p class="para">The following example shows how <span class="cmd command">kdump-config propagate</span> is used to create and propagate a new keypair to the remote server :
+        <div class="screen"><pre class="contents "><span class="cmd command">sudo kdump-config propagate</span>
+Need to generate a new ssh key...
+The authenticity of host 'kdump-netcrash (192.168.1.74)' can't be established.
+ECDSA key fingerprint is SHA256:iMp+5Y28qhbd+tevFCWrEXykDd4dI3yN4OVlu3CBBQ4.
+Are you sure you want to continue connecting (yes/no)? yes
+ubuntu@kdump-netcrash's password: 
+propagated ssh key /root/.ssh/kdump_id_rsa to server ubuntu@kdump-netcrash
+        </pre></div>
+        The password of the account used on the remote server will be required in order to successfully send the public key to the server</p>
+<p class="para">
+        The <span class="cmd command">kdump-config show</span> command can be used to confirm that kdump is correctly configured to use the SSH protocol :
+        <div class="screen"><pre class="contents "><span class="cmd command">kdump-config show</span>
+DUMP_MODE:        kdump
+USE_KDUMP:        1
+KDUMP_SYSCTL:     kernel.panic_on_oops=1
+KDUMP_COREDIR:    /var/crash
+crashkernel addr: 0x2c000000
+   /var/lib/kdump/vmlinuz: symbolic link to /boot/vmlinuz-4.4.0-10-generic
+kdump initrd: 
+   /var/lib/kdump/initrd.img: symbolic link to /var/lib/kdump/initrd.img-4.4.0-10-generic
+<span class="em em-bold emphasis">SSH:              ubuntu@kdump-netcrash
+SSH_KEY:          /root/.ssh/kdump_id_rsa
+HOSTTAG:          ip
+current state:    ready to kdump</span>
+        </pre></div></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="nfs-dump"><div class="inner">
+<div class="hgroup"><h3 class="title">Remote Kernel Crash Dumps using the NFS protocol</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+          To enable remote dumps using the <span class="em emphasis">NFS</span> protocol, the <span class="file filename">/etc/default/kdump-tools</span> must be modified in the following manner :</p>
+<div class="code"><pre class="contents "># NFS -     Hostname and mount point of the NFS server configured to receive
+#           the crash dump. The syntax must be {HOSTNAME}:{MOUNTPOINT} 
+#           (e.g. remote:/var/crash)
+#
+<span class="em em-bold emphasis">NFS="kdump-netcrash:/var/crash"</span>
+          </pre></div>
+<p class="para">As with the SSH protocol, the HOSTTAG variable can be used to replace the IP address by the hostname as the prefix of the remote directory.</p>
+<p class="para">The <span class="cmd command">kdump-config show</span> command can be used to confirm that kdump is correctly configured to use the NFS protocol :
+        <div class="screen"><pre class="contents "><span class="cmd command">kdump-config show</span>
+DUMP_MODE:        kdump
+USE_KDUMP:        1
+KDUMP_SYSCTL:     kernel.panic_on_oops=1
+KDUMP_COREDIR:    /var/crash
+crashkernel addr: 0x2c000000
+   /var/lib/kdump/vmlinuz: symbolic link to /boot/vmlinuz-4.4.0-10-generic
+kdump initrd: 
+   /var/lib/kdump/initrd.img: symbolic link to /var/lib/kdump/initrd.img-4.4.0-10-generic
+<span class="em em-bold emphasis">NFS:              kdump-netcrash:/var/crash
+HOSTTAG:          hostname
+current state:    ready to kdump</span>
+      </pre></div></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="verification"><div class="inner">
+<div class="hgroup"><h2 class="title">Verification</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      To confirm that the kernel dump mechanism is enabled, there are a few things to verify. First, confirm that
+      the <span class="em emphasis">crashkernel</span> boot parameter is present (note: The following line has been split
+      into two to fit the format of this document:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">cat /proc/cmdline</span>
+<span class="output computeroutput">
+BOOT_IMAGE=/vmlinuz-3.2.0-17-server root=/dev/mapper/PreciseS-root ro
+ crashkernel=384M-2G:64M,2G-:128M
+</span>
+</pre></div>
+<p class="para">
+        The <span class="em emphasis">crashkernel</span> parameter has the following syntax: 
+        <div class="code"><pre class="contents ">crashkernel=&lt;range1&gt;:&lt;size1&gt;[,&lt;range2&gt;:&lt;size2&gt;,...][@offset]
+    range=start-[end] 'start' is inclusive and 'end' is exclusive.
+        </pre></div>
+	</p>
+<p class="para"> 
+So for the crashkernel parameter found in <span class="file filename">/proc/cmdline</span> we would have :
+<div class="code"><pre class="contents ">crashkernel=384M-2G:64M,2G-:128M
+</pre></div>
+	</p>
+<p class="para">The above value means:</p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para">if the RAM is smaller than 384M, then don't reserve anything
+       (this is the "rescue" case)</p></li>
+<li class="list itemizedlist"><p class="para">if the RAM size is between 386M and 2G (exclusive), then reserve 64M</p></li>
+<li class="list itemizedlist"><p class="para">if the RAM size is larger than 2G, then reserve 128M</p></li>
+</ul></div>
+<p class="para">
+      Second, verify that the kernel has reserved the requested memory area for the kdump kernel by doing:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">dmesg | grep -i crash</span>
+<span class="output computeroutput">
+...
+[    0.000000] Reserving 64MB of memory at 800MB for crashkernel (System RAM: 1023MB)
+</span>
+</pre></div>
+<p class="para">
+      Finally, as seen previously, the <span class="cmd command">kdump-config show</span> command displays the current status of the kdump-tools configuration :
+      <div class="screen"><pre class="contents ">        <span class="cmd command">kdump-config show
+</span>DUMP_MODE:        kdump
+USE_KDUMP:        1
+KDUMP_SYSCTL:     kernel.panic_on_oops=1
+KDUMP_COREDIR:    /var/crash
+crashkernel addr: 0x2c000000
+   /var/lib/kdump/vmlinuz: symbolic link to /boot/vmlinuz-4.4.0-10-generic
+kdump initrd: 
+      /var/lib/kdump/initrd.img: symbolic link to /var/lib/kdump/initrd.img-4.4.0-10-generic
+current state:    ready to kdump
+
+kexec command:
+      /sbin/kexec -p --command-line="BOOT_IMAGE=/vmlinuz-4.4.0-10-generic root=/dev/mapper/VividS--vg-root ro debug break=init console=ttyS0,115200 irqpoll maxcpus=1 nousb systemd.unit=kdump-tools.service" --initrd=/var/lib/kdump/initrd.img /var/lib/kdump/vmlinuz
+      </pre></div>
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="kdump-testing"><div class="inner">
+<div class="hgroup"><h2 class="title">Testing the Crash Dump Mechanism</h2></div>
+<div class="region"><div class="contents">
+<div class="note note-warning" title="Warning"><div class="inner"><div class="region"><div class="contents">
+	<p class="para">
+	Testing the Crash Dump Mechanism will cause <span class="em emphasis">a system reboot.</span> In certain situations, this can
+	cause data loss if the system is under heavy load. If you want to test the mechanism, make sure that the system
+	is idle or under very light load.
+	</p>
+      </div></div></div></div>
+<p class="para">
+	Verify that the <span class="em emphasis">SysRQ</span> mechanism is enabled by looking at the value of the
+	<span class="file filename">/proc/sys/kernel/sysrq</span> kernel parameter : 
+	</p>
+<div class="screen"><pre class="contents "><span class="cmd command">cat /proc/sys/kernel/sysrq</span>
+</pre></div>
+<p class="para">
+      If a value of <span class="em emphasis">0</span> is returned the dump and then reboot feature is disabled.
+      A value greater than <span class="em emphasis">1</span> indicates that a sub-set of sysrq features is enabled.
+      See <span class="file filename">/etc/sysctl.d/10-magic-sysrq.conf</span> for a detailed description of the options and the default value.
+      Enable dump then reboot testing with the following command :
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo sysctl -w kernel.sysrq=1</span>
+</pre></div>
+<p class="para">
+      Once this is done, you must become root, as just using <span class="cmd command">sudo</span> will not be sufficient. As the <span class="em emphasis">root</span>
+      user, you will have to issue the command <span class="cmd command">echo c &gt; /proc/sysrq-trigger</span>. If you are using a network connection,
+      you will lose contact with the system. This is why it is better to do the test while being connected to the system console. This has the 
+      advantage of making the kernel dump process visible.
+      </p>
+<p class="para">
+      A typical test output should look like the following :
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo -s</span>
+[sudo] password for ubuntu: 
+# <span class="cmd command">echo c &gt; /proc/sysrq-trigger</span>
+[   31.659002] SysRq : Trigger a crash
+[   31.659749] BUG: unable to handle kernel NULL pointer dereference at           (null)
+[   31.662668] IP: [&lt;ffffffff8139f166&gt;] sysrq_handle_crash+0x16/0x20
+[   31.662668] PGD 3bfb9067 PUD 368a7067 PMD 0 
+[   31.662668] Oops: 0002 [#1] SMP 
+[   31.662668] CPU 1 
+....
+</pre></div>
+<p class="para">
+      The rest of the output is truncated, but you should see the system rebooting and somewhere in the log, you will see the following line :
+      <div class="screen"><pre class="contents ">Begin: Saving vmcore from kernel crash ...</pre></div>
+      Once completed, the system will reboot to its normal operational mode. You will then find the Kernel Crash Dump file, and related subdirectories,
+      in the <span class="file filename">/var/crash</span> directory :
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">ls /var/crash</span>
+201809240744  kexec_cmd  linux-image-4.15.0-34-generic-201809240744.crash
+</pre></div>
+<p class="para">
+      If the dump does not work due to OOM (Out Of Memory) error, then try increasing the amount of reserved memory by
+      editing <span class="file filename">/etc/default/grub.d/kdump-tools.cfg</span>. For example, to reserve 512 megabytes :
+      </p>
+<div class="screen"><pre class="contents ">GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CMDLINE_LINUX_DEFAULT crashkernel=384M-:512M"
+</pre></div>
+<p class="para">
+      run <span class="cmd command">sudo update-grub</span> and then reboot afterwards, and then test again.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="kdump-resources"><div class="inner">
+<div class="hgroup"><h2 class="title">Resources</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      Kernel Crash Dump is a vast topic that requires good knowledge of the linux kernel. You can find more information on the topic here :
+      </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para">
+              <a href="http://www.kernel.org/doc/Documentation/kdump/kdump.txt" class="ulink" title="http://www.kernel.org/doc/Documentation/kdump/kdump.txt">Kdump kernel documentation</a>.
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <a href="http://people.redhat.com/~anderson/" class="ulink" title="http://people.redhat.com/~anderson/">The crash tool</a>
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <a href="http://www.dedoimedo.com/computers/crash-analyze.html" class="ulink" title="http://www.dedoimedo.com/computers/crash-analyze.html">Analyzing Linux Kernel Crash</a> (Based on Fedora, it still gives a good walkthrough of kernel dump analysis)
+              </p>
+            </li>
+</ul></div>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="advanced-installation.html" title="Advanced Installation">Previous</a><a class="nextlinks-next" href="package-management.html" title="Package Management">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DRBD</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="clustering.html" title="聚类"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">集群</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="clustering.html" title="聚类"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="../vpn/vpn.html" title="VPN"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DRBD</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    分布式复制块设备（DRBD）镜像在多个主机之间阻止设备。</font><font style="vertical-align: inherit;">复制对主机系统上的其他应用程序是透明的。</font><font style="vertical-align: inherit;">可以镜像任何块设备硬盘，分区，RAID设备，逻辑卷等。
+    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    要开始使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请先安装必要的软件包。</font><font style="vertical-align: inherit;">从终端输入：
+    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install drbd8-utils</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      如果您将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟内核</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用作虚拟机的一部分，则需要手动编译</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模块。</font><font style="vertical-align: inherit;">
+      在虚拟机中</font><font style="vertical-align: inherit;">安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">linux-server</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包</font><font style="vertical-align: inherit;">可能更容易</font><font style="vertical-align: inherit;">。
+      </font></font></p>
+    </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    本节介绍如何设置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来复制单独的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+    分区，</font><font style="vertical-align: inherit;">以及两个主机之间</font><font style="vertical-align: inherit;">的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ext3</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件系统。</font><font style="vertical-align: inherit;">分区大小不是特别相关，但两个分区的大小必须相同。  
+    </font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="drbd.html#drbd-configuration" title="组态"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></a></li>
+<li class="links"><a class="xref" href="drbd.html#drbd-testing" title="测试"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试</font></font></a></li>
+<li class="links"><a class="xref" href="drbd.html#drbd-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="drbd-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      此示例中的两个主机将被称为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbd01</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbd02</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">他们需要通过DNS或</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / hosts</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+      文件</font><font style="vertical-align: inherit;">配置名称解析</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">详细信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="dns.html" title="域名服务（DNS）"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名服务（DNS）</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。  
+      </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          要配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请在第一个主机上编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/drbd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+          </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">全球{usage-count no; </font><font style="vertical-align: inherit;">}</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+common {syncer {rate 100M; </font><font style="vertical-align: inherit;">}}</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+资源r0 {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        协议C;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        启动 {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                wfc-timeout 15;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                degr-wfc-timeout 60;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        }</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        网{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                cram-hmac-alg sha1;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                共同秘密的“秘密”;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        }</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        在drbd01上{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                device / dev / drbd0;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                disk / dev / sdb1;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                地址192.168.0.1:7788;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                元磁盘内部;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        }</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        在drbd02上{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                device / dev / drbd0;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                disk / dev / sdb1;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                地址192.168.0.2:7788;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                元磁盘内部;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        }</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+} </font></font><font></font>
+</pre></div>
+
+          <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/drbd.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+            还有许多其他选项</font><font style="vertical-align: inherit;">，但对于此示例，它们的默认值很好。
+            </font></font></p>
+          </div></div></div></div>
+        </li>
+<li class="list itemizedlist">
+   
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          现在将</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/drbd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">复制</font><font style="vertical-align: inherit;">到第二个主机：
+          </font></font></p> 
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">scp /etc/drbd.conf drbd02：〜</font></font></span>
+</pre></div>
+
+        </li>
+<li class="list itemizedlist">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          并且，在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbd02上将</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件移动到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+          </font></font></p> 
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mv drbd.conf / etc /</font></font></span>
+</pre></div>
+
+        </li>
+<li class="list itemizedlist">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          现在使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbdadm</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序初始化元数据存储。</font><font style="vertical-align: inherit;">在每个服务器上执行：
+          </font></font></p> 
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo drbdadm create-md r0</font></font></span>
+</pre></div>
+          
+        </li>
+<li class="list itemizedlist">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          接下来，在两台主机上，启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护程序：
+          </font></font></p> 
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl start drbd.service</font></font></span>
+</pre></div>
+
+        </li>
+<li class="list itemizedlist">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbd01上</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，或您希望成为主要主机的主机上，输入以下内容：
+          </font></font></p> 
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo drbdadm  -  --overwrite-of-peer primary all</font></font></span>
+</pre></div>
+
+        </li>
+<li class="list itemizedlist">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          执行上述命令后，数据将开始与辅助主机同步。</font><font style="vertical-align: inherit;">要观察进度，请在
+           </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbd02上</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">输入以下内容：
+          </font></font></p> 
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">看-n1 cat / proc / drbd</font></font></span>
+</pre></div>
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          要停止观看输出，请按</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ctrl + c</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+          </font></font></p>
+
+        </li>
+<li class="list itemizedlist">
+
+      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      最后，将文件系统添加到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / drbd0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并挂载它：
+      </font></font></p> 
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mkfs.ext3 / dev / drbd0 </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mount / dev / drbd0 / srv</font></font></span>
+</pre></div>
+
+        </li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="drbd-testing"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      要测试数据是否实际在主机之间同步，请将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbd01</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上的一些文件（</font><font style="vertical-align: inherit;">主要</font><font style="vertical-align: inherit;">文件）复制</font><font style="vertical-align: inherit;">到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo cp -r / etc / default / srv</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      接下来，unmount </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo umount / srv</font></font></span>
+</pre></div>
+<p class="para">
+      <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将</font></font></span><font style="vertical-align: inherit;"></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器</font><span class="em emphasis"><font style="vertical-align: inherit;">降级</font></span><font style="vertical-align: inherit;">为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">辅助</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">角色：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo drbdadm secondary r0</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      现在，在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">辅助</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器</font><font style="vertical-align: inherit;">上将其</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提升</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主要</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">角色：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo drbdadm primary r0</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      最后，挂载分区：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mount / dev / drbd0 / srv</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ls，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您应该看到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv / default</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">从前</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主要</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">          
+      主机</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbd01</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">复制</font><font style="vertical-align: inherit;">。
+      </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="drbd-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DRBD的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请访问</font></font><a href="http://www.drbd.org/" class="ulink" title="http://www.drbd.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DRBD网站</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          该</font></font><a href="http://manpages.ubuntu.com/manpages/bionic/en/man5/drbd.conf.5.html" class="ulink" title="http://manpages.ubuntu.com/manpages/bionic/en/man5/drbd.conf.5.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbd.conf手册页</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含不包括在本指南中的选项的详细信息。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          另请参阅</font></font><a href="http://manpages.ubuntu.com/manpages/bionic/en/man8/drbdadm.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/bionic/en/man8/drbdadm.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">drbdadm手册页</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          该</font></font><a href="https://help.ubuntu.com/community/DRBD" class="ulink" title="https://help.ubuntu.com/community/DRBD"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DRBD Ubuntu的维基</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">页面还包含更多的信息。
+          </font></font></p>
+        </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="clustering.html" title="聚类"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="vpn.html" title="VPN"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

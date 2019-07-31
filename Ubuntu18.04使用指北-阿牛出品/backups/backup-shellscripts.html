@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Shell Scripts</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="backups.html" title="备份"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">备份</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="backups.html" title="备份"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="backups-shellscripts-rotation.html" title="存档轮换"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Shell Scripts</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    备份系统的最简单方法之一是使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">shell脚本</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">例如，脚本可用于配置要备份的目录，并将这些目录作为参数传递给</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tar</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序，后者将创建存档文件。</font><font style="vertical-align: inherit;">然后可以将存档文件移动或复制到另一个位置。</font><font style="vertical-align: inherit;">也可以在远程文件系统（如</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NFS</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装）</font><font style="vertical-align: inherit;">上创建存档</font><font style="vertical-align: inherit;">。
+    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">焦油</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序创建一个档案文件了许多文件或目录。  </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tar</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+    还可以通过压缩实用程序过滤文件，从而减小归档文件的大小。  
+    </font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="backup-shellscripts.html#backup-shellscript" title="简单的Shell脚本"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">简单的Shell脚本</font></font></a></li>
+<li class="links"><a class="xref" href="backup-shellscripts.html#backup-executing-shellscript" title="执行脚本"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">执行脚本</font></font></a></li>
+<li class="links"><a class="xref" href="backup-shellscripts.html#backup-shellscript-archive-testing" title="从档案馆恢复"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">从档案馆恢复</font></font></a></li>
+<li class="links"><a class="xref" href="backup-shellscripts.html#backup-shellscript-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="backup-shellscript"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">简单的Shell脚本</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      以下shell脚本使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tar</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在远程安装的NFS文件系统上创建存档文件。</font><font style="vertical-align: inherit;">存档文件名使用其他命令行实用程序确定。
+      </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃！/斌/庆典</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+####################################</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃备份到NFS安装脚本。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+####################################</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃备份什么 </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+backup_files =“/ home / var / spool / mail / etc / root / boot / opt”</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃备份到哪里。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+DEST = “/ MNT /备份”</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃创建存档文件名。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+day = $（日期+％A）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+hostname = $（hostname -s）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ARCHIVE_FILE = “$ hostname- $ day.tgz”</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃打印开始状态消息。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+echo“将$ backup_files备份到$ dest / $ archive_file”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+日期</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+回声</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃使用tar备份文件。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+tar czf $ dest / $ archive_file $ backup_files</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃打印结束状态消息。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+回声</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+echo“备份完成”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+日期</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃$ dest中文件的长列表，用于检查文件大小。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ls -lh $ dest</font></font><font></font>
+</pre></div>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">           
+          <p class="para">
+       	  <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ backup_files：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一个变量，列出了您要备份的目录。</font><font style="vertical-align: inherit;">该列表应根据您的需求进行定制。  
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">           
+          <p class="para">
+     	  <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ day：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一个持有星期几的变量（星期一，星期二，星期三等）。</font><font style="vertical-align: inherit;">这用于为一周中的每一天创建存档文件，提供七天的备份历史记录。</font><font style="vertical-align: inherit;">还有其他方法可以实现此目的，包括使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">日期</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序。 
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">           
+          <p class="para">
+   	  <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ hostname：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含</font><font style="vertical-align: inherit;">系统</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">短</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主机名的</font><font style="vertical-align: inherit;">变量</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">使用存档文件名中的主机名可以选择将来自多个系统的每日存档文件放在同一目录中。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">           
+          <p class="para">
+     	  <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ archive_file：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">完整存档文件名。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">           
+          <p class="para">
+   	  <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ dest：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">存档文件的目标。</font><font style="vertical-align: inherit;">需要创建目录，并在此情况下 
+           </font><font style="vertical-align: inherit;">在执行备份脚本之前</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">使用</font><span class="em emphasis"><font style="vertical-align: inherit;">NFS的</font></span><font style="vertical-align: inherit;">详细信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="network-file-system.html" title="网络文件系统（NFS）"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络文件系统（NFS）</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+          </font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+        </li>
+<li class="list itemizedlist">           
+          <p class="para">
+     	  <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">状态消息：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">echo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          实用程序</font><font style="vertical-align: inherit;">打印到控制台的可选消息</font><font style="vertical-align: inherit;">。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">           
+          <p class="para">
+   	  <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tar czf $ dest / $ archive_file $ backup_files：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于创建存档文件</font><font style="vertical-align: inherit;">的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tar</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令。  
+          </font></font></p>
+  	  <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">           
+              <p class="para">
+       	      <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">c：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建存档。 
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">           
+              <p class="para">
+     	      <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">z：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过</font><font style="vertical-align: inherit;">压缩存档</font><font style="vertical-align: inherit;">的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gzip</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序</font><font style="vertical-align: inherit;">过滤</font><font style="vertical-align: inherit;">存档。   
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">           
+              <p class="para">
+      	      <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">f：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">输出到存档文件。</font><font style="vertical-align: inherit;">否则，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tar</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">输出将被发送到STDOUT。
+              </font></font></p>
+            </li>
+</ul></div>
+        </li>
+<li class="list itemizedlist">           
+          <p class="para">
+     	  <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ls -lh $ dest：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> optional语句</font><font style="vertical-align: inherit;">以</font><span class="em emphasis"><font style="vertical-align: inherit;">-h</font></span><font style="vertical-align: inherit;"> 
+          目标目录的可读格式</font><font style="vertical-align: inherit;">打印</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-l</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> long列表</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这对于存档文件的快速文件大小检查很有用。</font><font style="vertical-align: inherit;">此检查不应取代测试存档文件。
+          </font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+        </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      这是备份shell脚本的一个简单示例; </font><font style="vertical-align: inherit;">但是有很多选项可以包含在这样的脚本中。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">提供更深入的shell脚本信息的资源的链接，</font><font style="vertical-align: inherit;">请参见</font></font><a class="xref" href="backup-shellscripts.html#backup-shellscript-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+      </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="backup-executing-shellscript"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">执行脚本</font></font></h2></div>
+<div class="region">
+<div class="contents"></div>
+<div class="sect3 sect" id="backup-script-execute-shell"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">从终端执行</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        执行上述备份脚本的最简单方法是将内容复制并粘贴到文件中。  </font><font style="vertical-align: inherit;"> 
+        例如，</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">backup.sh</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">该文件必须可执行：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chmod u + x backup.sh</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	然后从终端提示：  
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ./backup.sh</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        这是测试脚本以确保一切按预期工作的好方法。
+        </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="backup-script-execute-cron"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用cron执行</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cron的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序可用于自动化脚本执行。</font><font style="vertical-align: inherit;">所述</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的cron</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护进程允许脚本或命令的执行，在指定的时间和日期。
+        </font></font></p>
+<p class="para">
+        <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cron</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是通过</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crontab</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中的</font><font style="vertical-align: inherit;">条目配置的</font><font style="vertical-align: inherit;">。 
+        </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crontab</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件分为以下字段：
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#mh dom mon dow命令
+</font></font></pre></div>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">m：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令执行时间，介于0和59之间。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">h：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令执行的小时，介于0和23之间。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dom：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令执行的月份日期。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mon：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令执行的月份，介于1和12之间。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dow：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令执行的星期几，介于0和7之间。可以使用0或7指定星期日，两个值都有效。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">command：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要执行的命令。
+            </font></font></p>
+          </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        要在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crontab</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中</font><font style="vertical-align: inherit;">添加或更改条目，</font><font style="vertical-align: inherit;">应使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crontab -e</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令。</font><font style="vertical-align: inherit;">此外，</font><font style="vertical-align: inherit;">可以使用</font><span class="app application"><font style="vertical-align: inherit;">crontab -l</font></span><font style="vertical-align: inherit;">命令</font><font style="vertical-align: inherit;">查看</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crontab</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件</font><font style="vertical-align: inherit;">的内容</font><font style="vertical-align: inherit;">。
+        </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font><span class="app application"><font style="vertical-align: inherit;">cron</font></span><font style="vertical-align: inherit;"> 
+        执行</font><font style="vertical-align: inherit;">上面列出</font><font style="vertical-align: inherit;">的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">backup.sh</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">脚本</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">在终端提示符下输入以下内容：
+        </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo crontab -e</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crontab -e</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令可以编辑</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">root</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户的crontab。</font><font style="vertical-align: inherit;">如果要备份只有root用户有权访问的目录，则必须执行此操作。
+          </font></font></p>
+        </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        将以下条目添加到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crontab</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件：
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#mh dom mon dow命令</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+0 0 * * * bash /usr/local/bin/backup.sh</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">backup.sh</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">脚本现在将在每天上午12:00执行。 
+        </font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">需要</font><font style="vertical-align: inherit;">
+          将</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">backup.sh</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">脚本复制到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ usr / local / bin /</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录，以便正确执行此条目。</font><font style="vertical-align: inherit;">该脚本可以驻留在文件系统的任何位置，只需适当更改脚本路径即可。
+          </font></font></p>
+        </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        有关更深入的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crontab</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项，请参阅</font></font><a class="xref" href="backup-shellscripts.html#backup-shellscript-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考资料</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+        </font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="backup-shellscript-archive-testing"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">从档案馆恢复</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      创建存档后，测试存档很重要。</font><font style="vertical-align: inherit;">可以通过列出它包含的文件来测试存档，但最好的测试是</font><font style="vertical-align: inherit;">从存档中</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">恢复</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件。
+      </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          查看存档内容的列表。</font><font style="vertical-align: inherit;">从终端提示符输入：
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tar -tzvf /mnt/backup/host-Monday.tgz</font></font></span>
+</pre></div>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          要将文件从存档还原到其他目录，请输入：
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tar -xzvf /mnt/backup/host-Monday.tgz -C / tmp etc / hosts</font></font></span>
+</pre></div>
+          <p class="para"><font style="vertical-align: inherit;"><span class="app application"><font style="vertical-align: inherit;">tar</font></span><font style="vertical-align: inherit;"> 
+          的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-C</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">将提取的文件重定向到指定的目录。</font><font style="vertical-align: inherit;">上面的示例将</font><span class="file filename"><font style="vertical-align: inherit;">/ etc / hosts</font></span><font style="vertical-align: inherit;">文件解压缩到</font><span class="file filename"><font style="vertical-align: inherit;">/ tmp / etc / hosts</font></span><font style="vertical-align: inherit;">。  </font><span class="app application"><font style="vertical-align: inherit;">tar</font></span><font style="vertical-align: inherit;"> 
+          重新创建它包含的目录结构。
+          </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          另外，请注意前导</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“/”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不在要还原的文件的路径上。
+          </font></font></p>  
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          要还原存档中的所有文件，请输入以下内容：
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cd / </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo tar -xzvf /mnt/backup/host-Monday.tgz</font></font></span>
+</pre></div>
+        </li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        这将覆盖当前文件系统上的文件。
+        </font></font></p>
+      </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="backup-shellscript-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关shell脚本的详细信息，请参阅</font></font><a href="http://tldp.org/LDP/abs/html/" class="ulink" title="http://tldp.org/LDP/abs/html/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Advanced Bash-Scripting Guide</font></font></a>
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          “ </font></font><a href="http://safari.samspublishing.com/0672323583" class="ulink" title="http://safari.samspublishing.com/0672323583"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">24小时自学Shell编程</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ”一书</font><font style="vertical-align: inherit;">在线提供，是shell脚本编写的绝佳资源。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          该</font></font><a href="https://help.ubuntu.com/community/CronHowto" class="ulink" title="https://help.ubuntu.com/community/CronHowto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CronHowto Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含了先进的细节 
+           </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cron的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          选项。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关</font><font style="vertical-align: inherit;">更多 
+           </font><span class="app application"><font style="vertical-align: inherit;">tar</font></span><font style="vertical-align: inherit;">选项，</font><font style="vertical-align: inherit;">请参阅</font></font><a href="http://www.gnu.org/software/tar/manual/index.html" class="ulink" title="http://www.gnu.org/software/tar/manual/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GNU tar手册</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+          </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          Wikipedia </font></font><a href="http://en.wikipedia.org/wiki/Backup_rotation_scheme" class="ulink" title="http://en.wikipedia.org/wiki/Backup_rotation_scheme"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Backup Rotation Scheme</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文章包含有关其他备份轮换方案的信息。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        shell脚本使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tar</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来创建存档，但还有许多其他可以使用的命令行实用程序。</font><font style="vertical-align: inherit;">例如：
+        </font></font></p>
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para">
+	      <a href="http://www.gnu.org/software/cpio/" class="ulink" title="http://www.gnu.org/software/cpio/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cpio</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：用于将文件复制到归档文件或从归档文件复制文件。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <a href="http://www.gnu.org/software/coreutils/" class="ulink" title="http://www.gnu.org/software/coreutils/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dd</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">coreutils</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+              包的</font><font style="vertical-align: inherit;">一部分</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">一种低级实用程序，可以将数据从一种格式复制到另一种格式。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <a href="http://www.rsnapshot.org/" class="ulink" title="http://www.rsnapshot.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rsnapshot</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：用于创建整个文件系统副本的文件系统快照实用程序。 
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <a href="http://www.samba.org/ftp/rsync/rsync.html" class="ulink" title="http://www.samba.org/ftp/rsync/rsync.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rsync</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：一种灵活的实用程序，用于创建文件的增量副本。
+              </font></font></p>
+            </li>
+</ul></div>
+        </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="backups.html" title="备份"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="backups-shellscripts-rotation.html" title="存档轮换"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

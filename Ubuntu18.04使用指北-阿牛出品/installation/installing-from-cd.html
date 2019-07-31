@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>使用debian-installer进行安装</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="installation.html" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="installing-live-server.html" title="使用实时服务器安装程序安装 "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="installing-upgrading.html" title="升级"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用debian-installer进行安装</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  安装Ubuntu Server Edition的基本步骤与安装任何操作系统的步骤相同。</font><font style="vertical-align: inherit;">与</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desktop Edition</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不同</font><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Server Edition</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不包含图形安装程序。</font><font style="vertical-align: inherit;">debian-installer安装程序使用基于控制台菜单的进程。
+	  </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      从</font></font><a href="http://www.ubuntu.com/download/server/download" class="ulink" title="http://www.ubuntu.com/download/server/download"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      Ubuntu网站</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下载相应的ISO文件</font><font style="vertical-align: inherit;">。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      从包含ISO文件的介质（例如USB密钥）引导系统。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      在启动提示符下，系统会要求您选择一种语言。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      从主启动菜单中，还有一些安装Ubuntu Server Edition的附加选项。</font><font style="vertical-align: inherit;">您可以安装基本的Ubuntu Server，检查CD-ROM中的缺陷，检查系统的RAM，从第一个硬盘启动，或者救出损坏的系统。</font><font style="vertical-align: inherit;">本节的其余部分将介绍基本的Ubuntu Server安装。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      安装程序询问它应该使用哪种语言。</font><font style="vertical-align: inherit;">之后，系统会要求您选择您的位置。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      接下来，安装过程首先询问您的键盘布局。</font><font style="vertical-align: inherit;">您可以要求安装程序尝试自动检测它，也可以从列表中手动选择它。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      然后，安装程序会发现您的硬件配置，并使用DHCP配置网络设置。</font><font style="vertical-align: inherit;">如果您不希望在下一个屏幕上使用DHCP，请选择“返回”，然后您可以选择“手动配置网络”。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      接下来，安装程序会询问系统的主机名。 
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      设置了一个新用户; </font><font style="vertical-align: inherit;">此用户将</font><font style="vertical-align: inherit;">通过</font><span class="app application"><font style="vertical-align: inherit;">sudo</font></span><font style="vertical-align: inherit;">实用程序</font><font style="vertical-align: inherit;">具有</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">root</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">访问权限</font><font style="vertical-align: inherit;">。
+	      </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          用户设置完成后，系统将询问您是否要加密 
+           </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录。 
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              接下来，安装程序会询问系统的时区。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      然后，您可以从多个选项中进行选择以配置硬盘驱动器布局。</font><font style="vertical-align: inherit;">之后会询问您要安装哪个磁盘。</font><font style="vertical-align: inherit;">在重写分区表或根据磁盘布局设置LVM之前，您可能会收到确认提示。</font><font style="vertical-align: inherit;">如果选择LVM，将要求您提供根逻辑卷的大小。</font><font style="vertical-align: inherit;">对于高级磁盘选项看到</font></font><a class="xref" href="advanced-installation.html" title="高级安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高级安装</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     然后安装Ubuntu基本系统。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          安装过程的下一步是确定如何更新系统。</font><font style="vertical-align: inherit;">有三种选择： 
+	      </font></font></p>
+                <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+                    <p class="para">
+                    <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">无自动更新</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：这需要管理员登录计算机并手动安装更新。
+                    </font></font></p>
+                  </li>
+<li class="list itemizedlist">
+                    <p class="para">
+                    <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自动安装安全更新</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：这将安装 
+                     </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">无人值守升级</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包，该包将在没有管理员干预的情况下安装安全更新。</font><font style="vertical-align: inherit;">有关详细信息，请参阅</font></font><a class="xref" href="automatic-updates.html" title="自动更新"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自动更新</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+                    </font></font></p>
+                  </li>
+<li class="list itemizedlist">
+                    <p class="para">
+                    <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用Landscape管理系统</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：Landscape是Canonical提供的一项付费服务​​，用于帮助管理您的Ubuntu计算机。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">详细信息，</font><font style="vertical-align: inherit;">请参阅 
+                     </font></font><a href="http://landscape.canonical.com/" class="ulink" title="http://landscape.canonical.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Landscape</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网站。
+                    </font></font></p>
+                  </li>
+</ul></div>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      您现在可以选择安装或不安装多个包任务。</font><font style="vertical-align: inherit;">请参阅 
+	       </font></font><a class="xref" href="installing-from-cd.html#install-tasks" title="包任务"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包任务</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以获取详细信 </font><font style="vertical-align: inherit;">此外，还有一个选项可以启动
+           </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aptitude</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以选择要安装的特定包。</font><font style="vertical-align: inherit;">有关更多信息，请参阅</font></font><a class="xref" href="aptitude.html" title="能力倾向"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aptitude</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      最后，重新启动之前的最后一步是将时钟设置为UTC。
+	      </font></font></p>
+	    </li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            如果在安装过程中的任何时候您对默认设置不满意，请在任何提示时使用“返回”功能进入详细的安装菜单，以便修改默认设置。
+	    </font></font></p>
+	  </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          在安装过程中的某些时候，您可能需要阅读安装系统提供的帮助屏幕。</font><font style="vertical-align: inherit;">为此，请按F1。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  有关详细说明，请再次参阅“ </font></font><a href="https://help.ubuntu.com/18.04/installation-guide/" class="ulink" title="https://help.ubuntu.com/18.04/installation-guide/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  Ubuntu安装指南”</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	  </font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul><li class="links"><a class="xref" href="installing-from-cd.html#install-tasks" title="包任务"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包任务</font></font></a></li></ul></div>
+<div class="sect2 sect" id="install-tasks"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包任务</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    在Server Edition安装期间，您可以选择安装其他软件包。</font><font style="vertical-align: inherit;">包根据它们提供的服务类型进行分组。 
+	    </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		DNS服务器：选择BIND DNS服务器及其文档。
+	        </font></font></p>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		LAMP服务器：选择现成的Linux / Apache / MySQL / PHP服务器。	
+	        </font></font></p>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		邮件服务器：此任务选择对通用邮件服务器系统有用的各种包。
+	        </font></font></p>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		OpenSSH服务器：选择OpenSSH服务器所需的包。
+	        </font></font></p>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		PostgreSQL数据库：此任务选择PostgreSQL数据库的客户端和服务器包。
+	        </font></font></p>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		打印服务器：此任务将您的系统设置为打印服务器。
+	        </font></font></p>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		Samba文件服务器：此任务将您的系统设置为Samba文件服务器，尤其适用于具有Windows和Linux系统的网络。
+	        </font></font></p>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		Tomcat Java服务器：安装Apache Tomcat并需要依赖项。
+	        </font></font></p>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		虚拟机主机：包括运行KVM虚拟机所需的软件包。
+	        </font></font></p>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        手动选择包：执行</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aptitude，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">允许您单独选择包。
+	        </font></font></p>
+	      </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tasksel</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序</font><font style="vertical-align: inherit;">完成安装软件包组</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">Ubuntu（或Debian）与其他GNU / Linux发行版之间的一个重要区别是，在安装时，程序包也配置为合理的默认值，最终会提示您输入其他所需信息。</font><font style="vertical-align: inherit;">同样，在安装任务时，不仅安装了软件包，还配置了软件包以提供完全集成的服务。
+	    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            安装过程完成后，您可以通过在终端提示符下输入以下内容来查看可用任务列表：
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tasksel --list-tasks</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      输出将列出来自其他基于Ubuntu的发行版的任务，例如Kubuntu和Edubuntu。</font><font style="vertical-align: inherit;">请注意，您还可以</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">单独</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">调用</font><span class="cmd command"><font style="vertical-align: inherit;">tasksel</font></span><font style="vertical-align: inherit;">命令，这将显示可用的不同任务的菜单。
+	      </font></font></p>
+	    </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    您可以使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--task-packages</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">查看每个任务安装的软件包列表</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">例如，要列出使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DNS服务器</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">任务</font><font style="vertical-align: inherit;">安装的软件包，请</font><font style="vertical-align: inherit;">输入以下内容：
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tasksel --task-packages dns-server</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    该命令的输出应列出：
+	    </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BIND9-DOC </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+bind9utils </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+BIND9</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    如果您在安装过程中没有安装其中一个任务，但是例如您决定将新的LAMP服务器设置为DNS服务器，只需从终端插入安装介质：
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo tasksel install dns-server</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="installing-live-server.html" title="使用实时服务器安装程序安装 "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="installing-upgrading.html" title="升级"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

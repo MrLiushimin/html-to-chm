@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Zentyal</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="remote-administration.html" title="Remote Administration">Remote Administration</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="puppet.html" title="Puppet">Previous</a><a class="nextlinks-next" href="../network-authentication/network-authentication.html" title="Network Authentication">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Zentyal</h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+		<span class="app application">Zentyal</span> is a Linux small business server that
+		can be configured as a gateway, infrastructure manager, unified threat manager,
+		office server, unified communication server or a combination of them.
+		All network services managed by <span class="app application">Zentyal</span> are tightly
+		integrated, automating most tasks. This saves time and helps to avoid errors
+		in network configuration and administration.
+		<span class="app application">Zentyal</span> is open source, released under the GNU
+		General Public License (GPL) and runs on top of Ubuntu GNU/Linux.
+		</p>
+<p class="para">
+		<span class="app application">Zentyal</span> consists of a series of packages
+		(usually one for each module) that provide a web interface to configure
+		the different servers or services. The configuration is stored on a
+		key-value <span class="app application">Redis</span> database, but users, groups,
+		and domains-related configuration is on <span class="app application">OpenLDAP
+		</span>. When you configure any of the available parameters
+		through the web interface, final configuration files are overwritten
+		using the configuration templates provided by the modules.
+		The main advantage of using <span class="app application">Zentyal</span> is a
+		unified, graphical user interface to configure all network services and
+		high, out-of-the-box integration between them.
+		</p>
+<p class="para">
+		<span class="app application">Zentyal</span> publishes one major stable release
+		once a year based on the latest Ubuntu LTS release.
+		</p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="zentyal.html#zentyal-installation" title="Installation">Installation</a></li>
+<li class="links"><a class="xref" href="zentyal.html#zentyal-firststeps" title="First steps">First steps</a></li>
+<li class="links"><a class="xref" href="zentyal.html#zentyal-modules" title="Modules">Modules</a></li>
+<li class="links"><a class="xref" href="zentyal.html#zentyal-references" title="References">References</a></li>
+</ul></div>
+<div class="sect2 sect" id="zentyal-installation"><div class="inner">
+<div class="hgroup"><h2 class="title">Installation</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+		If you would like to create a new user to access the <span class="app application">Zentyal</span>
+		web interface, run:
+<div class="screen"><pre class="contents "><span class="cmd command">sudo adduser username sudo</span>
+</pre></div>
+		</p>
+<p class="para">
+			Add the <span class="app application">Zentyal</span> repository to your repository list:
+<div class="screen"><pre class="contents "><span class="cmd command">sudo add-apt-repository "deb http://archive.zentyal.org/zentyal 3.5 main extra"</span>
+</pre></div>
+		</p>
+<p class="para">
+			Import the public keys from <span class="app application">Zentyal</span>:
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 10E239FF</span>
+<span class="cmd command">wget -q http://keys.zentyal.org/zentyal-4.2-archive.asc -O- | sudo apt-key add -</span>
+</pre></div>
+		</p>
+<p class="para">
+			Update your packages and install <span class="app application">Zentyal</span>:
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt update</span>
+<span class="cmd command">sudo apt install zentyal</span>
+</pre></div>
+			During installation you will be asked to set a root MySQL password and
+			confirm port 443.
+		</p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="zentyal-firststeps"><div class="inner">
+<div class="hgroup"><h2 class="title">First steps</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+		Any system account belonging to the sudo group is allowed to log into the
+		<span class="app application">Zentyal</span> web interface. The user created while
+		installing Ubuntu Server will belong to the sudo group by default.
+		</p>
+<p class="para">
+		To access the <span class="app application">Zentyal</span> web interface, point a browser
+		to https://localhost/ or to the IP address of your remote server. As
+		<span class="app application">Zentyal</span> creates
+		its own self-signed SSL certificate, you will have to accept a security
+		exception on your browser. Log in with the same username and password used
+		to log in to your server.
+		</p>
+<p class="para">
+		Once logged in you will see an overview of your
+		server. Individual modules, such as Antivirus or Firewall, can be installed
+		by simply clicking them and then clicking Install.
+		Selecting server roles like Gateway or Infrastructure can be used to install
+		multiple modules at once.
+		</p>
+<p class="para">
+			Modules can also be installed via the command line:
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install &lt;zentyal-module&gt;</span>
+</pre></div>
+		See the list of available modules below.
+	</p>
+<p class="para">
+			To enable a module, go to the Dashboard, then click Module Status. Click
+			the check box for the module, then Save changes.
+		</p>
+<p class="para">
+			To configure any of the features of your installed modules, click the
+			different sections on the left menu. When you make any changes, a red "Save
+			changes" button appears in the upper right corner.
+		</p>
+<p class="para">
+		If you need to customize any configuration file or run certain actions
+		(scripts or commands) to configure features not available on
+		<span class="app application">Zentyal</span>, place the custom configuration file
+		templates on /etc/zentyal/stubs/&lt;module&gt;/ and the hooks on
+		/etc/zentyal/hooks/&lt;module&gt;.&lt;action&gt;. Read more about stubs and
+		hooks <a href="https://wiki.zentyal.org/wiki/En/4.0/Appendix_B:_Development_and_advanced_configuration#Advanced_Service_Customization" class="ulink" title="https://wiki.zentyal.org/wiki/En/4.0/Appendix_B:_Development_and_advanced_configuration#Advanced_Service_Customization">here</a>.
+	</p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="zentyal-modules"><div class="inner">
+<div class="hgroup"><h2 class="title">Modules</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+		<span class="app application">Zentyal</span> 2.3 is available on Ubuntu 18.04
+		Universe repository. The modules available are:
+				<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-core &amp; zentyal-common: the core of the
+						<span class="app application">Zentyal</span> interface and the common libraries
+						of the framework. Also includes the logs and events modules that
+						give the administrator an interface to view the logs and generate
+						events from them.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-network: manages the configuration of the network. From the
+						interfaces (supporting static IP, DHCP, VLAN, bridges or PPPoE),
+						to multiple gateways when having more than one Internet connection,
+						load balancing and advanced routing, static routes or dynamic DNS.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-objects &amp; zentyal-services: provide an abstraction level
+						for network addresses (e.g. LAN instead of 192.168.1.0/24) and ports
+						named as services (e.g. HTTP instead of 80/TCP).
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-firewall: configures the <span class="app application">iptables</span>
+						rules to block forbiden connections, NAT and port redirections.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-ntp: installs the NTP daemon to keep server on time and allow
+						network clients to synchronize their clocks against the server.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-dhcp: configures <span class="app application">ISC DHCP</span> server
+						supporting network ranges, static leases and other advanced options
+						like NTP, WINS, dynamic DNS updates and network boot with PXE.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-dns: brings <span class="app application">ISC Bind9</span> DNS server
+						into your server for caching local queries as a forwarder or as an
+						authoritative server for the configured domains. Allows to configure
+						A, CNAME, MX, NS, TXT and SRV records.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-ca: integrates the management of a Certification Authority
+						within Zentyal so users can use certificates to authenticate against
+						the services, like with <span class="app application">OpenVPN</span>.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-openvpn: allows to configure multiple VPN servers and clients
+						using <span class="app application">OpenVPN</span> with dynamic routing
+						configuration using <span class="app application">Quagga</span>.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-users: provides an interface to configure and manage users
+						and groups on <span class="app application">OpenLDAP</span>. Other services
+						on Zentyal are authenticated against LDAP having a centralized
+						users and groups management. It is also possible to synchronize
+						users, passwords and groups from a <span class="app application">Microsoft Active
+						Directory</span> domain.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-squid: configures <span class="app application">Squid</span> and
+						<span class="app application">Dansguardian</span> for speeding up browsing
+						thanks to the caching capabilities and content filtering.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-samba: allows <span class="app application">Samba</span> configuration
+						and integration with existing LDAP. From the same interface you can
+						define password policies, create shared resources and assign
+						permissions.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-printers: integrates <span class="app application">CUPS</span> with
+						<span class="app application">Samba</span> and allows not only to configure
+						the printers but also give them permissions based on LDAP users
+						and groups.
+						</p>
+					</li>
+</ul></div>
+
+			</p>
+<p class="para">
+				Not present on Ubuntu Universe repositories, but on
+				<a href="https://launchpad.net/~zentyal/" class="ulink" title="https://launchpad.net/~zentyal/">Zentyal Team PPA</a>
+				you will find these other modules:
+				</p>
+<p class="para">
+				<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-antivirus: integrates <span class="app application">ClamAV</span>
+						antivirus with other modules like the proxy, file sharing or
+						mailfilter.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-asterisk: configures <span class="app application">Asterisk</span>
+						to provide a simple PBX with LDAP based authentication.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-bwmonitor: allows to monitor bandwith usage of your LAN
+						clients.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-captiveportal: integrates a captive portal with the firewall
+						and LDAP users and groups.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-ebackup: allows to make scheduled backups of your server using
+						the popular <span class="app application">duplicity</span> backup tool.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-ftp: configures a FTP server with LDAP based authentication.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-ids: integrates a network intrusion detection system.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-ipsec: allows to configure IPsec tunnels using
+						<span class="app application">OpenSwan</span>.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-jabber: integrates <span class="app application">ejabberd</span>
+						XMPP server with LDAP users and groups.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-thinclients: a <span class="app application">LTSP</span> based
+						thin clients solution.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-mail: a full mail stack including <span class="app application">Postfix
+						</span> and <span class="app application">Dovecot</span> with LDAP
+						backend.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-mailfilter: configures <span class="app application">amavisd</span> with
+						mail stack to filter spam and attached virus.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-monitor: integrates <span class="app application">collectd</span>
+						to monitor server performance and running services.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-pptp: configures a <span class="app application">PPTP</span> VPN server.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-radius: integrates <span class="app application">FreeRADIUS</span> with
+						LDAP users and groups.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-software: simple interface to manage installed
+						<span class="app application">Zentyal</span> modules and system updates.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-trafficshaping: configures traffic limiting rules to do
+						bandwidth throttling and improve latency.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-usercorner: allows users to edit their own LDAP attributes
+						using a web browser.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-virt: simple interface to create and manage virtual machines
+						based on <span class="app application">libvirt</span>.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-webmail: allows to access your mail using the popular
+						<span class="app application">Roundcube</span> webmail.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-webserver: configures <span class="app application">Apache</span>
+						webserver to host different sites on your machine.
+						</p>
+					</li>
+<li class="list itemizedlist">
+						<p class="para">
+						zentyal-zarafa: integrates <span class="app application">Zarafa</span>
+						groupware suite with <span class="app application">Zentyal</span> mail stack
+						and LDAP.
+						</p>
+					</li>
+</ul></div>
+
+			</p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="zentyal-references"><div class="inner">
+<div class="hgroup"><h2 class="title">References</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+		<a href="http://doc.zentyal.org/" class="ulink" title="http://doc.zentyal.org/">Zentyal Official Documentation
+		</a> page.
+		</p>
+<p class="para">
+		<a href="http://trac.zentyal.org/wiki/Documentation" class="ulink" title="http://trac.zentyal.org/wiki/Documentation">Zentyal
+		Community Wiki</a>.
+		</p>
+<p class="para">
+		Visit the <a href="http://forum.zentyal.org/" class="ulink" title="http://forum.zentyal.org/">Zentyal forum
+		</a> for community support, feedback, feature requests, etc.
+		</p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="puppet.html" title="Puppet">Previous</a><a class="nextlinks-next" href="network-authentication.html" title="Network Authentication">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

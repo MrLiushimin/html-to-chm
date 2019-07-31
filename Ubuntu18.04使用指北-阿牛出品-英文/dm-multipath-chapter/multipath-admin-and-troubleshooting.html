@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DM-Multipath Administration and Troubleshooting</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="dm-multipath-chapter.html" title="DM-Multipath">DM-Multipath</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="multipath-dm-multipath-config-file.html" title="The DM-Multipath Configuration File">Previous</a><a class="nextlinks-next" href="../remote-administration/remote-administration.html" title="Remote Administration">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">DM-Multipath Administration and Troubleshooting</h1></div>
+<div class="region">
+<div class="contents"></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-resize-an-online-multipath-device" title="Resizing an Online Multipath Device">Resizing an Online Multipath Device</a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-moving-rootfs-from-single-path-to-multipath-device" title="Moving root File Systems from a Single Path Device to a Multipath
+      Device">Moving root File Systems from a Single Path Device to a Multipath
+      Device</a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-moving-swap-from-single-path-to-multipath-device" title="Moving swap File Systems from a Single Path Device to a Multipath
+      Device">Moving swap File Systems from a Single Path Device to a Multipath
+      Device</a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-daemon-multipathd" title="The Multipath Daemon">The Multipath Daemon</a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-issues-with-queue_if_no_path" title="Issues with queue_if_no_path">Issues with queue_if_no_path</a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-command-output" title="Multipath Command Output">Multipath Command Output</a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-queries-and-commands" title="Multipath Queries with multipath Command">Multipath Queries with multipath Command</a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-command-options" title="Multipath Command Options">Multipath Command Options</a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#device-mapper-entries-in-dmsetup" title="Determining Device Mapper Entries with dmsetup Command">Determining Device Mapper Entries with dmsetup Command</a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-interacting-with-multipathd" title="Troubleshooting with the multipathd interactive console">Troubleshooting with the multipathd interactive console</a></li>
+</ul></div>
+<div class="sect2 sect" id="multipath-resize-an-online-multipath-device"><div class="inner">
+<div class="hgroup"><h2 class="title">Resizing an Online Multipath Device</h2></div>
+<div class="region"><div class="contents">
+<p class="para">If you need to resize an online multipath device, use the
+      following procedure</p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+          <p class="para">Resize your physical device. This is storage platform
+          specific.</p>
+        </li>
+<li class="steps">
+          <p class="para">Use the following command to find the paths to the LUN:</p>
+
+          <div class="screen"><pre class="contents "># multipath -l</pre></div>
+        </li>
+<li class="steps">
+          <p class="para">Resize your paths. For SCSI devices, writing 1 to the
+          <span class="file filename">rescan</span> file for the device causes the SCSI
+          driver to rescan, as in the following command:</p>
+
+          <div class="screen"><pre class="contents "># echo 1 &gt; /sys/block/device_name/device/rescan</pre></div>
+        </li>
+<li class="steps">
+          <p class="para">Resize your multipath device by running the multipathd resize
+          command:</p>
+
+          <div class="screen"><pre class="contents "># multipathd -k 'resize map mpatha'</pre></div>
+        </li>
+<li class="steps">
+          <p class="para">Resize the file system (assuming no LVM or DOS partitions are
+          used):</p>
+
+          <div class="screen"><pre class="contents "># resize2fs /dev/mapper/mpatha</pre></div>
+        </li>
+</ol></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-moving-rootfs-from-single-path-to-multipath-device"><div class="inner">
+<div class="hgroup"><h2 class="title">Moving root File Systems from a Single Path Device to a Multipath
+      Device</h2></div>
+<div class="region"><div class="contents">
+<p class="para">This is dramatically simplified by the use of UUIDs to identify
+      devices as an intrinsic label. Simply install <span class="em em-bold emphasis">multipath-tools-boot</span> and reboot. This will
+      rebuild the initial ramdisk and afford multipath the opportunity to
+      build it's paths before the root file system is mounted by UUID.</p>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">Whenever <span class="file filename">multipath.conf</span> is updated, so
+        should the initrd by executing <span class="cmd command">update-initramfs -u -k
+        all</span>. The reason being is <span class="file filename">multipath.conf</span>
+        is copied to the ramdisk and is integral to determining the available
+        devices for grouping via it's blacklist and device sections.</p>
+      </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-moving-swap-from-single-path-to-multipath-device"><div class="inner">
+<div class="hgroup"><h2 class="title">Moving swap File Systems from a Single Path Device to a Multipath
+      Device</h2></div>
+<div class="region"><div class="contents"><p class="para">The procedure is exactly the same as illustrated in the previous
+      section called <a class="link" href="multipath-admin-and-troubleshooting.html#multipath-moving-rootfs-from-single-path-to-multipath-device" title="Moving root File Systems from a Single Path Device to a Multipath
+      Device">Moving
+      root File Systems from a Single Path to a Multipath
+      Device</a>.</p></div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-daemon-multipathd"><div class="inner">
+<div class="hgroup"><h2 class="title">The Multipath Daemon</h2></div>
+<div class="region"><div class="contents"><p class="para">If you find you have trouble implementing a multipath
+      configuration, you should ensure the multipath daemon is running as
+      described in <a class="link" href="multipath-setting-up-dm-multipath.html" title="Setting up DM-Multipath Overview">"Setting
+      up DM-Multipath"</a>. The <span class="cmd command">multipathd</span> daemon must be running in
+      order to use multipathd devices. Also see section <a class="link" href="multipath-admin-and-troubleshooting.html#multipath-interacting-with-multipathd" title="Troubleshooting with the multipathd interactive console">Troubleshooting with the
+      multipathd interactive console</a> concerning interacting with
+      <span class="cmd command">multipathd</span> as a debugging aid.</p></div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-issues-with-queue_if_no_path"><div class="inner">
+<div class="hgroup"><h2 class="title">Issues with queue_if_no_path</h2></div>
+<div class="region"><div class="contents">
+<p class="para">If <span class="em em-bold emphasis">features "1 queue_if_no_path"</span>
+      is specified in the <span class="file filename">/etc/multipath.conf</span> file, then
+      any process that uses I/O will hang until one or more paths are
+      restored. To avoid this, set the <span class="em em-bold emphasis"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-no_path_retry" title="">no_path_retry</a> N</span>
+      parameter in the <span class="file filename">/etc/multipath.conf</span>.</p>
+<p class="para">When you set the <span class="em em-bold emphasis">no_path_retry</span>
+      parameter, remove the <span class="em em-bold emphasis">features "1
+      queue_if_no_path"</span> option from the
+      <span class="file filename">/etc/multipath.conf</span> file as well. If, however, you
+      are using a multipathed device for which the <span class="cmd option">features "1
+      queue_if_no_path"</span> option is set as a compiled in default, as it
+      is for many SAN devices, you must add <span class="cmd option">features "0"</span> to
+      override this default. You can do this by copying the existing <span class="em em-bold emphasis">devices</span> section, and just that section (not the
+      entire file), from
+      <span class="file filename">/usr/share/doc/multipath-tools/examples/multipath.conf.annotated.gz</span>
+      into <span class="file filename">/etc/multipath.conf</span> and editing to suit your
+      needs.</p>
+<p class="para">If you need to use the <span class="cmd option">features "1
+      queue_if_no_path"</span> option and you experience the issue noted
+      here, use the <span class="cmd command">dmsetup</span> command to edit the policy at
+      runtime for a particular LUN (that is, for which all the paths are
+      unavailable). For example, if you want to change the policy on the
+      multipath device <span class="file filename">mpathc</span> from
+      <span class="cmd option">"queue_if_no_path"</span> to <span class="cmd option">
+      "fail_if_no_path"</span>, execute the following command.</p>
+<div class="screen"><pre class="contents "># dmsetup message mpathc 0 "fail_if_no_path"</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">You must specify the <span class="file filename">mpathN</span> alias rather
+        than the path</p>
+      </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-command-output"><div class="inner">
+<div class="hgroup"><h2 class="title">Multipath Command Output</h2></div>
+<div class="region"><div class="contents">
+<p class="para">When you create, modify, or list a multipath device, you get a
+      printout of the current device setup. The format is as follows. For each
+      multipath device:</p>
+<div class="screen"><pre class="contents ">   action_if_any: alias (wwid_if_different_from_alias) dm_device_name_if_known vendor,product
+   size=size features='features' hwhandler='hardware_handler' wp=write_permission_if_known</pre></div>
+<p class="para">For each path group:</p>
+<div class="screen"><pre class="contents ">  -+- policy='scheduling_policy' prio=prio_if_known
+  status=path_group_status_if_known</pre></div>
+<p class="para">For each path:</p>
+<div class="screen"><pre class="contents ">   `- host:channel:id:lun devnode major:minor dm_status_if_known path_status
+  online_status</pre></div>
+<p class="para">For example, the output of a multipath command might appear as
+      follows:</p>
+<div class="screen"><pre class="contents ">  3600d0230000000000e13955cc3757800 dm-1 WINSYS,SF2372
+  size=269G features='0' hwhandler='0' wp=rw
+  |-+- policy='round-robin 0' prio=1 status=active
+  | `- 6:0:0:0 sdb 8:16  active ready  running
+  `-+- policy='round-robin 0' prio=1 status=enabled
+    `- 7:0:0:0 sdf 8:80  active ready  running</pre></div>
+<p class="para">If the path is up and ready for I/O, the status of the path is
+      <span class="em em-bold emphasis">ready</span> or <span class="em emphasis">ghost</span>. If the path is down, the status is
+      <span class="em em-bold emphasis">faulty</span> or <span class="em em-bold emphasis">shaky</span>. The path status is updated periodically by
+      the <span class="cmd command">multipathd</span> daemon based on the polling interval defined in the
+      <span class="file filename">/etc/multipath.conf</span> file.</p>
+<p class="para">The dm status is similar to the path status, but from the kernel's
+      point of view. The dm status has two states: <span class="em em-bold emphasis">failed</span>, which is analogous to <span class="em em-bold emphasis">faulty</span>, and <span class="em em-bold emphasis">active</span> which covers all other path states.
+      Occasionally, the path state and the dm state of a device will
+      temporarily not agree.</p>
+<p class="para">The possible values for <span class="em em-bold emphasis">online_status</span> are <span class="em em-bold emphasis">running</span> and <span class="em em-bold emphasis">offline</span>. A status of <span class="em emphasis">offline</span> means that the SCSI device has been
+      disabled.</p>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">When a multipath device is being created or modified , the path
+        group status, the dm device name, the write permissions, and the dm
+        status are not known. Also, the features are not always correct</p>
+      </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-queries-and-commands"><div class="inner">
+<div class="hgroup"><h2 class="title">Multipath Queries with multipath Command</h2></div>
+<div class="region"><div class="contents">
+<p class="para">You can use the <span class="em em-bold emphasis">-l </span>and <span class="em em-bold emphasis">-ll</span> options of the <span class="em em-bold emphasis">multipath</span> command to display the current
+      multipath configuration. The <span class="em em-bold emphasis">-l</span> option
+      displays multipath topology gathered from information in sysfs and the
+      device mapper. The <span class="em em-bold emphasis">-ll</span> option displays
+      the information the <span class="em em-bold emphasis">-l</span> displays in
+      addition to all other available components of the system.</p>
+<p class="para">When displaying the multipath configuration, there are three
+      verbosity levels you can specify with the <span class="em em-bold emphasis">-v</span> option of the multipath command. Specifying
+      <span class="em em-bold emphasis">-v0</span> yields no output.
+      Specifying<span class="em em-bold emphasis"> -v1</span> outputs the created or
+      updated multipath names only, which you can then feed to other tools
+      such as kpartx. Specifying <span class="em em-bold emphasis">-v2</span> prints
+      all detected paths, multipaths, and device maps.</p>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">The default <span class="em em-bold emphasis">verbosity</span> level of
+        multipath is <span class="em em-bold emphasis">2</span> and can be globally
+        modified by defining the <a class="link" href="multipath-dm-multipath-config-file.html#attribute-verbosity" title="">verbosity
+        attribute</a> in the <span class="em em-bold emphasis">defaults</span>
+        section of <span class="file filename">multipath.conf</span>.</p>
+      </div></div></div></div>
+<p class="para">The following example shows the output of a <span class="em em-bold emphasis">multipath -l</span> command.</p>
+<div class="screen"><pre class="contents "># multipath -l
+  3600d0230000000000e13955cc3757800 dm-1 WINSYS,SF2372
+  size=269G features='0' hwhandler='0' wp=rw
+  |-+- policy='round-robin 0' prio=1 status=active
+  | `- 6:0:0:0 sdb 8:16  active ready  running
+  `-+- policy='round-robin 0' prio=1 status=enabled
+    `- 7:0:0:0 sdf 8:80  active ready  running</pre></div>
+<p class="para">The following example shows the output of a <span class="em em-bold emphasis">multipath -ll</span> command.</p>
+<div class="screen"><pre class="contents "># multipath -ll
+  3600d0230000000000e13955cc3757801 dm-10 WINSYS,SF2372
+  size=269G features='0' hwhandler='0' wp=rw
+  |-+- policy='round-robin 0' prio=1 status=enabled
+  | `- 19:0:0:1 sdc 8:32  active ready  running
+  `-+- policy='round-robin 0' prio=1 status=enabled
+    `- 18:0:0:1 sdh 8:112 active ready  running
+    3600d0230000000000e13955cc3757803 dm-2 WINSYS,SF2372
+    size=125G features='0' hwhandler='0' wp=rw
+    `-+- policy='round-robin 0' prio=1 status=active
+      |- 19:0:0:3 sde 8:64  active ready  running
+        `- 18:0:0:3 sdj 8:144 active ready  running</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-command-options"><div class="inner">
+<div class="hgroup"><h2 class="title">Multipath Command Options</h2></div>
+<div class="region"><div class="contents">
+<p class="para">Table <a class="xref" href="multipath-admin-and-troubleshooting.html#useful-multipath-command-options" title="Useful multipath Command
+        Options">Useful multipath Command
+        Options</a> describes some options of the
+      <span class="em em-bold emphasis">multipath</span> command that you might find
+      useful.</p>
+<div class="table">
+<a name="useful-multipath-command-options"></a><div class="title">
+<a name="useful-multipath-command-options-title"></a><h3><span class="title">Useful multipath Command
+        Options</span></h3>
+</div>
+<table summary="Useful multipath Command
+        Options" style="border: solid 1px;">
+<thead><tr>
+<th class="td-colsep" style="text-align: left;">Option</th>
+<th style="text-align: left;">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="td-colsep" style="text-align: left;"><span class="em em-bold emphasis">-l</span></td>
+<td>Display the current multipath configuration gathered from
+              <span class="em em-bold emphasis">sysfs</span> and the device
+              mapper.</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep" style="text-align: left;"><span class="em em-bold emphasis">-ll</span></td>
+<td>Display the current multipath configuration gathered from
+              <span class="em em-bold emphasis">sysfs</span>, the device mapper, and
+              all other available components on the system.</td>
+</tr>
+<tr>
+<td class="td-colsep" style="text-align: left;"><span class="em em-bold emphasis">-f device</span></td>
+<td>Remove the named multipath device.</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep" style="text-align: left;"><span class="em em-bold emphasis">-F</span></td>
+<td>Remove all unused multipath devices.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="device-mapper-entries-in-dmsetup"><div class="inner">
+<div class="hgroup"><h2 class="title">Determining Device Mapper Entries with dmsetup Command</h2></div>
+<div class="region"><div class="contents">
+<p class="para">You can use the <span class="em em-bold emphasis">dmsetup</span> command
+      to find out which device mapper entries match the <span class="em em-bold emphasis">multipathed</span> devices.</p>
+<p class="para">The following command displays all the device mapper devices and
+      their major and minor numbers. The minor numbers determine the name of
+      the dm device. For example, a minor number of <span class="em em-bold emphasis">3</span> corresponds to the multipathed device <span class="em em-bold emphasis"><span class="file filename">/dev/dm-3</span></span>.</p>
+<div class="screen"><pre class="contents "># dmsetup ls
+mpathd  (253, 4)
+mpathep1        (253, 12)
+mpathfp1        (253, 11)
+mpathb  (253, 3)
+mpathgp1        (253, 14)
+mpathhp1        (253, 13)
+mpatha  (253, 2)
+mpathh  (253, 9)
+mpathg  (253, 8)
+VolGroup00-LogVol01     (253, 1)
+mpathf  (253, 7)
+VolGroup00-LogVol00     (253, 0)
+mpathe  (253, 6)
+mpathbp1        (253, 10)
+mpathd  (253, 5)
+  </pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-interacting-with-multipathd"><div class="inner">
+<div class="hgroup"><h2 class="title">Troubleshooting with the multipathd interactive console</h2></div>
+<div class="region"><div class="contents">
+<p class="para">The <span class="em em-bold emphasis">multipathd -k</span> command is an
+      interactive interface to the <span class="em em-bold emphasis">multipathd</span>
+      daemon. Entering this command brings up an interactive multipath
+      console. After entering this command, you can enter help to get a list
+      of available commands, you can enter a interactive command, or you can
+      enter <span class="em em-bold emphasis">CTRL-D</span> to quit.</p>
+<p class="para">The multipathd interactive console can be used to troubleshoot
+      problems you may be having with your system. For example, the following
+      command sequence displays the multipath configuration, including the
+      defaults, before exiting the console. See the IBM article <a href="http://www-01.ibm.com/support/docview.wss?uid=isg3T1011985" class="ulink" title="http://www-01.ibm.com/support/docview.wss?uid=isg3T1011985">"Tricks
+      with Multipathd"</a> for more examples.</p>
+<div class="screen"><pre class="contents "># multipathd -k
+  &gt; &gt; show config
+  &gt; &gt; CTRL-D</pre></div>
+<p class="para">The following command sequence ensures that multipath has picked
+      up any changes to the multipath.conf,</p>
+<div class="screen"><pre class="contents "># multipathd -k
+&gt; &gt; reconfigure
+&gt; &gt; CTRL-D
+</pre></div>
+<p class="para">Use the following command sequence to ensure that the path checker
+      is working properly.</p>
+<div class="screen"><pre class="contents "># multipathd -k
+&gt; &gt; show paths
+&gt; &gt; CTRL-D
+</pre></div>
+<p class="para">Commands can also be streamed into multipathd using stdin like
+      so:<div class="screen"><pre class="contents "># echo 'show config' | multipathd -k</pre></div></p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="multipath-dm-multipath-config-file.html" title="The DM-Multipath Configuration File">Previous</a><a class="nextlinks-next" href="remote-administration.html" title="Remote Administration">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

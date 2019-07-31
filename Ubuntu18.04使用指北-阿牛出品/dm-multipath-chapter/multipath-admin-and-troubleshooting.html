@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DM-Multipath管理和故障排除</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="dm-multipath-chapter.html" title="DM-多路径"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DM-Multipath</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="multipath-dm-multipath-config-file.html" title="DM-Multipath配置文件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="../remote-administration/remote-administration.html" title="远程管理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DM-Multipath管理和故障排除</font></font></h1></div>
+<div class="region">
+<div class="contents"></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-resize-an-online-multipath-device" title="调整在线多路径设备的大小"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">调整在线多路径设备的大小</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-moving-rootfs-from-single-path-to-multipath-device" title="将根文件系统从单路径设备移动到多路径设备"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将根文件系统从单路径设备移动到多路径设备</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-moving-swap-from-single-path-to-multipath-device" title="将交换文件系统从单路径设备移动到多路径设备"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将交换文件系统从单路径设备移动到多路径设备</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-daemon-multipathd" title="多路径守护程序"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径守护程序</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-issues-with-queue_if_no_path" title="queue_if_no_path的问题"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">queue_if_no_path的问题</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-command-output" title="多路径命令输出"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径命令输出</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-queries-and-commands" title="使用multipath命令的多路径查询"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用multipath命令的多路径查询</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-command-options" title="多路径命令选项"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径命令选项</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#device-mapper-entries-in-dmsetup" title="使用dmsetup命令确定设备映射器条目"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用dmsetup命令确定设备映射器条目</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-admin-and-troubleshooting.html#multipath-interacting-with-multipathd" title="使用multipathd交互式控制台进行故障排除"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用multipathd交互式控制台进行故障排除</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="multipath-resize-an-online-multipath-device"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">调整在线多路径设备的大小</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果需要调整在线多路径设备的大小，请使用以下过程</font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">调整物理设备的大小。</font><font style="vertical-align: inherit;">这是特定于存储平台的。</font></font></p>
+        </li>
+<li class="steps">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下命令查找LUN的路径：</font></font></p>
+
+          <div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#multipath -l</font></font></pre></div>
+        </li>
+<li class="steps">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">调整路径大小。</font><font style="vertical-align: inherit;">对于SCSI设备，将1写入设备的
+           </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">重新扫描</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件会导致重新扫描SCSI驱动程序，如以下命令所示：</font></font></p>
+
+          <div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#echo 1&gt; / sys / block / device_name / device / rescan</font></font></pre></div>
+        </li>
+<li class="steps">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过运行multipathd resize命令调整多路径设备的大小：</font></font></p>
+
+          <div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#multipathd -k'调整大小地图mpatha'</font></font></pre></div>
+        </li>
+<li class="steps">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">调整文件系统的大小（假设没有使用LVM或DOS分区）：</font></font></p>
+
+          <div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#resize2fs / dev / mapper / mpatha</font></font></pre></div>
+        </li>
+</ol></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-moving-rootfs-from-single-path-to-multipath-device"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将根文件系统从单路径设备移动到多路径设备</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过使用UUID将设备识别为内在标签，可以大大简化这一过程。</font><font style="vertical-align: inherit;">只需安装</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath-tools-boot</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并重启即可。</font><font style="vertical-align: inherit;">这将重建初始ramdisk并为多路径提供在UUID挂载根文件系统之前构建其路径的机会。</font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">每当</font><font style="vertical-align: inherit;">更新</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath.conf时</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，initrd也应该通过执行</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">update-initramfs -u -k all</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来</font><span class="cmd command"><font style="vertical-align: inherit;">更新</font></span><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">原因是</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+        被复制到ramdisk，并且通过它的黑名单和设备部分确定可用于分组的设备是不可或缺的。</font></font></p>
+      </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-moving-swap-from-single-path-to-multipath-device"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将交换文件系统从单路径设备移动到多路径设备</font></font></h2></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">该过程与上一节“ </font></font><a class="link" href="multipath-admin-and-troubleshooting.html#multipath-moving-rootfs-from-single-path-to-multipath-device" title="将根文件系统从单路径设备移动到多路径设备"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将根文件系统从单个路径移动到多路径设备”中</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所示的过程完全相同</font><font style="vertical-align: inherit;">。</font></font></p></div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-daemon-multipathd"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径守护程序</font></font></h2></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果发现在实现多路径配置时遇到问题，则应确保多路径守护程序正在运行，如</font></font><a class="link" href="multipath-setting-up-dm-multipath.html" title="设置DM-Multipath概述"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“设置DM-Multipath”中所述</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">将</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在multipathd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护进程必须以使用multipathd中的设备上运行。</font><font style="vertical-align: inherit;">另请参阅</font></font><a class="link" href="multipath-admin-and-troubleshooting.html#multipath-interacting-with-multipathd" title="使用multipathd交互式控制台进行故障排除"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用multipathd交互式控制台进行故障排除的</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分</font><a class="link" href="multipath-admin-and-troubleshooting.html#multipath-interacting-with-multipathd" title="使用multipathd交互式控制台进行故障排除"><font style="vertical-align: inherit;">，该</font></a><font style="vertical-align: inherit;">部分</font><font style="vertical-align: inherit;">涉及与</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipathd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">交互
+       </font><font style="vertical-align: inherit;">作为调试帮助。</font></font></p></div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-issues-with-queue_if_no_path"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">queue_if_no_path的问题</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果</font><font style="vertical-align: inherit;">
+      在</font><span class="file filename"><font style="vertical-align: inherit;">/etc/multipath.conf</font></span><font style="vertical-align: inherit;">文件中</font><font style="vertical-align: inherit;">指定了</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“1 queue_if_no_path”功能</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，则任何使用I / O的进程都将挂起，直到还原一个或多个路径。</font><font style="vertical-align: inherit;">要避免这种情况，请</font><font style="vertical-align: inherit;">
+      在</font><span class="file filename"><font style="vertical-align: inherit;">/etc/multipath.conf中</font></span><font style="vertical-align: inherit;">设置</font><span class="em em-bold emphasis"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-no_path_retry" title=""><font style="vertical-align: inherit;">no_path_retry</font></a></span><span class="em em-bold emphasis"><font style="vertical-align: inherit;"> N</font></span><font style="vertical-align: inherit;">参数</font><font style="vertical-align: inherit;">。</font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-no_path_retry" title=""><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no_path_retry</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      参数时，</font><font style="vertical-align: inherit;">还要</font><font style="vertical-align: inherit;">从</font><span class="file filename"><font style="vertical-align: inherit;">/etc/multipath.conf</font></span><font style="vertical-align: inherit;">文件中</font><font style="vertical-align: inherit;">删除</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">功能“1 queue_if_no_path”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项
+       </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">但是，如果您使用的是多路径设备，其</font><span class="cmd option"><font style="vertical-align: inherit;">功能“1 queue_if_no_path”</font></span><font style="vertical-align: inherit;">选项设置为默认编译，就像许多SAN设备一样，您必须添加</font><span class="cmd option"><font style="vertical-align: inherit;">功能“0”</font></span><font style="vertical-align: inherit;">以覆盖此默认设置。</font><font style="vertical-align: inherit;">你可以通过复制现有的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">设备</font></span><font style="vertical-align: inherit;">部分，只将那部分（而不是整个文件）从
+       </font><span class="file filename"><font style="vertical-align: inherit;">/usr/share/doc/multipath-tools/examples/multipath.conf.annotated.gz</font></span><font style="vertical-align: inherit;">复制</font><font style="vertical-align: inherit;">
+      到</font><span class="file filename"><font style="vertical-align: inherit;">/etc/multipath.conf中</font></span></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="cmd option"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="cmd option"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 和编辑，以满足您的需求。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果需要使用</font></font><span class="cmd option"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“1 queue_if_no_path”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项并遇到此处所述的问题，请使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dmsetup</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令在运行时编辑特定LUN的策略（即，所有路径都不可用）。</font><font style="vertical-align: inherit;">例如，如果要将多路径设备</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mpathc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上的策略</font><font style="vertical-align: inherit;">从
+       </font></font><span class="cmd option"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“queue_if_no_path”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更改为</font></font><span class="cmd option"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      “fail_if_no_path”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请执行以下命令。</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#dmsetup message mpathc 0“fail_if_no_path”</font></font></pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您必须指定</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mpathN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">别名而不是路径</font></font></p>
+      </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-command-output"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径命令输出</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建，修改或列出多路径设备时，您将获得当前设备设置的打印输出。</font><font style="vertical-align: inherit;">格式如下。</font><font style="vertical-align: inherit;">对于每个多路径设备：</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">   action_if_any：别名（wwid_if_different_from_alias）dm_device_name_if_known供应商，产品</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   size = size features ='features'hwhandler ='hardware_handler'wp = write_permission_if_known</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对于每个路径组：</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  -  +  -  policy ='scheduling_policy'prio = prio_if_known</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  状态= path_group_status_if_known</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对于每条路径：</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">   ` -  host：channel：id：lun devnode major：minor dm_status_if_known path_status</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  online_status</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">例如，multipath命令的输出可能如下所示：</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  3600d0230000000000e13955cc3757800 dm-1 WINSYS，SF2372</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  size = 269G features ='0'hwhandler ='0'wp = rw</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  |  -  +  -  policy ='round-robin 0'prio = 1 status = active</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  | </font><font style="vertical-align: inherit;">` -  6：0：0：0 sdb 8:16准备好运行</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  ` -  +  -  policy ='round-robin 0'prio = 1 status = enabled</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    ` -  7：0：0：0 sdf 8:80准备就绪</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果路径已启动并准备好进行I / O，则路径的状态为
+       </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">就绪</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">重影</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果路径已关闭，则状态
+       </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">错误</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不稳定</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">路径状态由</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipathd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护程序根据</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/multipath.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中</font><font style="vertical-align: inherit;">定义的轮询间隔
+       </font><font style="vertical-align: inherit;">定期更新</font><font style="vertical-align: inherit;">。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dm状态类似于路径状态，但是从内核的角度来看。</font><font style="vertical-align: inherit;">dm状态有两种状态：</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">失败</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，类似于</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，而</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">活动</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">则覆盖所有其他路径状态。</font><font style="vertical-align: inherit;">有时，设备的路径状态和dm状态暂时不一致。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">online_status</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的可能值</font><font style="vertical-align: inherit;">正在</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">运行</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">脱机</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">的状态</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下线</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">意味着SCSI设备已被禁用。</font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建或修改多路径设备时，路径组状态，dm设备名称，写入权限和dm状态未知。</font><font style="vertical-align: inherit;">此外，功能并不总是正确的</font></font></p>
+      </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-queries-and-commands"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用multipath命令的多路径查询</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以使用</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">multipath</font></span><font style="vertical-align: inherit;">命令</font><font style="vertical-align: inherit;">的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-l</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-ll</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">显示当前的多路径配置。</font><font style="vertical-align: inherit;">在</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">-l</font></span><font style="vertical-align: inherit;">选项显示多路径拓扑收集了来自sysfs中的信息和设备映射器。</font><font style="vertical-align: inherit;">该</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">-ll</font></span><font style="vertical-align: inherit;">选项显示的信息</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">-l</font></span><font style="vertical-align: inherit;">除了系统的所有其他可用组件的显示器。</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">显示多路径配置时，可以使用</font><font style="vertical-align: inherit;">multipath命令</font><font style="vertical-align: inherit;">的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-v</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">指定三个详细级别</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">指定
+       </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-v0不会</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">产生任何输出。</font><font style="vertical-align: inherit;">指定</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-v1仅</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">输出创建或更新的多路径名称，然后您可以将其提供给其他工具，例如kpartx。</font><font style="vertical-align: inherit;">指定</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-v2将</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打印所有检测到的路径，多路径和设备映射。</font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径</font><font style="vertical-align: inherit;">的默认</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">详细</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">级别为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，可以通过在</font><span class="file filename"><font style="vertical-align: inherit;">multipath.conf</font></span><font style="vertical-align: inherit;">的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">defaults</font></span><font style="vertical-align: inherit;"> 
+        部分中</font><font style="vertical-align: inherit;">定义</font></font><a class="link" href="multipath-dm-multipath-config-file.html#attribute-verbosity" title=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">verbosity属性</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">进行全局修改</font><font style="vertical-align: inherit;">。</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+      </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下示例显示了</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath -l</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令</font><font style="vertical-align: inherit;">的输出</font><font style="vertical-align: inherit;">。</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#multipath -l</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  3600d0230000000000e13955cc3757800 dm-1 WINSYS，SF2372</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  size = 269G features ='0'hwhandler ='0'wp = rw</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  |  -  +  -  policy ='round-robin 0'prio = 1 status = active</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  | </font><font style="vertical-align: inherit;">` -  6：0：0：0 sdb 8:16准备好运行</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  ` -  +  -  policy ='round-robin 0'prio = 1 status = enabled</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    ` -  7：0：0：0 sdf 8:80准备就绪</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下示例显示</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath -ll</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令</font><font style="vertical-align: inherit;">的输出</font><font style="vertical-align: inherit;">。</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#multipath -ll</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  3600d0230000000000e13955cc3757801 dm-10 WINSYS，SF2372</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  size = 269G features ='0'hwhandler ='0'wp = rw</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  |  -  +  -  policy ='round-robin 0'prio = 1 status = enabled</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  | </font><font style="vertical-align: inherit;">` -  19：0：0：1 sdc 8:32准备就绪</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  ` -  +  -  policy ='round-robin 0'prio = 1 status = enabled</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    ` -  18：0：0：1 sdh 8：112主动准备运行</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    3600d0230000000000e13955cc3757803 dm-2 WINSYS，SF2372</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    size = 125G features ='0'hwhandler ='0'wp = rw</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    ` -  +  -  policy ='round-robin 0'prio = 1 status = active</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      |  -  19：0：0：3 sde 8:64准备就绪</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        ` -  18：0：0：3 sdj 8：144主动准备运行</font></font></pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-command-options"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径命令选项</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表</font></font><a class="xref" href="multipath-admin-and-troubleshooting.html#useful-multipath-command-options" title="有用的multipath命令选项"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有用的multipath命令选项</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">描述了</font><font style="vertical-align: inherit;">您可能会发现有用</font><font style="vertical-align: inherit;">的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令的</font><font style="vertical-align: inherit;">一些选项
+       </font><font style="vertical-align: inherit;">。</font></font></p>
+<div class="table">
+<a name="useful-multipath-command-options"></a><div class="title">
+<a name="useful-multipath-command-options-title"></a><h3><span class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有用的multipath命令选项</font></font></span></h3>
+</div>
+<table summary="Useful multipath Command
+        Options" style="border: solid 1px;">
+<thead><tr>
+<th class="td-colsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font></font></th>
+<th style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">描述</font></font></th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="td-colsep" style="text-align: left;"><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-l</font></font></span></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">显示从</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sysfs</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和设备映射器</font><font style="vertical-align: inherit;">收集的当前多路径配置
+               </font><font style="vertical-align: inherit;">。</font></font></td>
+</tr>
+<tr class="shade">
+<td class="td-colsep" style="text-align: left;"><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-二</font></font></span></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">显示从</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sysfs</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，设备映射器和系统上所有其他可用组件</font><font style="vertical-align: inherit;">收集的当前多路径配置
+               </font><font style="vertical-align: inherit;">。</font></font></td>
+</tr>
+<tr>
+<td class="td-colsep" style="text-align: left;"><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-f设备</font></font></span></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">删除指定的多路径设备。</font></font></td>
+</tr>
+<tr class="shade">
+<td class="td-colsep" style="text-align: left;"><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-F</font></font></span></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">删除所有未使用的多路径设备。</font></font></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="device-mapper-entries-in-dmsetup"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用dmsetup命令确定设备映射器条目</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以使用</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dmsetup</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令找出哪些设备映射器条目与</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备</font><font style="vertical-align: inherit;">匹配</font><font style="vertical-align: inherit;">。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下命令显示所有设备映射器设备及其主要和次要编号。</font><font style="vertical-align: inherit;">次要编号确定dm设备的名称。</font><font style="vertical-align: inherit;">例如，次数</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对应于多路径设备</font></font><span class="em em-bold emphasis"><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / dm-3</font></font></span></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#dmsetup ls</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mpathd（253,4）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mpathep1（253,12）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mpathfp1（253,11）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mpathb（253,3）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mpathgp1（253,14）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mpathhp1（253,13）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mpatha（253,2）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mpathh（253,9）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mpathg（253,8）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+VolGroup00-LogVol01（253,1）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mpathf（253,7）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+VolGroup00-LogVol00（253,0）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mpathe（253,6）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mpathbp1（253,10）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mpathd（253,5）</font></font><font></font>
+  </pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-interacting-with-multipathd"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用multipathd交互式控制台进行故障排除</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在multipathd -k</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令是一个交互式的界面到</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在multipathd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      守护进程。</font><font style="vertical-align: inherit;">输入此命令将打开一个交互式多路径控制台。</font><font style="vertical-align: inherit;">输入此命令后，您可以输入help获取可用命令列表，可以输入交互式命令，也可以输入</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CTRL-D</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">退出。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipathd交互式控制台可用于解决您的系统可能遇到的问题。</font><font style="vertical-align: inherit;">例如，以下命令序列在退出控制台之前显示多路径配置，包括默认值。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">更多示例，</font><font style="vertical-align: inherit;">请参阅IBM文章</font></font><a href="http://www-01.ibm.com/support/docview.wss?uid=isg3T1011985" class="ulink" title="http://www-01.ibm.com/support/docview.wss?uid=isg3T1011985"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“Tricks with Multipathd”</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#multipathd -k</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  &gt;&gt; show show</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  &gt;&gt; CTRL-D</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下命令序列确保multipath已获取multipath.conf的任何更改，</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#multipathd -k</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&gt;&gt;重新配置</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&gt;&gt; CTRL-D</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下命令序列确保路径检查程序正常工作。</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#multipathd -k</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&gt;&gt;显示路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&gt;&gt; CTRL-D</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令也可以使用stdin流式传输到multipathd，如下所示：</font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#echo'show config'| </font><font style="vertical-align: inherit;">multipathd -k</font></font></pre></div><p></p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="multipath-dm-multipath-config-file.html" title="DM-Multipath配置文件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="remote-administration.html" title="远程管理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

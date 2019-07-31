@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Certificates</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="security.html" title="Security">Security</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="apparmor.html" title="AppArmor">Previous</a><a class="nextlinks-next" href="ecryptfs.html" title="eCryptfs">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Certificates</h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+            One of the most common forms of cryptography today is <span class="em emphasis">public-key</span> cryptography.
+            Public-key cryptography utilizes a <span class="em emphasis">public key</span> and a <span class="em emphasis">private key</span>.
+            The system works by <span class="em emphasis">encrypting</span> information using the public key. The information can  
+            then only be <span class="em emphasis">decrypted</span> using the private key.
+            </p>
+<p class="para">
+            A common use for public-key cryptography is encrypting application traffic using a Secure Socket Layer (SSL) or 
+            Transport Layer Security (TLS) connection. One example: configuring Apache to provide <span class="em emphasis">HTTPS</span>, the
+            HTTP protocol over SSL. This allows a way to encrypt traffic using a protocol that does not itself provide encryption.
+            </p>
+<p class="para">
+            A <span class="em emphasis">Certificate</span> is a method used to distribute a <span class="em emphasis">public key</span> and other information
+            about a server and the organization who is responsible for it. Certificates can be digitally signed by a 
+            <span class="em emphasis">Certification Authority</span>, or CA. A CA is a trusted third party that has confirmed that the information
+            contained in the certificate is accurate.
+            </p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="certificates-and-security.html#types-of-certificates" title="Types of Certificates">Types of Certificates</a></li>
+<li class="links"><a class="xref" href="certificates-and-security.html#generating-a-csr" title="Generating a Certificate Signing Request (CSR)">Generating a Certificate Signing Request (CSR)</a></li>
+<li class="links"><a class="xref" href="certificates-and-security.html#creating-a-self-signed-certificate" title="Creating a Self-Signed Certificate">Creating a Self-Signed Certificate</a></li>
+<li class="links"><a class="xref" href="certificates-and-security.html#installing-the-certificate" title="Installing the Certificate">Installing the Certificate</a></li>
+<li class="links"><a class="xref" href="certificates-and-security.html#certificate-authority" title="Certification Authority">Certification Authority</a></li>
+<li class="links"><a class="xref" href="certificates-and-security.html#certificate-references" title="References">References</a></li>
+</ul></div>
+<div class="sect2 sect" id="types-of-certificates"><div class="inner">
+<div class="hgroup"><h2 class="title">Types of Certificates</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+              To set up a secure server using public-key cryptography, in most cases, you
+              send your certificate request (including your public key),
+              proof of your company's identity, and payment to a CA. The
+              CA verifies the certificate request and your identity, and
+              then sends back a certificate for your secure server.  
+             Alternatively, you can create your own <span class="em emphasis">self-signed</span>
+             certificate. 
+            </p>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+              <p class="para">
+              Note that self-signed certificates should not be used in most production environments.
+              </p>
+            </div></div></div></div>
+<p class="para">
+	    Continuing the HTTPS example, a CA-signed certificate provides two important
+            capabilities that a self-signed certificate does not:
+            </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para">
+            Browsers (usually) automatically recognize the certificate
+            and allow a secure connection to be made without prompting
+            the user.
+            </p>
+            </li>
+<li class="list itemizedlist">
+            <p class="para">
+             When a CA issues a signed certificate, it is
+             guaranteeing the identity of the organization that is
+             providing the web pages to the browser.
+            </p>
+            </li>
+</ul></div>
+<p class="para">
+             Most Web browsers, and computers, that support SSL have a list of CAs whose
+             certificates they automatically accept. If a browser
+             encounters a certificate whose authorizing CA is not in the
+             list, the browser asks the user to either accept or decline
+             the connection. Also, other applications may generate an error message when using
+             a self-signed certificate.
+            </p>
+<p class="para">
+            The process of getting a certificate from a CA is fairly
+            easy. A quick overview is as follows:
+            </p>
+<div class="list orderedlist"><ol class="list orderedlist">
+<li class="list orderedlist">
+               <p class="para">Create a private and public encryption key pair.</p>
+            </li>
+<li class="list orderedlist">
+                 <p class="para">Create a certificate request based on the public key. The
+              certificate request contains information about your server and the
+              company hosting it.</p>
+            </li>
+<li class="list orderedlist">
+                 <p class="para">Send the certificate request, along with documents proving your
+              identity, to a CA. We cannot tell you which certificate authority to
+              choose. Your decision may be based on your past experiences, or on the
+              experiences of your friends or colleagues, or purely on monetary
+              factors.</p>
+
+                    <p class="para">Once you have decided upon a CA, you need to follow the
+              instructions they provide on how to obtain a certificate
+              from them.</p>
+            </li>
+<li class="list orderedlist">
+               <p class="para">When the CA is satisfied that you are indeed who you claim to be,
+            they send you a digital certificate.</p>
+            </li>
+<li class="list orderedlist">
+              <p class="para">
+              Install this certificate on your secure server, and configure the appropriate applications
+              to use the certificate.
+              </p>
+            </li>
+</ol></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="generating-a-csr"><div class="inner">
+<div class="hgroup"><h2 class="title">Generating a Certificate Signing Request (CSR)</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+          Whether you are getting a certificate from a CA or generating your own
+          self-signed certificate, the first step is to generate a key.
+          </p>
+<p class="para">       
+          If the certificate will be used by service daemons, such as Apache, Postfix, Dovecot, etc., 
+          a key without a passphrase is often appropriate. Not having a passphrase allows the services
+          to start without manual intervention, usually the preferred way to start a daemon.
+          </p>
+<p class="para">                  
+          This section will cover generating a key with a passphrase, and one without. The non-passphrase 
+          key will then be used to generate a certificate that can be used with various service daemons. 
+          </p>
+<div class="note note-warning" title="Warning"><div class="inner"><div class="region"><div class="contents">
+            <p class="para">
+            Running your secure service without a passphrase is convenient because you will not 
+            need to enter the passphrase every time you start your secure service. But it is 
+            insecure and a compromise of the key means a compromise of the server as well.
+            </p>
+          </div></div></div></div>
+<p class="para">
+          To generate the <span class="em emphasis">keys</span> for the Certificate Signing Request (CSR) run the 
+          following command from a terminal prompt:
+          </p>
+<div class="screen"><pre class="contents "><span class="cmd command">openssl genrsa -des3 -out server.key 2048</span>
+</pre></div>
+<div class="code"><pre class="contents ">Generating RSA private key, 2048 bit long modulus
+..........................++++++
+.......++++++
+e is 65537 (0x10001)
+Enter pass phrase for server.key:
+</pre></div>
+<p class="para">
+        You can now enter your passphrase. For best security, it should
+        at least contain eight characters. The minimum length when
+        specifying -des3 is four characters. It should include numbers
+        and/or punctuation and not be a word in a dictionary. Also
+        remember that your passphrase is case-sensitive. 
+        </p>
+<p class="para">
+        Re-type the passphrase to verify. Once you have re-typed it
+        correctly, the server key is generated and stored in the
+        <span class="file filename">server.key</span> file.
+        </p>
+<p class="para">
+        Now create the insecure key, the one without a passphrase, and shuffle 
+        the key names:
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">openssl rsa -in server.key -out server.key.insecure</span>
+<span class="cmd command">mv server.key server.key.secure</span>
+<span class="cmd command">mv server.key.insecure server.key</span>
+</pre></div>
+<p class="para">
+        The insecure key is now named <span class="file filename">server.key</span>, and you can use this
+        file to generate the CSR without passphrase.
+        </p>
+<p class="para">
+        To create the CSR, run the following command at a terminal prompt:
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">openssl req -new -key server.key -out server.csr</span>
+</pre></div>
+<p class="para">
+        It will prompt you enter the passphrase. If you enter the
+        correct passphrase, it will prompt you to enter Company Name,
+        Site Name, Email Id, etc.
+        Once you enter all these details, your
+        CSR will be created and it will be stored in the
+        <span class="file filename">server.csr</span> file.
+        </p>
+<p class="para">
+ 	You can now submit this CSR file
+        to a CA for processing. The CA will use this CSR file and issue
+        the certificate. On the other hand, you can create self-signed
+        certificate using this CSR.</p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="creating-a-self-signed-certificate"><div class="inner">
+<div class="hgroup"><h2 class="title">Creating a Self-Signed Certificate</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+            To create the self-signed certificate, run the
+            following command at a terminal prompt:
+            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt</span>
+</pre></div>
+<p class="para">The above command will prompt you to enter the
+            passphrase. Once you enter the correct passphrase, your
+            certificate will be created and it will be stored in the
+            <span class="file filename">server.crt</span> file.  </p>
+<div class="note note-warning" title="Warning"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">
+            If your secure server is to be used in a production environment, you
+            probably need a CA-signed certificate.  It is not
+            recommended to use self-signed certificate.
+        </p>
+        </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="installing-the-certificate"><div class="inner">
+<div class="hgroup"><h2 class="title">Installing the Certificate</h2></div>
+<div class="region"><div class="contents">
+<p class="para">You can install the key file
+            <span class="file filename">server.key</span> and certificate file
+            <span class="file filename">server.crt</span>, or the certificate file issued
+            by your CA, by running following commands at a terminal prompt:
+            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo cp server.crt /etc/ssl/certs</span>
+<span class="cmd command">sudo cp server.key /etc/ssl/private</span>
+</pre></div>
+<p class="para">
+        Now simply configure any applications, with the ability to use public-key cryptography, to use
+        the <span class="em emphasis">certificate</span> and <span class="em emphasis">key</span> files. For example, <span class="app application">Apache</span> can 
+        provide HTTPS, <span class="app application">Dovecot</span> can provide IMAPS and POP3S, etc. 
+        </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="certificate-authority"><div class="inner">
+<div class="hgroup"><h2 class="title">Certification Authority</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+          If the services on your network require more than a few self-signed certificates it may be worth the 
+          additional effort to setup your own internal <span class="em emphasis">Certification Authority (CA)</span>. Using 
+          certificates signed by your own CA, allows the various services using the certificates to easily
+          trust other services using certificates issued from the same CA.
+          </p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+  
+              <p class="para">
+              First, create the directories to hold the CA certificate and related files:
+              </p>    
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo mkdir /etc/ssl/CA</span>
+<span class="cmd command">sudo mkdir /etc/ssl/newcerts</span>
+</pre></div>
+
+            </li>
+<li class="steps">
+  
+              <p class="para">
+              The CA needs a few additional files to operate, one to keep track of the last serial number used by the CA, each 
+              certificate must have a unique serial number, and another file to record which certificates have been
+              issued:
+              </p>    
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo sh -c "echo '01' &gt; /etc/ssl/CA/serial"</span>
+<span class="cmd command">sudo touch /etc/ssl/CA/index.txt</span>
+</pre></div>
+
+            </li>
+<li class="steps">
+  
+              <p class="para">
+              The third file is a CA configuration file. Though not strictly necessary, it is very convenient when
+              issuing multiple certificates. Edit <span class="file filename">/etc/ssl/openssl.cnf</span>, and in the 
+              <span class="em emphasis">[ CA_default ]</span> change:
+              </p>    
+
+<div class="code"><pre class="contents ">dir             = /etc/ssl              # Where everything is kept
+database        = $dir/CA/index.txt     # database index file.
+certificate     = $dir/certs/cacert.pem # The CA certificate
+serial          = $dir/CA/serial        # The current serial number
+private_key     = $dir/private/cakey.pem# The private key
+</pre></div>    
+
+            </li>
+<li class="steps">
+  
+              <p class="para">
+              Next, create the self-signed root certificate:
+              </p>    
+
+<div class="screen"><pre class="contents "><span class="cmd command">openssl req -new -x509 -extensions v3_ca -keyout cakey.pem -out cacert.pem -days 3650</span>
+</pre></div>
+
+              <p class="para">
+              You will then be asked to enter the details about the certificate.
+              </p>
+
+            </li>
+<li class="steps">
+  
+              <p class="para">
+              Now install the root certificate and key:
+              </p>    
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo mv cakey.pem /etc/ssl/private/</span>
+<span class="cmd command">sudo mv cacert.pem /etc/ssl/certs/</span>
+</pre></div>
+
+            </li>
+<li class="steps">
+  
+              <p class="para">
+              You are now ready to start signing certificates. The first item needed is a Certificate Signing 
+              Request (CSR), see <a class="xref" href="certificates-and-security.html#generating-a-csr" title="Generating a Certificate Signing Request (CSR)">Generating a Certificate Signing Request (CSR)</a> for details. Once
+              you have a CSR, enter the following to generate a certificate signed by the CA:
+              </p>    
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo openssl ca -in server.csr -config /etc/ssl/openssl.cnf</span>
+</pre></div>
+
+              <p class="para">
+              After entering the password for the CA key, you will be prompted to sign the certificate, and again
+              to commit the new certificate. You should then see a somewhat large amount of output related to the 
+              certificate creation.
+              </p>
+
+            </li>
+<li class="steps">   
+
+              <p class="para">
+              There should now be a new file, <span class="file filename">/etc/ssl/newcerts/01.pem</span>, containing the same output. 
+              Copy and paste everything beginning with the line: <span class="em emphasis">-----BEGIN CERTIFICATE-----</span> and 
+              continuing through the line: <span class="em emphasis">----END CERTIFICATE-----</span> lines to a file named after the hostname 
+              of the server where the certificate will be installed. For example <span class="file filename">mail.example.com.crt</span>,
+              is a nice descriptive name.
+              </p>
+
+              <p class="para">
+              Subsequent certificates will be named <span class="file filename">02.pem</span>, <span class="file filename">03.pem</span>, etc.
+              </p>
+
+              <div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+                <p class="para">
+                Replace <span class="em emphasis">mail.example.com.crt</span> with your own descriptive name.
+                </p>
+              </div></div></div></div>
+
+            </li>
+<li class="steps">
+  
+              <p class="para">
+              Finally, copy the new certificate to the host that needs it, and configure the appropriate applications to use it.
+              The default location to install certificates is <span class="file filename">/etc/ssl/certs</span>. This
+              enables multiple services to use the same certificate without overly complicated file permissions.
+              </p>    
+
+              <p class="para">
+              For applications that can be configured to use a CA certificate, you should also copy the 
+              <span class="file filename">/etc/ssl/certs/cacert.pem</span> file to the <span class="file filename">/etc/ssl/certs/</span>
+              directory on each server.
+              </p>
+
+            </li>
+</ol></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="certificate-references"><div class="inner">
+<div class="hgroup"><h2 class="title">References</h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para">
+              For more detailed instructions on using cryptography see the
+              <a href="http://tldp.org/HOWTO/SSL-Certificates-HOWTO/index.html" class="ulink" title="http://tldp.org/HOWTO/SSL-Certificates-HOWTO/index.html">SSL Certificates HOWTO</a> by tldp.org:
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              The Wikipedia <a href="http://en.wikipedia.org/wiki/HTTPS" class="ulink" title="http://en.wikipedia.org/wiki/HTTPS">HTTPS</a> page has more information regarding HTTPS.
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              For more information on <span class="em emphasis">OpenSSL</span> see the <a href="http://www.openssl.org/" class="ulink" title="http://www.openssl.org/">OpenSSL Home Page</a>.
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              Also, O'Reilly's <a href="http://oreilly.com/catalog/9780596002701/" class="ulink" title="http://oreilly.com/catalog/9780596002701/">Network Security with OpenSSL</a> is a good
+              in-depth reference.
+              </p>
+            </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="apparmor.html" title="AppArmor">Previous</a><a class="nextlinks-next" href="ecryptfs.html" title="eCryptfs">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

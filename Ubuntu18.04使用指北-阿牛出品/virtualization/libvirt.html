@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>libvirt的</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="virtualization.html" title="虚拟化"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟化</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="virtualization.html" title="虚拟化"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="qemu.html" title="QEMU"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libvirt的</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libvirt的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">库用于不同的虚拟化技术来连接。</font><font style="vertical-align: inherit;">在开始使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libvirt</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">之前，
+     </font><font style="vertical-align: inherit;">最好确保您的硬件支持</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">KVM</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所需的虚拟化扩展
+     </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">在终端提示符下输入以下内容：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">KVM-OK</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一条消息将被打印通知你，如果你的CPU
+     </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">做</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持硬件虚拟化。</font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在许多具有支持硬件辅助虚拟化的处理器的计算机上，必须激活BIOS中的选项才能启用它。</font></font></p>
+    </div></div></div></div>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="libvirt.html#virtual-networking" title="虚拟网络"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟网络</font></font></a></li>
+<li class="links"><a class="xref" href="libvirt.html#libvirt-installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a></li>
+<li class="links"><a class="xref" href="libvirt.html#libvirt-virt-install" title="VIRT安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VIRT安装</font></font></a></li>
+<li class="links"><a class="xref" href="libvirt.html#libvirt-virt-clone" title="VIRT克隆"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VIRT克隆</font></font></a></li>
+<li class="links"><a class="xref" href="libvirt.html#libvirt-management" title="虚拟机管理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟机管理</font></font></a></li>
+<li class="links"><a class="xref" href="libvirt.html#libvirt-virt-viewer" title="虚拟机查看器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟机查看器</font></font></a></li>
+<li class="links"><a class="xref" href="libvirt.html#libvirt-resources" title="资源"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="virtual-networking"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟网络</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有几种不同的方法可以允许虚拟机访问外部网络。</font><font style="vertical-align: inherit;">默认虚拟网络配置包括</font><font style="vertical-align: inherit;">
+      实现用户</font><span class="em emphasis"><font style="vertical-align: inherit;">模式</font></span><font style="vertical-align: inherit;">网络的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">桥接</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iptables</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">规则</font><font style="vertical-align: inherit;">，该</font><font style="vertical-align: inherit;">规则</font><font style="vertical-align: inherit;">使用SLIRP协议。</font><font style="vertical-align: inherit;">流量通过主机接口NAT到外部网络。</font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要使外部主机能够直接访问虚拟机上的服务，</font><font style="vertical-align: inherit;">需要配置不同于默认</font><font style="vertical-align: inherit;">类型的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">桥接器</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这允许虚拟接口通过物理接口连接到外部网络，使它们显示为网络其余部分的普通主机。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="libvirt-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要安装必要的软件包，请在终端提示符下输入：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt安装qemu-kvm libvirt-bin</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libvirt-bin后</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，需要将用于管理虚拟机的用户添加到
+       </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libvirt</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组。</font><font style="vertical-align: inherit;">这样做将授予用户访问高级网络选项的权限。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在终端输入：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo adduser $ USER libvirt</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果选择的用户是当前用户，则需要注销并重新登录才能使新的组成员身份生效。</font></font></p>
+      </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您现在可以安装</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guest</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      操作系统了。</font><font style="vertical-align: inherit;">安装虚拟机的过程与直接在硬件上安装操作系统的过程相同。</font><font style="vertical-align: inherit;">您需要一种自动化安装的方法，或者需要将键盘和监视器连接到物理机。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在虚拟机的情况下，图形用户界面（GUI）类似于使用物理键盘和鼠标。</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-viewer</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">应用程序可以用来使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VNC</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">连接到虚拟机的控制台，
+       </font><font style="vertical-align: inherit;">而不是安装GUI </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="libvirt.html#libvirt-virt-viewer" title="虚拟机查看器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Virtual Machine Viewer</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有几种方法可以自动执行Ubuntu安装过程，例如使用preseeds，kickstart等</font><font style="vertical-align: inherit;">。有关详细信息</font><font style="vertical-align: inherit;">，请参阅“ </font></font><a href="https://help.ubuntu.com/18.04/installation-guide/" class="ulink" title="https://help.ubuntu.com/18.04/installation-guide/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu安装指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ”。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">另一种安装Ubuntu虚拟机的方法是使用
+       </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uvtool</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">此应用程序从14.04开始提供，允许您设置特定的VM选项，执行自定义的安装后脚本等。有关详细信息，请参阅</font></font><a class="xref" href="cloud-images-and-uvtool.html" title="云图像和uvtool"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">云映像和uvtool</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Libvirt也可以配置与
+       </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Xen一起使用</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有关详细信息，请参阅下面引用的Xen Ubuntu社区页面。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="libvirt-virt-install"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VIRT安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-install</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virtinst</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包的</font><font style="vertical-align: inherit;">一部分
+       </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要安装它，请在终端提示符下输入：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install virtinst</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-install</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">时有几个选项可用
+       </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">例如：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo virt-install -n web_devel -r 512 \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--disk path = / var / lib / libvirt / images / web_devel.img，bus = virtio，size = 4 -c \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ubuntu-18.04-server-i386.iso --network network = default，model = virtio \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--graphics vnc，listen = 0.0.0.0 --noautoconsole -v</font></font></span>
+</pre></div>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-n web_devel：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在此示例</font><font style="vertical-align: inherit;">中，新虚拟机的名称将为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">web_devel</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-r 512：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定虚拟机将使用的内存量（以兆字节为单位）。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--disk path = / var / lib / libvirt / images / web_devel.img，size = 4：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          表示虚拟磁盘的路径，可以是文件，分区或逻辑卷。</font><font style="vertical-align: inherit;">在此示例</font><font style="vertical-align: inherit;">中，/ var / lib / libvirt / images /目录中</font><font style="vertical-align: inherit;">名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">web_devel.img</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的文件
+           </font><font style="vertical-align: inherit;">，大小为4千兆字节，并使用
+           </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virtio</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">作为磁盘总线。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-c ubuntu-18.04-server-i386.iso：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用作虚拟CDROM的文件。</font><font style="vertical-align: inherit;">该文件可以是ISO文件，也可以是主机CDROM设备的路径。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--network</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提供与VM的网络接口相关的详细信息。</font><font style="vertical-align: inherit;">这里使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          网络，并为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virtio</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置接口模型
+           </font><font style="vertical-align: inherit;">。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--graphics vnc，listen = 0.0.0.0：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用VNC和所有主机接口导出guest虚拟机的虚拟控制台。</font><font style="vertical-align: inherit;">通常，服务器没有GUI，因此局域网（LAN）上的另一台基于GUI的计算机可以通过VNC连接以完成安装。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--noautoconsole：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不会自动连接到虚拟机的控制台。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-v：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建一个完全虚拟化的guest虚拟机。</font></font></p>
+        </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-install后，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以使用GUI（如果您的服务器具有GUI）本地连接到虚拟机的控制台，或者通过基于GUI的计算机的远程VNC客户端连接到虚拟机的控制台。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="libvirt-virt-clone"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VIRT克隆</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VIRT克隆</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">应用程序可以使用一个虚拟机复制到另一个。</font><font style="vertical-align: inherit;">例如：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo virt-clone -o web_devel -n database_devel -f /path/to/database_devel.img</font></font></span> 
+</pre></div>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-o：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">原始虚拟机。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-n：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">新虚拟机的名称。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-f：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">新虚拟机要使用的文件，逻辑卷或分区的路径。</font></font></p>
+        </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">另外，使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-d</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--debug</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      选项来帮助解决</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-clone的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">问题
+       </font><font style="vertical-align: inherit;">。</font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用适当的虚拟机名称</font><font style="vertical-align: inherit;">替换</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">web_devel</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和
+         </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">database_devel</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+      </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="libvirt-management"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟机管理</font></font></h2></div>
+<div class="region">
+<div class="contents"></div>
+<div class="sect3 sect" id="virsh"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的virsh</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有几个实用程序可用于管理虚拟机和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libvirt</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">所述
+         </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的virsh</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序可以通过命令行被使用。</font><font style="vertical-align: inherit;">一些例子：</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">列出正在运行的虚拟机：</font></font></p>
+
+            <div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh列表</font></font></span>
+</pre></div>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要启动虚拟机：</font></font></p>
+
+            <div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh启动web_devel</font></font></span>
+</pre></div>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同样，要在启动时启动虚拟机：</font></font></p>
+
+            <div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh autostart web_devel</font></font></span>
+</pre></div>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下命令重新启动虚拟机：</font></font></p>
+
+            <div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh reboot web_devel</font></font></span>
+</pre></div>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以将虚拟机</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">状态</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存到文件中，以便以后恢复。</font><font style="vertical-align: inherit;">以下内容将虚拟机状态保存到根据日期命名的文件中：</font></font></p>
+
+            <div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh save web_devel web_devel-022708.state</font></font></span>
+</pre></div>
+
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存后，虚拟机将不再运行。</font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以使用以下方法恢复已保存的虚拟机：</font></font></p>
+
+            <div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh恢复web_devel-022708.state</font></font></span>
+</pre></div>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要关闭虚拟机，请：</font></font></p>
+
+            <div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh shutdown web_devel</font></font></span>
+</pre></div>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过输入以下内容，可以将CDROM设备安装在虚拟机中：</font></font></p>
+
+            <div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh attach-disk web_devel / dev / cdrom / media / cdrom</font></font></span>
+</pre></div>
+          </li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在上面的示例中，将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">web_devel</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换</font><font style="vertical-align: inherit;">
+          为适当的虚拟机名称，将
+           </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">web_devel-022708.state</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换为描述性文件名。</font></font></p>
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              如果virsh（或其他vir *工具）连接到默认的qemu-kvm / system hipervisor之外的东西，可以</font><font style="vertical-align: inherit;">在</font><span class="em emphasis"><font style="vertical-align: inherit;">man virsh</font></span><font style="vertical-align: inherit;">或</font><a href="http://libvirt.org/uri.html" class="ulink" title="http://libvirt.org/uri.html"><font style="vertical-align: inherit;">libvirt doc中</font></a><font style="vertical-align: inherit;">找到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">connect</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项的</font><font style="vertical-align: inherit;">替代</font><font style="vertical-align: inherit;">选项</font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><a href="http://libvirt.org/uri.html" class="ulink" title="http://libvirt.org/uri.html"><font style="vertical-align: inherit;"></font></a>
+          </p>
+        </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="migration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">移民</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根据libvirt的版本和使用的hipervisor，可以使用不同类型的迁移。</font><font style="vertical-align: inherit;">通常，这些类型是：</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"> <p class="para"><a href="https://libvirt.org/migration.html#offline" class="ulink" title="https://libvirt.org/migration.html#offline"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">离线迁移</font></font></a></p> </li>
+<li class="list itemizedlist"> <p class="para"><a href="https://libvirt.org/migration.html" class="ulink" title="https://libvirt.org/migration.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实时迁移</font></font></a></p> </li>
+<li class="list itemizedlist"> <p class="para"><a href="http://wiki.qemu.org/Features/PostCopyLiveMigration" class="ulink" title="http://wiki.qemu.org/Features/PostCopyLiveMigration"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">postcopy迁移</font></font></a></p> </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这些方法有多种选择，但所有这些方法的切入点都是</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh migrate</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">阅读集成帮助以获取更多详细信息。</font></font></p>
+<div class="screen"><pre class="contents "> <span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh migrate --help</font></font></span> </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关实时迁移的约束和注意事项的一些有用文档可以在</font><a href="https://wiki.ubuntu.com/QemuKVMMigration" class="ulink" title="https://wiki.ubuntu.com/QemuKVMMigration"><font style="vertical-align: inherit;">Ubuntu Wiki中</font></a><font style="vertical-align: inherit;">找到</font></font><a href="https://wiki.ubuntu.com/QemuKVMMigration" class="ulink" title="https://wiki.ubuntu.com/QemuKVMMigration"><font style="vertical-align: inherit;"></font></a></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="virtal-functions"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Device Passthrough / Hotplug</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             如果不是在此描述的热插拔，而是希望始终通过设备，请通过例如</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh edit &lt;guestname&gt;</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将设备的xml内容添加到静态guest </font><span class="cmd command"><font style="vertical-align: inherit;">虚拟机</font></span><font style="vertical-align: inherit;"> xml表示中</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">在这种情况下，您不需要使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">附加/分离</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有不同种类的passthrough。</font><font style="vertical-align: inherit;">您可以使用的类型取决于您的硬件和软件设置。
+         </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"> <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">USB热插拔/直通</font></font></p> </li>
+<li class="list itemizedlist"> <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VF hotplug / Passthrough</font></font></p> </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+           但是这两种方式都以非常相似的方式处理，虽然有各种方法（例如也通过qemu监视器），但建议通过libvirt驱动这种更改。</font><font style="vertical-align: inherit;">这样，libvirt可以尝试为您管理各种特殊情况，并且还会掩盖版本差异。
+        </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            通常，当您通过libvirt驱动hotplug时，您可以创建一个描述设备的xml代码段，就像在静态</font></font><a href="https://libvirt.org/formatdomain.html" class="ulink" title="https://libvirt.org/formatdomain.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">guest虚拟机描述中一样。</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            USB设备通常由供应商/产品ID标识：
+</font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;hostdev mode ='subsystem'type ='usb'managed ='yes'&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  &lt;源&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    &lt;vendor id ='0x0b6d'/&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    &lt;product id ='0x3880'/&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  &lt;/源&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;/ hostdev&gt;</font></font></pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            虚函数通常通过其PCI-ID（域，总线，插槽，功能）进行分配。
+</font></font><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;hostdev mode ='subsystem'type ='pci'managed ='yes'&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  &lt;源&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    &lt;address domain ='0x0000'bus ='0x04'slot ='0x10'function ='0x0'/&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  &lt;/源&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;/ hostdev&gt;</font></font></pre></div>
+        <p></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                首先获取虚拟功能与设备有关，因此不能完全覆盖。</font><font style="vertical-align: inherit;">但总的来说，它涉及设置iommu，通过</font></font><a href="https://www.kernel.org/doc/Documentation/vfio.txt" class="ulink" title="https://www.kernel.org/doc/Documentation/vfio.txt"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VFIO</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注册</font><font style="vertical-align: inherit;">，有时还需要多个</font><a href="https://www.kernel.org/doc/Documentation/vfio.txt" class="ulink" title="https://www.kernel.org/doc/Documentation/vfio.txt"><font style="vertical-align: inherit;">VF</font></a><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这里有一个关于ppc64el的示例，可以在设备上获得4个VF：
+              </font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ sudo modprobe vfio-pci</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃识别设备</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ lspci -n -s 0005：01：01.3</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+0005：01：01.3 0200：10df：e228（rev 10）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃注册并请求VF</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ echo 10df e228 | </font><font style="vertical-align: inherit;">sudo tee / sys / bus / pci / drivers / vfio-pci / new_id</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ echo 4 | </font><font style="vertical-align: inherit;">sudo tee /sys/bus/pci/devices/0005\:01\:00.0/sriov_numvfs</font></font><font></font>
+              </pre></div>
+            <p></p>
+        </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            然后通过将guest虚拟机与xml片段相关联，通过libvirt连接或分离设备。
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh attach-device &lt;guestname&gt; &lt;device-xml&gt;</font></font></span><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃在Guest中使用Device</font></font><font></font>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh detach-device &lt;guestname&gt; &lt;device-xml&gt;</font></font></span></pre></div>
+        <p></p>
+<div class="note note-warning" title="警告"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+               关于保护“太多”的apparmor保护有几个相关的已知问题。</font><font style="vertical-align: inherit;">您可能需要在apparmor配置文件中调整异常，直到错误
+                </font></font><a href="https://bugs.launchpad.net/ubuntu/+source/libvirt/+bug/1552241" class="ulink" title="https://bugs.launchpad.net/ubuntu/+source/libvirt/+bug/1552241"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1552241</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（对于USB）和
+                </font></font><a href="https://bugs.launchpad.net/ubuntu/+source/apparmor/+bug/1679704" class="ulink" title="https://bugs.launchpad.net/ubuntu/+source/apparmor/+bug/1679704"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://bugs.launchpad.net/ubuntu/+source/apparmor/+bug/1679704</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（对于VF分配）得到解决。</font><font style="vertical-align: inherit;">在使用USB / VF passthrough / hotplug功能时检查是否受到影响，请检查是否存在dmesg，并验证是否看到</font></font><a href="http://wiki.apparmor.net/index.php/AppArmor_Failures#Messages_in_the_Log_files" class="ulink" title="http://wiki.apparmor.net/index.php/AppArmor_Failures#Messages_in_the_Log_files"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apparmor拒绝</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+            </font></font></p>
+        </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="monitor-via-libvirt"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过libvirt访问Qemu Monitor</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             该</font></font><a href="https://en.wikibooks.org/wiki/QEMU/Monitor" class="ulink" title="https://en.wikibooks.org/wiki/QEMU/Monitor"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QEMU显示</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是来宾运行时用QEMU / KVM，以互动的方式。</font><font style="vertical-align: inherit;">该界面为有经验的用户提供了许多非常强大的功能。</font><font style="vertical-align: inherit;">当在libvirt下运行时，监视器接口被libvirt本身绑定以用于管理目的，但是用户仍然可以通过libvirt运行qemu monitor命令。</font><font style="vertical-align: inherit;">一般语法是</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh qemu-monitor-command [options] [guest]'command'</font></font></span>
+         </p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             Libvirt涵盖了大多数需要的用例，但是如果你们每个人都想要/需要解决libvirt，或者想要调整非常特殊的选项，你可以通过以下方式添加设备：
+             </font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh qemu-monitor-command --hmp zesty-test-log'drive_add 0 if = none，file = / var / lib / libvirt / images / test.img，format = raw，id = disk1'</font></font></pre></div>
+         <p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             但是由于监视器非常强大，您可以做很多事情，尤其是出于调试目的，例如显示来宾寄存器：
+             </font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virsh qemu-monitor-command --hmp y-ipns'info registers'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+RAX = 00ffffc000000000 RBX = ffff8f0f5d5c7e48 RCX = 0000000000000000 RDX = ffffea00007571c0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+RSI = 0000000000000000 RDI = ffff8f0fdd5c7e48 RBP = ffff8f0f5d5c7e18 RSP = ffff8f0f5d5c7df8</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[...]</font></font></pre></div>
+         <p></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="virt-manager"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟机管理器</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-manager中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包包含一个图形化的工具来管理本地和远程虚拟机。</font><font style="vertical-align: inherit;">要安装virt-manager，请输入：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install virt-manager</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">由于</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-manager</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">需要图形用户界面（GUI）环境，因此建议将其安装在工作站或测试计算机上而不是生产服务器上。</font><font style="vertical-align: inherit;">要连接到本地</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libvirt</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+        服务，请输入：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-manager -c qemu：/// system</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以</font><font style="vertical-align: inherit;">
+        通过在终端提示符中输入以下内容</font><font style="vertical-align: inherit;">来连接到</font><font style="vertical-align: inherit;">在另一台主机上运行</font><font style="vertical-align: inherit;">的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libvirt</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-manager -c qemu + ssh：//virtnode1.mydomain.com/system</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上面的示例假定</font><font style="vertical-align: inherit;">
+          管理系统和virtnode1.mydomain.com之间的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSH</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">连接已经配置，并使用SSH密钥进行身份验证。</font><font style="vertical-align: inherit;">需要</font><font style="vertical-align: inherit;">SSH </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密钥</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，因为</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libvirt</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">会将密码提示发送给另一个进程。</font><font style="vertical-align: inherit;">有关配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSH的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">详细信息，
+           </font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="openssh-server.html" title="OpenSSH服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenSSH Server</font></font></a></p>
+        </div></div></div></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="libvirt-virt-viewer"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟机查看器</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VIRT-浏览器</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">应用程序允许您连接到虚拟机的控制台。
+      </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-viewer</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">确实需要图形用户界面（GUI）来与虚拟机进行交互。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要从</font><font style="vertical-align: inherit;">终端</font><font style="vertical-align: inherit;">安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-viewer</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请输入：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install virt-viewer</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装并运行虚拟机后，您可以使用以下命令连接到虚拟机的控制台：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-viewer web_devel</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">与</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-manager</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">类似</font><font style="vertical-align: inherit;">，
+       </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-viewer</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">也可以使用</font><font style="vertical-align: inherit;">带有密钥身份验证的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSH</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">连接到远程主机</font><font style="vertical-align: inherit;">：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-viewer -c qemu + ssh：//virtnode1.mydomain.com/system web_devel</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请务必</font><font style="vertical-align: inherit;">
+      使用适当的虚拟机名称</font><font style="vertical-align: inherit;">替换</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">web_devel</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果配置为使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">桥接</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络接口，您还可以设置</font><font style="vertical-align: inherit;">对虚拟机的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSH</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">访问。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="libvirt-resources"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">
+          更多详细信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a href="http://www.linux-kvm.org/" class="ulink" title="http://www.linux-kvm.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">KVM</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主页。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libvirt的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a href="http://libvirt.org/" class="ulink" title="http://libvirt.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libvirt主页</font></font></a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">该</font></font><a href="http://virt-manager.org/" class="ulink" title="http://virt-manager.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟机管理器</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的网站有更多的信息
+           </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virt-manager中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">发展。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">另外，请</font><font style="vertical-align: inherit;">访问</font><a href="http://freenode.net/" class="ulink" title="http://freenode.net/"><font style="vertical-align: inherit;">freenode</font></a><font style="vertical-align: inherit;">上</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃ubuntu-virt</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> IRC频道</font><font style="vertical-align: inherit;">，讨论Ubuntu中的虚拟化技术。</font></font><a href="http://freenode.net/" class="ulink" title="http://freenode.net/"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">另一个很好的资源是</font></font><a href="https://help.ubuntu.com/community/KVM" class="ulink" title="https://help.ubuntu.com/community/KVM"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu Wiki KVM</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          页面。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关Xen的信息，包括将Xen与libvirt一起使用，请参阅</font></font><a href="https://help.ubuntu.com/community/Xen" class="ulink" title="https://help.ubuntu.com/community/Xen"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu Wiki Xen</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          页面。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关如何将VT-d设备分配给qemu / KVM的基础知识，请参阅</font></font><a href="http://www.linux-kvm.org/page/How_to_assign_devices_with_VT-d_in_KVM#Assigning_the_device" class="ulink" title="http://www.linux-kvm.org/page/How_to_assign_devices_with_VT-d_in_KVM#Assigning_the_device"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">linux-kvm</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          页面。</font></font></p>
+        </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="virtualization.html" title="虚拟化"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="qemu.html" title="QEMU"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

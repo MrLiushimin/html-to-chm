@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>HTTPD - Apache2 Web Server</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="web-servers.html" title="Web Servers">Web Servers</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="web-servers.html" title="Web Servers">Previous</a><a class="nextlinks-next" href="php.html" title="PHP - Scripting Language">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">HTTPD - Apache2 Web Server</h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">Apache is the most commonly used Web server on Linux systems. Web servers are used
+          to serve Web pages requested by client computers. Clients typically request and view
+          Web pages using Web browser applications such as <span class="app application">Firefox</span>,
+              <span class="app application">Opera</span>, <span class="app application">Chromium</span>,
+              or <span class="app application">Internet Explorer</span>.</p>
+<p class="para">Users enter a Uniform Resource Locator (URL) to point to a Web server by means of
+          its Fully Qualified Domain Name (FQDN) and a path to the required resource. For example, to view the home page of
+          the <a href="http://www.ubuntu.com" class="ulink" title="http://www.ubuntu.com">Ubuntu Web site</a> a user will enter only the FQDN:</p>
+<div class="screen"><pre class="contents "><span class="input userinput">www.ubuntu.com</span>
+</pre></div>
+<p class="para"> To view the <a href="http://www.ubuntu.com/community" class="ulink" title="http://www.ubuntu.com/community">community</a> sub-page, a user will enter the FQDN followed by a path:</p>
+<div class="screen"><pre class="contents "><span class="input userinput">www.ubuntu.com/community</span>
+</pre></div>
+<p class="para">The most common protocol used to transfer Web pages is the Hyper Text Transfer
+          Protocol (HTTP). Protocols such as Hyper Text Transfer Protocol over Secure Sockets Layer (HTTPS), and
+          File Transfer Protocol (FTP), a protocol for uploading and downloading files, are also
+          supported.</p>
+<p class="para">Apache Web Servers are often used in combination with the <span class="app application">MySQL</span>
+          database engine, the HyperText Preprocessor (<span class="app application">PHP</span>)
+          scripting language, and other popular scripting languages such as
+              <span class="app application">Python</span> and <span class="app application">Perl</span>. This
+          configuration is termed LAMP (Linux, Apache, MySQL and Perl/Python/PHP) and forms a
+          powerful and robust platform for the development and deployment of Web-based
+          applications.</p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="httpd.html#http-installation" title="Installation">Installation</a></li>
+<li class="links"><a class="xref" href="httpd.html#http-configuration" title="Configuration">Configuration</a></li>
+<li class="links"><a class="xref" href="httpd.html#https-configuration" title="HTTPS Configuration">HTTPS Configuration</a></li>
+<li class="links"><a class="xref" href="httpd.html#http-directory-permissions" title="Sharing Write Permission">Sharing Write Permission</a></li>
+<li class="links"><a class="xref" href="httpd.html#http-references" title="References">References</a></li>
+</ul></div>
+<div class="sect2 sect" id="http-installation"><div class="inner">
+<div class="hgroup"><h2 class="title">Installation</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+    The <span class="app application">Apache2</span> web server is available in Ubuntu Linux. To install Apache2:
+    </p>
+<div class="steps"><div class="inner"><ul class="steps"><li class="steps">
+        <p class="para">
+        At a terminal prompt enter the following command:
+        </p>
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install apache2</span>
+</pre></div>
+             		 
+      </li></ul></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="http-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Configuration</h2></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+        Apache2 is configured by placing <span class="em emphasis">directives</span> in plain text
+        configuration files.  These <span class="em emphasis">directives</span> are separated between the following
+        files and directories:
+        </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis">apache2.conf:</span> the main Apache2 configuration file.  Contains settings that 
+            are <span class="em emphasis">global</span> to Apache2.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis">httpd.conf:</span> historically the main Apache2 configuration file, named after the
+            <span class="app application">httpd</span> daemon. Now the file does not exist. In older versions of Ubuntu the
+            file might be present, but empty, as all configuration options have been moved to the below referenced directories.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis">conf-available:</span> this directory contains available configuration files. 
+            All files that were previously in <span class="file filename">/etc/apache2/conf.d</span> 
+            should be moved to <span class="file filename">/etc/apache2/conf-available</span>.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis">conf-enabled:</span> holds <span class="em emphasis">symlinks</span> to the files in 
+            <span class="file filename">/etc/apache2/conf-available</span>.  When a configuration file is symlinked,
+            it will be enabled the next time <span class="app application">apache2</span> is restarted.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis">envvars:</span> file where Apache2 <span class="em emphasis">environment</span> variables are set.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis">mods-available:</span> this directory contains configuration files to both load 
+            <span class="em emphasis">modules</span> and configure them.  Not all modules will have specific configuration files, however.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis">mods-enabled:</span> holds <span class="em emphasis">symlinks</span> to the files in 
+            <span class="file filename">/etc/apache2/mods-available</span>.  When a module configuration file is symlinked it will be enabled 
+            the next time <span class="app application">apache2</span> is restarted.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis">ports.conf:</span> houses the directives that determine which TCP ports Apache2 is listening on.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis">sites-available:</span> this directory has configuration files for Apache2 
+            <span class="em emphasis">Virtual Hosts</span>.  Virtual Hosts allow Apache2 to be configured for multiple sites 
+            that have separate configurations.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis">sites-enabled:</span> like mods-enabled, <span class="file filename">sites-enabled</span> contains 
+            symlinks to the <span class="file filename">/etc/apache2/sites-available</span> directory.  Similarly when a configuration file in 
+            sites-available is symlinked, the site configured by it will be active once Apache2 is restarted.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis">magic:</span> instructions for determining MIME type based on the first few bytes of a file.
+            </p>
+          </li>
+</ul></div>
+<p class="para">
+          In addition, other configuration files may be added
+          using the <span class="em emphasis">Include</span> directive, and wildcards can be used to
+          include many configuration files. Any directive may be placed
+          in any of these configuration files. Changes to the main
+          configuration files are only recognized by Apache2 when it is
+          started or restarted.
+          </p>
+<p class="para">
+          The server also reads a file containing mime document types; the filename is set
+          by the <span class="em emphasis">TypesConfig</span> directive, typically via
+          <span class="file filename">/etc/apache2/mods-available/mime.conf</span>, which might also include additions
+          and overrides, and is <span class="file filename">/etc/mime.types</span> by default.
+          </p>
+</div>
+<div class="sect3 sect" id="http-basic-settings"><div class="inner">
+<div class="hgroup"><h3 class="title">Basic Settings</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+             This section explains Apache2 server essential configuration
+             parameters. Refer to the <a href="http://httpd.apache.org/docs/2.4/" class="ulink" title="http://httpd.apache.org/docs/2.4/">Apache2
+             Documentation</a> for more details.</p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+                 <p class="para">
+                 Apache2 ships with a virtual-host-friendly default configuration.
+	         That is, it is configured with a single default virtual host (using
+		 the <span class="em emphasis">VirtualHost</span> directive) which can be modified or used as-is if you
+		 have a single site, or used as a template for additional virtual hosts
+		 if you have multiple sites.  If left alone, the default virtual host
+		 will serve as your default site, or the site users will see if the
+		 URL they enter does not match the <span class="em emphasis">ServerName</span> directive of any of your 
+		 custom sites.  To modify the default virtual host, edit the file
+		 <span class="file filename">/etc/apache2/sites-available/000-default.conf</span>.
+                 </p>
+
+                 <div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+                   <p class="para">
+                   The directives set for a virtual host only apply to that particular virtual host. If a 
+                   directive is set server-wide and not defined within the virtual host settings, the default 
+                   setting is used. For example, you can define a Webmaster email address and not define 
+                   individual email addresses for each virtual host. 
+                   </p>
+                 </div></div></div></div>
+
+                 <p class="para">
+                 If you wish to configure a new virtual host or site, copy that file into the
+		 same directory with a name you choose.  For example:
+                 </p>
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/mynewsite.conf</span>
+</pre></div>
+
+                 <p class="para">
+		 Edit the new file to configure the new site using some of the directives
+		 described below. 
+                 </p>
+
+               </li>
+<li class="list itemizedlist">
+                 <p class="para">
+		 The <span class="em emphasis">ServerAdmin</span> directive specifies the email address to be advertised
+		 for the server's administrator.  The default value is webmaster@localhost.
+		 This should be changed to an email address that is delivered to you (if you
+		 are the server's administrator).  If your website has a problem, Apache2
+		 will display an error message containing this email address to report the
+		 problem to.  Find this directive in your site's configuration file in
+		 /etc/apache2/sites-available.
+		 </p>
+               </li>
+<li class="list itemizedlist">
+                 <p class="para">
+                 The <span class="em emphasis">Listen</span> directive specifies the port, and optionally the IP address,
+                 Apache2 should listen on. If the IP address is not specified, Apache2
+	         will listen on all IP addresses assigned to the machine it runs on.
+	         The default value for the Listen directive is 80.  Change this to
+	         127.0.0.1:80 to cause Apache2 to listen only on your loopback interface
+	         so that it will not be available to the Internet, to (for example) 81
+                 to change the port that it listens on, or leave it as is for normal
+                 operation.  This directive can be found and changed in its own file,
+	         <span class="file filename">/etc/apache2/ports.conf</span>
+                 </p>
+               </li>
+<li class="list itemizedlist">
+                 <p class="para">
+	         The <span class="em emphasis">ServerName</span> directive is optional and specifies what FQDN your
+		 site should answer to.  The default virtual host has no ServerName
+		 directive specified, so it will respond to all requests that do not
+		 match a ServerName directive in another virtual host.  If you have
+		 just acquired the domain name ubunturocks.com and wish to host it on
+		 your Ubuntu server, the value of the ServerName directive in your
+		 virtual host configuration file should be ubunturocks.com.  Add this
+		 directive to the new virtual host file you created earlier 
+		 (<span class="file filename">/etc/apache2/sites-available/mynewsite.conf</span>).
+		 </p>
+			 
+                 <p class="para">
+                 You may also want your site to respond to www.ubunturocks.com, since
+                 many users will assume the www prefix is appropriate.  Use the
+		 <span class="em emphasis">ServerAlias</span> directive for this.  You may also use wildcards in the
+		 ServerAlias directive.
+                 </p>
+
+                 <p class="para">
+                 For example, the following configuration 
+		 will cause your site to respond to any domain request ending in
+		 <span class="em emphasis">.ubunturocks.com</span>.
+		 </p>                 
+
+<div class="code"><pre class="contents ">ServerAlias *.ubunturocks.com
+</pre></div>
+
+               </li>
+<li class="list itemizedlist">
+                 <p class="para">
+		 The <span class="em emphasis">DocumentRoot</span> directive specifies where Apache2 should look for the
+		 files that make up the site.  The default value is /var/www/html, as specified in
+		 <span class="file filename">/etc/apache2/sites-available/000-default.conf</span>. If desired, change this value
+		 in your site's virtual host file, and remember to create that directory if necessary!
+		 </p>
+              </li>
+</ul></div>
+<p class="para">
+            Enable the new <span class="em emphasis">VirtualHost</span> using the 
+            <span class="app application">a2ensite</span> utility and restart Apache2:
+            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo a2ensite mynewsite</span>
+<span class="cmd command">sudo systemctl restart apache2.service</span>
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+              <p class="para">
+              Be sure to replace <span class="em emphasis">mynewsite</span> with a more descriptive name for the 
+              VirtualHost.  One method is to name the file after the <span class="em emphasis">ServerName</span> 
+              directive of the VirtualHost.
+              </p>
+            </div></div></div></div>
+<p class="para">
+            Similarly, use the <span class="app application">a2dissite</span> utility to disable sites.  This is 
+            can be useful when troubleshooting configuration problems with multiple VirtualHosts:
+            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo a2dissite mynewsite</span>
+<span class="cmd command">sudo systemctl restart apache2.service</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="default-settings"><div class="inner">
+<div class="hgroup"><h3 class="title">Default Settings</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+            This section explains configuration of the Apache2 server
+            default settings.  For example, if you add a virtual host, 
+            the settings you configure for the virtual host take
+            precedence for that virtual host. For a directive not
+            defined within the virtual host settings, the default
+            value is used.
+            </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+
+              <p class="para">
+              The <span class="em emphasis">DirectoryIndex</span> is the default page served by the
+              server when a user requests an index of a directory by
+              specifying a forward slash (/) at the end of the directory
+              name.
+              </p>
+
+              <p class="para">
+              For example, when a user requests the page
+              http://www.example.com/this_directory/, he or she will
+              get either the DirectoryIndex page if it exists, a
+              server-generated directory list if it does not and the
+	      Indexes option is specified, or a Permission Denied page
+	      if neither is true.  The server will try to
+              find one of the files listed in the DirectoryIndex
+              directive and will return the first one it finds. If it
+              does not find any of these files and if <span class="em emphasis">Options Indexes</span> is
+              set for that directory, the server will generate and
+              return a list, in HTML format, of the subdirectories and
+              files in the directory.  The default value, found in
+	      <span class="file filename">/etc/apache2/mods-available/dir.conf</span> is 
+	      "index.html index.cgi index.pl index.php index.xhtml index.htm".
+	      Thus, if Apache2 finds a file in a requested directory
+	      matching any of these names, the first will be displayed.
+              </p>
+            </li>
+<li class="list itemizedlist">
+
+              <p class="para">
+              The <span class="em emphasis">ErrorDocument</span> directive allows you to specify a file
+       	      for Apache2 to use for specific error events.  For example,
+	      if a user requests a resource that does not exist, a 404
+	      error will occur. By default, Apache2 will simply return a HTTP 404 Return code.
+              Read <span class="file filename">/etc/apache2/conf-available/localized-error-pages.conf</span> for detailed
+              instructions for using ErrorDocument, including locations of example files.
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              By default, the server writes the transfer log to the file
+              <span class="file filename">/var/log/apache2/access.log</span>. You can change this on a per-site
+	      basis in your virtual host configuration files with the <span class="em emphasis">CustomLog</span>
+              directive, or omit it to accept the default, specified in <span class="file filename">
+	      /etc/apache2/conf-available/other-vhosts-access-log.conf</span>.  You may also specify the file
+	      to which errors are logged, via the <span class="em emphasis">ErrorLog</span> directive, whose default
+	      is <span class="file filename">/var/log/apache2/error.log</span>.  These are kept
+	      separate from the transfer logs to aid in troubleshooting problems
+	      with your Apache2 server.  You may also specify the <span class="em emphasis">LogLevel</span> (the
+	      default value is "warn") and the <span class="em emphasis">LogFormat</span> (see <span class="file filename">
+	      /etc/apache2/apache2.conf</span> for the default value).
+	      </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              Some options are specified on a per-directory basis rather than per-server.
+	      <span class="em emphasis">Options</span> is one of these directives.  A Directory stanza is enclosed in 
+	      XML-like tags, like so:
+              </p>
+
+<div class="code"><pre class="contents ">&lt;Directory /var/www/html/mynewsite&gt;
+...
+&lt;/Directory&gt;
+</pre></div>
+
+	    <p class="para">
+	    The <span class="em emphasis">Options</span> directive within a Directory stanza accepts one or more of the
+	    following values (among others), separated by spaces:
+            </p>
+
+            <div class="list itemizedlist"><ul class="list itemizedlist compact">
+<li class="list itemizedlist">
+                <p class="para">
+                <span class="em em-bold emphasis">ExecCGI</span> - Allow
+                execution of CGI scripts. CGI scripts are not
+                executed if this option is not chosen.
+		<div class="note note-tip" title="Tip"><div class="inner"><div class="region"><div class="contents">
+                  <p class="para">
+                  Most files should not be executed as CGI scripts.  This
+		  would be very dangerous.  CGI scripts should kept in a directory 
+		  separate from and outside your DocumentRoot, and only this
+		  directory should have the ExecCGI option set.  This is the default,
+		  and the default location for CGI scripts is <span class="file filename">/usr/lib/cgi-bin</span>.
+		  </p>
+                </div></div></div></div>
+		</p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para">
+                  <span class="em em-bold emphasis">Includes</span> - Allow server-side includes.
+		  Server-side includes allow an HTML file to <span class="em emphasis">
+		  include</span> other files. See
+                  <a href="https://help.ubuntu.com/community/ServerSideIncludes" class="ulink" title="https://help.ubuntu.com/community/ServerSideIncludes">Apache SSI documentation
+                  (Ubuntu community)</a> for more information.
+                  </p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para">
+                  <span class="em em-bold emphasis">IncludesNOEXEC</span> - Allow server-side includes,
+                  but disable the <span class="em emphasis">#exec</span> and <span class="em emphasis">#include</span>
+                  commands in CGI scripts.
+                  </p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para">
+                  <span class="em em-bold emphasis">Indexes</span> - Display a formatted list of the
+                  directory's contents, if no <span class="em emphasis">DirectoryIndex</span> (such as index.html)
+                  exists in the requested directory.
+                  <div class="note note-warning" title="Warning"><div class="inner"><div class="region"><div class="contents">
+                    <p class="para">
+                    For security reasons, this should usually not be set, and certainly
+	            should not be set on your DocumentRoot directory.  Enable this option carefully on
+		    a per-directory basis only if you are certain you want users to see the entire
+		    contents of the directory.
+                    </p>
+                  </div></div></div></div>
+                  </p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para">
+                  <span class="em em-bold emphasis">Multiview</span> - Support content-negotiated multiviews;
+                  this option is disabled by default for security reasons.  See the <a href="http://httpd.apache.org/docs/2.4/mod/mod_negotiation.html#multiviews" class="ulink" title="http://httpd.apache.org/docs/2.4/mod/mod_negotiation.html#multiviews">Apache2
+		  documentation on this option</a>.
+                  </p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para">
+                  <span class="em em-bold emphasis">SymLinksIfOwnerMatch</span> - Only follow symbolic links
+                  if the target file or directory has the same owner as the link.
+                  </p>
+                </li>
+</ul></div>
+            </li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="httpd-settings"><div class="inner">
+<div class="hgroup"><h3 class="title">httpd Settings</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+          This section explains some basic <span class="app application">httpd</span> daemon configuration settings.
+          </p>
+<p class="para">
+          <span class="em em-bold emphasis">LockFile</span> - The LockFile directive sets the path 
+          to the lockfile used when the server is compiled with either USE_FCNTL_SERIALIZED_ACCEPT 
+	  or USE_FLOCK_SERIALIZED_ACCEPT. It must be stored on the local disk. It should be left 
+	  to the default value unless the logs directory is located on an NFS share. If this is 
+	  the case, the default value should be changed to a location on the local disk and to a 
+	  directory that is readable only by root. 
+          </p>
+<p class="para">
+          <span class="em em-bold emphasis">PidFile</span> - The PidFile directive sets the file in which the server 
+	  records its process ID (pid). This file should only be readable by root. In most cases, it should be left 
+	  to the default value.
+          </p>
+<p class="para">
+          <span class="em em-bold emphasis">User</span> - The User directive sets the userid used by the server to answer requests. This 
+          setting determines the server's access. Any files inaccessible to this user will also be inaccessible to your website's visitors. 
+          The default value for User is "www-data". 
+          </p>
+<div class="note note-warning" title="Warning"><div class="inner"><div class="region"><div class="contents">
+            <p class="para">
+            Unless you know exactly what you are doing, do not set the User directive to root. Using root as the User will 
+            create large security holes for your Web server. 
+            </p>
+          </div></div></div></div>
+<p class="para">
+          <span class="em em-bold emphasis">Group</span> - The Group directive is similar to the User directive. Group sets the
+          group under which the server will answer requests. The default group is also "www-data".
+          </p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="apache-modules"><div class="inner">
+<div class="hgroup"><h3 class="title">Apache2 Modules</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+          Apache2 is a modular server. This implies that only the most
+          basic functionality is included in the core server. Extended
+          features are available through modules which can be loaded
+          into Apache2. By default, a base set of modules is included in
+          the server at compile-time. If the server is compiled to use
+          dynamically loaded  modules, then modules can be compiled
+          separately, and added at any time using the LoadModule
+          directive. Otherwise, Apache2 must be recompiled to add or
+          remove modules. 
+          </p>
+<p class="para">
+          Ubuntu compiles Apache2 to allow the dynamic
+          loading of modules.  Configuration directives may be conditionally
+	  included on the presence of a particular module by enclosing
+          them in an <span class="em emphasis">&lt;IfModule&gt;</span> block.
+          </p>
+<p class="para">
+          You can install additional Apache2 modules and use them
+          with your Web server.  For example, run the following command at a 
+          terminal prompt to install the <span class="em emphasis">MySQL Authentication</span> module:
+          </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install libapache2-mod-auth-mysql</span>
+</pre></div>
+<p class="para">
+          See the <span class="file filename">/etc/apache2/mods-available</span> directory, for additional modules.
+          </p>
+<p class="para">
+          Use the <span class="app application">a2enmod</span> utility to
+          enable a module:
+          </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo a2enmod auth_mysql</span>
+<span class="cmd command">sudo systemctl restart apache2.service</span>
+</pre></div>
+<p class="para">
+          Similarly, <span class="app application">a2dismod</span> will disable a module:
+          </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo a2dismod auth_mysql</span>
+<span class="cmd command">sudo systemctl restart apache2.service</span>
+</pre></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="https-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">HTTPS Configuration</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+          The <span class="app application">mod_ssl</span> module adds
+          an important feature to the Apache2 server - the ability to
+          encrypt communications.  Thus, when your browser is
+          communicating using SSL, the
+          https:// prefix is used at the beginning of the Uniform
+          Resource Locator (URL) in the browser navigation bar.
+          </p>
+<p class="para">
+          The <span class="app application">mod_ssl</span> module is available in
+          <span class="app application">apache2-common</span> package. Execute the following command at a terminal prompt to
+          enable the <span class="app application">mod_ssl</span> module:
+          </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo a2enmod ssl</span>
+</pre></div>
+<p class="para">
+          There is a default HTTPS configuration file in <span class="file filename">/etc/apache2/sites-available/default-ssl.conf</span>.
+          In order for <span class="app application">Apache2</span> to provide HTTPS, 
+          a <span class="em emphasis">certificate</span> and <span class="em emphasis">key</span> file are also needed.  The default HTTPS 
+          configuration will use a certificate and key generated by the <span class="app application">ssl-cert</span> package.  They 
+          are good for testing, but the auto-generated certificate and key should be replaced by a certificate specific
+          to the site or server. For information on generating a key and obtaining a certificate see 
+          <a class="xref" href="certificates-and-security.html" title="Certificates">Certificates</a>
+          </p>
+<p class="para">
+          To configure <span class="app application">Apache2</span> for HTTPS, enter the following:
+          </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo a2ensite default-ssl</span>
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+              <p class="para">
+              The directories <span class="file filename">/etc/ssl/certs</span> and <span class="file filename">/etc/ssl/private</span> are the
+              default locations.  If you install the certificate and key in another directory make sure to change
+              <span class="em emphasis">SSLCertificateFile</span> and <span class="em emphasis">SSLCertificateKeyFile</span> appropriately.
+              </p>
+            </div></div></div></div>
+<p class="para">
+            With Apache2 now configured for HTTPS, restart the service to enable the new settings:
+            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart apache2.service</span>
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+              <p class="para">
+              Depending on how you obtained your certificate you may need to 
+              enter a passphrase when <span class="app application">Apache2</span> starts. 
+              </p>
+            </div></div></div></div>
+<p class="para">
+ 	    You can access the secure server pages by typing
+            https://your_hostname/url/ in your browser address bar.
+            </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="http-directory-permissions"><div class="inner">
+<div class="hgroup"><h2 class="title">Sharing Write Permission</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+          For more than one user to be able to write to the same directory it will
+          be necessary to grant write permission to a group they share in common.  The
+          following example grants shared write permission to <span class="file filename">/var/www/html</span>
+          to the group "webmasters".
+          </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo chgrp -R webmasters /var/www/html</span>
+<span class="cmd command">sudo find /var/www/html -type d -exec chmod g=rwxs "{}" \;</span>
+<span class="cmd command">sudo find /var/www/html -type f -exec chmod g=rw  "{}" \;</span>
+</pre></div>
+<p class="para">
+    These commands recursively set the group permission on all files and
+    directories in /var/www/html to read write and set user id. This has the
+    effect of having the files and directories inherit their group and permission
+    from their parrent. Many admins find this useful for allowing multiple users
+    to edit files in a directory tree.
+</p>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+          <p class="para">
+          If access must be granted to more than one group per directory, enable Access Control Lists (ACLs).
+          </p>
+        </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="http-references"><div class="inner">
+<div class="hgroup"><h2 class="title">References</h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para">
+            <a href="http://httpd.apache.org/docs/2.4/" class="ulink" title="http://httpd.apache.org/docs/2.4/">Apache2 Documentation</a> contains in depth
+            information on Apache2 configuration directives. Also, see the <span class="app application">apache2-doc</span> 
+            package for the official Apache2 docs.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            See the <a href="http://www.modssl.org/docs/" class="ulink" title="http://www.modssl.org/docs/">Mod SSL Documentation</a> site for more
+            SSL related information.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            O'Reilly's <a href="http://oreilly.com/catalog/9780596001919/" class="ulink" title="http://oreilly.com/catalog/9780596001919/">Apache Cookbook</a> is 
+            a good resource for accomplishing specific Apache2 configurations.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            For Ubuntu specific Apache2 questions, ask in the <span class="em emphasis">#ubuntu-server</span> IRC channel on 
+            <a href="http://freenode.net/" class="ulink" title="http://freenode.net/">freenode.net</a>.
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            Usually integrated with PHP and MySQL the <a href="https://help.ubuntu.com/community/ApacheMySQLPHP" class="ulink" title="https://help.ubuntu.com/community/ApacheMySQLPHP">Apache MySQL PHP Ubuntu Wiki </a> 
+            page is a good resource.
+            </p>
+          </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="web-servers.html" title="Web Servers">Previous</a><a class="nextlinks-next" href="php.html" title="PHP - Scripting Language">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

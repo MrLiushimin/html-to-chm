@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Multipath Devices</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="dm-multipath-chapter.html" title="DM-Multipath">DM-Multipath</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="device-mapper-multipathing.html" title="Device Mapper Multipathing">Previous</a><a class="nextlinks-next" href="multipath-setting-up-dm-multipath.html" title="Setting up DM-Multipath Overview">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Multipath Devices</h1></div>
+<div class="region">
+<div class="contents"><p class="para">Without DM-Multipath, each path from a server node to a storage
+    controller is treated by the system as a separate device, even when the
+    I/O path connects the same server node to the same storage controller.
+    DM-Multipath provides a way of organizing the I/O paths logically, by
+    creating a single multipath device on top of the underlying
+    devices.</p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="multipath-devices.html#multipath-device-identifiers" title="Multipath Device Identifiers">Multipath Device Identifiers</a></li>
+<li class="links"><a class="xref" href="multipath-devices.html#multipath-device-names-in-cluster" title="Consistent Multipath Device Names in a Cluster">Consistent Multipath Device Names in a Cluster</a></li>
+<li class="links"><a class="xref" href="multipath-devices.html#multipath-devices-attributes" title="Multipath Device attributes">Multipath Device attributes</a></li>
+<li class="links"><a class="xref" href="multipath-devices.html#multipath-devices-in-logical-volumes" title="Multipath Devices in Logical Volumes">Multipath Devices in Logical Volumes</a></li>
+</ul></div>
+<div class="sect2 sect" id="multipath-device-identifiers"><div class="inner">
+<div class="hgroup"><h2 class="title">Multipath Device Identifiers</h2></div>
+<div class="region"><div class="contents"><p class="para">Each multipath device has a World Wide Identifier (WWID), which is
+      guaranteed to be globally unique and unchanging. By default, the name of
+      a multipath device is set to its WWID. Alternately, you can set the
+      <span class="em em-bold emphasis"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-user_friendly_names" title="">user_friendly_names</a>
+      </span>option in the multipath configuration file, which causes
+      DM-Multipath to use a node-unique alias of the form <span class="em em-bold emphasis">mpathn</span> as the name. For example, a node with two
+      HBAs attached to a storage controller with two ports via a single
+      unzoned FC switch sees four devices: <span class="em em-bold emphasis">/dev/sda</span>, <span class="em em-bold emphasis">/dev/sdb</span>, <span class="em em-bold emphasis">/dev/sdc</span>, and <span class="em em-bold emphasis">/dev/sdd</span>. DM-Multipath creates a single device
+      with a unique WWID that reroutes I/O to those four underlying devices
+      according to the multipath configuration. When the <span class="em em-bold emphasis"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-user_friendly_names" title="">user_friendly_names</a></span>
+      configuration option is set to <span class="em em-bold emphasis">yes</span>, the
+      name of the multipath device is set to <span class="em em-bold emphasis">mpathn</span>. When new devices are brought under the
+      control of DM-Multipath, the new devices may be seen in two different
+      places under the <span class="em em-bold emphasis">/dev</span> directory:
+      <span class="em em-bold emphasis">/dev/mapper/mpathn</span> and <span class="em em-bold emphasis">/dev/dm-n</span>. <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para">The devices in <span class="em em-bold emphasis">/dev/mapper</span>
+            are created early in the boot process. Use these devices to access
+            the multipathed devices, for example when creating logical
+            volumes.</p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">Any devices of the form <span class="em em-bold emphasis">/dev/dm-n</span> are for internal use only and
+            should never be used.</p>
+          </li>
+</ul></div>For information on the multipath configuration
+      defaults, including the <span class="em em-bold emphasis"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-user_friendly_names" title="">user_friendly_names</a></span>
+      configuration option, see Section , <a class="link" href="multipath-dm-multipath-config-file.html#multipath-config-defaults" title="Configuration File Defaults">Configuration File
+      Defaults</a>. You can also set the name of a multipath device to a
+      name of your choosing by using the <span class="em em-bold emphasis"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-alias" title="">alias</a></span> option in the
+      <span class="em em-bold emphasis">multipaths</span> section of the multipath
+      configuration file. For information on the <span class="em em-bold emphasis">multipaths</span> section of the multipath configuration
+      file, see Section, <a class="link" href="multipath-dm-multipath-config-file.html#multipath-config-multipath" title="Configuration File Multipath
+      Attributes">Multipaths Device Configuration
+      Attributes</a>.</p></div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-device-names-in-cluster"><div class="inner">
+<div class="hgroup"><h2 class="title">Consistent Multipath Device Names in a Cluster</h2></div>
+<div class="region"><div class="contents">
+<p class="para">When the <span class="em em-bold emphasis">user_friendly_names</span>
+      configuration option is set to yes, the name of the multipath device is
+      unique to a node, but it is not guaranteed to be the same on all nodes
+      using the multipath device. Similarly, if you set the <span class="em em-bold emphasis">alias</span> option for a device in the <span class="em em-bold emphasis">multipaths</span> section of the <span class="file filename">multipath.conf</span>
+      configuration file, the name is not automatically consistent across all
+      nodes in the cluster. This should not cause any difficulties if you use
+      LVM to create logical devices from the multipath device, but if you
+      require that your multipath device names be consistent in every node it
+      is recommended that you leave the <span class="em em-bold emphasis">user_friendly_names</span> option set to <span class="em em-bold emphasis">no</span> and that you not configure aliases for the
+      devices. By default, if you do not set <span class="em em-bold emphasis">user_friendly_names</span> to yes or configure an alias
+      for a device, a device name will be the WWID for the device, which is
+      always the same. If you want the system-defined user-friendly names to
+      be consistent across all nodes in the cluster, however, you can follow
+      this procedure:</p>
+<div class="list orderedlist"><ol class="list orderedlist">
+<li class="list orderedlist">
+          <p class="para">Set up all of the multipath devices on one machine.</p>
+        </li>
+<li class="list orderedlist">
+          <p class="para">Disable all of your multipath devices on your other machines
+          by running the following commands:</p>
+
+          <div class="screen"><pre class="contents "># systemctl stop multipath-tools.service
+# multipath -F
+</pre></div>
+        </li>
+<li class="list orderedlist">
+          <p class="para">Copy the <span class="file filename">/etc/multipath/bindings</span> file
+          from the first machine to all the other machines in the
+          cluster.</p>
+        </li>
+<li class="list orderedlist">
+          <p class="para">Re-enable the multipathd daemon on all the other machines in
+          the cluster by running the following command:</p>
+
+          <div class="screen"><pre class="contents "># systemctl start multipath-tools.service</pre></div>
+        </li>
+</ol></div>
+<p class="para">If you add a new device, you will need to repeat this
+      process.</p>
+<p class="para">Similarly, if you configure an alias for a device that you would
+      like to be consistent across the nodes in the cluster, you should ensure
+      that the <span class="file filename">/etc/multipath.conf</span> file is the same for
+      each node in the cluster by following the same procedure:</p>
+<div class="list orderedlist"><ol class="list orderedlist">
+<li class="list orderedlist">
+          <p class="para">Configure the aliases for the multipath devices in the in the
+          <span class="file filename">multipath.conf</span> file on one machine.</p>
+        </li>
+<li class="list orderedlist">
+          <p class="para">Disable all of your multipath devices on your other machines
+          by running the following commands:</p>
+
+          <div class="screen"><pre class="contents "># systemctl stop multipath-tools.service
+# multipath -F
+</pre></div>
+        </li>
+<li class="list orderedlist">
+          <p class="para">Copy the <span class="file filename">multipath.conf</span> file from the first machine to all
+          the other machines in the cluster.</p>
+        </li>
+<li class="list orderedlist">
+          <p class="para">Re-enable the multipathd daemon on all the other machines in
+          the cluster by running the following command:</p>
+
+          <div class="screen"><pre class="contents "># systemctl start multipath-tools.service</pre></div>
+        </li>
+</ol></div>
+<p class="para">When you add a new device you will need to repeat this
+      process.</p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-devices-attributes"><div class="inner">
+<div class="hgroup"><h2 class="title">Multipath Device attributes</h2></div>
+<div class="region"><div class="contents"><p class="para">In addition to the <span class="em em-bold emphasis">user_friendly_names</span> and <span class="em em-bold emphasis">alias</span> options, a multipath device has numerous
+      attributes. You can modify these attributes for a specific multipath
+      device by creating an entry for that device in the <span class="em em-bold emphasis">multipaths</span> section of the <span class="em em-bold emphasis">multipath</span> configuration file. For information on
+      the <span class="em em-bold emphasis">multipaths</span> section of the multipath
+      configuration file, see Section, "<a class="link" href="multipath-dm-multipath-config-file.html#multipath-config-multipath" title="Configuration File Multipath
+      Attributes">Configuration File Multipath
+      Attributes</a>".</p></div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-devices-in-logical-volumes"><div class="inner">
+<div class="hgroup"><h2 class="title">Multipath Devices in Logical Volumes</h2></div>
+<div class="region"><div class="contents">
+<p class="para">After creating multipath devices, you can use the multipath device
+      names just as you would use a physical device name when creating an LVM
+      physical volume. For example, if /dev/mapper/mpatha is the name of a
+      multipath device, the following command will mark /dev/mapper/mpatha as
+      a physical volume. <div class="screen"><pre class="contents "># pvcreate /dev/mapper/mpatha</pre></div> You
+      can use the resulting LVM physical device when you create an LVM volume
+      group just as you would use any other LVM physical device.</p>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">If you attempt to create an LVM physical volume on a whole
+        device on which you have configured partitions, the pvcreate command
+        will fail.</p>
+      </div></div></div></div>
+<p class="para">When you create an LVM logical volume that uses active/passive
+      multipath arrays as the underlying physical devices, you should include
+      filters in the <span class="em em-bold emphasis">lvm.conf</span> to exclude the
+      disks that underlie the multipath devices. This is because if the array
+      automatically changes the active path to the passive path when it
+      receives I/O, multipath will failover and failback whenever LVM scans
+      the passive path if these devices are not filtered. For active/passive
+      arrays that require a command to make the passive path active, LVM
+      prints a warning message when this occurs. To filter all SCSI devices in
+      the LVM configuration file (lvm.conf), include the following filter in
+      the devices section of the file. <div class="screen"><pre class="contents ">filter = [ "r/block/", "r/disk/", "r/sd.*/", "a/.*/" ]</pre></div>After
+      updating <span class="file filename">/etc/lvm.conf</span>, it's necessary to update
+      the <span class="em em-bold emphasis">initrd</span> so that this file will be
+      copied there, where the filter matters the most, during boot.
+      Perform:<div class="screen"><pre class="contents ">update-initramfs -u -k all</pre></div><div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+          <p class="para">Every time either <span class="file filename">/etc/lvm.conf</span> or
+          <span class="file filename">/etc/multipath.conf</span> is updated, the initrd
+          should be rebuilt to reflect these changes. This is imperative when
+          blacklists and filters are necessary to maintain a stable storage
+          configuration.</p>
+        </div></div></div></div></p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="device-mapper-multipathing.html" title="Device Mapper Multipathing">Previous</a><a class="nextlinks-next" href="multipath-setting-up-dm-multipath.html" title="Setting up DM-Multipath Overview">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>File Server</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="samba.html" title="Samba">Samba</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="samba-introduction.html" title="Introduction">Previous</a><a class="nextlinks-next" href="samba-printserver.html" title="Print Server">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">File Server</h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+    One of the most common ways to network Ubuntu and Windows computers is to configure Samba as a File Server.  This section 
+    covers setting up a <span class="app application">Samba</span> server to share files with Windows clients.
+    </p>
+<p class="para">
+    The server will be configured to share files with any client on the network without prompting for a password.  If
+    your environment requires stricter Access Controls see <a class="xref" href="samba-fileprint-security.html" title="Securing File and Print Server">Securing File and Print Server</a>.
+    </p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="samba-fileserver.html#samba-fileserver-installation" title="Installation">Installation</a></li>
+<li class="links"><a class="xref" href="samba-fileserver.html#samba-fileserver-configuration" title="Configuration">Configuration</a></li>
+<li class="links"><a class="xref" href="samba-fileserver.html#samba-fileserver-resources" title="Resources">Resources</a></li>
+</ul></div>
+<div class="sect2 sect" id="samba-fileserver-installation"><div class="inner">
+<div class="hgroup"><h2 class="title">Installation</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      The first step is to install the <span class="app application">samba</span> package.  From a terminal prompt enter:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install samba</span>
+</pre></div>
+<p class="para">
+      That's all there is to it; you are now ready to configure Samba to share files.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="samba-fileserver-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Configuration</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      The main Samba configuration file is located in <span class="file filename">/etc/samba/smb.conf</span>.  The default configuration file
+      has a significant number of comments in order to document various configuration directives.  
+      </p>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">
+        Not all the available options are included in the default configuration file.  See the <span class="file filename">smb.conf</span> <span class="app application">man</span> page or the 
+        <a href="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/" class="ulink" title="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/">Samba HOWTO Collection</a> for more details.
+        </p>
+      </div></div></div></div>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+
+        <p class="para">
+        First, edit the following key/value pairs in the <span class="em emphasis">[global]</span> section of 
+        <span class="file filename">/etc/samba/smb.conf</span>:
+        </p>
+
+<div class="code"><pre class="contents ">   workgroup = EXAMPLE
+   ...
+   security = user
+</pre></div>
+
+        <p class="para">
+        The <span class="em emphasis">security</span> parameter is farther down in the [global] section, and is commented by default.
+        Also, change <span class="em emphasis">EXAMPLE</span> to better match your environment.  
+        </p>
+
+        </li>
+<li class="steps">
+  
+        <p class="para">
+        Create a new section at the bottom of the file, or uncomment one of the examples, for the directory to be shared:
+        </p>
+
+<div class="code"><pre class="contents ">[share]
+    comment = Ubuntu File Server Share
+    path = /srv/samba/share
+    browsable = yes
+    guest ok = yes
+    read only = no
+    create mask = 0755
+</pre></div>
+
+      <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis">comment:</span> a short description of the share.  Adjust to fit your needs.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis">path:</span> the path to the directory to share. 
+          </p>
+          <p class="para">
+          This example uses <span class="file filename">/srv/samba/sharename</span> because, according to the 
+          <span class="em emphasis">Filesystem Hierarchy Standard (FHS)</span>, 
+          <a href="http://www.pathname.com/fhs/pub/fhs-2.3.html#SRVDATAFORSERVICESPROVIDEDBYSYSTEM" class="ulink" title="http://www.pathname.com/fhs/pub/fhs-2.3.html#SRVDATAFORSERVICESPROVIDEDBYSYSTEM">/srv</a>
+          is where site-specific data should be served.  Technically Samba shares can be placed anywhere on the filesystem
+          as long as the permissions are correct, but adhering to standards is recommended.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis">browsable:</span> enables Windows clients to browse the shared directory using 
+          <span class="app application">Windows Explorer</span>.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis">guest ok:</span> allows clients to connect to the share without supplying a password.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis">read only:</span> determines if the share is read only or if write privileges are granted.  Write privileges are allowed only when the value is <span class="em emphasis">no</span>, as is seen in this example.  If the value is <span class="em emphasis">yes</span>, then access to the share is read only.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis">create mask:</span> determines the permissions new files will have when created.
+          </p>
+        </li>
+</ul></div>
+
+      </li>
+<li class="steps">
+        
+        <p class="para"> 
+        Now that <span class="app application">Samba</span> is configured, the directory needs to be created and the permissions
+        changed.  From a terminal enter:
+        </p>
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo mkdir -p /srv/samba/share</span>
+<span class="cmd command">sudo chown nobody:nogroup /srv/samba/share/</span>
+</pre></div>
+
+      <div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">
+        The <span class="em emphasis">-p</span> switch tells mkdir to create the entire directory tree if it doesn't exist.
+        </p>
+      </div></div></div></div>
+
+      </li>
+<li class="steps">
+     
+      <p class="para">
+      Finally, restart the <span class="app application">samba</span> services to enable the new configuration:
+      </p>
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart smbd.service nmbd.service</span>
+</pre></div>
+
+      </li>
+</ol></div></div>
+<div class="note note-warning" title="Warning"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">
+        Once again, the above configuration gives all access to any client on the local network.  For a more secure
+        configuration see <a class="xref" href="samba-fileprint-security.html" title="Securing File and Print Server">Securing File and Print Server</a>.
+        </p>
+      </div></div></div></div>
+<p class="para">
+      From a Windows client you should now be able to browse to the Ubuntu file server and see the shared directory. If your client doesn't show your share automatically, try to access your server by its IP address, e.g. \\192.168.1.1, in a Windows Explorer window. To check that everything is working try creating a directory from Windows. 
+      </p>
+<p class="para">
+      To create additional shares simply create new <span class="em emphasis">[dir]</span> sections in 
+      <span class="file filename">/etc/samba/smb.conf</span>, and restart <span class="em emphasis">Samba</span>.  Just make sure that the directory
+      you want to share actually exists and the permissions are correct.
+      </p>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">
+        The file share named <span class="em emphasis">"[share]"</span> and the path <span class="file filename">/srv/samba/share</span> are just examples.
+        Adjust the share and path names to fit your environment.  It is a good idea to name a share after a directory on the 
+        file system.  Another example would be a share name of <span class="em emphasis">[qa]</span> with a path of <span class="file filename">/srv/samba/qa</span>.
+        </p>
+      </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="samba-fileserver-resources"><div class="inner">
+<div class="hgroup"><h2 class="title">Resources</h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para">
+          For in depth Samba configurations see the 
+          <a href="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/" class="ulink" title="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/">Samba HOWTO Collection</a>
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          The guide is also available in 
+          <a href="http://www.amazon.com/exec/obidos/tg/detail/-/0131882228" class="ulink" title="http://www.amazon.com/exec/obidos/tg/detail/-/0131882228">printed format</a>.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          O'Reilly's <a href="http://www.oreilly.com/catalog/9780596007690/" class="ulink" title="http://www.oreilly.com/catalog/9780596007690/">Using Samba</a> is another good
+          reference.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          The <a href="https://help.ubuntu.com/community/Samba" class="ulink" title="https://help.ubuntu.com/community/Samba">Ubuntu Wiki Samba </a> page.
+          </p>
+        </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="samba-introduction.html" title="Introduction">Previous</a><a class="nextlinks-next" href="samba-printserver.html" title="Print Server">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

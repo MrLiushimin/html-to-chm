@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>报告Ubuntu Server Edition中的错误</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="serverguide-appendix.html" title="附录"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">附录</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks"><a class="nextlinks-prev" href="serverguide-appendix.html" title="附录"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以前</font></font></a></div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">报告Ubuntu Server Edition中的错误</font></font></h1></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  Ubuntu项目，以及Ubuntu Server，使用</font></font><a href="https://launchpad.net/" class="ulink" title="https://launchpad.net/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Launchpad</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+  作为其bugtracker。</font><font style="vertical-align: inherit;">要提交错误，您需要一个Launchpad帐户。  </font><font style="vertical-align: inherit;">必要时</font></font><a href="https://help.launchpad.net/YourAccount/NewAccount" class="ulink" title="https://help.launchpad.net/YourAccount/NewAccount"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在这里创建一个</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+  </font></font></p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="reporting-bugs.html#reporting-bugs-apport-cli" title="使用apport-cli报告错误"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用apport-cli报告错误</font></font></a></li>
+<li class="links"><a class="xref" href="reporting-bugs.html#apport-crash-catching" title="报告应用程序崩溃"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">报告应用程序崩溃</font></font></a></li>
+<li class="links"><a class="xref" href="reporting-bugs.html#reporting-bugs-resources" title="资源"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="reporting-bugs-apport-cli"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用apport-cli报告错误</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    报告错误的首选方法是使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apport-cli</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令。</font><font style="vertical-align: inherit;">必须在受bug影响的计算机上调用它，因为它从运行它的系统收集信息并将其发布到Launchpad上的错误报告中。</font><font style="vertical-align: inherit;">因此，如果系统没有运行桌面环境以便使用浏览器（与服务器通用）或者如果它没有Internet访问权限，那么将该信息提供给Launchpad可能是一个挑战。</font><font style="vertical-align: inherit;">下面介绍了处理这些情况的步骤。 
+    </font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	命令</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apport-cli</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ubuntu-bug</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">应该在CLI服务器上提供相同的结果。</font><font style="vertical-align: inherit;">后者实际上是</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apport-bug</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的符号链接，</font><font style="vertical-align: inherit;">它足够聪明，可以知道桌面环境是否正在使用，</font><font style="vertical-align: inherit;">如果没有</font><font style="vertical-align: inherit;">，将选择</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apport-cli</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">由于服务器系统倾向于仅使用CLI，因此本指南从一开始就选择了clort-cli。
+	</font></font></p>
+	</div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    Ubuntu中的错误报告需要针对特定​​的软件包提交，因此需要将受bug影响的包的名称（源包或程序名称/路径）提供给apport-cli：
+    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apport-cli PACKAGENAME</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    有关</font><font style="vertical-align: inherit;">Ubuntu中的包的更多信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="package-management.html" title="包管理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包管理</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+    </font></font></p>
+    </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    一旦apport-cli收集完信息，您就会被问到如何处理它。</font><font style="vertical-align: inherit;">例如，报告vim中的错误：
+    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apport-cli vim</font></font></span><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+***收集问题信息</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+收集的信息可以发送给开发人员以改进</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+应用。</font><font style="vertical-align: inherit;">这可能需要几分钟时间。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+***向开发人员发送问题报告？</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+问题报告发出后，请填写表格</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+自动打开网页浏览器。</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+你想干什么？</font><font style="vertical-align: inherit;">你的选择是：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  S：发送报告（2.8 KB）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  V：查看报告</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  K：保留报告文件以便稍后发送或复制到其他地方</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  I：取消并忽略此程序版本的未来崩溃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  C：取消</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+请选择（S / V / K / I / C）：</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    前三个选项如下所述：
+    </font></font></p>
+<p class="para">
+    </p><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+        <p class="para"><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">发送：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+        作为提交新错误报告过程的一部分，将收集的信息提交给Launchpad。</font><font style="vertical-align: inherit;">您将有机会用自己的语言描述错误。
+        </font></font></p>
+
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">***上传问题信息</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+收集的信息将被发送到错误跟踪系统。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+这可能需要几分钟时间。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+94％</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+***要继续，您必须访问以下URL：</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  https://bugs.launchpad.net/ubuntu/+source/vim/+filebug/09b2495a-e2ab-11e3-879b-68b5996a96c8？</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+您可以立即启动浏览器，也可以将此URL复制到另一台计算机上的浏览器中。</font></font><font></font>
+<font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+选择：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  1：立即启动浏览器</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  C：取消</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+请选择（1 / C）：   </font></font><span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></span>
+</pre></div>
+
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        选择“1”时将使用的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">浏览器将</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过
+	 </font></font><a href="http://manpages.ubuntu.com/manpages/en/man8/update-alternatives.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/update-alternatives.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	Debian替代系统</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在系统中称为
+	 </font><span class="app application"><font style="vertical-align: inherit;">www-browser</font></span><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要安装的基于文本的浏览器的示例包括</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">links</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，
+	 </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">elinks</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lynx</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">w3m</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">您还可以手动指定给定URL的现有浏览器。
+        </font></font></p>
+      </li>
+<li class="list itemizedlist">
+        <p class="para">
+        <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查看：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	在屏幕上显示收集的信息以供查看。</font><font style="vertical-align: inherit;">这可能是很多信息。</font><font style="vertical-align: inherit;">按'Enter'按屏幕滚动。</font><font style="vertical-align: inherit;">按'q'退出并返回选择菜单。
+        </font></font></p>
+      </li>
+<li class="list itemizedlist">
+        <p class="para">
+        <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Keep：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+        将收集的信息写入磁盘。</font><font style="vertical-align: inherit;">生成的文件稍后可用于提交错误报告，通常是在将其传输到另一个Ubuntu系统之后。
+        </font></font></p>
+
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你想干什么？</font><font style="vertical-align: inherit;">你的选择是：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  S：发送报告（2.8 KB）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  V：查看报告</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  K：保留报告文件以便稍后发送或复制到其他地方</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  I：取消并忽略此程序版本的未来崩溃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  C：取消</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+请选择（S / V / K / I / C）：</font></font><span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">k</font></font></span><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+问题报告文件：/tmp/apport.vim.1pg92p02.apport</font></font><font></font>
+</pre></div>
+
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	要报告错误，请将文件放入启用Internet的Ubuntu系统并将apport-cli应用于该系统。</font><font style="vertical-align: inherit;">这将导致菜单立即出现（已收集信息）。</font><font style="vertical-align: inherit;">然后你应该按's'发送：
+	</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apport-cli apport.vim.1pg92p02.apport</font></font></span>
+</pre></div>
+
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+要直接将报告保存到磁盘（没有菜单），您可以执行以下操作：
+
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apport-cli vim --save apport.vim.test.apport</font></font></span>
+</pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+
+报告名称应以</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.apport结尾</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+</font></font><p></p>
+
+	<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		如果这个支持互联网的系统是非Ubuntu / Debian，则apport-cli不可用，因此需要手动创建bug。</font><font style="vertical-align: inherit;">apport报告也不会作为bug的附件包含在内，因此在这种情况下它完全没用。
+	</font></font></p>
+	</div></div></div></div>
+
+      </li>
+</ul></div>
+    <p></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="apport-crash-catching"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">报告应用程序崩溃</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    	该软件包提供所述的apport-CLI公用程序，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apport会</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，可以被配置为自动捕捉崩溃应用程序的状态。</font><font style="vertical-align: inherit;">默认情况下启用此选项（在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / default / apport中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	应用程序崩溃后，如果启用，apport将在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / crash</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下存储崩溃报告</font><font style="vertical-align: inherit;">：
+	</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-rw-r ----- 1 peter whoopsie 150K 7月24日16:17 _usr_lib_x86_64-linux-gnu_libmenu-cache2_libexec_menu-cached.1000.crash
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	使用</font><font style="vertical-align: inherit;">不带参数</font><font style="vertical-align: inherit;">的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apport-cli</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令来处理任何挂起的崩溃报告。</font><font style="vertical-align: inherit;">它将提供逐个报告。
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apport会-CLI</font></font></span><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+***向开发人员发送问题报告？</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+问题报告发出后，请填写表格</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+自动打开网页浏览器。</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+你想干什么？</font><font style="vertical-align: inherit;">你的选择是：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  S：发送报告（153.0 KB）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  V：查看报告</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  K：保留报告文件以便稍后发送或复制到其他地方</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  I：取消并忽略此程序版本的未来崩溃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  C：取消</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+请选择（S / V / K / I / C）：</font></font><span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">s</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如果您发送报告，如上所述，将立即返回提示，然后
+	 </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / crash</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录将包含2个额外文件：
+	</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-rw-r ----- 1 peter whoopsie 150K 7月24日16:17 _usr_lib_x86_64-linux-gnu_libmenu-cache2_libexec_menu-cached.1000.crash</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+-rw-rw-r-- 1 peter whoopsie 0 Jul 24 16:37 _usr_lib_x86_64-linux-gnu_libmenu-cache2_libexec_menu-cached.1000.upload</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+-rw ------- 1 whoopsie whoopsie 0 Jul 24 16:37 _usr_lib_x86_64-linux-gnu_libmenu-cache2_libexec_menu-cached.1000.uploaded</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	像这样发送崩溃报告不会立即导致创建新的公共错误。</font><font style="vertical-align: inherit;">该报告将在Launchpad上设置为私有，这意味着它只对一组有限的bug分类器可见。</font><font style="vertical-align: inherit;">然后，这些分类器将在创建公共错误之前扫描报告以查找可能的私有数据。
+	</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="reporting-bugs-resources"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	请参阅</font></font><a href="https://help.ubuntu.com/community/ReportingBugs" class="ulink" title="https://help.ubuntu.com/community/ReportingBugs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">报告错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Ubuntu维基页面。
+	</font></font></p>
+      </li>
+<li class="list itemizedlist">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	此外，</font></font><a href="https://wiki.ubuntu.com/Apport" class="ulink" title="https://wiki.ubuntu.com/Apport"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apport</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">页面还有一些有用的信息。</font><font style="vertical-align: inherit;">虽然其中一些涉及使用GUI。
+    	</font></font></p>
+      </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks"><a class="nextlinks-prev" href="serverguide-appendix.html" title="附录"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以前</font></font></a></div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

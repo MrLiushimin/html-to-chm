@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>eCryptfs</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="security.html" title="安全"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安全性</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="certificates-and-security.html" title="证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="../monitoring/monitoring.html" title="监控"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eCryptfs</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+          <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eCryptfs</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是一个符合POSIX标准的企业级堆叠加密文件系统，适用于Linux。</font><font style="vertical-align: inherit;">分层在文件系统层之上</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eCryptfs</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保护文件，无论底层文件系统，分区类型等。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          在安装过程中，有一个加密</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ home</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分区</font><font style="vertical-align: inherit;">的选项</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这将自动配置加密和挂载分区所需的所有内容。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          例如，本节将介绍</font><font style="vertical-align: inherit;">使用</font><span class="em emphasis"><font style="vertical-align: inherit;">eCryptfs</font></span><font style="vertical-align: inherit;">加密</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置</font><font style="vertical-align: inherit;">。
+          </font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="ecryptfs.html#ecryptfs-usage" title="使用eCryptfs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用eCryptfs</font></font></a></li>
+<li class="links"><a class="xref" href="ecryptfs.html#ecryptfs-automount" title="自动挂载加密分区"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自动挂载加密分区</font></font></a></li>
+<li class="links"><a class="xref" href="ecryptfs.html#ecryptfs-other-utils" title="其他公用事业"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他公用事业</font></font></a></li>
+<li class="links"><a class="xref" href="ecryptfs.html#eCryptfs-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="ecryptfs-usage"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用eCryptfs</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            首先，安装必要的包。</font><font style="vertical-align: inherit;">从终端提示输入：
+            </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install ecryptfs-utils</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            现在挂载要加密的分区：
+            </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mount -t ecryptfs / srv / srv</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            然后，系统将提示您提供有关</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ecryptfs</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">应</font><font style="vertical-align: inherit;">如何</font><font style="vertical-align: inherit;">加密数据的</font><font style="vertical-align: inherit;">一些详细信息</font><font style="vertical-align: inherit;">。
+            </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            要测试放在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中的</font><font style="vertical-align: inherit;">文件</font><font style="vertical-align: inherit;">是否确实加密，请将</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / default</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+            文件夹复制到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+            </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo cp -r / etc / default / srv</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            现在卸载</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，并尝试查看文件：
+            </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo umount / srv </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cat / srv / default / cron</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font><span class="app application"><font style="vertical-align: inherit;">ecryptfs</font></span><font style="vertical-align: inherit;"> 
+            重新安装</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将使数据再次可见。
+            </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="ecryptfs-automount"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自动挂载加密分区</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            有几种方法可以</font><font style="vertical-align: inherit;">在启动时</font><font style="vertical-align: inherit;">自动挂载</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ecryptfs</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加密文件系统。</font><font style="vertical-align: inherit;">此示例将使用</font><font style="vertical-align: inherit;">包含挂载选项</font><font style="vertical-align: inherit;">的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/root/.ecryptfsrc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件以及驻留在USB密钥上的密码短语文件。
+            </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            首先，创建</font><font style="vertical-align: inherit;">包含以下内容的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/root/.ecryptfsrc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+            </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">键=密码：passphrase_passwd_file = / MNT / USB / passwd_file.txt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ecryptfs_sig = 5826dd62cf81c615</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ecryptfs_cipher = AES</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ecryptfs_key_bytes = 16</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ecryptfs_passthrough =正</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ecryptfs_enable_filename_crypto =正</font></font><font></font>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ecryptfs_sig</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">调整为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/root/.ecryptfs/sig-cache.txt中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的签名</font><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            接下来，创建</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/mnt/usb/passwd_file.txt</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密码文件：
+            </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">passphrase_passwd = [秘密]
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            现在将必要的行添加到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / fstab</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+            </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / sdb1 / mnt / usb ext3 ro 0 0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/ srv / srv ecryptfs默认为0 0</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            确保在加密分区之前安装了USB驱动器。  
+            </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            最后，重启并</font><font style="vertical-align: inherit;">使用</font><span class="em emphasis"><font style="vertical-align: inherit;">eCryptfs</font></span><font style="vertical-align: inherit;">挂载</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。  
+            </font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="ecryptfs-other-utils"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他公用事业</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ecryptfs-utils的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">封装件包括几个其他有用的工具：
+            </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+                <p class="para">
+                <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ecryptfs-setup-private：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建一个</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">〜/ Private</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录以包含加密信息。</font><font style="vertical-align: inherit;">此实用程序可由非特权用户运行，以使数据与系统上的其他用户保持私密。
+                </font></font></p>
+              </li>
+<li class="list itemizedlist">
+                <p class="para">
+                <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ecryptfs-mount-private</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ecryptfs-umount-private</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将挂载和卸载用户的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">〜/ Private</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录。
+                </font></font></p>
+              </li>
+<li class="list itemizedlist">
+                <p class="para">
+                <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ecryptfs-add-passphrase：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为内核密钥环添加一个新密码。
+                </font></font></p>
+              </li>
+<li class="list itemizedlist">
+                <p class="para">
+                <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ecryptfs-manager：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">管理</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eCryptfs</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对象，如密钥。
+                </font></font></p>
+              </li>
+<li class="list itemizedlist">
+                <p class="para">
+                <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ecryptfs-stat：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">允许您查看</font><font style="vertical-align: inherit;">文件</font><font style="vertical-align: inherit;">的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ecryptfs</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">元信息。
+                </font></font></p>
+              </li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="eCryptfs-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                有关</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eCryptfs的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a href="https://launchpad.net/ecryptfs" class="ulink" title="https://launchpad.net/ecryptfs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Launchpad项目页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+                </font></font></p>
+              </li>
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                还有</font><font style="vertical-align: inherit;">一篇关于</font><span class="em emphasis"><font style="vertical-align: inherit;">eCryptfs</font></span><font style="vertical-align: inherit;">的</font></font><a href="http://www.linuxjournal.com/article/9400" class="ulink" title="http://www.linuxjournal.com/article/9400"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux Journal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文章</font><font style="vertical-align: inherit;">。
+                </font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+              </li>
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                另外，有关更多</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ecryptfs</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项和详细信息，请参阅
+                 </font></font><a href="http://manpages.ubuntu.com/manpages/bionic/en/man7/ecryptfs.7.html" class="ulink" title="http://manpages.ubuntu.com/manpages/bionic/en/man7/ecryptfs.7.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ecryptfs手册页</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+                </font></font></p>
+              </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="certificates-and-security.html" title="证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="monitoring.html" title="监控"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

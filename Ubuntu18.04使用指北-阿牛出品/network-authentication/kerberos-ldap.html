@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Kerberos和LDAP</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="network-authentication.html" title="网络身份验证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络身份验证</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="kerberos.html" title="Kerberos的"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="sssd-ad.html" title="SSSD和Active Directory"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kerberos和LDAP</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    大多数人不会单独使用Kerberos; </font><font style="vertical-align: inherit;">一旦用户通过身份验证（Kerberos），我们需要弄清楚该用户可以做什么（授权）。</font><font style="vertical-align: inherit;">这将是</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LDAP</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">等程序的工作
+     </font><font style="vertical-align: inherit;">。
+    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    在两台服务器之间复制Kerberos主体数据库可能很复杂，并为您的网络添加了一个额外的用户数据库。</font><font style="vertical-align: inherit;">幸运的是，可以将MIT Kerberos配置为使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LDAP</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+    目录作为主体数据库。</font><font style="vertical-align: inherit;">本节介绍如何配置主要和次要kerberos服务器以将
+     </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenLDAP</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于主体数据库。
+    </font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+       <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       此处提供的示例假定 
+        </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MIT Kerberos</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和 
+        </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenLDAP</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+       </font></font></p>
+    </div></div></div></div>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="kerberos-ldap.html#kerberos-ldap-openldap" title="配置OpenLDAP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置OpenLDAP</font></font></a></li>
+<li class="links"><a class="xref" href="kerberos-ldap.html#kerberos-ldap-primary-kdc" title="主要KDC配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主要KDC配置</font></font></a></li>
+<li class="links"><a class="xref" href="kerberos-ldap.html#kerberos-ldap-secondary-kdc" title="辅助KDC配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">辅助KDC配置</font></font></a></li>
+<li class="links"><a class="xref" href="kerberos-ldap.html#kerberos-ldap-resources" title="资源"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="kerberos-ldap-openldap"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置OpenLDAP</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      首先，</font><font style="vertical-align: inherit;">需要在</font><font style="vertical-align: inherit;">具有到主要和辅助KDC的网络连接</font><font style="vertical-align: inherit;">的</font><span class="app application"><font style="vertical-align: inherit;">OpenLDAP</font></span><font style="vertical-align: inherit;">服务器</font><font style="vertical-align: inherit;">上加载</font><font style="vertical-align: inherit;">必要的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模式</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">本节的其余部分假定您还在至少两个服务器之间配置了LDAP复制。</font><font style="vertical-align: inherit;">有关设置OpenLDAP的信息，请参阅</font><a class="xref" href="openldap-server.html" title="OpenLDAP服务器"><font style="vertical-align: inherit;">OpenLDAP服务器</font></a><font style="vertical-align: inherit;">。
+      </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><a class="xref" href="openldap-server.html" title="OpenLDAP服务器"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      还需要为TLS和SSL连接配置OpenLDAP，以便加密KDC和LDAP服务器之间的流量。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">详细信息，
+       </font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="openldap-server.html#openldap-tls" title="TLS"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TLS</font></font></a><font style="vertical-align: inherit;"></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+         <p class="para">
+         <span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = admin，cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是我们创建的用户，具有编辑ldap数据库的权限。</font><font style="vertical-align: inherit;">很多时候它是RootDN。</font><font style="vertical-align: inherit;">更改其值以反映您的设置。
+         </font></font></p>
+      </div></div></div></div>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          要将架构加载到LDAP，请在LDAP服务器上安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5-kdc-ldap</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包。</font><font style="vertical-align: inherit;">从终端输入：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install krb5-kdc-ldap</font></font></span>
+</pre></div>
+
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          接下来，解压缩</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kerberos.schema.gz</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo gzip -d /usr/share/doc/krb5-kdc-ldap/kerberos.schema.gz </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo cp /usr/share/doc/krb5-kdc-ldap/kerberos.schema / etc / ldap / schema /</font></font></span>
+</pre></div>
+
+        </li>
+<li class="list itemizedlist">
+
+           <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">需要</font><font style="vertical-align: inherit;">
+           将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kerberos</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">架构添加到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">树中。</font><a class="xref" href="openldap-server.html#openldap-configuration" title="修改slapd配置数据库"><font style="vertical-align: inherit;">修改slapd配置数据库中</font></a><font style="vertical-align: inherit;">还详细介绍了 
+            </font><font style="vertical-align: inherit;">向</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加新模式的过程</font><font style="vertical-align: inherit;">。
+           </font></font><a class="xref" href="openldap-server.html#openldap-configuration" title="修改slapd配置数据库"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+
+           <div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">                  
+                首先，创建名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">schema_convert.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的配置文件</font><font style="vertical-align: inherit;">或类似的描述性名称，其中包含以下行：
+                </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包括/etc/ldap/schema/core.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/collective.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/corba.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/cosine.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/duaconf.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/dyngroup.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/inetorgperson.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/java.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/misc.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/nis.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/openldap.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/ppolicy.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/kerberos.schema</font></font><font></font>
+</pre></div>
+
+
+                </li>
+<li class="steps">
+
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                   创建一个临时目录来保存LDIF文件：
+                  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mkdir / tmp / ldif_output</font></font></span>
+</pre></div>
+
+                </li>
+<li class="steps">
+
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  现在使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapcat</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">转换模式文件： 
+                  </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapcat -f schema_convert.conf -F / tmp / ldif_output -n0 -s \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+“cn = {12} kerberos，cn = schema，cn = config”&gt; /tmp/cn=kerberos.ldif</font></font></span>
+</pre></div>
+
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  如果它们不同，请更改上述文件和路径名称以匹配您自己的名称。
+                  </font></font></p>
+                
+                </li>
+<li class="steps">
+
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  编辑生成的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/tmp/cn\=kerberos.ldif</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件，更改以下属性： 
+                  </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dn：cn = kerberos，cn = schema，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn：kerberos</font></font><font></font>
+</pre></div>
+
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  并从文件末尾删除以下行：
+                  </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">structuralObjectClass：olcSchemaConfig</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+entryUUID：18ccd010-746b-102d-9fbe-3760cca765dc</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+creatorsName：cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+createTimestamp：20090111203515Z</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+entryCSN：20090111203515.326445Z＃000000＃000＃000000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+modifiersName：cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+modifyTimestamp：20090111203515Z</font></font><font></font>
+</pre></div>
+
+                    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    属性值会有所不同，只需确保删除属性即可。 
+                    </font></font></p>
+
+                </li>
+<li class="steps">
+
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapadd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加载新架构</font><font style="vertical-align: inherit;">：
+                  </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapadd -Q -Y EXTERNAL -H ldapi：/// -f /tmp/cn\=kerberos.ldif</font></font></span>
+</pre></div>
+
+                </li>
+<li class="steps">
+        
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5principalname</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性</font><font style="vertical-align: inherit;">添加索引</font><font style="vertical-align: inherit;">：
+                  </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapmodify -Q -Y EXTERNAL -H ldapi：/// </font></font></span>
+<font style="vertical-align: inherit;"><span class="output computeroutput"><span class="input userinput"><font style="vertical-align: inherit;">dn：olcDatabase = {1} mdb，cn = config</font></span></span></font><span class="output computeroutput">
+<span class="input userinput"><font style="vertical-align: inherit;"></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcDbIndex</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：krbPrincipalName eq，pres，sub</font></font></span><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+修改条目“olcDatabase = {1} mdb，cn = config”</font></font></span>
+</pre></div>
+      
+                </li>
+<li class="steps">
+        
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  最后，更新访问控制列表（ACL）：
+                  </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapmodify -Q -Y EXTERNAL -H ldapi：/// </font></font></span>
+<font style="vertical-align: inherit;"><span class="output computeroutput"><span class="input userinput"><font style="vertical-align: inherit;">dn：olcDatabase = {1} mdb，cn = config</font></span></span></font><span class="output computeroutput">
+<span class="input userinput"><font style="vertical-align: inherit;"></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+替换：olcAccess</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccess：到attrs = userPassword，shadowLastChange，krbPrincipalKey by</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ dn =“cn = admin，dc = example，dc = com”由匿名身份验证者编写，由* none自写</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+- </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+添加：olcAccess</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccess：通过*读取到dn.base =“”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+- </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+添加：olcAccess</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccess：to * by dn =“cn = admin，dc = example，dc = com”by * read</font></font></span><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+修改条目“olcDatabase = {1} mdb，cn = config”</font></font><font></font>
+</span>
+</pre></div>
+      
+                </li>
+</ol></div></div>    
+        </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      就是这样，您的LDAP目录现在可以作为Kerberos主体数据库使用。
+      </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="kerberos-ldap-primary-kdc"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主要KDC配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      随着</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenLDAP的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置，是时候来配置KDC。
+      </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          首先，从终端输入所需的软件包：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install krb5-kdc krb5-admin-server krb5-kdc-ldap</font></font></span>
+</pre></div>
+
+        </li>
+<li class="list itemizedlist">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          现在编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/krb5.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，在适当的部分下添加以下选项：
+          </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[libdefaults]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        default_realm = EXAMPLE.COM</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[领域]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        EXAMPLE.COM = {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                kdc = kdc01.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                kdc = kdc02.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                admin_server = kdc01.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                admin_server = kdc02.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                default_domain = example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                database_module = openldap_ldapconf</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        }</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[domain_realm]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        .example.com = EXAMPLE.COM</font></font><font></font>
+<font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[dbdefaults]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        ldap_kerberos_container_dn = cn = krbContainer，dc = example，dc = com</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[dbmodules]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        openldap_ldapconf = {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                db_library = kldap</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ldap_kdc_dn =“cn = admin，dc = example，dc = com”</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ＃此对象需要具有读取权限</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ＃领域容器，主容器和领域子树</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ldap_kadmind_dn =“cn = admin，dc = example，dc = com”</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ＃此对象需要具有读写权限</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ＃领域容器，主容器和领域子树</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ldap_service_password_file = /etc/krb5kdc/service.keyfile</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ldap_servers = ldaps：//ldap01.example.com ldaps：//ldap02.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ldap_conns_per_server = 5</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        }</font></font><font></font>
+</pre></div>
+
+          <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">example.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dc = example，dc = com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = admin，dc = example，dc = com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldap01.example.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更改为适用于您的网络的域，LDAP对象和LDAP服务器。
+            </font></font></p>
+          </div></div></div></div>
+
+        </li>
+<li class="list itemizedlist">
+        
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          接下来，使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdb5_ldap_util</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序创建领域：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo kdb5_ldap_util -D cn = admin，dc = example，dc = com create -subtrees \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dc = example，dc = com -r EXAMPLE.COM -s -H ldap：//ldap01.example.com</font></font></span>
+</pre></div>
+      
+        </li>
+<li class="list itemizedlist">
+        
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          创建用于绑定到LDAP服务器的密码的藏匿处。</font><font style="vertical-align: inherit;">此密码由</font><span class="file filename"><font style="vertical-align: inherit;">/etc/krb5.conf中</font></span><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldap_kdc_dn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和        
+           </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldap_kadmin_dn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo kdb5_ldap_util -D cn = admin，dc = example，dc = com stashsrvpw -f \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/etc/krb5kdc/service.keyfile cn = admin，dc = example，dc = com</font></font></span>
+</pre></div>
+      
+        </li>
+<li class="list itemizedlist">
+        
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          从LDAP服务器复制CA证书：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">scp ldap01：/etc/ssl/certs/cacert.pem。</font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo cp cacert.pem / etc / ssl / certs</font></font></span>
+</pre></div>
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          并编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ldap/ldap.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以使用证书：
+          </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TLS_CACERT /etc/ssl/certs/cacert.pem
+</font></font></pre></div>
+
+          <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            还需要将证书复制到辅助KDC，以允许使用LDAPS连接到LDAP服务器。
+            </font></font></p>
+          </div></div></div></div>
+      
+        </li>
+<li class="list itemizedlist">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          启动Kerberos KDC和管理服务器：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl start krb5-kdc.service </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl start krb5-admin-server.service</font></font></span>
+</pre></div>
+        </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      您现在可以将Kerberos主体添加到LDAP数据库，并将它们复制到配置为进行复制的任何其他LDAP服务器。</font><font style="vertical-align: inherit;">要使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kadmin.local</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序</font><font style="vertical-align: inherit;">添加</font><span class="app application"><font style="vertical-align: inherit;">主体，请</font></span><font style="vertical-align: inherit;">输入：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo kadmin.local </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用密码验证为主体root/admin@EXAMPLE.COM。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+kadmin.local：   </font></font><span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">addprinc -x dn =“uid = steve，ou = people，dc = example，dc = com”steve</font></font></span><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+警告：没有为steve@EXAMPLE.COM指定政策; </font><font style="vertical-align: inherit;">违约没有政策</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+输入主体“steve@EXAMPLE.COM”的密码： </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+重新输入主体“steve@EXAMPLE.COM”的密码： </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+校长“steve@EXAMPLE.COM”创建。</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      现在应该有krbPrincipalName，krbPrincipalKey，krbLastPwdChange和krbExtraData属性添加到 
+       </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uid = steve，ou = people，dc = example，dc = com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户对象。</font><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kinit</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和 
+       </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">klist</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序来测试用户确实已发出票证。
+      </font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        如果已创建用户对象，则</font><font style="vertical-align: inherit;">需要</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-x dn =“...”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项来添加Kerberos属性。</font><font style="vertical-align: inherit;">否则，</font><font style="vertical-align: inherit;">将在领域子树中创建</font><font style="vertical-align: inherit;">新的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主体</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对象。
+        </font></font></p>
+      </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="kerberos-ldap-secondary-kdc"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">辅助KDC配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      使用LDAP后端配置辅助KDC类似于使用普通Kerberos数据库配置辅助KDC。
+      </font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          首先，安装必要的包。</font><font style="vertical-align: inherit;">在终端输入：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install krb5-kdc krb5-admin-server krb5-kdc-ldap</font></font></span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          接下来，编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/krb5.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以使用LDAP后端：
+          </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[libdefaults]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        default_realm = EXAMPLE.COM</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[领域]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        EXAMPLE.COM = {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                kdc = kdc01.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                kdc = kdc02.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                admin_server = kdc01.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                admin_server = kdc02.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                default_domain = example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                database_module = openldap_ldapconf</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        }</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[domain_realm]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        .example.com = EXAMPLE.COM</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[dbdefaults]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        ldap_kerberos_container_dn = dc = example，dc = com</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[dbmodules]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        openldap_ldapconf = {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                db_library = kldap</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ldap_kdc_dn =“cn = admin，dc = example，dc = com”</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ＃此对象需要具有读取权限</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ＃领域容器，主容器和领域子树</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ldap_kadmind_dn =“cn = admin，dc = example，dc = com”</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ＃此对象需要具有读写权限</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ＃领域容器，主容器和领域子树</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ldap_service_password_file = /etc/krb5kdc/service.keyfile</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ldap_servers = ldaps：//ldap01.example.com ldaps：//ldap02.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                ldap_conns_per_server = 5</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        }</font></font><font></font>
+</pre></div>
+
+
+        </li>
+<li class="steps">
+        
+      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      为LDAP绑定密码创建存储：
+      </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo kdb5_ldap_util -D cn = admin，dc = example，dc = com stashsrvpw -f \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/etc/krb5kdc/service.keyfile cn = admin，dc = example，dc = com</font></font></span>
+</pre></div>
+      
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          现在，在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主KDC</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上将</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/krb5kdc/.k5.EXAMPLE.COM </font></font></span> 
+          <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主密钥</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">存储</font><font style="vertical-align: inherit;">复制</font><font style="vertical-align: inherit;">到辅助KDC。</font><font style="vertical-align: inherit;">请务必通过加密连接（如</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">scp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）或物理介质</font><font style="vertical-align: inherit;">复制文件</font><font style="vertical-align: inherit;">。
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo scp /etc/krb5kdc/.k5.EXAMPLE.COM steve@kdc02.example.com:~ </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mv .k5.EXAMPLE.COM / etc / krb5kdc /</font></font></span>
+</pre></div>
+
+        <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          再次，将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EXAMPLE.COM</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换</font><font style="vertical-align: inherit;">为您的实际领域。
+          </font></font></p>
+        </div></div></div></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          回到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">辅助KDC</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，（重新）启动ldap服务器，
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl重启slapd.service</font></font></span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          最后，启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5-kdc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护进程：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl start krb5-kdc.service</font></font></span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          验证两个ldap服务器（和扩展名为kerberos）是否同步。
+          </font></font></p>
+
+        </li>
+</ol></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      现在，您的网络上有冗余KDC，如果一个LDAP服务器，一个Kerberos服务器或一个LDAP和一个Kerberos服务器不可用，您应该能够继续对冗余LDAP服务器进行身份验证。 
+      </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="kerberos-ldap-resources"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          “ </font></font><a href="http://web.mit.edu/Kerberos/krb5-1.6/krb5-1.6.3/doc/krb5-admin.html#Configuring-Kerberos-with-OpenLDAP-back_002dend" class="ulink" title="http://web.mit.edu/Kerberos/krb5-1.6/krb5-1.6.3/doc/krb5-admin.html#Configuring-Kerberos-with-OpenLDAP-back_002dend"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          Kerberos管理指南”</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含一些其他详细信息。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdb5_ldap_util的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参见 
+           </font></font><a href="http://web.mit.edu/Kerberos/krb5-1.6/krb5-1.6.3/doc/krb5-admin.html#Global-Operations-on-the-Kerberos-LDAP-Database" class="ulink" title="http://web.mit.edu/Kerberos/krb5-1.6/krb5-1.6.3/doc/krb5-admin.html#Global-Operations-on-the-Kerberos-LDAP-Database"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          第5.6节</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和 
+           </font></font><a href="http://manpages.ubuntu.com/manpages/bionic/en/man8/kdb5_ldap_util.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/bionic/en/man8/kdb5_ldap_util.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdb5_ldap_util手册页</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          另一个有用的链接是</font></font><a href="http://manpages.ubuntu.com/manpages/bionic/en/man5/krb5.conf.5.html" class="ulink" title="http://manpages.ubuntu.com/manpages/bionic/en/man5/krb5.conf.5.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5.conf手册页</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          另外，请参阅</font></font><a href="https://help.ubuntu.com/community/Kerberos#kerberos-ldap" class="ulink" title="https://help.ubuntu.com/community/Kerberos#kerberos-ldap"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kerberos和LDAP</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Ubuntu wiki页面。
+          </font></font></p>
+        </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="kerberos.html" title="Kerberos的"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="sssd-ad.html" title="SSSD和Active Directory"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>MySQL</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="databases.html" title="Databases">Databases</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="databases.html" title="Databases">Previous</a><a class="nextlinks-next" href="postgresql.html" title="PostgreSQL">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">MySQL</h1></div>
+<div class="region">
+<div class="contents"><p class="para">
+                    <span class="app application">MySQL</span> is a fast, multi-threaded, multi-user, and robust SQL
+                    database server. It is intended for mission-critical, 
+                    heavy-load production systems as well as for embedding into 
+	                 mass-deployed software.
+                    </p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="mysql.html#mysql-installation" title="Installation">Installation</a></li>
+<li class="links"><a class="xref" href="mysql.html#mysql-configuration" title="Configuration">Configuration</a></li>
+<li class="links"><a class="xref" href="mysql.html#mysql-engines" title="Database Engines">Database Engines</a></li>
+<li class="links"><a class="xref" href="mysql.html#mysql-advanced" title="Advanced configuration">Advanced configuration</a></li>
+<li class="links"><a class="xref" href="mysql.html#mysql-resources" title="Resources">Resources</a></li>
+</ul></div>
+<div class="sect2 sect" id="mysql-installation"><div class="inner">
+<div class="hgroup"><h2 class="title">Installation</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+                            To install MySQL, run the following command from a terminal prompt:
+                            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install mysql-server</span>
+</pre></div>
+<p class="para">
+                            Once the installation is complete, the MySQL server should be
+                            started automatically. You can run the following command from a terminal prompt to
+                            check whether the MySQL server is running:
+                            </p>
+<p class="para">
+<div class="screen"><pre class="contents "><span class="cmd command">sudo netstat -tap | grep mysql</span>
+</pre></div>
+                            </p>
+<p class="para">
+                            When you run this command, you should see the following line
+                            or something similar:
+                            </p>
+<div class="code"><pre class="contents ">tcp        0      0 localhost:mysql         *:*                LISTEN      2556/mysqld
+</pre></div>
+<p class="para">
+                            If the server is not running correctly, you can type the following command to start it:
+                            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart mysql.service</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="mysql-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Configuration</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+                            You can edit the <span class="file filename">/etc/mysql/my.cnf</span> file to configure the basic
+                            settings -- log file, port number, etc.  For example, to configure MySQL
+	                         to listen for connections from network hosts, change the <span class="em emphasis">bind-address</span> directive
+	                         to the server's IP address:
+                            </p>
+<div class="code"><pre class="contents ">bind-address            = 192.168.0.5
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+                                <p class="para">
+	                             Replace 192.168.0.5 with the appropriate address. 
+                                </p>
+	                         </div></div></div></div>
+<p class="para">
+	                         After making a change to <span class="file filename">/etc/mysql/my.cnf</span> the MySQL
+	                         daemon will need to be restarted:
+                            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart mysql.service</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="mysql-engines"><div class="inner">
+<div class="hgroup"><h2 class="title">Database Engines</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+                            Whilst the default configuration of MySQL provided by the Ubuntu packages is perfectly functional and performs well there are things you may wish to consider before you proceed.
+                            </p>
+<p class="para">
+                            MySQL is designed to allow data to be stored in different ways.
+                            These methods are referred to as either database or storage engines.
+                            There are two main engines that you'll be interested in: InnoDB and MyISAM.
+                            Storage engines are transparent to the end user. MySQL will handle things differently under the surface,
+                            but regardless of which storage engine is in use, you will interact with the database in the same way.
+                            </p>
+<p class="para">
+                            Each engine has its own advantages and disadvantages.
+                            </p>
+<p class="para">
+                            While it is possible, and may be advantageous to mix and match database engines on a table level,
+                            doing so reduces the effectiveness of the performance tuning you can do as you'll be splitting the resources
+                            between two engines instead of dedicating them to one.
+                            </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+                                    <p class="para">
+                                    MyISAM is the older of the two.  It can be faster than InnoDB under certain circumstances and favours a
+                                    read only workload.  Some web applications have been tuned around MyISAM (though that's not to imply that
+                                    they will slow under InnoDB).  MyISAM also supports the FULLTEXT data type, which allows very fast searches
+                                    of large quantities of text data.
+
+                                    However MyISAM is only capable of locking an entire table for writing.  This means only one process can
+                                    update a table at a time.  As any application that uses the table scales this may prove to be a hindrance.
+                                    It also lacks journaling, which makes it harder for data to be recovered after a crash.
+
+                                    The following link provides some points for consideration about using <a href="http://www.mysqlperformanceblog.com/2006/06/17/using-myisam-in-production/" class="ulink" title="http://www.mysqlperformanceblog.com/2006/06/17/using-myisam-in-production/">MyISAM on a production database</a>.
+                                    </p>
+                                </li>
+<li class="list itemizedlist">
+                                    <p class="para">
+                                    InnoDB is a more modern database engine, designed to be
+                                    <a href="http://en.wikipedia.org/wiki/ACID" class="ulink" title="http://en.wikipedia.org/wiki/ACID">ACID compliant</a> which guarantees
+                                    database transactions are processed reliably.
+                                    Write locking can occur on a row level basis within a table.
+                                    That means multiple updates can occur on a single table simultaneously.
+                                    Data caching is also handled in memory within the database engine,
+                                    allowing caching on a more efficient row level basis rather than file block.
+                                    To meet ACID compliance all transactions are journaled independently of the main tables.
+                                    This allows for much more reliable data recovery as data consistency can be checked.
+                                    </p>
+                                </li>
+</ul></div>
+<p class="para">
+                            As of MySQL 5.5 InnoDB is the default engine, and is highly recommended over MyISAM unless you have specific need for features unique to the engine.
+                            </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="mysql-advanced"><div class="inner">
+<div class="hgroup"><h2 class="title">Advanced configuration</h2></div>
+<div class="region">
+<div class="contents"></div>
+<div class="sect3 sect" id="mysql-tuned-mycnf"><div class="inner">
+<div class="hgroup"><h3 class="title">Creating a tuned my.cnf file</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+                                    There are a number of parameters that can be adjusted within MySQL's configuration file that will allow you to
+                                    improve the performance of the server over time.  For initial set-up you may find <a href="http://tools.percona.com/members/wizard" class="ulink" title="http://tools.percona.com/members/wizard">Percona's my.cnf generating tool</a> useful.
+                                    This tool will help generate a my.cnf file that will be much more optimised for your specific server capabilities and your requirements.
+                                 </p>
+<p class="para">
+                                    <span class="em emphasis">Do not</span> replace your existing my.cnf file with Percona's one if you have already loaded data into the database.
+                                    Some of the changes that will be in the file will be incompatible as they alter how data is stored on the hard disk and you'll be unable to start MySQL.
+                                    If you do wish to use it and you have existing data, you will need to carry out a mysqldump and reload:
+<div class="screen"><pre class="contents ">mysqldump --all-databases --routines -u root -p &gt; ~/fulldump.sql
+</pre></div>
+                                    This will then prompt you for the root password before creating a copy of the data.
+                                    It is advisable to make sure there are no other users or processes using the database whilst this takes place.
+                                    Depending on how much data you've got in your database, this may take a while. You won't see anything on the screen during this process.
+                                 </p>
+<p class="para">
+                                    Once the dump has been completed, shut down MySQL:
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl stop mysql.service</span>
+</pre></div>
+                                    Now backup the original my.cnf file and replace with the new one:
+<div class="screen"><pre class="contents "><span class="cmd command">sudo cp /etc/mysql/my.cnf /etc/mysql/my.cnf.backup</span>
+<span class="cmd command">sudo cp /path/to/new/my.cnf /etc/mysql/my.cnf</span>
+</pre></div>
+                                    Then delete and re-initialise the database space and make sure ownership is correct before restarting MySQL:
+<div class="screen"><pre class="contents "><span class="cmd command">sudo rm -rf /var/lib/mysql/*</span>
+<span class="cmd command">sudo mysql_install_db</span>
+<span class="cmd command">sudo chown -R mysql: /var/lib/mysql</span>
+<span class="cmd command">sudo systemctl start mysql.service</span>
+</pre></div>
+                                    Finally all that's left is to re-import your data.  To give us an idea of how far the import process has got you may find the 'Pipe Viewer' utility, pv, useful.
+                                    The following shows how to install and use pv for this case, but if you'd rather not use it just replace pv with cat in the following command.  Ignore any ETA times produced by pv, they're based on the average time taken to handle each row of the file, but the speed of inserting can vary wildly from row to row with mysqldumps:
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install pv</span>
+<span class="cmd command">pv ~/fulldump.sql | mysql</span>
+</pre></div>
+                                    Once that is complete all is good to go!
+                                   </p>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+                                        <p class="para">
+                                        This is not necessary for all my.cnf changes.
+                                        Most of the variables you may wish to change to improve performance are adjustable
+                                        even whilst the server is running.  As with anything, make sure to have a good backup
+                                        copy of config files and data before making changes.
+                                        </p>
+                                    </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="mysql-tuner"><div class="inner">
+<div class="hgroup"><h3 class="title">MySQL Tuner</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+                                    <span class="app application">MySQL Tuner</span> is a useful tool that will connect to a running MySQL
+                                    instance and offer suggestions for how it can be
+                                    best configured for your workload.  The longer the server has been running for,
+                                    the better the advice mysqltuner
+                                    can provide.  In a production environment, consider waiting for at least 24 hours before running the tool.
+    
+                                    You can get install mysqltuner from the Ubuntu repositories:
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install mysqltuner</span>
+</pre></div>
+                                    Then once its been installed, run it:
+<div class="screen"><pre class="contents "><span class="cmd command">mysqltuner</span>
+</pre></div>
+                                    and wait for its final report.  The top section provides general information about the database server,
+                                    and the bottom section provides tuning suggestions to alter in your my.cnf.
+                                    Most of these can be altered live on the server without restarting, look through the official
+                                    MySQL documentation (link in Resources section) for the relevant variables
+                                    to change in production.
+                                    The following is part of an example report from a production database which shows there may be some benefit
+                                    from increasing the amount of query cache:
+<div class="screen"><pre class="contents ">-------- Recommendations -----------------------------------------------------
+General recommendations:
+    Run OPTIMIZE TABLE to defragment tables for better performance
+    Increase table_cache gradually to avoid file descriptor limits
+Variables to adjust:
+    key_buffer_size (&gt; 1.4G)
+    query_cache_size (&gt; 32M)
+    table_cache (&gt; 64)
+    innodb_buffer_pool_size (&gt;= 22G)
+</pre></div>
+                                </p>
+<p class="para">
+                                One final comment on tuning databases:  Whilst we can broadly say that certain settings are the best,
+                                performance can vary from application to application.  For example, what works best for Wordpress
+                                might not be the best for Drupal, Joomla or proprietary applications.
+                                Performance is dependent on the types of queries, use of indexes, how efficient the database design
+                                is and so on.  You may find it useful to spend some time searching for database tuning tips based on
+                                what applications you're using it for.
+                                Once you get past a certain point any adjustments you make will only result in minor improvements,
+                                and you'll be better off either improving the application, or looking at scaling up your database
+                                environment through either using more powerful hardware or by adding slave servers.
+                                </p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="mysql-resources"><div class="inner">
+<div class="hgroup"><h2 class="title">Resources</h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+                                <p class="para">
+                                See the <a href="http://www.mysql.com/" class="ulink" title="http://www.mysql.com/">MySQL Home Page</a> for more information.
+                                </p>
+                            </li>
+<li class="list itemizedlist">
+                                <p class="para">
+	                             Full documentation is available in both online and offline formats
+                                 from the <a href="http://dev.mysql.com/doc/" class="ulink" title="http://dev.mysql.com/doc/"> MySQL Developers portal</a>
+                                </p>
+                           </li>
+<li class="list itemizedlist">
+                               <p class="para">
+                               For general SQL information see <a href="http://www.informit.com/store/product.aspx?isbn=0768664128" class="ulink" title="http://www.informit.com/store/product.aspx?isbn=0768664128">
+                               Using SQL Special Edition</a> by Rafe Colburn.
+                               </p>
+                           </li>
+<li class="list itemizedlist">
+                               <p class="para">
+                               The <a href="https://help.ubuntu.com/community/ApacheMySQLPHP" class="ulink" title="https://help.ubuntu.com/community/ApacheMySQLPHP">Apache MySQL PHP Ubuntu Wiki</a>
+                               page also has useful information.
+                               </p>
+                           </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="databases.html" title="Databases">Previous</a><a class="nextlinks-next" href="postgresql.html" title="PostgreSQL">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

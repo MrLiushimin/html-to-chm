@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>HTTPD - Apache2 Web Server</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="web-servers.html" title="Web服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Web服务器</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="web-servers.html" title="Web服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="php.html" title="PHP  - 脚本语言"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HTTPD  -  Apache2 Web服务器</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache是​​Linux系统上最常用的Web服务器。</font><font style="vertical-align: inherit;">Web服务器用于提供客户端计算机请求的Web页面。</font><font style="vertical-align: inherit;">客户端通常使用Web浏览器应用程序（如</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Firefox</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，
+               </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Opera</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chromium</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Internet Explorer）</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请求和查看网页</font><font style="vertical-align: inherit;">。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户通过其完全限定域名（FQDN）和所需资源的路径输入统一资源定位符（URL）以指向Web服务器。</font><font style="vertical-align: inherit;">例如，要查看</font></font><a href="http://www.ubuntu.com" class="ulink" title="http://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu网站</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的</font><font style="vertical-align: inherit;">主页，</font><font style="vertical-align: inherit;">用户只能输入FQDN：</font></font></p>
+<div class="screen"><pre class="contents "><span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">www.ubuntu.com</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要查看</font></font><a href="http://www.ubuntu.com/community" class="ulink" title="http://www.ubuntu.com/community"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">子页面，用户将输入FQDN，后跟路径：</font></font></p>
+<div class="screen"><pre class="contents "><span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">www.ubuntu.com/community</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于传输网页的最常用协议是超文本传输​​协议（HTTP）。</font><font style="vertical-align: inherit;">还支持诸如通过安全套接字层（HTTPS）的超文本传输​​协议和文件传输协议（FTP）（用于上载和下载文件的协议）之类的协议。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache Web服务器通常与</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MySQL</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          数据库引擎，超文本预处理器（</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PHP</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）脚本语言以及其他流行的脚本语言（如
+               </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Python</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Perl）结合使用</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">此配置称为LAMP（Linux，Apache，MySQL和Perl / Python / PHP），并为基于Web的应用程序的开发和部署构建了强大而强大的平台。</font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="httpd.html#http-installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a></li>
+<li class="links"><a class="xref" href="httpd.html#http-configuration" title="组态"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></a></li>
+<li class="links"><a class="xref" href="httpd.html#https-configuration" title="HTTPS配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HTTPS配置</font></font></a></li>
+<li class="links"><a class="xref" href="httpd.html#http-directory-permissions" title="共享写权限"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">共享写权限</font></font></a></li>
+<li class="links"><a class="xref" href="httpd.html#http-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="http-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache2的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Web服务器是在Ubuntu Linux上使用。</font><font style="vertical-align: inherit;">要安装Apache2：
+    </font></font></p>
+<div class="steps"><div class="inner"><ul class="steps"><li class="steps">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        在终端提示符处输入以下命令：
+        </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install apache2</font></font></span>
+</pre></div>
+             		 
+      </li></ul></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="http-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        通过将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">放在纯文本配置文件中</font><font style="vertical-align: inherit;">来配置Apache2 </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这些</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在以下文件和目录之间分开：
+        </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apache2.conf：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主要的Apache2配置文件。</font><font style="vertical-align: inherit;">包含</font><font style="vertical-align: inherit;">Apache2 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">全局的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置</font><font style="vertical-align: inherit;">。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">httpd.conf：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">历史上主要的Apache2配置文件，以</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">httpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护进程</font><font style="vertical-align: inherit;">命名
+             </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">现在该文件不存在。</font><font style="vertical-align: inherit;">在旧版本的Ubuntu中，该文件可能存在，但是为空，因为所有配置选项都已移至以下引用的目录。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">conf-available：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此目录包含可用的配置文件。</font><font style="vertical-align: inherit;">之前在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apache2/conf.d中的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所有文件都</font><font style="vertical-align: inherit;"> 
+            应该移动到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / apache2 / conf-available</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">conf-enabled：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">符号链接</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">到 
+             </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / apache2 / conf-available中的文件</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">配置文件符号链接后，下次</font><font style="vertical-align: inherit;">重启</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apache2</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">时将启用它</font><font style="vertical-align: inherit;">。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">envvars：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置</font><font style="vertical-align: inherit;">Apache2 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">环境</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">变量的</font><font style="vertical-align: inherit;">文件</font><font style="vertical-align: inherit;">。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mods-available：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此目录包含加载</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模块</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和配置它们的</font><font style="vertical-align: inherit;">配置文件 
+             </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">但是，并非所有模块都具有特定的配置文件。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mods-enabled：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">符号链接</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">到 
+             </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / apache2 / mods-available中的文件</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">当模块化配置文件符号链接时，将在下次</font><font style="vertical-align: inherit;">重新启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apache2时</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">启用它</font><font style="vertical-align: inherit;">。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ports.conf：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含确定Apache2正在侦听哪些TCP端口的指令。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sites-available：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此目录包含Apache2 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟主机的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件 
+             </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">虚拟主机允许为具有单独配置的多个站点配置Apache2。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">启用站点：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">像</font><span class="em emphasis"><font style="vertical-align: inherit;">启用</font></span><font style="vertical-align: inherit;"> mods，启用</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">站点</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / apache2 / sites-available</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录的</font><font style="vertical-align: inherit;">符号链接</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">类似地，当sites-available中的配置文件符号链接时，一旦Apache2重新启动，它配置的站点将处于活动状态。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">magic：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根据文件的前几个字节确定MIME类型的说明。
+            </font></font></p>
+          </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          此外，可以使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Include</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令</font><font style="vertical-align: inherit;">添加其他配置文件</font><font style="vertical-align: inherit;">，并且可以使用通配符包含许多配置文件。</font><font style="vertical-align: inherit;">任何指令都可以放在任何这些配置文件中。</font><font style="vertical-align: inherit;">只有Apache2在启动或重新启动时才能识别对主配置文件的更改。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          服务器还读取包含mime文档类型的文件; </font><font style="vertical-align: inherit;">文件名由</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TypesConfig</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令</font><font style="vertical-align: inherit;">设置</font><font style="vertical-align: inherit;">，通常通过
+           </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apache2/mods-available/mime.conf设置</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，它可能还包括添加和覆盖，</font><font style="vertical-align: inherit;">默认情况下</font><font style="vertical-align: inherit;">为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/mime.types</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+          </font></font></p>
+</div>
+<div class="sect3 sect" id="http-basic-settings"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基本设置</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             本节介绍Apache2服务器必备配置参数。</font><font style="vertical-align: inherit;">有关更多详细信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a href="http://httpd.apache.org/docs/2.4/" class="ulink" title="http://httpd.apache.org/docs/2.4/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache2文档</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+                 <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                 Apache2附带虚拟主机友好的默认配置。</font><font style="vertical-align: inherit;">也就是说，它配置了一个默认虚拟主机（使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VirtualHost</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令），如果您有一个站点，可以按原样修改或使用，或者如果您有多个站点，则可以将其用作其他虚拟主机的模板。</font><font style="vertical-align: inherit;">如果单独使用，默认虚拟主机将作为您的默认站点，或者站点用户将看到他们输入的URL是否</font><font style="vertical-align: inherit;">与您的任何自定义站点</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ServerName</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令</font><font style="vertical-align: inherit;">不匹配</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要修改默认虚拟主机，请编辑文件
+		  </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apache2/sites-available/000-default.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+                 </font></font></p>
+
+                 <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+                   <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                   为虚拟主机设置的指令仅适用于该特定虚拟主机。</font><font style="vertical-align: inherit;">如果指令是在服务器范围内设置的，并且未在虚拟主机设置中定义，则使用默认设置。</font><font style="vertical-align: inherit;">例如，您可以定义网站管理员电子邮件地址，而不是为每个虚拟主机定义单独的电子邮件地址。 
+                   </font></font></p>
+                 </div></div></div></div>
+
+                 <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                 如果要配置新的虚拟主机或站点，请将该文件复制到具有所选名称的同一目录中。</font><font style="vertical-align: inherit;">例如：
+                 </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/mynewsite.conf</font></font></span>
+</pre></div>
+
+                 <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		 编辑新文件以使用下面描述的某些指令配置新站点。 
+                 </font></font></p>
+
+               </li>
+<li class="list itemizedlist">
+                 <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		 该</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的ServerAdmin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令指定通告的服务器管理员的电子邮件地址。</font><font style="vertical-align: inherit;">默认值为webmaster @ localhost。</font><font style="vertical-align: inherit;">这应该更改为发送给您的电子邮件地址（如果您是服务器的管理员）。</font><font style="vertical-align: inherit;">如果您的网站有问题，Apache2将显示包含此电子邮件地址的错误消息以报告问题。</font><font style="vertical-align: inherit;">在/ etc / apache2 / sites-available中的站点配置文件中找到此指令。
+		 </font></font></p>
+               </li>
+<li class="list itemizedlist">
+                 <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                 在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">听</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令指定的端口，以及可选的IP地址，Apache2的应该听上。</font><font style="vertical-align: inherit;">如果未指定IP地址，Apache2将侦听分配给其运行的计算机的所有IP地址。</font><font style="vertical-align: inherit;">Listen指令的默认值是80.将其更改为127.0.0.1:80以使Apache2仅在您的环回接口上侦听，以便它不可用于Internet，（例如）81更改端口它会监听，或将其保留为正常操作。</font><font style="vertical-align: inherit;">可以在自己的文件</font><span class="file filename"><font style="vertical-align: inherit;">/etc/apache2/ports.conf中</font></span><font style="vertical-align: inherit;">找到并更改此伪指令
+	         </font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span>
+                 </p>
+               </li>
+<li class="list itemizedlist">
+                 <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	         该</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器名</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令是可选的，并且指定了FQDN您的网站应该回答。</font><font style="vertical-align: inherit;">默认虚拟主机没有指定ServerName指令，因此它将响应与另一个虚拟主机中的ServerName指令不匹配的所有请求。</font><font style="vertical-align: inherit;">如果您刚刚获得域名ubunturocks.com并希望在Ubuntu服务器上托管它，则虚拟主机配置文件中ServerName指令的值应为ubunturocks.com。</font><font style="vertical-align: inherit;">将此伪指令添加到先前创建的新虚拟主机文件（</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apache2/sites-available/mynewsite.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）。
+		 </font></font></p>
+			 
+                 <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                 您可能还希望您的网站回复www.ubunturocks.com，因为许多用户会认为www前缀是合适的。</font><font style="vertical-align: inherit;">为此</font><font style="vertical-align: inherit;">使用
+		  </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ServerAlias</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令。</font><font style="vertical-align: inherit;">您也可以在ServerAlias指令中使用通配符。
+                 </font></font></p>
+
+                 <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                 例如，以下配置将使您的站点响应以</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.ubunturocks.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">结尾的任何域请求
+		  </font><font style="vertical-align: inherit;">。
+		 </font></font></p>                 
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ServerAlias * .ubunturocks.com
+</font></font></pre></div>
+
+               </li>
+<li class="list itemizedlist">
+                 <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		 该</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DocumentRoot的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令指定的Apache2应该寻找那些弥补站点的文件。</font><font style="vertical-align: inherit;">默认值为/ var / www / html，如</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apache2/sites-available/000-default.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所指定
+		  </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果需要，请在站点的虚拟主机文件中更改此值，并记住在必要时创建该目录！
+		 </font></font></p>
+              </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 
+             </font><span class="app application"><font style="vertical-align: inherit;">a2ensite</font></span><font style="vertical-align: inherit;">实用程序</font><font style="vertical-align: inherit;">
+            启用新的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VirtualHost</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并重新启动Apache2：
+            </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo a2ensite mynewsite </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart apache2.service</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              请务必</font><font style="vertical-align: inherit;">使用VirtualHost的更具描述性的名称</font><font style="vertical-align: inherit;">替换</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mynewsite</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">一种方法是</font><font style="vertical-align: inherit;"> 
+              在VirtualHost </font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ServerName</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令</font><font style="vertical-align: inherit;">之后命名文件</font><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            同样，使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a2dissite</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序禁用站点。</font><font style="vertical-align: inherit;">在对多个VirtualHosts的配置问题进行故障排除时，这非常有用：
+            </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo a2dissite mynewsite </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart apache2.service</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="default-settings"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认设置</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            本节介绍Apache2服务器默认设置的配置。</font><font style="vertical-align: inherit;">例如，如果添加虚拟主机，则为虚拟主机配置的设置优先于该虚拟主机。</font><font style="vertical-align: inherit;">对于未在虚拟主机设置中定义的指令，将使用默认值。
+            </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">当用户通过在目录名末尾指定正斜杠（/）来请求目录索引时</font><font style="vertical-align: inherit;">
+              ，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DirectoryIndex</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是服务器所服务的默认页面。
+              </font></font></p>
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              例如，当用户请求页面http://www.example.com/this_directory/时，他或她将获得DirectoryIndex页面（如果存在），服务器生成的目录列表（如果不存在）和Indexes选项是如果两者都不是，则指定或拒绝权限页面。</font><font style="vertical-align: inherit;">服务器将尝试查找DirectoryIndex指令中列出的文件之一，并将返回它找到的第一个文件。</font><font style="vertical-align: inherit;">如果找不到任何这些文件，并且</font><font style="vertical-align: inherit;">为该目录设置了“ </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项索引”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，则服务器将生成并返回HTML格式的目录中子目录和文件的列表。</font><font style="vertical-align: inherit;">找到的默认值
+	      </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apache2/mods-available/dir.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是“index.html index.cgi index.pl index.php index.xhtml index.htm”。</font><font style="vertical-align: inherit;">因此，如果Apache2在请求的目录中找到与这些名称匹配的文件，则会显示第一个文件。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的ErrorDocument</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令允许你指定一个文件的Apache2使用特定错误事件。</font><font style="vertical-align: inherit;">例如，如果用户请求不存在的资源，则会发生404错误。</font><font style="vertical-align: inherit;">默认情况下，Apache2将只返回HTTP 404返回代码。</font><font style="vertical-align: inherit;">有关使用ErrorDocument的详细说明，请</font><font style="vertical-align: inherit;">阅读</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apache2/conf-available/localized-error-pages.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，包括示例文件的位置。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              默认情况下，服务器将传输日志写入文件
+               </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/log/apache2/access.log</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">您可以使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CustomLog</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+              指令</font><font style="vertical-align: inherit;">在虚拟主机配置文件中基于每个站点更改此设置</font><font style="vertical-align: inherit;">，或者将其省略以接受在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      /etc/apache2/conf-available/other-vhosts-access-log.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定的默认值</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">您还可以通过</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ErrorLog</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令</font><font style="vertical-align: inherit;">指定要记录错误的文件，该</font><font style="vertical-align: inherit;">指令的默认值为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/log/apache2/error.log</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">它们与传输日志分开，以帮助解决Apache2服务器的问题。</font><font style="vertical-align: inherit;">您也可以指定</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LogLevel</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（默认值为“warn”）和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LogFormat</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（请参阅</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      /etc/apache2/apache2.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以获取默认值）。
+	      </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              某些选项是基于每个目录而不是每个服务器指定的。
+	      </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是这些指令之一。</font><font style="vertical-align: inherit;">Directory节包含在类似XML的标记中，如下所示：
+              </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;目录/ var / www / html / mynewsite&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;/目录&gt;</font></font><font></font>
+</pre></div>
+
+	    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Directory节中</font><font style="vertical-align: inherit;">
+	    的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Options</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令接受以下一个或多个值（以及其他值），用空格分隔：
+            </font></font></p>
+
+            <div class="list itemizedlist"><ul class="list itemizedlist compact">
+<li class="list itemizedlist">
+                <p class="para">
+                <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ExecCGI</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - 允许执行CGI脚本。</font><font style="vertical-align: inherit;">如果未选择此选项，则不会执行CGI脚本。
+		</font></font></p><div class="note note-tip" title="小费"><div class="inner"><div class="region"><div class="contents">
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  大多数文件不应该作为CGI脚本执行。</font><font style="vertical-align: inherit;">这将是非常危险的。</font><font style="vertical-align: inherit;">CGI脚本应保存在与DocumentRoot不同的目录中，并且只有此目录应设置ExecCGI选项。</font><font style="vertical-align: inherit;">这是默认设置，CGI脚本的默认位置是</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ usr / lib / cgi-bin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+		  </font></font></p>
+                </div></div></div></div>
+		<p></p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para">
+                  <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包括</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - 允许服务器端包含。</font><font style="vertical-align: inherit;">服务器端包括允许HTML文件</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		  包含</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他文件。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参阅
+                   </font></font><a href="https://help.ubuntu.com/community/ServerSideIncludes" class="ulink" title="https://help.ubuntu.com/community/ServerSideIncludes"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache SSI文档（Ubuntu社区）</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+                  </font></font></p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para">
+                  <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IncludesNOEXEC</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - 允许服务器端包含，但禁用</font><font style="vertical-align: inherit;">
+                  CGI脚本中</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#exec</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#include</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令。
+                  </font></font></p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para">
+                  <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">索引</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - 如果</font><font style="vertical-align: inherit;">请求的目录中</font><font style="vertical-align: inherit;">不存在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DirectoryIndex</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（例如index.html）</font><font style="vertical-align: inherit;">，则显示目录内容的格式化列表</font><font style="vertical-align: inherit;">。
+                  </font></font></p><div class="note note-warning" title="警告"><div class="inner"><div class="region"><div class="contents">
+                    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    出于安全原因，通常不应设置此选项，当然也不应在DocumentRoot目录中设置。</font><font style="vertical-align: inherit;">仅当您确定希望用户查看目录的全部内容时，才能在每个目录的基础上仔细启用此选项。
+                    </font></font></p>
+                  </div></div></div></div>
+                  <p></p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para">
+                  <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多视图</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - 支持内容协商的多</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">视图</font></span><font style="vertical-align: inherit;"> ; </font><font style="vertical-align: inherit;">出于安全原因，默认情况下禁用此选项。</font><font style="vertical-align: inherit;">请参阅</font></font><a href="http://httpd.apache.org/docs/2.4/mod/mod_negotiation.html#multiviews" class="ulink" title="http://httpd.apache.org/docs/2.4/mod/mod_negotiation.html#multiviews"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关此选项</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的</font><a href="http://httpd.apache.org/docs/2.4/mod/mod_negotiation.html#multiviews" class="ulink" title="http://httpd.apache.org/docs/2.4/mod/mod_negotiation.html#multiviews"><font style="vertical-align: inherit;">Apache2文档</font></a><font style="vertical-align: inherit;">。
+                  </font></font></p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para">
+                  <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SymLinksIfOwnerMatch</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - 如果目标文件或目录与链接具有相同的所有者，则仅遵循符号链接。
+                  </font></font></p>
+                </li>
+</ul></div>
+            </li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="httpd-settings"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">httpd设置</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          本节介绍一些基本的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">httpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护程序配置设置。
+          </font></font></p>
+<p class="para">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LockFile</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -  LockFile指令设置使用USE_FCNTL_SERIALIZED_ACCEPT或USE_FLOCK_SERIALIZED_ACCEPT编译服务器时使用的锁文件的路径。</font><font style="vertical-align: inherit;">它必须存储在本地磁盘上。</font><font style="vertical-align: inherit;">除非logs目录位于NFS共享上，否则应保留默认值。</font><font style="vertical-align: inherit;">如果是这种情况，则应将默认值更改为本地磁盘上的位置以及只能由root读取的目录。 
+          </font></font></p>
+<p class="para">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PidFile</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -  PidFile指令设置服务器记录其进程ID（pid）的文件。</font><font style="vertical-align: inherit;">该文件只能由root读取。</font><font style="vertical-align: inherit;">在大多数情况下，应将其保留为默认值。
+          </font></font></p>
+<p class="para">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">User</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -  User指令设置服务器用于回答请求的用户标识。</font><font style="vertical-align: inherit;">此设置确定服务器的访问权限。</font><font style="vertical-align: inherit;">您的网站访问者也无法访问此用户无法访问的任何文件。</font><font style="vertical-align: inherit;">用户的默认值是“www-data”。 
+          </font></font></p>
+<div class="note note-warning" title="警告"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            除非您确切知道自己在做什么，否则不要将User指令设置为root。</font><font style="vertical-align: inherit;">使用root作为用户将为Web服务器创建大型安全漏洞。 
+            </font></font></p>
+          </div></div></div></div>
+<p class="para">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Group</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -  Group指令类似于User指令。</font><font style="vertical-align: inherit;">组设置服务器将响应请求的组。</font><font style="vertical-align: inherit;">默认组也是“www-data”。
+          </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="apache-modules"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache2模块</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          Apache2是一个模块化服务器。</font><font style="vertical-align: inherit;">这意味着核心服务器中只包含最基本的功能。</font><font style="vertical-align: inherit;">可通过可加载到Apache2的模块获得扩展功能。</font><font style="vertical-align: inherit;">默认情况下，服务器在编译时包含一组基本模块。</font><font style="vertical-align: inherit;">如果编译服务器以使用动态加载的模块，则可以单独编译模块，并使用LoadModule指令随时添加模块。</font><font style="vertical-align: inherit;">否则，必须重新编译Apache2以添加或删除模块。 
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          Ubuntu编译Apache2以允许动态加载模块。</font><font style="vertical-align: inherit;">通过将它们封装在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;IfModule&gt;</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">块中，</font><font style="vertical-align: inherit;">可以有条件地将配置指令包含在特定模块的存在中</font><font style="vertical-align: inherit;">。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          您可以安装其他Apache2模块并将其与Web服务器一起使用。</font><font style="vertical-align: inherit;">例如，在终端提示符处运行以下命令以安装</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MySQL身份验证</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模块：
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install libapache2-mod-auth-mysql</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关</font><font style="vertical-align: inherit;">其他模块，</font><font style="vertical-align: inherit;">请参阅</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / apache2 / mods-available</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a2enmod</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序启用模块：
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo a2enmod auth_mysql </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart apache2.service</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          同样，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a2dismod</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将禁用一个模块：
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo a2dismod auth_mysql </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart apache2.service</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="https-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HTTPS配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mod_ssl的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模块增加了一个重要的功能，Apache2的服务器-加密通信的能力。</font><font style="vertical-align: inherit;">因此，当您的浏览器使用SSL进行通信时，https：//前缀将在浏览器导航栏中的统一资源定位器（URL）的开头使用。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          所述</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mod_ssl的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模块是可用
+           </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的apache2-共同</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">封装。</font><font style="vertical-align: inherit;">在终端提示符处执行以下命令以启用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mod_ssl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模块：
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo a2enmod ssl</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apache2/sites-available/default-ssl.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          有一个默认的HTTPS配置文件</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">为了使</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache2</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提供HTTPS，</font><font style="vertical-align: inherit;">还需要</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">证书</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密钥</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件。</font><font style="vertical-align: inherit;">默认HTTPS配置将使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ssl-cert</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包</font><font style="vertical-align: inherit;">生成的证书和密钥</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">它们适用于测试，但自动生成的证书和密钥应替换为特定于站点或服务器的证书。</font><font style="vertical-align: inherit;">有关生成密钥和获取证书的信息，请参阅 
+           </font></font><a class="xref" href="certificates-and-security.html" title="证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">证书</font></font></a>
+          </p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          要</font><font style="vertical-align: inherit;">为HTTPS </font><font style="vertical-align: inherit;">配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache2</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请输入以下内容：
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo a2ensite default-ssl</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              目录</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / ssl / certs</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / ssl / private</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是默认位置。</font><font style="vertical-align: inherit;">如果将证书和密钥安装在另一个目录中，请确保</font><font style="vertical-align: inherit;">适当</font><font style="vertical-align: inherit;">地更改
+               </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSLCertificateFile</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSLCertificateKeyFile</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            现在Apache2已配置为HTTPS，请重新启动该服务以启用新设置：
+            </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl重启apache2.service</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              根据您获得证书的方式，您可能需要在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache2</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">启动</font><font style="vertical-align: inherit;">时输入密码</font><font style="vertical-align: inherit;">。 
+              </font></font></p>
+            </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 	    您可以在浏览器地址栏中键入https：// your_hostname / url /来访问安全服务器页面。
+            </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="http-directory-permissions"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">共享写权限</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          对于能够写入同一目录的多个用户，必须向他们共同共享的组授予写入权限。</font><font style="vertical-align: inherit;">以下示例向</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / www / html</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          授予对“webmasters”组的</font><font style="vertical-align: inherit;">共享写入权限</font><font style="vertical-align: inherit;">。
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chgrp -R webmasters / var / www / html </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo find / var / www / html -type d -exec chmod g = rwxs“{}”\; </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo find / var / www / html -type f -exec chmod g = rw“{}”\;</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    这些命令以递归方式设置/ var / www / html中所有文件和目录的组权限，以读取写入和设置用户ID。</font><font style="vertical-align: inherit;">这具有使文件和目录从其parrent继承其组和权限的效果。</font><font style="vertical-align: inherit;">许多管理员发现这对于允许多个用户编辑目录树中的文件很有用。
+</font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          如果必须为每个目录授予多个组的访问权限，请启用访问控制列表（ACL）。
+          </font></font></p>
+        </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="http-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para">
+            <a href="http://httpd.apache.org/docs/2.4/" class="ulink" title="http://httpd.apache.org/docs/2.4/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache2文档</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含有关Apache2配置指令的深入信息。</font><font style="vertical-align: inherit;">另外，请参阅</font><font style="vertical-align: inherit;"> 
+            官方Apache2文档</font><font style="vertical-align: inherit;">的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apache2-doc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            有关</font><font style="vertical-align: inherit;">更多SSL相关信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a href="http://www.modssl.org/docs/" class="ulink" title="http://www.modssl.org/docs/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mod SSL文档</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">站点。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            O'Reilly的</font></font><a href="http://oreilly.com/catalog/9780596001919/" class="ulink" title="http://oreilly.com/catalog/9780596001919/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache Cookbook</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是完成特定Apache2配置的良好资源。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            对于Ubuntu特定的Apache2问题，请在</font><a href="http://freenode.net/" class="ulink" title="http://freenode.net/"><font style="vertical-align: inherit;">freenode.net</font></a><font style="vertical-align: inherit;">上</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃ubuntu-server</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> IRC频道中 
+             </font><font style="vertical-align: inherit;">询问</font><font style="vertical-align: inherit;">。
+            </font></font><a href="http://freenode.net/" class="ulink" title="http://freenode.net/"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            通常与PHP和MySQL集成，</font></font><a href="https://help.ubuntu.com/community/ApacheMySQLPHP" class="ulink" title="https://help.ubuntu.com/community/ApacheMySQLPHP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apache MySQL PHP Ubuntu Wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+            页面是一个很好的资源。
+            </font></font></p>
+          </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="web-servers.html" title="Web服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="php.html" title="PHP  - 脚本语言"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

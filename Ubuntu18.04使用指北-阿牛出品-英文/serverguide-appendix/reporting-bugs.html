@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Reporting Bugs in Ubuntu Server Edition</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="serverguide-appendix.html" title="Appendix">Appendix</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks"><a class="nextlinks-prev" href="serverguide-appendix.html" title="Appendix">Previous</a></div>
+<div class="hgroup"><h1 class="title">Reporting Bugs in Ubuntu Server Edition</h1></div>
+<div class="region">
+<div class="contents"><p class="para">
+  The Ubuntu Project, and thus Ubuntu Server, uses <a href="https://launchpad.net/" class="ulink" title="https://launchpad.net/">Launchpad</a>
+  as its bugtracker. In order to file a bug, you will need a Launchpad account.  <a href="https://help.launchpad.net/YourAccount/NewAccount" class="ulink" title="https://help.launchpad.net/YourAccount/NewAccount">Create
+  one here</a> if necessary.
+  </p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="reporting-bugs.html#reporting-bugs-apport-cli" title="Reporting Bugs With apport-cli">Reporting Bugs With apport-cli</a></li>
+<li class="links"><a class="xref" href="reporting-bugs.html#apport-crash-catching" title="Reporting Application Crashes">Reporting Application Crashes</a></li>
+<li class="links"><a class="xref" href="reporting-bugs.html#reporting-bugs-resources" title="Resources">Resources</a></li>
+</ul></div>
+<div class="sect2 sect" id="reporting-bugs-apport-cli"><div class="inner">
+<div class="hgroup"><h2 class="title">Reporting Bugs With apport-cli</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+	    The preferred way to report a bug is with the <span class="app application">apport-cli</span> command.  It must be invoked on the machine affected by the bug
+	    because it collects information from the system on which it is being run and publishes it to the bug report on Launchpad.  Getting that information to
+	    Launchpad can therefore be a challenge if the system is not running a desktop environment in order to use a browser (common with servers) or if it does
+	    not have Internet access.  The steps to take in these situations are described below. 
+    </p>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+	<p class="para">
+	The commands <span class="app application">apport-cli</span> and <span class="app application">ubuntu-bug</span> should give the same results on a CLI server.
+	The latter is actually a symlink to <span class="app application">apport-bug</span> which is intelligent enough to know whether a desktop environment is in use and
+	will choose <span class="app application">apport-cli</span> if not.  Since server systems tend to be CLI-only apport-cli was chosen from the outset in this guide.
+	</p>
+	</div></div></div></div>
+<p class="para">
+    Bug reports in Ubuntu need to be filed against a specific software package, so the name of the
+    package (source package or program name/path) affected by the bug needs to be supplied to apport-cli:
+    </p>
+<div class="screen"><pre class="contents "><span class="cmd command">apport-cli PACKAGENAME</span>
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+    <p class="para">
+    See <a class="xref" href="package-management.html" title="Package Management">Package Management</a> for more information about packages in Ubuntu.
+    </p>
+    </div></div></div></div>
+<p class="para">
+    Once apport-cli has finished gathering information you will be asked what to do with it.  For
+    instance, to report a bug in vim:
+    </p>
+<div class="screen"><pre class="contents "><span class="cmd command">apport-cli vim</span>
+
+*** Collecting problem information
+
+The collected information can be sent to the developers to improve the
+application. This might take a few minutes.
+...
+
+*** Send problem report to the developers?
+
+After the problem report has been sent, please fill out the form in the
+automatically opened web browser.
+
+What would you like to do? Your options are:
+  S: Send report (2.8 KB)
+  V: View report
+  K: Keep report file for sending later or copying to somewhere else
+  I: Cancel and ignore future crashes of this program version
+  C: Cancel
+Please choose (S/V/K/I/C):
+</pre></div>
+<p class="para">
+    The first three options are described below:
+    </p>
+<p class="para">
+    <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+        <p class="para"><span class="em em-bold emphasis">Send:</span> 
+        submits the collected information to Launchpad as part of the process
+	of filing a new bug report. You will be given the opportunity to describe
+	the bug in your own words.
+        </p>
+
+<div class="screen"><pre class="contents ">
+*** Uploading problem information
+
+The collected information is being sent to the bug tracking system.
+This might take a few minutes.
+94%
+
+*** To continue, you must visit the following URL:
+
+  https://bugs.launchpad.net/ubuntu/+source/vim/+filebug/09b2495a-e2ab-11e3-879b-68b5996a96c8?
+
+You can launch a browser now, or copy this URL into a browser on another computer.
+
+
+Choices:
+  1: Launch a browser now
+  C: Cancel
+Please choose (1/C):  <span class="input userinput">1</span>
+</pre></div>
+
+        <p class="para">
+        The browser that will be used when choosing '1' will be the one known on the system as
+	<span class="app application">www-browser</span> via the
+	<a href="http://manpages.ubuntu.com/manpages/en/man8/update-alternatives.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/update-alternatives.8.html">
+	Debian alternatives system</a>.  Examples of text-based browsers to install include <span class="app application">links</span>,
+	<span class="app application">elinks</span>, <span class="app application">lynx</span>, and <span class="app application">w3m</span>.
+	You can also manually point an existing browser at the given URL.
+        </p>
+      </li>
+<li class="list itemizedlist">
+        <p class="para">
+        <span class="em em-bold emphasis">View:</span>
+	displays the collected information on the screen for review.  This can
+	be a lot of information.  Press 'Enter' to scroll by screenful.  Press 'q'
+	to quit and return to the choice menu.
+        </p>
+      </li>
+<li class="list itemizedlist">
+        <p class="para">
+        <span class="em em-bold emphasis">Keep:</span>
+        writes the collected information to disk. The resulting file can be later used to
+	file the bug report, typically after transferring it to another Ubuntu system.
+        </p>
+
+<div class="screen"><pre class="contents ">What would you like to do? Your options are:
+  S: Send report (2.8 KB)
+  V: View report
+  K: Keep report file for sending later or copying to somewhere else
+  I: Cancel and ignore future crashes of this program version
+  C: Cancel
+Please choose (S/V/K/I/C): <span class="input userinput">k</span>
+Problem report file: /tmp/apport.vim.1pg92p02.apport
+</pre></div>
+
+	<p class="para">
+	To report the bug, get the file onto an internet-enabled Ubuntu system and apply apport-cli
+	to it. This will cause the menu to appear immediately (the information is already collected).
+	You should then press 's' to send:
+	</p>
+
+<div class="screen"><pre class="contents "><span class="cmd command">apport-cli apport.vim.1pg92p02.apport</span>
+</pre></div>
+
+<p class="para">
+To directly save a report to disk (without menus) you can do:
+
+<div class="screen"><pre class="contents "><span class="cmd command">apport-cli vim --save apport.vim.test.apport</span>
+</pre></div>
+
+Report names should end in <span class="em emphasis">.apport</span> .
+</p>
+
+	<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+	<p class="para">
+		If this internet-enabled system is non-Ubuntu/Debian, apport-cli is not available so the
+		bug will need to be created manually.  An apport report is also not to be included as an
+		attachment to a bug either so it is completely useless in this scenario.
+	</p>
+	</div></div></div></div>
+
+      </li>
+</ul></div>
+    </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="apport-crash-catching"><div class="inner">
+<div class="hgroup"><h2 class="title">Reporting Application Crashes</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+    	The software package that provides the apport-cli utility, <span class="app application">apport</span>,
+	can be configured to automatically capture the state of a crashed application.  This
+	is enabled by default (in <span class="file filename">/etc/default/apport</span>).
+	</p>
+<p class="para">
+	After an application crashes, if enabled, apport will store a crash report under <span class="file filename">/var/crash</span>:
+	</p>
+<div class="screen"><pre class="contents ">-rw-r----- 1 peter    whoopsie 150K Jul 24 16:17 _usr_lib_x86_64-linux-gnu_libmenu-cache2_libexec_menu-cached.1000.crash
+</pre></div>
+<p class="para">
+	Use the <span class="app application">apport-cli</span> command without arguments to process any pending crash reports.  It
+	will offer to report them one by one.
+	</p>
+<div class="screen"><pre class="contents "><span class="cmd command">apport-cli</span>
+
+*** Send problem report to the developers?
+
+After the problem report has been sent, please fill out the form in the
+automatically opened web browser.
+
+What would you like to do? Your options are:
+  S: Send report (153.0 KB)
+  V: View report
+  K: Keep report file for sending later or copying to somewhere else
+  I: Cancel and ignore future crashes of this program version
+  C: Cancel
+Please choose (S/V/K/I/C): <span class="input userinput">s</span>
+</pre></div>
+<p class="para">
+	If you send the report, as was done above, the prompt will be returned immediately and the
+	<span class="file filename">/var/crash</span> directory will then contain 2 extra files:
+	</p>
+<div class="screen"><pre class="contents ">-rw-r----- 1 peter    whoopsie 150K Jul 24 16:17 _usr_lib_x86_64-linux-gnu_libmenu-cache2_libexec_menu-cached.1000.crash
+-rw-rw-r-- 1 peter    whoopsie    0 Jul 24 16:37 _usr_lib_x86_64-linux-gnu_libmenu-cache2_libexec_menu-cached.1000.upload
+-rw------- 1 whoopsie whoopsie    0 Jul 24 16:37 _usr_lib_x86_64-linux-gnu_libmenu-cache2_libexec_menu-cached.1000.uploaded
+</pre></div>
+<p class="para">
+	Sending in a crash report like this will not immediately result in the creation of a new public bug.
+	The report will be made private on Launchpad, meaning that it will be visible to only a limited set
+	of bug triagers. These triagers will then scan the report for possible private data before creating a public bug.
+	</p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="reporting-bugs-resources"><div class="inner">
+<div class="hgroup"><h2 class="title">Resources</h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+        <p class="para">
+	See the <a href="https://help.ubuntu.com/community/ReportingBugs" class="ulink" title="https://help.ubuntu.com/community/ReportingBugs">Reporting Bugs</a> Ubuntu wiki page.
+	</p>
+      </li>
+<li class="list itemizedlist">
+        <p class="para">
+	Also, the <a href="https://wiki.ubuntu.com/Apport" class="ulink" title="https://wiki.ubuntu.com/Apport">Apport</a> page has some useful information.  Though some
+        of it pertains to using a GUI.
+    	</p>
+      </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks"><a class="nextlinks-prev" href="serverguide-appendix.html" title="Appendix">Previous</a></div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

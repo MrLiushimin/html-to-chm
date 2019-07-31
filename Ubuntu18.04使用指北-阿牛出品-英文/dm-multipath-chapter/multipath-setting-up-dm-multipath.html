@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Setting up DM-Multipath Overview</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="dm-multipath-chapter.html" title="DM-Multipath">DM-Multipath</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="multipath-devices.html" title="Multipath Devices">Previous</a><a class="nextlinks-next" href="multipath-dm-multipath-config-file.html" title="The DM-Multipath Configuration File">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Setting up DM-Multipath Overview</h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">This section provides step-by-step example procedures for
+    configuring DM-Multipath. It includes the following procedures:</p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+        <p class="para">Basic DM-Multipath setup</p>
+      </li>
+<li class="list itemizedlist">
+        <p class="para">Ignoring local disks</p>
+      </li>
+<li class="list itemizedlist">
+        <p class="para">Adding more devices to the configuration file</p>
+      </li>
+</ul></div>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="multipath-setting-up-dm-multipath.html#multipath-setup-overview" title="Setting Up DM-Multipath">Setting Up DM-Multipath</a></li>
+<li class="links"><a class="xref" href="multipath-setting-up-dm-multipath.html" title="Installing with Multipath Support">Installing with Multipath Support</a></li>
+<li class="links"><a class="xref" href="multipath-setting-up-dm-multipath.html#multipath-ignore-local-disks" title="Ignoring Local Disks When Generating Multipath Devices">Ignoring Local Disks When Generating Multipath Devices</a></li>
+<li class="links"><a class="xref" href="multipath-setting-up-dm-multipath.html#multipath-config-storage-devices" title="Configuring Storage Devices">Configuring Storage Devices</a></li>
+</ul></div>
+<div class="sect2 sect" id="multipath-setup-overview"><div class="inner">
+<div class="hgroup"><h2 class="title">Setting Up DM-Multipath</h2></div>
+<div class="region"><div class="contents">
+<p class="para">Before setting up DM-Multipath on your system, ensure that your system
+      has been updated and includes the <span class="em em-bold emphasis"><span class="app application">multipath-tools</span></span> package. If
+      boot from SAN is desired, then the <span class="em em-bold emphasis"><span class="app application">multipath-tools-boot</span></span> package
+      is also required.</p>
+<p class="para">A basic <span class="em em-bold emphasis">/etc/multipath.conf </span> need
+      not even exist, when <span class="em em-bold emphasis">multpath</span> is run
+      without an accompanying <span class="file filename">/etc/multipath.conf</span>, it
+      draws from it's internal database to find a suitable configuration, it
+      also draws from it's internal blacklist. If after running <span class="em em-bold emphasis">multipath -ll</span> without a config file, no
+      multipaths are discovered. One must proceed to increase the verbosity to
+      discover why a multipath was not created. Consider referencing the SAN
+      vendor's documentation, the multipath example config files found in
+      <span class="file filename">/usr/share/doc/multipath-tools/examples</span>, and the
+      live multipathd database:<div class="screen">
+<a name="multipath-skel-config"></a><pre class="contents "># echo 'show config' | multipathd -k &gt; multipath.conf-live</pre>
+</div><div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+          <p class="para">To work around a quirk in multipathd, when an
+          <span class="file filename">/etc/multipath.conf</span> doesn't exist, the previous
+          command will return nothing, as it is the result of a
+          <span class="em emphasis">merge</span> between the
+          <span class="file filename">/etc/multipath.conf</span> and the database in memory.
+          To remedy this, either define an empty
+          <span class="file filename">/etc/multipath.conf</span>, by using <span class="em em-bold emphasis">touch</span>, or create one that redefines a default
+          value like:<div class="screen"><pre class="contents ">defaults {
+        user_friendly_names no
+}
+</pre></div>and restart multipathd:<div class="screen"><pre class="contents "># systemctl restart multipath-tools.service</pre></div>Now
+          the "show config" command will return the live database.</p>
+        </div></div></div></div></p>
+</div></div>
+</div></div>
+<div class="sect2 sect"><div class="inner">
+<div class="hgroup"><h2 class="title">Installing with Multipath Support</h2></div>
+<div class="region"><div class="contents"><p class="para">To enable <a href="http://wiki.debian.org/DebianInstaller/MultipathSupport" class="ulink" title="http://wiki.debian.org/DebianInstaller/MultipathSupport">multipath
+      support during installation</a> use<div class="screen"><pre class="contents ">install disk-detect/multipath/enable=true</pre></div>at
+      the installer prompt. If multipath devices are found these will show up
+      as <span class="em em-bold emphasis">/dev/mapper/mpath&lt;X&gt;</span> during
+      installation.</p></div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-ignore-local-disks"><div class="inner">
+<div class="hgroup"><h2 class="title">Ignoring Local Disks When Generating Multipath Devices</h2></div>
+<div class="region"><div class="contents">
+<p class="para">Some machines have local SCSI cards for their internal disks.
+      DM-Multipath is not recommended for these devices. The following
+      procedure shows how to modify the multipath configuration file to ignore
+      the local disks when configuring multipath.</p>
+<div class="list orderedlist"><ol class="list orderedlist">
+<li class="list orderedlist">
+          <p class="para">Determine which disks are the internal disks and mark them as
+          the ones to blacklist. In this example, <span class="em em-bold emphasis"><span class="file filename">/dev/sda</span></span> is the internal
+          disk. Note that as originally configured in the default multipath
+          configuration file, executing the <span class="em em-bold emphasis">multipath
+          -v2</span> shows the local disk, <span class="em em-bold emphasis">/dev/sda</span>, in the multipath map. For further
+          information on the <span class="em em-bold emphasis">multipath</span>
+          command output, see Section <a class="link" href="multipath-admin-and-troubleshooting.html#multipath-command-output" title="Multipath Command Output">Multipath Command
+          Output</a>.</p>
+
+          <div class="screen"><pre class="contents "># multipath -v2
+create: SIBM-ESXSST336732LC____F3ET0EP0Q000072428BX1 undef WINSYS,SF2372
+size=33 GB features="0" hwhandler="0" wp=undef
+`-+- policy='round-robin 0' prio=1 status=undef
+  |- 0:0:0:0 sda 8:0  [--------- 
+
+device-mapper ioctl cmd 9 failed: Invalid argument
+device-mapper ioctl cmd 14 failed: No such device or address
+create: 3600a0b80001327d80000006d43621677 undef WINSYS,SF2372
+size=12G features='0' hwhandler='0' wp=undef
+`-+- policy='round-robin 0' prio=1 status=undef
+  |- 2:0:0:0 sdb 8:16  undef ready  running
+    `- 3:0:0:0 sdf 8:80 undef ready  running
+
+create: 3600a0b80001327510000009a436215ec undef WINSYS,SF2372
+size=12G features='0' hwhandler='0' wp=undef
+`-+- policy='round-robin 0' prio=1 status=undef
+  |- 2:0:0:1 sdc 8:32 undef ready  running
+    `- 3:0:0:1 sdg 8:96 undef ready  running
+
+create: 3600a0b80001327d800000070436216b3 undef WINSYS,SF2372
+size=12G features='0' hwhandler='0' wp=undef
+`-+- policy='round-robin 0' prio=1 status=undef
+  |- 2:0:0:2 sdd 8:48 undef ready  running
+    `- 3:0:0:2 sdg 8:112 undef ready  running
+
+create: 3600a0b80001327510000009b4362163e undef WINSYS,SF2372
+size=12G features='0' hwhandler='0' wp=undef
+`-+- policy='round-robin 0' prio=1 status=undef
+  |- 2:0:0:3 sdd 8:64 undef ready  running
+    `- 3:0:0:3 sdg 8:128 undef ready  running
+</pre></div>
+        </li>
+<li class="list orderedlist">
+          <p class="para">In order to prevent the device mapper from mapping <span class="em em-bold emphasis">/dev/sda</span> in its multipath maps, edit the
+          blacklist section of the <span class="file filename">/etc/multipath.conf</span> file to include this
+          device. Although you could blacklist the <span class="em em-bold emphasis">sda</span> device using a <span class="em em-bold emphasis">devnode</span> type, that would not be safe
+          procedure since <span class="em em-bold emphasis">/dev/sda</span> is not
+          guaranteed to be the same on reboot. To blacklist individual
+          devices, you can blacklist using the WWID of that device. Note that
+          in the output to the <span class="em em-bold emphasis">multipath -v2</span>
+          command, the WWID of the <span class="file filename">/dev/sda</span> device is
+          SIBM-ESXSST336732LC____F3ET0EP0Q000072428BX1. To blacklist this
+          device, include the following in the <span class="file filename">/etc/multipath.conf</span>
+          file.</p>
+
+          <div class="screen"><pre class="contents ">blacklist {
+      wwid SIBM-ESXSST336732LC____F3ET0EP0Q000072428BX1
+}
+</pre></div>
+        </li>
+<li class="list orderedlist">
+          <p class="para">After you have updated the <span class="file filename">/etc/multipath.conf</span> file, you
+          must manually tell the <span class="em em-bold emphasis">multipathd</span>
+          daemon to reload the file. The following command reloads the updated
+          <span class="file filename">/etc/multipath.conf</span> file.</p>
+
+          <div class="screen"><pre class="contents "># systemctl reload multipath-tools.service</pre></div>
+        </li>
+<li class="list orderedlist">
+          <p class="para">Run the following command to remove the multipath
+          device:</p>
+
+          <div class="screen"><pre class="contents "># multipath -f SIBM-ESXSST336732LC____F3ET0EP0Q000072428BX1
+</pre></div>
+        </li>
+<li class="list orderedlist">
+          <p class="para">To check whether the device removal worked, you can run the
+          <span class="cmd command">multipath -ll</span> command to display the current
+          multipath configuration. For information on the <span class="cmd command">multipath
+          -ll</span> command, see Section <a class="link" href="multipath-admin-and-troubleshooting.html#multipath-queries-and-commands" title="Multipath Queries with multipath Command">Multipath Queries with
+          multipath Command</a>. To check that the blacklisted device was
+          not added back, you can run the multipath command, as in the
+          following example. The multipath command defaults to a verbosity
+          level of <span class="em em-bold emphasis">v2</span> if you do not specify a
+          <span class="em em-bold emphasis">-v</span> option.</p>
+
+          <div class="screen"><pre class="contents "># multipath
+
+create: 3600a0b80001327d80000006d43621677 undef WINSYS,SF2372
+size=12G features='0' hwhandler='0' wp=undef
+`-+- policy='round-robin 0' prio=1 status=undef
+  |- 2:0:0:0 sdb 8:16  undef ready  running
+    `- 3:0:0:0 sdf 8:80 undef ready  running
+
+create: 3600a0b80001327510000009a436215ec undef WINSYS,SF2372
+size=12G features='0' hwhandler='0' wp=undef
+`-+- policy='round-robin 0' prio=1 status=undef
+  |- 2:0:0:1 sdc 8:32 undef ready  running
+    `- 3:0:0:1 sdg 8:96 undef ready  running
+
+create: 3600a0b80001327d800000070436216b3 undef WINSYS,SF2372
+size=12G features='0' hwhandler='0' wp=undef
+`-+- policy='round-robin 0' prio=1 status=undef
+  |- 2:0:0:2 sdd 8:48 undef ready  running
+    `- 3:0:0:2 sdg 8:112 undef ready  running
+
+create: 3600a0b80001327510000009b4362163e undef WINSYS,SF2372
+size=12G features='0' hwhandler='0' wp=undef
+`-+- policy='round-robin 0' prio=1 status=undef
+  |- 2:0:0:3 sdd 8:64 undef ready  running
+    `- 3:0:0:3 sdg 8:128 undef ready  running
+</pre></div>
+        </li>
+</ol></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-config-storage-devices"><div class="inner">
+<div class="hgroup"><h2 class="title">Configuring Storage Devices</h2></div>
+<div class="region"><div class="contents">
+<p class="para">By default, DM-Multipath includes support for the most common
+      storage arrays that support DM-Multipath. The default configuration
+      values, including supported devices, can be found in the
+      <span class="file filename">multipath.conf.defaults</span> file.</p>
+<p class="para">If you need to add a storage device that is not supported by
+      default as a known multipath device, edit the <span class="file filename">/etc/multipath.conf</span> file
+      and insert the appropriate device information.</p>
+<p class="para">For example, to add information about the HP Open-V series the
+      entry looks like this, where <span class="em em-bold emphasis">%n</span> is the
+      device name:</p>
+<div class="screen"><pre class="contents ">devices {
+     device {
+            vendor "HP"
+            product "OPEN-V."
+            getuid_callout "/lib/udev/scsi_id --whitelisted --device=/dev/%n"
+     }
+}
+</pre></div>
+<p class="para">For more information on the devices section of the configuration
+      file, see Section <a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-device" title="Configuration File Devices">Configuration File Devices</a>.</p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="multipath-devices.html" title="Multipath Devices">Previous</a><a class="nextlinks-next" href="multipath-dm-multipath-config-file.html" title="The DM-Multipath Configuration File">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

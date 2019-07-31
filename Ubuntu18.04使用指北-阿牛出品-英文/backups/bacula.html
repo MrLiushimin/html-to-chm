@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Bacula</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="backups.html" title="Backups">Backups</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="backups-shellscripts-rotation.html" title="Archive Rotation">Previous</a><a class="nextlinks-next" href="../virtualization/virtualization.html" title="Virtualization">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Bacula</h1></div>
+<div class="region">
+<div class="contents"><p class="para">
+    <span class="app application">Bacula</span> is a backup program enabling you to backup, restore, and verify data across your network. There are Bacula 
+    clients for Linux, Windows, and Mac OS X - making it a cross-platform network wide solution.
+    </p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="bacula.html#bacula-overview" title="Overview">Overview</a></li>
+<li class="links"><a class="xref" href="bacula.html#bacula-installation" title="Installation">Installation</a></li>
+<li class="links"><a class="xref" href="bacula.html#bacula-configuration" title="Configuration">Configuration</a></li>
+<li class="links"><a class="xref" href="bacula.html#bacula-localhost-backup" title="Localhost Backup">Localhost Backup</a></li>
+<li class="links"><a class="xref" href="bacula.html#bacula-resources" title="Resources">Resources</a></li>
+</ul></div>
+<div class="sect2 sect" id="bacula-overview"><div class="inner">
+<div class="hgroup"><h2 class="title">Overview</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      <span class="app application">Bacula</span> is made up of several components and services used to manage which files to backup and backup locations:
+      </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="app application">Bacula Director:</span> a service that controls all backup, restore, verify, and archive operations.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="app application">Bacula Console:</span> an application allowing communication with the Director. There are three versions of the 
+          Console:
+          </p>
+	  <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para">Text based command line version.</p></li>
+<li class="list itemizedlist"><p class="para">Gnome based GTK+ Graphical User Interface (GUI) interface.</p></li>
+<li class="list itemizedlist"><p class="para">wxWidgets GUI interface.</p></li>
+</ul></div>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="app application">Bacula File:</span> also known as the <span class="app application">Bacula Client</span> program. 
+          This application is installed on machines to be backed up, and is responsible for the data requested by the Director. 
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+	  <span class="app application">Bacula Storage:</span> the programs that perform the storage and recovery of data to the physical media.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+	  <span class="app application">Bacula Catalog:</span> is responsible for maintaining the file indexes and volume databases for all files backed up,  
+          enabling quick location and restoration of archived files. The Catalog supports three different databases MySQL, PostgreSQL, and SQLite.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+	  <span class="app application">Bacula Monitor:</span> allows the monitoring of the Director, File daemons, and Storage daemons. 
+          Currently the Monitor is only available as a GTK+ GUI application.
+          </p>
+        </li>
+</ul></div>
+<p class="para">
+      These services and applications can be run on multiple servers and clients, or they can be installed on one machine if backing up a 
+      single disk or volume.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="bacula-installation"><div class="inner">
+<div class="hgroup"><h2 class="title">Installation</h2></div>
+<div class="region"><div class="contents">
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">
+        If using MySQL or PostgreSQL as your database, you should already have the services available.
+        <span class="app application">Bacula</span> will not install them for you.
+        </p>
+      </div></div></div></div>
+<p class="para">
+      There are multiple packages containing the different <span class="app application">Bacula</span> components. To install Bacula,
+      from a terminal prompt enter:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install bacula</span>
+</pre></div>
+<p class="para">
+      By default installing the <span class="app application">bacula</span> package will use a 
+      <span class="app application">MySQL</span> database for the Catalog. If you want to use SQLite or 
+      PostgreSQL, for the Catalog, install <span class="app application">bacula-director-sqlite3</span> 
+      or <span class="app application">bacula-director-pgsql</span> respectively.
+      </p>
+<p class="para">
+      During the install process you will be asked to supply credentials for the 
+      database <span class="em emphasis">administrator</span> and the <span class="em emphasis">bacula</span> 
+      database <span class="em emphasis">owner</span>. The database administrator will need to have 
+      the appropriate rights to create a database, see <a class="xref" href="mysql.html" title="MySQL">MySQL</a> for more 
+      information.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="bacula-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Configuration</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      <span class="app application">Bacula</span> configuration files are formatted based on <span class="em emphasis">resources</span> comprising of 
+      <span class="em emphasis">directives</span> surrounded by <span class="quote">“{}”</span> braces.  Each Bacula component has an individual file in the
+      <span class="file filename">/etc/bacula</span> directory.
+      </p>
+<p class="para">
+      The various <span class="app application">Bacula</span> components must authorize themselves to each other. This is accomplished using the 
+      <span class="em emphasis">password</span> directive. For example, the <span class="em emphasis">Storage</span> resource password in the 
+      <span class="file filename">/etc/bacula/bacula-dir.conf</span> file must match the <span class="em emphasis">Director</span> resource password in 
+      <span class="file filename">/etc/bacula/bacula-sd.conf</span>.
+      </p>
+<p class="para">
+      By default the backup job named <span class="em emphasis">Client1</span> is configured to archive the <span class="app application">Bacula</span> Catalog. 
+      If you plan on using the server to backup more than one client you should change the name of this job to something more descriptive. 
+      To change the name edit <span class="file filename">/etc/bacula/bacula-dir.conf</span>:
+      </p>
+<div class="code"><pre class="contents ">#
+# Define the main nightly save backup job
+#   By default, this job will back up to disk in 
+Job {
+  Name = "BackupServer"
+  JobDefs = "DefaultJob"
+  Write Bootstrap = "/var/lib/bacula/Client1.bsr"
+}
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">
+	The example above changes the job name to <span class="em emphasis">BackupServer</span> matching the machine's host name.  Replace 
+        <span class="quote">“BackupServer”</span> with your appropriate hostname, or other descriptive name.
+	</p>
+      </div></div></div></div>
+<p class="para">
+      The <span class="em emphasis">Console</span> can be used to query the <span class="em emphasis">Director</span> about jobs, but to use the Console with a 
+      <span class="em emphasis">non-root</span> user, the user needs to be in the <span class="em emphasis">bacula</span> group. To add a user to the bacula group 
+      enter the following from a terminal:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo adduser $username bacula</span>
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">
+        Replace <span class="em emphasis">$username</span> with the actual username.  Also, if you are adding the current user to the group you should 
+        log out and back in for the new permissions to take effect.
+        </p>
+      </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="bacula-localhost-backup"><div class="inner">
+<div class="hgroup"><h2 class="title">Localhost Backup</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      This section describes how to backup specified directories on a single host to a local tape drive.
+      </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para">
+          First, the <span class="em emphasis">Storage</span> device needs to be configured. Edit <span class="file filename">/etc/bacula/bacula-sd.conf</span> add:
+          </p>
+<div class="code"><pre class="contents ">Device {
+  Name = "Tape Drive"
+  Device Type = tape
+  Media Type = DDS-4
+  Archive Device = /dev/st0
+  Hardware end of medium = No;
+  AutomaticMount = yes;               # when device opened, read it
+  AlwaysOpen = Yes;
+  RemovableMedia = yes;
+  RandomAccess = no;
+  Alert Command = "sh -c 'tapeinfo -f %c | grep TapeAlert'"
+}
+</pre></div>
+          <p class="para">
+          The example is for a <span class="em emphasis">DDS-4</span> tape drive.  Adjust the <span class="quote">“Media Type”</span> and <span class="quote">“Archive Device”</span> to match your hardware.
+          </p>
+          <p class="para">
+          You could also uncomment one of the other examples in the file.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          After editing <span class="file filename">/etc/bacula/bacula-sd.conf</span> the <span class="app application">Storage</span> daemon will need to be 
+          restarted:
+          </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart bacula-sd.service</span>
+</pre></div>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          Now add a <span class="em emphasis">Storage</span> resource in <span class="file filename">/etc/bacula/bacula-dir.conf</span> to use the new Device:
+          </p>
+<div class="code"><pre class="contents "># Definition of "Tape Drive" storage device
+Storage {
+  Name = TapeDrive
+  # Do not use "localhost" here    
+  Address = backupserver               # N.B. Use a fully qualified name here
+  SDPort = 9103
+  Password = "Cv70F6pf1t6pBopT4vQOnigDrR0v3LT3Cgkiyjc"
+  Device = "Tape Drive"
+  Media Type = tape
+}
+</pre></div>
+          <p class="para">
+          The <span class="em emphasis">Address</span> directive needs to be the Fully Qualified Domain Name (FQDN) of the server. 
+          Change <span class="em emphasis">backupserver</span> to the actual host name.
+          </p>
+          <p class="para">
+          Also, make sure the <span class="em emphasis">Password</span> directive matches the password string in 
+          <span class="file filename">/etc/bacula/bacula-sd.conf</span>. 
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          Create a new <span class="em emphasis">FileSet</span>, which will determine what directories to backup, by adding:
+          </p>
+<div class="code"><pre class="contents "># LocalhostBacup FileSet.
+FileSet {
+  Name = "LocalhostFiles"
+  Include {
+    Options {
+      signature = MD5
+      compression=GZIP
+    }
+    File = /etc
+    File = /home
+  }
+}
+</pre></div>
+          <p class="para">
+          This <span class="em emphasis">FileSet</span> will backup the <span class="file filename">/etc</span> and 
+          <span class="file filename">/home</span> directories.  The <span class="em emphasis">Options</span> resource directives 
+          configure the FileSet to create an MD5 signature for each file backed up, and to compress the files using GZIP.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          Next, create a new <span class="em emphasis">Schedule</span> for the backup job:
+          </p>
+<div class="code"><pre class="contents "># LocalhostBackup Schedule -- Daily.
+Schedule {
+  Name = "LocalhostDaily"
+  Run = Full daily at 00:01
+}
+</pre></div>
+          <p class="para">
+          The job will run every day at 00:01 or 12:01 am. There are many other scheduling options available.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          Finally create the <span class="em emphasis">Job</span>:
+          </p>
+<div class="code"><pre class="contents "># Localhost backup.
+Job {
+  Name = "LocalhostBackup"
+  JobDefs = "DefaultJob"
+  Enabled = yes
+  Level = Full
+  FileSet = "LocalhostFiles"
+  Schedule = "LocalhostDaily"
+  Storage = TapeDrive
+  Write Bootstrap = "/var/lib/bacula/LocalhostBackup.bsr"
+}  
+</pre></div>
+          <p class="para">
+          The job will do a <span class="em emphasis">Full</span> backup every day to the tape drive.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          Each tape used will need to have a <span class="em emphasis">Label</span>. If the current tape does not have a label 
+          <span class="app application">Bacula</span> will send an email letting you know. To label a tape using the 
+          <span class="app application">Console</span> enter the following from a terminal:
+          </p>
+<div class="screen"><pre class="contents "><span class="cmd command">bconsole</span>
+</pre></div>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          At the Bacula Console prompt enter:
+          </p>
+<div class="screen"><pre class="contents "><span class="cmd command">label</span>
+</pre></div>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          You will then be prompted for the <span class="em emphasis">Storage</span> resource:
+          </p>
+<div class="screen"><pre class="contents "><span class="output computeroutput">
+Automatically selected Catalog: MyCatalog
+Using Catalog "MyCatalog"
+The defined Storage resources are:
+     1: File
+     2: TapeDrive
+Select Storage resource (1-2):<span class="input userinput">2</span>
+</span>
+</pre></div>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          Enter the new <span class="em emphasis">Volume</span> name:
+          </p>
+<div class="screen"><pre class="contents "><span class="output computeroutput">
+Enter new Volume name: <span class="input userinput">Sunday</span>
+Defined Pools:
+     1: Default
+     2: Scratch</span>
+</pre></div>
+          <p class="para">
+          Replace <span class="em emphasis">Sunday</span> with the desired label.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+	  Now, select the <span class="em emphasis">Pool</span>:
+          </p>
+<div class="screen"><pre class="contents "><span class="output computeroutput">
+Select the Pool (1-2): <span class="input userinput">1</span>
+Connecting to Storage daemon TapeDrive at backupserver:9103 ...
+Sending label command for Volume "Sunday" Slot 0 ...
+</span>
+</pre></div>
+        </li>
+</ul></div>
+<p class="para">
+      Congratulations, you have now configured <span class="em emphasis">Bacula</span> to backup the localhost to an attached tape drive.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="bacula-resources"><div class="inner">
+<div class="hgroup"><h2 class="title">Resources</h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para">
+	  For more <span class="em emphasis">Bacula</span> configuration options, refer to 
+          <a href="http://blog.bacula.org/documentation/documentation/" class="ulink" title="http://blog.bacula.org/documentation/documentation/">Bacula's
+          Documentation</a>.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          The <a href="http://www.bacula.org/" class="ulink" title="http://www.bacula.org/">Bacula Home Page</a> contains the latest Bacula news and developments.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          Also, see the <a href="https://help.ubuntu.com/community/Bacula" class="ulink" title="https://help.ubuntu.com/community/Bacula">Bacula Ubuntu Wiki</a> page.
+          </p>
+        </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="backups-shellscripts-rotation.html" title="Archive Rotation">Previous</a><a class="nextlinks-next" href="virtualization.html" title="Virtualization">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Installing using the live server installer</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="installation.html" title="Installation">Installation</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="preparing-to-install.html" title="Preparing to Install">Previous</a><a class="nextlinks-next" href="installing-from-cd.html" title="Installation using debian-installer">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Installing using the live server installer </h1></div>
+<div class="region"><div class="contents">
+<p class="para">
+    The basic steps to install Ubuntu Server Edition are the same  as those for installing any operating system.  Unlike the <span class="em emphasis">Desktop Edition</span>, the <span class="em emphasis">Server Edition</span> does not include a graphical installation program.  The Live Server installer uses a text-based console interface which runs on the default virtual console. The interface can be entirely driven by the enter, up and down arrow keys (with some occasional typing).
+  </p>
+<p class="para">
+    If you need to at any time during the installation you can switch to a different console (by pressing Ctrl-Alt-F&lt;n&gt; or Ctrl-Alt-Right) to get access to a shell. Up until the point where the installation begins, you can use the "back" buttons to go back to previous screens and choose different options.
+  </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+      <p class="para">
+	Download the appropriate ISO file from the <a href="http://www.ubuntu.com/download/server/download" class="ulink" title="http://www.ubuntu.com/download/server/download"> Ubuntu web site</a>.
+      </p>
+    </li>
+<li class="list itemizedlist">
+      <p class="para">
+	Boot the system from media (e.g. USB key) containing the ISO file.
+      </p>
+    </li>
+<li class="list itemizedlist">
+      <p class="para">
+	At the boot prompt you will be asked to select a language.
+      </p>
+    </li>
+<li class="list itemizedlist">
+      <p class="para">
+	From the main boot menu there are some additional options to install Ubuntu Server Edition.  You can install a basic Ubuntu Server, check the installation media for defects, check the system's RAM, or boot from first hard disk. The rest of this section will cover the basic Ubuntu Server install.
+      </p>
+    </li>
+<li class="list itemizedlist">
+      <p class="para">
+        After booting into the installer, it will ask you which language to use.
+      </p>
+    </li>
+<li class="list itemizedlist">
+      <p class="para">
+	Next, the installation process begins by asking for your keyboard layout. You can ask the installer to attempt auto-detecting it, or you can select it manually from a list. Later stages of the installation will require you to type ASCII characters, so if the layout you select does not allow that, you will be prompted for a key combination to switch between a layout that does and the one you select. The default keystroke for this is Alt + Shift.
+      </p>
+    </li>
+<li class="list itemizedlist">
+      <p class="para">
+	Next, the installer offers the choice to install the system as a vanilla Ubuntu server, a <a href="https://maas.io" class="ulink" title="https://maas.io">MAAS</a> bare-metal cloud rack controller or a <a href="https://maas.io" class="ulink" title="https://maas.io">MAAS</a> region controller. If you select one of the MAAS options you will be asked for some details.
+      </p>
+    </li>
+<li class="list itemizedlist">
+      <p class="para">
+ 	The installer configures the network to run DHCP on each network interface. If this is not sufficient to get access to the internet you should configure at least one interface manually. Select an interface to configure it.
+      </p>
+    </li>
+<li class="list itemizedlist">
+      <p class="para">
+	If the Ubuntu archive can only be accessed via a proxy in your environment, it can be entered on the next screen. Leave the field blank if it is not required.
+      </p>
+    </li>
+<li class="list itemizedlist">
+      <p class="para">
+	You can then choose to let the installer use an entire disk or configure the partitioning manually. The first disk you create a partition on will be selected as the boot disk and have an extra partition created on it to contain the bootloader; you can move the boot partition to a different drive with the "Select as boot disk" button.
+      </p>
+      <p class="para">
+        Once you move on from this screen, the installation progress will begin. It will not be possible to move back to this or previous screens and any data on the disks you have configured the installer to use will be lost.
+      </p>
+    </li>
+<li class="list itemizedlist">
+      <p class="para">
+	The next screen configures the initial user for the system. You can import SSH keys from Launchpad or Github but a password is still required to be set, as this user will have <span class="em emphasis">root</span> access through the <span class="app application">sudo</span> utility.
+      </p>
+    </li>
+<li class="list itemizedlist">
+      <p class="para">
+	The final screen shows the progress of the installer. Once the installation has completed, you will be prompted to reboot into your newly installed system.
+      </p>
+    </li>
+</ul></div>
+</div></div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="preparing-to-install.html" title="Preparing to Install">Previous</a><a class="nextlinks-next" href="installing-from-cd.html" title="Installation using debian-installer">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

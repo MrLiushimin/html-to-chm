@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>网络配置</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="networking.html" title="联网"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="networking.html" title="联网"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="tcpip.html" title="TCP / IP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络配置</font></font></h1></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	Ubuntu附带了许多图形工具来配置您的网络设备。</font><font style="vertical-align: inherit;">本文档面向服务器管理员，重点是在命令行上管理网络。
+    </font></font></p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="network-configuration.html#ethernet-interfaces" title="以太网接口"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以太网接口</font></font></a></li>
+<li class="links"><a class="xref" href="network-configuration.html#ip-addressing" title="IP寻址"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IP寻址</font></font></a></li>
+<li class="links"><a class="xref" href="network-configuration.html#name-resolution" title="名称解析"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">名称解析</font></font></a></li>
+<li class="links"><a class="xref" href="network-configuration.html#bridging" title="桥接"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">桥接</font></font></a></li>
+<li class="links"><a class="xref" href="network-configuration.html#network-config-resources" title="资源"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="ethernet-interfaces"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以太网接口</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		系统使用可预测的网络接口名称识别以太网接口。</font><font style="vertical-align: inherit;">这些名称可以显示为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eno1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+		或</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enp0s25</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">但是，在某些情况下，接口仍然可以使用内核</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eth＃</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+		命名方式。
+		</font></font></p></div>
+<div class="sect3 sect" id="identify-ethernet-interfaces"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">识别以太网接口</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			要快速识别所有可用的以太网接口，可以使用
+			 </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令，如下所示。
+			</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip a</font></font></span><span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+1：lo：&lt;LOOPBACK，UP，LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    link / loopback 00：00：00：00：00：00 brd 00：00：00：00：00：00</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    inet 127.0.0.1/8范围主机lo</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       valid_lft永远是preferred_lft永远</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    inet6 :: 1/128范围主机</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       valid_lft永远是preferred_lft永远</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2：enp0s25：&lt;BROADCAST，MULTICAST，UP，LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    link / ether 00：16：3e：e2：52：42 brd ff：ff：ff：ff：ff：ff link-netnsid 0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    inet 10.102.66.200/24 brd 10.102.66.255范围全局动态eth0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       valid_lft 3257sec preferred_lft 3257sec</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    inet6 fe80 :: 216：3eff：fee2：5242/64范围链接</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       valid_lft永远是preferred_lft永远</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			另一个可以帮助识别系统可用的所有网络接口的应用程序是</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lshw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令。</font><font style="vertical-align: inherit;">此命令提供有关特定适配器的硬件功能的更多详细信息。</font><font style="vertical-align: inherit;">在下面的示例中，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lshw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+			显示了一个以太网接口，其逻辑名称为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eth0，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+			以及总线信息，驱动程序详细信息和所有支持的功能。
+			</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo lshw -class network </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  * -network</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       描述：以太网接口</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       产品：MT26448 [ConnectX EN 10GigE，PCIe 2.0 5GT / s]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       供应商：Mellanox Technologies</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       物理id：0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       公交信息：pci @ 0004：01：00.0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       逻辑名称：eth4</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       版本：b0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       serial：e4：1d：2d：67：83：56</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       插槽：U78CB.001.WZS09KB-P1-C6-T1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       大小：10Gbit / s</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       容量：10Gbit / s</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       宽度：64位</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       时钟：33MHz</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       功能：pm vpd msix pciexpress bus_master cap_list ethernet物理光纤10000bt-fd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       配置：autonegotiation = off broadcast = yes driver = mlx4_en driverversion = 4.0-0 duplex = full firmware = 2.9.1326 ip = 192.168.1.1 latency = 0 link = yes multicast = yes port = fiber speed = 10Gbit / s</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       资源：iomemory：24000-23fff irq：481内存：3fe200000000-3fe2000fffff内存：240000000000-240007ffffff</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="ethernet-interface-names"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以太网接口逻辑名称</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			也可以通过netplan配置配置接口逻辑名称。</font><font style="vertical-align: inherit;">如果您想控制哪个接口接收特定的逻辑名称，请使用
+			 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">match</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">set-name</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">键。</font><font style="vertical-align: inherit;">匹配键用于根据某些条件（如MAC地址，驱动程序等）查找适配器。然后，可以使用set-name键将设备更改为所需的逻辑名称。
+			</font></font></p>
+<div class="screen"><pre class="contents "><span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  版本：2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  渲染器：networkd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  以太网：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    eth_lan0：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      dhcp4：是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  比赛：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    macaddress：00：11：22：33：44：55</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  set-name：eth_lan0</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="ethernet-interface-settings"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以太网接口设置</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+			<span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ethtool</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是一个显示和更改以太网卡设置的程序，例如自动协商，端口速度，双工模式和LAN唤醒。</font><font style="vertical-align: inherit;">以下是如何查看以太网接口的支持功能和已配置设置的示例。
+			</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ethtool eth4 eth4的</font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	支持的端口：[FIBER]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	支持的链接模式：10000baseT / Full</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	支持暂停帧使用：否</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	支持自动协商：不</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	支持的FEC模式：未报告</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	广告链接模式：10000baseT / Full</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	广告暂停框架使用：否</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	广告自动谈判：没有</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	广告FEC模式：未报告</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	速度：10000Mb / s</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	双面：完整</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	港口：FIBER</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	PHYAD：0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	收发器：内部</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	自动协商：关闭</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	支持唤醒：d</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	唤醒：d</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	当前消息级别：0x00000014（20）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			       链接ifdown</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	检测到链接：是的</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="ip-addressing"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IP寻址</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		以下部分介绍了配置在局域网和Internet上进行通信所需的系统IP地址和默认网关的过程。
+		</font></font></p></div>
+<div class="sect3 sect" id="temp-ip-assignment"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">临时IP地址分配</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			对于临时网络配置，您可以使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令，</font><font style="vertical-align: inherit;">该
+			 </font><font style="vertical-align: inherit;">命令也可在大多数其他GNU / Linux操作系统上找到。</font><font style="vertical-align: inherit;">该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IP</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令允许您配置立即生效的设置，但它们不是持久的，在重新启动后将会丢失。
+			</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			要临时配置IP地址，可以</font><font style="vertical-align: inherit;">
+			按以下方式</font><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令。</font><font style="vertical-align: inherit;">修改IP地址和子网掩码以符合您的网络要求。
+			</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ip addr add 10.102.66.200/24 dev enp0s25</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IP</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然后可以用来设置链接向上或向下。
+			</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip link set dev enp0s25 up </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip link set dev enp0s25 down</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			要验证</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enp0s25</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的IP地址配置</font><font style="vertical-align: inherit;">，可以</font><font style="vertical-align: inherit;">按以下方式</font><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令。
+			</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip address show dev enp0s25 </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10：enp0s25：&lt;BROADCAST，MULTICAST，UP，LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    link / ether 00：16：3e：e2：52：42 brd ff：ff：ff：ff：ff：ff link-netnsid 0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    inet 10.102.66.200/24 brd 10.102.66.255范围全局动态eth0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       valid_lft 2857sec preferred_lft 2857sec</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    inet6 fe80 :: 216：3eff：fee2：5242/64范围链接</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       valid_lft forever preferred_lft forever6</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			要配置默认网关，可以</font><font style="vertical-align: inherit;">
+			按以下方式</font><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令。</font><font style="vertical-align: inherit;">修改默认网关地址以符合您的网络要求。
+			</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ip route通过10.102.66.1添加默认值</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			要验证默认网关配置，可以</font><font style="vertical-align: inherit;">
+			按以下方式</font><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令。
+			</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip route show </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">default via 10.102.66.1 dev eth0 proto dhcp src 10.102.66.200 metric 100</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+10.102.66.0/24 dev eth0 proto kernel scope link src 10.102.66.200</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+10.102.66.1 dev eth0 proto dhcp scope link src 10.102.66.200 metric 100 </font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			如果您的临时网络配置需要DNS，则可以在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/resolv.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中添加DNS服务器IP地址</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">通常，</font><font style="vertical-align: inherit;">不建议直接</font><font style="vertical-align: inherit;">编辑
+                         </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/resolv.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，但这是一种临时和非持久性配置。</font><font style="vertical-align: inherit;">下面的示例显示如何将两个DNS服务器输入到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/resolv.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，该服务器应更改为适合您的网络的服务器。</font><font style="vertical-align: inherit;">有关进行DNS客户端配置的正确持久方式的更详细描述，请参阅以下部分。
+			</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nameserver 8.8.8.8</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+nameserver 8.8.4.4</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			如果您不再需要此配置并希望从接口清除所有IP配置，则可以使用</font><font style="vertical-align: inherit;">带有flush选项</font><font style="vertical-align: inherit;">的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令，如下所示。
+			</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip addr flush eth0</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+			<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令</font><font style="vertical-align: inherit;">刷新IP配置</font><font style="vertical-align: inherit;">不会清除</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/resolv.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的内容</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">您必须删除或手动修改这些条目，或重新启动也应引起</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/resolv.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，这是一个符号</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/run/systemd/resolve/stub-resolv.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，被重新写入。
+			</font></font></p>
+			</div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="dynamic-ip-addressing"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">动态IP地址分配（DHCP客户端）</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			要将服务器配置为使用DHCP进行动态地址分配，请在文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/netplan/99_config.yaml中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建netplan配置</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">以下示例假设您正在配置标识为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enp3s0的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第一个以太网接口
+			 </font><font style="vertical-align: inherit;">。
+			</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  版本：2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  渲染器：networkd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  以太网：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    enp3s0：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      dhcp4：是的</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			然后可以使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">netplan</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令</font><font style="vertical-align: inherit;">应用配置
+			 </font><font style="vertical-align: inherit;">。
+			</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo netplan申请</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="static-ip-addressing"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">静态IP地址分配</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			要将系统配置为使用静态地址分配，请在文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/netplan/99_config.yaml中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建netplan配置</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">以下示例假设您正在配置标识为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eth0的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第一个以太网接口
+			 </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">更改</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">地址</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，
+			 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gateway4</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">名称服务器</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+			值以满足网络要求。
+			</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  版本：2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  渲染器：networkd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  以太网：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    为eth0：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      地址：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -  10.10.10.2/24</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      gateway4：10.10.10.1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      域名服务器：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          搜索：[mydomain，otherdomain]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          地址：[10.10.10.1,1.1.1.1]</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			然后可以使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">netplan</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令</font><font style="vertical-align: inherit;">应用配置
+			 </font><font style="vertical-align: inherit;">。
+			</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo netplan申请</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="loopback-interface"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">环回接口</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			环回接口由系统标识为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+			，默认IP地址为127.0.0.1。</font><font style="vertical-align: inherit;">可以使用ip命令查看。
+			</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ip address show lo </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1：lo：&lt;LOOPBACK，UP，LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    link / loopback 00：00：00：00：00：00 brd 00：00：00：00：00：00</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    inet 127.0.0.1/8范围主机lo</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       valid_lft永远是preferred_lft永远</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    inet6 :: 1/128范围主机</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       valid_lft永远是preferred_lft永远</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="name-resolution"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">名称解析</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		与IP网络相关的名称解析是将IP地址映射到主机名的过程，从而更容易识别网络上的资源。</font><font style="vertical-align: inherit;">以下部分将说明如何使用DNS和静态主机名记录正确配置系统以进行名称解析。
+		</font></font></p></div>
+<div class="sect3 sect" id="dns-client-configuration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DNS客户端配置</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+				传统上，文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/resolv.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是一个静态配置文件，很少需要通过DCHP客户端挂钩进行更改或自动更改。</font><font style="vertical-align: inherit;">Systemd-resolved处理名称服务器配置，它应该通过</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">systemd-resolve</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令</font><font style="vertical-align: inherit;">进行交互</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">Netplan配置systemd-resolved以生成一个名称服务器和域列表，放在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/resolv.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，这是一个符号链接：
+
+</font></font></p><div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/resolv.conf  - &gt; ../run/systemd/resolve/stub-resolv.conf
+</font></font></pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+
+			要配置解析程序，请将适用于您的网络的名称服务器的IP地址添加到netplan配置文件中。</font><font style="vertical-align: inherit;">您还可以添加可选的DNS后缀搜索列表以匹配您的网络域名。</font><font style="vertical-align: inherit;">生成的文件可能如下所示：
+			</font></font><p></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  版本：2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  渲染器：networkd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  以太网：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    enp0s25：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      地址：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -  192.168.0.100/24</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      gateway4：192.168.0.1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      域名服务器：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          搜索：[mydomain，otherdomain]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          地址：[1.1.1.1,8.8.8.8,4.4.4.4]</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			该</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">搜索</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项也可以用多个域名使用，使得DNS查询将按照它们的输入顺序追加。</font><font style="vertical-align: inherit;">例如，您的网络可能有多个子域要搜索; </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">example.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的父域</font><font style="vertical-align: inherit;">和两个子域</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sales.example.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dev.example.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+			</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			如果您要搜索多个域，则配置可能如下所示：
+			</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  版本：2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  渲染器：networkd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  以太网：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    enp0s25：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      地址：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -  192.168.0.100/24</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      gateway4：192.168.0.1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      域名服务器：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          搜索：[example.com，sales.example.com，dev.example.com]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          地址：[1.1.1.1,8.8.8.8,4.4.4.4]</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			如果您尝试ping名称为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">server1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的主机</font><font style="vertical-align: inherit;">，系统将按以下顺序自动查询DNS的完全限定域名（FQDN）：
+			</font></font></p>
+<div class="list orderedlist"><ol class="list orderedlist">
+<li class="list orderedlist">
+			<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			server1 </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.example.com</font></font></span>
+			</p>
+			</li>
+<li class="list orderedlist">
+			<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			server1 </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.sales.example.com</font></font></span>
+			</p>
+			</li>
+<li class="list orderedlist">
+			<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			server1 </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.dev.example.com</font></font></span>
+			</p>
+			</li>
+</ol></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			如果未找到匹配项，DNS服务器将提供未</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">发现</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的结果，
+			 </font><font style="vertical-align: inherit;">DNS查询将失败。
+			</font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="static-hostnames"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">静态主机名</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			静态主机名是位于文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / hosts</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中的本地定义的主机名到IP映射</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">默认情况下</font><font style="vertical-align: inherit;">，</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hosts</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件</font><font style="vertical-align: inherit;">中的条目</font><font style="vertical-align: inherit;">优先于DNS。</font><font style="vertical-align: inherit;">这意味着如果您的系统尝试解析主机名并且它与/ etc / hosts中的条目匹配，则它不会尝试在DNS中查找记录。</font><font style="vertical-align: inherit;">在某些配置中，特别是当不需要Internet访问时，可以方便地将与有限数量的资源通信的服务器设置为使用静态主机名而不是DNS。
+			</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			以下是</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hosts</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件</font><font style="vertical-align: inherit;">的示例，</font><font style="vertical-align: inherit;">其中已通过简单主机名，别名及其等效的完全限定域名（FQDN）标识了许多本地服务器。
+			</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">127.0.0.1 localhost</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+127.0.1.1 ubuntu-server</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+10.0.0.11 server1 server1.example.com vpn</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+10.0.0.12 server2 server2.example.com邮件</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+10.0.0.13 server3 server3.example.com www</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+10.0.0.14 server4 server4.example.com文件</font></font><font></font>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+			<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			在上面的示例中，请注意每个服务器除了正确的名称和FQDN之外还有别名。</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Server1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">已映射到名称
+			 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vpn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">server2</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">称为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mail</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">server3</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">称为
+			 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">www</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">server4</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">称为
+			 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">file</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+			</font></font></p>
+			</div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="name-service-switch-config"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">名称服务交换机配置</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			系统选择将主机名解析为IP地址的方法的顺序由名称服务交换机（NSS）配置文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/nsswitch.conf控制</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如上一节所述，系统</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / hosts</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中</font><font style="vertical-align: inherit;">定义的静态主机名通常
+			 </font><font style="vertical-align: inherit;">优先于从DNS解析的名称。</font><font style="vertical-align: inherit;">以下是负责文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/nsswitch.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此主机名查找顺序的行的示例
+			 </font><font style="vertical-align: inherit;">。
+			</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hosts：files mdns4_minimal [NOTFOUND = return] dns mdns4
+</font></font></pre></div>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首先尝试解析位于</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / hosts中的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">静态主机名
+			 </font><font style="vertical-align: inherit;">。
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mdns4_minimal</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">尝试使用多播DNS解析名称。
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[NOTFOUND = return]</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表示</font><font style="vertical-align: inherit;">前面的</font><span class="em emphasis"><font style="vertical-align: inherit;">mdns4_minimal</font></span><font style="vertical-align: inherit;">进程未</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">发现</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的
+			 </font><font style="vertical-align: inherit;">任何响应都
+			 </font><font style="vertical-align: inherit;">应该被视为权威，并且系统不应该尝试继续寻找答案。
+			</font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dns</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表示传统的单播DNS查询。
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mdns4</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表示多播DNS查询。
+			</font></font></p>
+			</li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			要修改上述名称解析方法的顺序，只需将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hosts：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> string </font><font style="vertical-align: inherit;">更改</font><font style="vertical-align: inherit;">为您选择的值即可。</font><font style="vertical-align: inherit;">例如，如果您更喜欢使用传统的单播DNS与多播DNS，则可以更改</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/nsswitch.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的字符串，</font><font style="vertical-align: inherit;">
+			如下所示。
+			</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hosts：files dns [NOTFOUND = return] mdns4_minimal mdns4
+</font></font></pre></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="bridging"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">桥接</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      桥接多个接口是一种更高级的配置，但在多种情况下非常有用。</font><font style="vertical-align: inherit;">一种情况是建立具有多个网络接口的网桥，然后使用防火墙过滤两个网段之间的流量。</font><font style="vertical-align: inherit;">另一种情况是在具有一个接口的系统上使用桥接器以允许虚拟机直接访问外部网络。</font><font style="vertical-align: inherit;">以下示例涵盖后一种情况。
+      </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      通过编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / netplan /中的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> netplan配置来配置网桥</font><font style="vertical-align: inherit;">：
+      </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  版本：2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  渲染器：networkd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  以太网：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    enp3s0：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      dhcp4：没有</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  桥梁：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    BR0：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      dhcp4：是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      接口：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        -  enp3s0</font></font><font></font>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        输入物理接口和网络的相应值。
+        </font></font></p>
+      </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      现在应用配置以启用网桥：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo netplan申请</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        现在应该启动并运行新的桥接接口。</font><font style="vertical-align: inherit;">该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">brctl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提供有关的桥梁，其接口是桥的一部分控制等见的状态的有用信息</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的人brctl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+        以获取更多信息。
+        </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="network-config-resources"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+
+        </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            在</font></font><a href="https://help.ubuntu.com/community/Network" class="ulink" title="https://help.ubuntu.com/community/Network"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu的维基网络页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有链接到文章，覆盖更高级的网络配置。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            该</font></font><a href="https://netplan.io" class="ulink" title="https://netplan.io"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">netplan网站</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有更多的例子和文档。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            该</font></font><a href="http://manpages.ubuntu.com/manpages/man5/netplan.5.html" class="ulink" title="http://manpages.ubuntu.com/manpages/man5/netplan.5.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">netplan手册页</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对netplan更多信息。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            该</font></font><a href="http://manpages.ubuntu.com/manpages/man1/systemd-resolve.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/man1/systemd-resolve.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">systemd排解手册页</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对systemd-resolve命令的详细信息。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            该</font></font><a href="http://manpages.ubuntu.com/manpages/man8/systemd-resolved.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/man8/systemd-resolved.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">systemd解析手册页</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对systemd解析服务的详细信息。
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            有关</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">桥接的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参阅
+             </font></font><a href="https://netplan.io/examples" class="ulink" title="https://netplan.io/examples"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">netplan.io示例页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和Linux Foundation的
+             </font></font><a href="http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge" class="ulink" title="http://www.linuxfoundation.org/collaborate/workgroups/networking/bridge"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Networking-Bridge</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">页面。
+            </font></font></p>
+          </li>
+</ul></div>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="networking.html" title="联网"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="tcpip.html" title="TCP / IP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

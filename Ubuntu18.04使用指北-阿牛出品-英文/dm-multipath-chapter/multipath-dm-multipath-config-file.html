@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The DM-Multipath Configuration File</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="dm-multipath-chapter.html" title="DM-Multipath">DM-Multipath</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="multipath-setting-up-dm-multipath.html" title="Setting up DM-Multipath Overview">Previous</a><a class="nextlinks-next" href="multipath-admin-and-troubleshooting.html" title="DM-Multipath Administration and Troubleshooting">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">The DM-Multipath Configuration File</h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">By default, DM-Multipath provides configuration values for the most
+    common uses of multipathing. In addition, DM-Multipath includes support
+    for the most common storage arrays that support DM-Multipath. The default
+    configuration values and the supported devices can be found in the
+    <span class="file filename">multipath.conf.defaults</span> file.</p>
+<p class="para">You can override the default configuration values for DM-Multipath
+    by editing the <span class="file filename">/etc/multipath.conf</span> configuration file. If necessary, you
+    can also add a storage array that is not supported by default to the
+    configuration file. This chapter provides information on parsing and
+    modifying the <span class="file filename">multipath.conf</span> file. It contains sections on the following
+    topics: <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-overview" title="Configuration File Overview">Configuration File Overview</a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist" title="Configuration File Blacklist">Configuration File Blacklist</a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-defaults" title="Configuration File Defaults">Configuration File Defaults</a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-multipath" title="Configuration File Multipath
+      Attributes">Configuration File Multipath
+      Attributes</a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-device" title="Configuration File Devices">Configuration File Devices</a></p>
+        </li>
+</ul></div></p>
+<p class="para">In the multipath configuration file, you need to specify only the
+    sections that you need for your configuration, or that you wish to change
+    from the default values specified in the
+    <span class="file filename">multipath.conf.defaults</span> file. If there are sections
+    of the file that are not relevant to your environment or for which you do
+    not need to override the default values, you can leave them commented out,
+    as they are in the initial file.</p>
+<p class="para">The configuration file allows regular expression description
+    syntax.</p>
+<p class="para">An annotated version of the configuration file can be found in
+    <span class="file filename"><span class="file filename">/usr/share/doc/multipath-tools/examples/multipath.conf.annotated.gz</span></span>.</p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-overview" title="Configuration File Overview">Configuration File Overview</a></li>
+<li class="links"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist" title="Configuration File Blacklist">Configuration File Blacklist</a></li>
+<li class="links"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-defaults" title="Configuration File Defaults">Configuration File Defaults</a></li>
+<li class="links"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-multipath" title="Configuration File Multipath
+      Attributes">Configuration File Multipath
+      Attributes</a></li>
+<li class="links"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-device" title="Configuration File Devices">Configuration File Devices</a></li>
+</ul></div>
+<div class="sect2 sect" id="multipath-config-overview"><div class="inner">
+<div class="hgroup"><h2 class="title">
+<a name="config-overview-title"></a>Configuration File Overview</h2></div>
+<div class="region"><div class="contents">
+<p class="para">The multipath configuration file is divided into the following
+      sections:</p>
+<div class="terms variablelist"><dl class="terms variablelist">
+<dt class="terms"><span class="em em-bold emphasis">blacklist</span></dt>
+<dd class="terms">
+            <p class="para">Listing of specific devices that will not be considered for
+            multipath.</p>
+          </dd>
+<dt class="terms"><span class="em em-bold emphasis">blacklist_exceptions</span></dt>
+<dd class="terms">
+            <p class="para">Listing of multipath candidates that would otherwise be
+            blacklisted according to the parameters of the blacklist
+            section.</p>
+          </dd>
+<dt class="terms"><span class="em em-bold emphasis">defaults</span></dt>
+<dd class="terms">
+            <p class="para">General default settings for DM-Multipath.</p>
+          </dd>
+<dt class="terms"><span class="em em-bold emphasis">multipath</span></dt>
+<dd class="terms">
+            <p class="para">Settings for the characteristics of individual multipath
+            devices. These values overwrite what is specified in the <span class="em em-bold emphasis">defaults</span> and <span class="em em-bold emphasis">devices</span> sections of the configuration
+            file.</p>
+          </dd>
+<dt class="terms"><span class="em em-bold emphasis">devices</span></dt>
+<dd class="terms">
+            <p class="para">Settings for the individual storage controllers. These
+            values overwrite what is specified in the <span class="em em-bold emphasis">defaults</span> section of the configuration file.
+            If you are using a storage array that is not supported by default,
+            you may need to create a devices subsection for your array.</p>
+          </dd>
+</dl></div>
+<p class="para">When the system determines the attributes of a multipath device,
+      first it checks the multipath settings, then the per devices settings,
+      then the multipath system defaults.</p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-config-blacklist"><div class="inner">
+<div class="hgroup"><h2 class="title">
+<a name="config-blacklist-title"></a>Configuration File Blacklist</h2></div>
+<div class="region">
+<div class="contents">
+<p class="para">The blacklist section of the multipath configuration file
+      specifies the devices that will not be used when the system configures
+      multipath devices. Devices that are blacklisted will not be grouped into
+      a multipath device.</p>
+<div class="list itemizedlist"><ul class="list itemizedlist"><li class="list itemizedlist">
+          <p class="para">If you do need to blacklist devices, you can do so according
+          to the following criteria:</p>
+
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para">By WWID, as described <a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist-by-wwid" title="Blacklisting By
+        WWID">Blacklisting By
+        WWID</a></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">By device name, as described in <a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist-by-device-name" title="Blacklisting By
+        Device Name">Blacklisting By
+        Device Name</a></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">By device type, as described in <a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist-by-device-type" title="Blacklisting By
+        Device Type">Blacklisting By
+        Device Type</a></p>
+            </li>
+</ul></div>
+
+          <p class="para">By default, a variety of device types are blacklisted, even
+          after you comment out the initial blacklist section of the
+          configuration file. For information, see <a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist-by-device-name" title="Blacklisting By
+        Device Name">Blacklisting By
+        Device Name</a></p>
+        </li></ul></div>
+</div>
+<div class="sect3 sect" id="multipath-config-blacklist-by-wwid"><div class="inner">
+<div class="hgroup"><h3 class="title">
+<a name="config-blacklist-by-wwid-title"></a>Blacklisting By
+        WWID</h3></div>
+<div class="region"><div class="contents">
+<p class="para">You can specify individual devices to blacklist by their
+        World-Wide IDentification with a <span class="em em-bold emphasis">wwid</span>
+        entry in the <span class="em em-bold emphasis">blacklist</span> section of the
+        configuration file.</p>
+<p class="para">The following example shows the lines in the configuration file
+        that would blacklist a device with a WWID of 26353900f02796769.</p>
+<div class="screen"><pre class="contents ">blacklist {
+       wwid 26353900f02796769
+}
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="multipath-config-blacklist-by-device-name"><div class="inner">
+<div class="hgroup"><h3 class="title">
+<a name="config-blacklist-by-device-name-title"></a>Blacklisting By
+        Device Name</h3></div>
+<div class="region"><div class="contents">
+<p class="para">You can blacklist device types by device name so that they will
+        not be grouped into a multipath device by specifying a <span class="em em-bold emphasis">devnode</span> entry in the <span class="em em-bold emphasis">blacklist</span> section of the configuration
+        file.</p>
+<p class="para">The following example shows the lines in the configuration file
+        that would blacklist all SCSI devices, since it blacklists all sd*
+        devices. <div class="screen"><pre class="contents ">blacklist {
+       devnode "^sd[a-z]"
+}</pre></div></p>
+<p class="para">You can use a <span class="em em-bold emphasis">devnode</span> entry in
+        the <span class="em em-bold emphasis">blacklist</span> section of the
+        configuration file to specify individual devices to blacklist rather
+        than all devices of a specific type. This is not recommended, however,
+        since unless it is statically mapped by udev rules, there is no
+        guarantee that a specific device will have the same name on reboot.
+        For example, a device name could change from
+        <span class="file filename">/dev/sda</span> to <span class="file filename">/dev/sdb</span> on
+        reboot.</p>
+<p class="para">By default, the following <span class="em em-bold emphasis">devnode</span> entries are compiled in the default
+        blacklist; the devices that these entries blacklist do not generally
+        support DM-Multipath. To enable multipathing on any of these devices,
+        you would need to specify them in the <span class="em em-bold emphasis">blacklist_exceptions</span> section of the
+        configuration file, as described in <a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist-exceptions" title="Blacklist
+        Exceptions">Blacklist
+        Exceptions</a> <div class="screen"><pre class="contents ">blacklist {
+       devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+       devnode "^hd[a-z]"
+}
+</pre></div></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="multipath-config-blacklist-by-device-type"><div class="inner">
+<div class="hgroup"><h3 class="title">
+<a name="config-blacklist-by-device-type-title"></a>Blacklisting By
+        Device Type</h3></div>
+<div class="region"><div class="contents"><p class="para">You can specify specific device types in the <span class="em em-bold emphasis">blacklist</span> section of the configuration file
+        with a device section. The following example blacklists all IBM DS4200
+        and HP devices. <div class="screen"><pre class="contents ">blacklist {
+       device {
+               vendor  "IBM"
+               product "3S42"       #DS4200 Product 10
+       }
+       device {
+               vendor  "HP"
+               product "*"
+       }
+}
+</pre></div></p></div></div>
+</div></div>
+<div class="sect3 sect" id="multipath-config-blacklist-exceptions"><div class="inner">
+<div class="hgroup"><h3 class="title">
+<a name="config-blacklist-exceptions-title"></a>Blacklist
+        Exceptions</h3></div>
+<div class="region"><div class="contents">
+<p class="para">You can use the <span class="em em-bold emphasis">blacklist_exceptions</span> section of the
+        configuration file to enable multipathing on devices that have been
+        blacklisted by default.</p>
+<p class="para">For example, if you have a large number of devices and want to
+        multipath only one of them (with the WWID of
+        3600d0230000000000e13955cc3757803), instead of individually
+        blacklisting each of the devices except the one you want, you could
+        instead blacklist all of them, and then allow only the one you want by
+        adding the following lines to the <span class="file filename">/etc/multipath.conf</span> file. <div class="screen"><pre class="contents ">blacklist {
+        wwid "*"
+}
+
+blacklist_exceptions {
+        wwid "3600d0230000000000e13955cc3757803"
+}
+</pre></div></p>
+<p class="para">When specifying devices in the <span class="em em-bold emphasis">blacklist_exceptions</span> section of the
+        configuration file, you must specify the exceptions in the same way
+        they were specified in the <span class="em em-bold emphasis">blacklist</span>.
+        For example, a WWID exception will not apply to devices specified by a
+        <span class="em em-bold emphasis">devnode</span> blacklist entry, even if the
+        blacklisted device is associated with that WWID. Similarly, devnode
+        exceptions apply only to devnode entries, and device exceptions apply
+        only to device entries.</p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="multipath-config-defaults"><div class="inner">
+<div class="hgroup"><h2 class="title">
+<a name="config-defaults-title"></a>Configuration File Defaults</h2></div>
+<div class="region"><div class="contents">
+<p class="para">The <span class="file filename">/etc/multipath.conf</span> configuration file includes a <span class="em em-bold emphasis">defaults</span> section that sets the <span class="em em-bold emphasis">user_friendly_names</span> parameter to <span class="em em-bold emphasis">yes</span>, as follows.</p>
+<div class="screen"><pre class="contents ">defaults {
+        user_friendly_names yes
+}
+</pre></div>
+<p class="para">This overwrites the default value of the <span class="em em-bold emphasis">user_friendly_names</span> parameter.</p>
+<p class="para">The configuration file includes a template of configuration
+      defaults. This section is commented out, as follows.</p>
+<div class="screen"><pre class="contents ">#defaults {
+#       udev_dir                /dev
+#       polling_interval        5
+#       selector                "round-robin 0"
+#       path_grouping_policy    failover
+#       getuid_callout          "/lib/dev/scsi_id --whitelisted --device=/dev/%n"
+#	prio			const
+#	path_checker		directio
+#	rr_min_io		1000
+#	rr_weight		uniform
+#	failback		manual
+#	no_path_retry		fail
+#	user_friendly_names	no
+#}
+</pre></div>
+<p class="para">To overwrite the default value for any of the configuration
+      parameters, you can copy the relevant line from this template into the
+      <span class="em em-bold emphasis">defaults</span> section and uncomment it. For
+      example, to overwrite the <span class="em em-bold emphasis">path_grouping_policy</span> parameter so that it is
+      <span class="em em-bold emphasis">multibus</span> rather than the default value
+      of <span class="em em-bold emphasis">failover</span>, copy the appropriate line
+      from the template to the initial <span class="em em-bold emphasis">defaults</span> section of the configuration file, and
+      uncomment it, as follows.</p>
+<div class="screen"><pre class="contents ">defaults {
+        user_friendly_names     yes
+        path_grouping_policy    multibus
+}
+</pre></div>
+<p class="para">Table <a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-defaults-table" title="Multipath Configuration
+  Defaults">Multipath Configuration
+  Defaults</a> describes the attributes
+      that are set in the <span class="em em-bold emphasis">defaults</span> section of
+      the <span class="file filename">multipath.conf</span> configuration file. These values
+      are used by DM-Multipath unless they are overwritten by the attributes
+      specified in the <span class="em em-bold emphasis">devices</span> and <span class="em em-bold emphasis">multipaths</span> sections of the <span class="file filename">multipath.conf</span>
+      file.</p>
+<div class="table">
+<a name="multipath-config-defaults-table"></a><div class="title">
+<a name="config-defaults-table-title"></a><h3><span class="title">Multipath Configuration
+  Defaults</span></h3>
+</div>
+<table summary="Multipath Configuration
+  Defaults" style="border: solid 1px;">
+<thead><tr>
+<th class="td-colsep" style="text-align: left;">Attribute</th>
+<th style="text-align: left;">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">polling_interval</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">Specifies the interval between two path checks in seconds. For
+        properly functioning paths, the interval between checks will gradually
+        increase to (4 * <span class="em em-bold emphasis">polling_interval</span>).
+        The default value is <span class="em em-bold emphasis">5</span>.</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">udev_dir</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">The directory where udev device nodes are created. The default
+        value is /dev.</td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">multipath_dir</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">The directory where the dynamic shared objects are stored. The
+        default value is system dependent, commonly
+        <span class="file filename">/lib/multipath</span>.</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">verbosity</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">The default verbosity. Higher values increase the verbosity
+        level. Valid levels are between 0 and 6. The default value is
+        2.</td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">path_selector</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">
+          <p class="para">Specifies the default algorithm to use in determining what
+          path to use for the next I/O operation. Possible values
+          include:</p>
+
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">round-robin 0</span>: Loop
+              through every path in the path group, sending the same amount of
+              I/O to each.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">queue-length 0</span>: Send the
+              next bunch of I/O down the path with the least number of
+              outstanding I/O requests.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">service-time 0</span>: Send the
+              next bunch of I/O down the path with the shortest estimated
+              service time, which is determined by dividing the total size of
+              the outstanding I/O to each path by its relative
+              throughput.</p>
+            </li>
+</ul></div>
+
+          <p class="para">The default value is <span class="em em-bold emphasis">round-robin
+          0</span>.</p>
+        </td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">path_grouping_policy</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">
+          <p class="para">Specifies the default path grouping policy to apply to
+          unspecified multipaths. Possible values include:</p>
+
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">failover</span> = 1 path per
+              priority group</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">multibus</span> = all valid
+              paths in 1 priority group</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">group_by_serial</span> = 1
+              priority group per detected serial number</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">group_by_prio</span> = 1
+              priority group per path priority value</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">group_by_node_name</span> = 1
+              priority group per target node name.</p>
+            </li>
+</ul></div>
+
+          <p class="para">The default value is <span class="em em-bold emphasis">failover.</span></p>
+        </td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">getuid_callout</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">Specifies the default program and arguments to call out to
+        obtain a unique path identifier. An absolute path is required.
+        <p class="para">The default value is <span class="em em-bold emphasis">/lib/udev/scsi_id
+        --whitelisted --device=/dev/%n.</span></p>
+</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">prio</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">
+          <p class="para">Specifies the default function to call to obtain a path
+          priority value. For example, the ALUA bits in SPC-3 provide an
+          exploitable prio value. Possible values include:</p>
+
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">const</span>: Set a priority of
+              1 to all paths.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">emc</span>: Generate the path
+              priority for EMC arrays.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">alua</span>: Generate the path
+              priority based on the SCSI-3 ALUA settings.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">netapp</span>: Generate the path
+              priority for NetApp arrays.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">rdac</span>: Generate the path
+              priority for LSI/Engenio RDAC controller.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">hp_sw</span>: Generate the path
+              priority for Compaq/HP controller in active/standby mode.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">hds</span>: Generate the path
+              priority for Hitachi HDS Modular storage arrays.</p>
+            </li>
+</ul></div>
+
+          <p class="para">The default value is <span class="em em-bold emphasis">const</span>.</p>
+        </td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">prio_args</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">
+          <p class="para">The arguments string passed to the prio function Most prio
+          functions do not need arguments. The datacore prioritizer need one.
+          Example, <span class="em em-bold emphasis">"timeout=1000
+          preferredsds=foo"</span>. The default value is (null) <span class="em em-bold emphasis">""</span>. </p>
+        </td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">features</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">The extra features of multipath devices. The only existing
+        feature is <span class="em em-bold emphasis">queue_if_no_path</span>, which is
+        the same as setting <span class="em em-bold emphasis">no_path_retry</span> to
+        <span class="em em-bold emphasis">queue</span>. For information on issues that
+        may arise when using this feature, see Section, <a class="link" href="multipath-admin-and-troubleshooting.html#multipath-issues-with-queue_if_no_path" title="Issues with queue_if_no_path">"Issues with queue_if_no_path feature"</a>.</td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">path_checker</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">
+          <p class="para">Specifies the default method used to determine the state of
+          the paths. Possible values include:</p>
+
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">readsector0</span>: Read the
+              first sector of the device.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">tur</span>: Issue a TEST UNIT
+              READY to the device.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">emc_clariion</span>: Query the
+              EMC Clariion specific EVPD page 0xC0 to determine the
+              path.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">hp_sw</span>: Check the path
+              state for HP storage arrays with Active/Standby firmware.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">rdac</span>: Check the path
+              status for LSI/Engenio RDAC storage controller.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis">directio</span>: Read the first
+              sector with direct I/O.</p>
+            </li>
+</ul></div>
+
+          <p class="para">The default value is <span class="em em-bold emphasis">directio</span>.</p>
+        </td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">failback</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">
+          <p class="para">Manages path group failback.</p>
+
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para">A value of <span class="em em-bold emphasis">immediate</span>
+              specifies immediate failback to the highest priority path group
+              that contains active paths.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">A value of <span class="em em-bold emphasis">manual</span>
+              specifies that there should not be immediate failback but that
+              failback can happen only with operator intervention.</p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">A numeric value greater than zero specifies deferred
+              failback, expressed in seconds.</p>
+            </li>
+</ul></div>
+
+          <p class="para">The default value is <span class="em em-bold emphasis">manual</span>.</p>
+        </td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">rr_min_io</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">Specifies the number of I/O requests to route to a path before
+        switching to the next path in the current path group.<p class="para">The default
+        value is <span class="code literal">1000</span>.</p>
+</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">rr_weight</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">If set to <span class="em em-bold emphasis">priorities</span>, then
+        instead of sending <span class="em em-bold emphasis">rr_min_io</span> requests
+        to a path before calling <span class="em em-bold emphasis">path_selector</span> to choose the next path, the
+        number of requests to send is determined by <span class="em em-bold emphasis">rr_min_io</span> times the path's priority, as
+        determined by the prio function. If set to <span class="em em-bold emphasis">uniform</span>, all path weights are equal. <p class="para">The
+        default value is <span class="em em-bold emphasis">uniform</span>.</p>
+</td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">no_path_retry</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">A numeric value for this attribute specifies the number of
+        times the system should attempt to use a failed path before disabling
+        queueing. A value of fail indicates <span class="em em-bold emphasis">immediate</span> failure, without queueing. A value of
+        <span class="em em-bold emphasis">queue</span> indicates that queueing should
+        not stop until the path is fixed. <p class="para">The default value is
+        <span class="code literal">0</span>.</p>
+</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">user_friendly_names</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">If set to yes, specifies that the system should use the
+	<span class="file filename">/etc/multipath/bindings</span> file to assign a
+        persistent and unique <span class="em em-bold emphasis">alias</span> to the
+        <span class="em em-bold emphasis">multipath</span>, in the form of mpathn. If
+        set to no, specifies that the system should use the WWID as the
+        <span class="em em-bold emphasis">alias</span> for the <span class="em em-bold emphasis">multipath</span>. In either case, what is specified
+        here will be overridden by any device-specific aliases you specify in
+        the multipaths section of the configuration file. <p class="para">The default
+        value is <span class="em em-bold emphasis">no</span>.</p>
+</td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">queue_without_daemon</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">If set to no, the <span class="em em-bold emphasis">multipathd</span>
+        daemon will disable queueing for all devices when it is shut down.
+        <p class="para">The default value is <span class="em em-bold emphasis">yes</span>.</p>
+</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">flush_on_last_del</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">If set to yes, then <span class="em em-bold emphasis">multipath</span>
+        will disable queueing when the last path to a device has been deleted.
+        <p class="para">The default value is <span class="em em-bold emphasis">no</span>.</p>
+</td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">max_fds</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">Sets the maximum number of open file descriptors that can be
+        opened by <span class="em em-bold emphasis">multipath</span> and the <span class="em em-bold emphasis">multipathd</span> daemon. This is equivalent to the
+        ulimit -n command. A value of max will set this to the system limit
+        from <span class="file filename">/proc/sys/fs/nr_open</span>. If this is not set, the maximum number of
+        open file descriptors is taken from the calling process; it is usually
+        1024. To be safe, this should be set to the maximum number of paths
+        plus 32, if that number is greater than 1024.</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">checker_timer</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">The timeout to use for path checkers that issue SCSI commands
+        with an explicit timeout, in seconds. <p class="para">The default value is taken
+        from <span class="file filename">/sys/block/sdx/device/timeout</span>, which is
+        <span class="code literal">30</span> seconds as of 12.04 LTS</p>
+</td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">fast_io_fail_tmo</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">The number of seconds the SCSI layer will wait after a problem
+        has been detected on an FC remote port before failing I/O to devices
+        on that remote port. This value should be smaller than the value of
+        dev_loss_tmo. Setting this to off will disable the timeout. <p class="para">The
+        default value is determined by the OS.</p>
+</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep" style="text-align: left;">
+          <span class="em em-bold emphasis">dev_loss_tmo</span>
+        </td>
+<td style="text-align: left;">The number of seconds the SCSI layer will wait after a problem
+        has been detected on an FC remote port before removing it from the
+        system. Setting this to infinity will set this to 2147483647 seconds,
+        or 68 years. The default value is determined by the OS.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-config-multipath"><div class="inner">
+<div class="hgroup"><h2 class="title">
+<a name="config-multipath-title"></a>Configuration File Multipath
+      Attributes</h2></div>
+<div class="region"><div class="contents">
+<p class="para">Table <a class="xref" href="multipath-dm-multipath-config-file.html#multipath-attributes-table" title="Multipath Attributes">Multipath Attributes</a> shows the attributes that you can
+      set in the <span class="em em-bold emphasis">multipaths</span> section of the
+      <span class="file filename">multipath.conf</span> configuration file for each specific
+      multipath device. These attributes apply only to the one specified
+      multipath. These defaults are used by DM-Multipath and override
+      attributes set in the <span class="em em-bold emphasis">defaults</span> and
+      <span class="em em-bold emphasis">devices</span> sections of the multipath.conf
+      file.</p>
+<div class="table">
+<a name="multipath-attributes-table"></a><div class="title">
+<a name="attributes-table-title"></a><h3><span class="title">Multipath Attributes</span></h3>
+</div>
+<table summary="Multipath Attributes" style="border: solid 1px;">
+<thead><tr>
+<th class="td-colsep" style="text-align: left;">Attribute</th>
+<th style="text-align: left;">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">wwid</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">Specifies the WWID of the 
+        <span class="em em-bold emphasis">multipath</span> device to which the 
+        <span class="em em-bold emphasis">multipath</span> attributes apply. This parameter is mandatory for
+        this section of the 
+        <span class="file filename">multipath.conf</span> file.</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep" style="text-align: left;">
+          <span class="em em-bold emphasis">alias</span>
+        </td>
+<td style="text-align: left;">Specifies the symbolic name for the 
+        <span class="em em-bold emphasis">multipath</span> device to which the 
+        <span class="em em-bold emphasis">multipath</span> attributes apply. If you are using 
+        <span class="em em-bold emphasis">user_friendly_names</span>, do not set this value to mpathn; this
+        may conflict with an automatically assigned user friendly name and give you incorrect
+        device node names.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="para">In addition, the following parameters may be overridden in this
+      <span class="em em-bold emphasis">multipath</span> section</p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_grouping_policy" title="">
+          <span class="cmd parameter">path_grouping_policy</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_selector" title="">
+          <span class="cmd parameter">path_selector</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-failback" title="">
+          <span class="cmd parameter">failback</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-prio" title=""> <span class="cmd parameter">prio</span>
+          </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-prio_args" title=""><span class="cmd parameter">prio_args</span></a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-no_path_retry" title="">
+          <span class="cmd parameter">no_path_retry</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-rr_min_io" title="">
+          <span class="cmd parameter">rr_min_io</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-rr_weight" title="">
+          <span class="cmd parameter">rr_weight</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-flush_on_last_del" title="">
+          <span class="cmd parameter">flush_on_last_del</span> </a></p>
+        </li>
+</ul></div>
+<p class="para">The following example shows multipath attributes specified in the
+      configuration file for two specific multipath devices. The first device
+      has a WWID of 3600508b4000156d70001200000b0000 and a symbolic name of
+      yellow.</p>
+<p class="para">The second multipath device in the example has a WWID of
+      1DEC_____321816758474 and a symbolic name of red. In this example, the
+      <a class="link" href="multipath-dm-multipath-config-file.html#attribute-rr_weight" title="">rr_weight</a>
+      attributes are set to priorities.</p>
+<div class="screen"><pre class="contents ">multipaths {
+       multipath {
+              wwid                  3600508b4000156d70001200000b0000
+              alias                 yellow
+              path_grouping_policy  multibus
+              path_selector         "round-robin 0"
+              failback              manual
+              rr_weight             priorities
+              no_path_retry         5
+       }
+       multipath {
+              wwid                  1DEC_____321816758474
+              alias                 red
+              rr_weight             priorities
+        }
+}
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-config-device"><div class="inner">
+<div class="hgroup"><h2 class="title">
+<a name="config-device-title"></a>Configuration File Devices</h2></div>
+<div class="region"><div class="contents">
+<p class="para">Table <a class="xref" href="multipath-dm-multipath-config-file.html#multipath-device-attributes-table" title="Device Attributes">Device Attributes</a> shows the attributes that
+      you can set for each individual storage device in the devices section of
+      the multipath.conf configuration file. These attributes are used by
+      DM-Multipath unless they are overwritten by the attributes specified in
+      the <span class="em em-bold emphasis">multipaths</span> section of the
+      <span class="file filename">multipath.conf</span> file for paths that contain the
+      device. These attributes override the attributes set in the <span class="em em-bold emphasis">defaults</span> section of the
+      <span class="file filename">multipath.conf</span> file.</p>
+<p class="para">Many devices that support multipathing are included by default in
+      a multipath configuration. The values for the devices that are supported
+      by default are listed in the
+      <span class="file filename">multipath.conf.defaults</span> file. You probably will not
+      need to modify the values for these devices, but if you do you can
+      overwrite the default values by including an entry in the configuration
+      file for the device that overwrites those values. You can copy the
+      device configuration defaults from the
+      <span class="file filename">multipath.conf.annotated.gz</span> or if you wish to have
+      a brief config file, <span class="file filename">multipath.conf.synthetic</span> file
+      for the device and override the values that you want to change.</p>
+<p class="para">To add a device to this section of the configuration file that is
+      not configured automatically by default, you must set the <span class="em em-bold emphasis">vendor</span> and <span class="em em-bold emphasis">product</span> parameters. You can find these values by
+      looking at <span class="em em-bold emphasis">/sys/block/device_name/device/vendor</span> and
+      <span class="em em-bold emphasis">/sys/block/device_name/device/model</span>
+      where device_name is the device to be multipathed, as in the following
+      example:</p>
+<div class="screen"><pre class="contents "># cat /sys/block/sda/device/vendor
+WINSYS  
+# cat /sys/block/sda/device/model
+SF2372
+</pre></div>
+<p class="para">The additional parameters to specify depend on your specific
+      device. If the device is active/active, you will usually not need to set
+      additional parameters. You may want to set <a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_grouping_policy" title="">path_grouping_policy</a> to
+      <span class="em em-bold emphasis">multibus</span>. Other parameters you may need
+      to set are <a class="link" href="multipath-dm-multipath-config-file.html#attribute-no_path_retry" title="">no_path_retry</a>
+      and <a class="link" href="multipath-dm-multipath-config-file.html#attribute-rr_min_io" title="">rr_min_io</a>, as described
+      in Table <a class="xref" href="multipath-dm-multipath-config-file.html#multipath-attributes-table" title="Multipath Attributes">Multipath Attributes</a>.</p>
+<p class="para">If the device is active/passive, but it automatically switches
+      paths with I/O to the passive path, you need to change the checker
+      function to one that does not send I/O to the path to test if it is
+      working (otherwise, your device will keep failing over). This almost
+      always means that you set the <a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_checker" title="">path_checker</a> to <span class="em em-bold emphasis">tur</span>; this works for all SCSI devices that support
+      the Test Unit Ready command, which most do.</p>
+<p class="para">If the device needs a special command to switch paths, then
+      configuring this device for multipath requires a hardware handler kernel
+      module. The current available hardware handler is emc. If this is not
+      sufficient for your device, you may not be able to configure the device
+      for multipath.</p>
+<div class="table">
+<a name="multipath-device-attributes-table"></a><div class="title">
+<a name="device-attributes-table-title"></a><h3><span class="title">Device Attributes</span></h3>
+</div>
+<table summary="Device Attributes" style="border: solid 1px;">
+<thead><tr>
+<th class="td-colsep" style="text-align: left;">Attribute</th>
+<th style="text-align: left;">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">vendor</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">Specifies the vendor name of the storage device to which the device attributes apply, for example <span class="em em-bold emphasis">COMPAQ</span>.</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">product</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">Specifies the product name of the storage device to which the device attributes apply, for example <span class="em em-bold emphasis">HSV110 (C)COMPAQ</span>.</td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">revision</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">Specifies the product revision identifier of the storage device.</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">product_blacklist</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">Specifies a regular expression used to blacklist devices by product.</td>
+</tr>
+<tr>
+<td class="td-colsep" style="text-align: left;">
+          <span class="em em-bold emphasis">hardware_handler</span>
+        </td>
+<td style="text-align: left;">
+<p class="para">Specifies a module that will be used to perform hardware specific actions when switching path groups or handling I/O errors. Possible values include:</p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+<p class="para"><span class="em em-bold emphasis">1 emc</span>: hardware handler for EMC storage arrays</p>
+</li>
+<li class="list itemizedlist">
+<p class="para"><span class="em em-bold emphasis">1 alua</span>: hardware handler for SCSI-3 ALUA arrays.</p>
+</li>
+<li class="list itemizedlist">
+<p class="para">
+<span class="em em-bold emphasis">1 hp_sw</span>: hardware handler for Compaq/HP controllers.</p>
+</li>
+<li class="list itemizedlist">
+<p class="para"><span class="em em-bold emphasis">1 rdac</span>: hardware handler for the LSI/Engenio RDAC controllers.</p>
+</li>
+</ul></div>
+
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="para">In addition, the following parameters may be overridden in this
+      <span class="em em-bold emphasis">device</span> section</p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_grouping_policy" title="">
+          <span class="cmd parameter">path_grouping_policy</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-getuid_callout" title="">
+          <span class="cmd parameter">getuid_callout</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_selector" title="">
+          <span class="cmd parameter">path_selector</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_checker" title="">
+          <span class="cmd parameter">path_checker</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-features" title="">
+          <span class="cmd parameter">features</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-failback" title="">
+          <span class="cmd parameter">failback</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-prio" title=""> <span class="cmd parameter">prio</span>
+          </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-prio_args" title=""><span class="cmd parameter">prio_args</span></a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-no_path_retry" title="">
+          <span class="cmd parameter">no_path_retry</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-rr_min_io" title="">
+          <span class="cmd parameter">rr_min_io</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-rr_weight" title="">
+          <span class="cmd parameter">rr_weight</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-fast_io_fail_tmo" title="">
+          <span class="cmd parameter">fast_io_fail_tmo</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-dev_loss_tmo" title="">
+          <span class="cmd parameter">dev_loss_tmo</span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-flush_on_last_del" title="">
+          <span class="cmd parameter">flush_on_last_del</span> </a></p>
+        </li>
+</ul></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">Whenever a hardware_handler is specified, it is your
+        responsibility to ensure that the appropriate kernel module is loaded
+        to support the specified interface. These modules can be found in
+        <span class="em em-bold emphasis"><span class="file filename">/lib/modules/`uname
+        -r`/kernel/drivers/scsi/device_handler/ </span></span>. The
+        requisite module should be integrated into the initrd to ensure the
+        necessary discovery and failover-failback capacity is available during
+        boot time. Example,<div class="screen"><pre class="contents "># echo scsi_dh_alua &gt;&gt; /etc/initramfs-tools/modules  ## append module to file
+# update-initramfs -u -k all</pre></div></p>
+      </div></div></div></div>
+<p class="para">The following example shows a device entry in the multipath
+      configuration file.</p>
+<div class="screen"><pre class="contents ">#devices {
+#	device {
+#		vendor			"COMPAQ  "
+#		product			"MSA1000         "
+#		path_grouping_policy	multibus
+#		path_checker		tur
+#		rr_weight		priorities
+#	}
+#}
+</pre></div>
+<p class="para">The spacing reserved in the <span class="em em-bold emphasis">vendor</span>, <span class="em em-bold emphasis">product</span>,
+      and <span class="em em-bold emphasis">revision</span> fields are significant as
+      multipath is performing a direct match against these attributes, whose
+      format is defined by the SCSI specification, specifically the <a href="http://en.wikipedia.org/wiki/SCSI_Inquiry_Command" class="ulink" title="http://en.wikipedia.org/wiki/SCSI_Inquiry_Command">Standard
+      INQUIRY</a> command. When quotes are used, the vendor, product, and
+      revision fields will be interpreted strictly according to the spec.
+      Regular expressions may be integrated into the quoted strings. Should a
+      field be defined without the requisite spacing, multipath will copy the
+      string into the properly sized buffer and pad with the appropriate
+      number of spaces. The specification expects the entire field to be
+      populated by printable characters or spaces, as seen in the example
+      above</p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para">vendor: 8 characters</p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">product: 16 characters</p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">revision: 4 characters</p>
+        </li>
+</ul></div>
+<p class="para">To create a more robust configuration file, regular expressions
+      can also be used. Operators include <span class="em em-bold emphasis">^ $ [ ] . * ?
+      +</span>. Examples of functional regular expressions can be found by
+      examining the live multipath database and <span class="file filename">multipath.conf
+      </span>example files found in
+      <span class="file filename">/usr/share/doc/multipath-tools/examples:</span></p>
+<p class="para"><div class="screen"><pre class="contents "># echo 'show config' | multipathd -k</pre></div></p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="multipath-setting-up-dm-multipath.html" title="Setting up DM-Multipath Overview">Previous</a><a class="nextlinks-next" href="multipath-admin-and-troubleshooting.html" title="DM-Multipath Administration and Troubleshooting">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

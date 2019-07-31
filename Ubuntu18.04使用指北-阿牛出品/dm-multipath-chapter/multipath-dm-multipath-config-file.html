@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DM-Multipath配置文件</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="dm-multipath-chapter.html" title="DM-多路径"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DM-Multipath</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="multipath-setting-up-dm-multipath.html" title="设置DM-Multipath概述"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="multipath-admin-and-troubleshooting.html" title="DM-Multipath管理和故障排除"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DM-Multipath配置文件</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认情况下，DM-Multipath为多路径的最常见用途提供配置值。</font><font style="vertical-align: inherit;">此外，DM-Multipath还支持支持DM-Multipath的最常见存储阵列。</font><font style="vertical-align: inherit;">可以在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath.conf.defaults</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中</font><font style="vertical-align: inherit;">找到默认配置值和支持的设备
+     </font><font style="vertical-align: inherit;">。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以通过编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/multipath.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件</font><font style="vertical-align: inherit;">来覆盖DM-Multipath的默认配置值</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如有必要，还可以将默认情况下不支持的存储阵列添加到配置文件中。</font><font style="vertical-align: inherit;">本章提供有关解析和修改</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件的信息。</font><font style="vertical-align: inherit;">它包含有关以下主题的部分：</font></font></p><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-overview" title="配置文件概述"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件概述</font></font></a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist" title="配置文件黑名单"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件黑名单</font></font></a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-defaults" title="配置文件默认值"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件默认值</font></font></a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-multipath" title="配置文件多路径属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件多路径属性</font></font></a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-device" title="配置文件设备"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件设备</font></font></a></p>
+        </li>
+</ul></div><p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在multipath配置文件中，您只需要指定配置所需的部分，或者您希望从</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath.conf.defaults</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中</font><font style="vertical-align: inherit;">指定的默认值进行更改
+     </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果文件的某些部分与您的环境无关或者您不需要覆盖默认值，则可以将它们注释掉，因为它们位于初始文件中。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件允许使用正则表达式描述语法。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以在</font></font><span class="file filename"><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/usr/share/doc/multipath-tools/examples/multipath.conf.annotated.gz中</font></font></span></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找到配置文件的带注释版本
+     </font><font style="vertical-align: inherit;">。</font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-overview" title="配置文件概述"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件概述</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist" title="配置文件黑名单"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件黑名单</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-defaults" title="配置文件默认值"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件默认值</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-multipath" title="配置文件多路径属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件多路径属性</font></font></a></li>
+<li class="links"><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-device" title="配置文件设备"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件设备</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="multipath-config-overview"><div class="inner">
+<div class="hgroup"><h2 class="title">
+<a name="config-overview-title"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件概述</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径配置文件分为以下几个部分：</font></font></p>
+<div class="terms variablelist"><dl class="terms variablelist">
+<dt class="terms"><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">黑名单</font></font></span></dt>
+<dd class="terms">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">列出不考虑多路径的特定设备。</font></font></p>
+          </dd>
+<dt class="terms"><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">blacklist_exceptions</font></font></span></dt>
+<dd class="terms">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">列出多路径候选者，否则将根据黑名单部分的参数列入黑名单。</font></font></p>
+          </dd>
+<dt class="terms"><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认</font></font></span></dt>
+<dd class="terms">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DM-Multipath的常规默认设置。</font></font></p>
+          </dd>
+<dt class="terms"><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多</font></font></span></dt>
+<dd class="terms">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置各个多路径设备的特性。</font><font style="vertical-align: inherit;">这些值会覆盖</font><font style="vertical-align: inherit;">配置文件</font><font style="vertical-align: inherit;">的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分中</font><font style="vertical-align: inherit;">指定的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">值</font></span><font style="vertical-align: inherit;">。</font></font></p>
+          </dd>
+<dt class="terms"><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备</font></font></span></dt>
+<dd class="terms">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">各个存储控制器的设置。</font><font style="vertical-align: inherit;">这些值会覆盖</font><font style="vertical-align: inherit;">配置文件</font><font style="vertical-align: inherit;">的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">defaults</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分中</font><font style="vertical-align: inherit;">指定的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">值</font></span><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果您使用的是默认情况下不支持的存储阵列，则可能需要为阵列创建设备子部分。</font></font></p>
+          </dd>
+</dl></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">当系统确定多路径设备的属性时，首先检查多路径设置，然后检查每个设备的设置，然后检查多路径系统的默认值。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-config-blacklist"><div class="inner">
+<div class="hgroup"><h2 class="title">
+<a name="config-blacklist-title"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件黑名单</font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径配置文件的黑名单部分指定系统配置多路径设备时不使用的设备。</font><font style="vertical-align: inherit;">被列入黑名单的设备不会被分组到多路径设备中。</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist"><li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果确实需要将设备列入黑名单，可以按照以下标准执行此操作：</font></font></p>
+
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过WWID，如</font></font><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist-by-wwid" title="WWID黑名单"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WWID中列出的黑名单</font></font></a></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">按设备名称，如“ </font><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist-by-device-name" title="按设备名称列入黑名单"><font style="vertical-align: inherit;">按设备名称列入黑名单”中</font></a><font style="vertical-align: inherit;">所述</font></font><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist-by-device-name" title="按设备名称列入黑名单"><font style="vertical-align: inherit;"></font></a></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">按设备类型，如</font><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist-by-device-type" title="按设备类型列入黑名单"><font style="vertical-align: inherit;">按设备类型列入黑名单中</font></a><font style="vertical-align: inherit;">所述</font></font><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist-by-device-type" title="按设备类型列入黑名单"><font style="vertical-align: inherit;"></font></a></p>
+            </li>
+</ul></div>
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认情况下，即使您注释掉配置文件的初始黑名单部分，也会将各种设备类型列入黑名单。</font><font style="vertical-align: inherit;">有关信息，请参阅</font></font><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist-by-device-name" title="按设备名称列入黑名单"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">按设备名称列入黑名单</font></font></a></p>
+        </li></ul></div>
+</div>
+<div class="sect3 sect" id="multipath-config-blacklist-by-wwid"><div class="inner">
+<div class="hgroup"><h3 class="title">
+<a name="config-blacklist-by-wwid-title"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WWID黑名单</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以通过</font><font style="vertical-align: inherit;">配置文件</font><font style="vertical-align: inherit;">
+        的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">黑名单</font></span><font style="vertical-align: inherit;">部分中的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">wwid</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">条目，</font><font style="vertical-align: inherit;">通过全球</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">标识</font></span><font style="vertical-align: inherit;">将单个设备指定为黑名单</font><font style="vertical-align: inherit;">。</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下示例显示配置文件中将使用WWID为26353900f02796769将设备列入黑名单的行。</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">黑名单{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       wwid 26353900f02796769</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+}</font></font><font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="multipath-config-blacklist-by-device-name"><div class="inner">
+<div class="hgroup"><h3 class="title">
+<a name="config-blacklist-by-device-name-title"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">按设备名称列入黑名单</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以按设备名称将设备类型列入黑名单，这样就不会通过</font><font style="vertical-align: inherit;">在配置文件</font><font style="vertical-align: inherit;">的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">黑名单</font></span><font style="vertical-align: inherit;">部分中</font><font style="vertical-align: inherit;">指定</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">devnode</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">条目</font><font style="vertical-align: inherit;">将它们分组到多路径设备中</font><font style="vertical-align: inherit;">。</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下示例显示了配置文件中将所有SCSI设备列入黑名单的行，因为它将所有sd *设备列入黑名单。 </font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">黑名单{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       devnode“^ sd [az]”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+}</font></font></pre></div><p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以使用</font><font style="vertical-align: inherit;">配置文件</font><font style="vertical-align: inherit;">的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">黑名单</font></span><font style="vertical-align: inherit;">部分中的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">devnode</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">条目</font><font style="vertical-align: inherit;">将单个设备指定为黑名单，而不是指定特定类型的所有设备。</font><font style="vertical-align: inherit;">但是，建议不要这样做，因为除非它是由udev规则静态映射的，否则无法保证特定设备在重新引导时具有相同的名称。</font><font style="vertical-align: inherit;">例如，设备名称可能会</font><font style="vertical-align: inherit;">在重新启动时</font><font style="vertical-align: inherit;">从</font><span class="file filename"><font style="vertical-align: inherit;">/ dev / sda</font></span><font style="vertical-align: inherit;">更改
+         </font><font style="vertical-align: inherit;">为</font><span class="file filename"><font style="vertical-align: inherit;">/ dev / sdb</font></span><font style="vertical-align: inherit;">。</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认情况下，以下</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">devnode</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">条目在默认黑名单中编译; </font><font style="vertical-align: inherit;">这些条目黑名单的设备通常不支持DM-Multipath。</font><font style="vertical-align: inherit;">要在任何这些设备上启用多路径，您需要</font><font style="vertical-align: inherit;">在配置文件</font><font style="vertical-align: inherit;">的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">blacklist_exceptions</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分中</font><font style="vertical-align: inherit;">指定它们</font><font style="vertical-align: inherit;">，如</font></font><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-blacklist-exceptions" title="黑名单例外"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">黑名单例外中所述</font></font></a> </p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">黑名单{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       devnode“^（ram | raw | loop | fd | md | dm- | sr | scd | st）[0-9] *”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       devnode“^ hd [az]”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+}</font></font><font></font>
+</pre></div><p></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="multipath-config-blacklist-by-device-type"><div class="inner">
+<div class="hgroup"><h3 class="title">
+<a name="config-blacklist-by-device-type-title"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">按设备类型列入黑名单</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以使用设备</font><font style="vertical-align: inherit;">部分在配置文件</font><font style="vertical-align: inherit;">的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">黑名单</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分中</font><font style="vertical-align: inherit;">指定特定的设备类型</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">以下示例将所有IBM DS4200和HP设备列入黑名单。</font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">黑名单{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       设备{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+               供应商“IBM”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+               产品“3S42”＃DS4200产品10</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       }</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       设备{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+               供应商“惠普”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+               产品“*”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       }</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+}</font></font><font></font>
+</pre></div><p></p></div></div>
+</div></div>
+<div class="sect3 sect" id="multipath-config-blacklist-exceptions"><div class="inner">
+<div class="hgroup"><h3 class="title">
+<a name="config-blacklist-exceptions-title"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">黑名单例外</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以使用</font><font style="vertical-align: inherit;">配置文件</font><font style="vertical-align: inherit;">的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">blacklist_exceptions</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分在默认情况下已列入黑名单的设备上启用多路径。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">例如，如果您有大量设备并且想要只使用其中一个设备（WWID为3600d0230000000000e13955cc3757803），而不是单独将每个设备列入黑名单，除了您想要的设备之外，您可以将所有设备列入黑名单，并且然后通过</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将以下行</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加到</font><span class="file filename"><font style="vertical-align: inherit;">/etc/multipath.conf</font></span><font style="vertical-align: inherit;">文件中，</font><font style="vertical-align: inherit;">仅允许您想要的那个</font><font style="vertical-align: inherit;">。</font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">黑名单{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        wwid“*”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+}</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+blacklist_exceptions {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        wwid“3600d0230000000000e13955cc3757803”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+}</font></font><font></font>
+</pre></div><p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在</font><font style="vertical-align: inherit;">配置文件</font><font style="vertical-align: inherit;">的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">blacklist_exceptions</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分中</font><font style="vertical-align: inherit;">指定设备时</font><font style="vertical-align: inherit;">，必须按照在</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">黑名单</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中指定的方式指定例外</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">例如，WWID异常将不适用于</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">devnode</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">黑名单条目</font><font style="vertical-align: inherit;">指定的设备
+         </font><font style="vertical-align: inherit;">，即使列入黑名单的设备与该WWID关联也是如此。</font><font style="vertical-align: inherit;">同样，devnode例外仅适用于devnode条目，设备例外仅适用于设备条目。</font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="multipath-config-defaults"><div class="inner">
+<div class="hgroup"><h2 class="title">
+<a name="config-defaults-title"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件默认值</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/multipath.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件包括</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">缺省</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分，用于设置</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">user_friendly_names</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参数</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，如下所示。</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        user_friendly_names是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+}</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这会覆盖</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">user_friendly_names</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参数</font><font style="vertical-align: inherit;">的默认值</font><font style="vertical-align: inherit;">。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件包含配置默认值的模板。</font><font style="vertical-align: inherit;">本节的注释如下。</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#defaults {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#uddev_dir / dev</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#polling_interval 5</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#selector“round-robin 0”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#path_grouping_policy故障转移</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#getuid_callout“/ lib / dev / scsi_id --whitelisted --device = / dev /％n”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#prio const</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#path_checker directio</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#rr_min_io 1000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#rr_weight制服</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#breakback手册</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#no_path_retry失败</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃user_friendly_names no</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃}</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要覆盖任何配置参数的默认值，您可以将此模板中的相关行复制到
+       </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分并取消注释。</font><font style="vertical-align: inherit;">例如，要覆盖</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">path_grouping_policy</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参数以使其为多
+       </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">总线</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">而不是</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障转移</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的默认值</font><font style="vertical-align: inherit;">，请将相应的行从模板复制到</font><font style="vertical-align: inherit;">配置文件</font><font style="vertical-align: inherit;">的初始</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分，并取消注释，如下所示。</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        user_friendly_names是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        path_grouping_policy multibus</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+}</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表</font></font><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-config-defaults-table" title="多路径配置默认值"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径配置默认值</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">描述</font><font style="vertical-align: inherit;">了</font><span class="file filename"><font style="vertical-align: inherit;">multipath.conf</font></span><font style="vertical-align: inherit;">配置文件</font><font style="vertical-align: inherit;">的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">defaults</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分</font><font style="vertical-align: inherit;">中设置的属性</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这些值由DM-Multipath使用，除非它们被</font><span class="file filename"><font style="vertical-align: inherit;">multipath.conf</font></span><font style="vertical-align: inherit;"> 
+      文件</font><font style="vertical-align: inherit;">的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">devices</font></span><font style="vertical-align: inherit;">和</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">multipaths</font></span><font style="vertical-align: inherit;">部分中</font><font style="vertical-align: inherit;">指定的属性覆盖</font><font style="vertical-align: inherit;">。</font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<div class="table">
+<a name="multipath-config-defaults-table"></a><div class="title">
+<a name="config-defaults-table-title"></a><h3><span class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径配置默认值</font></font></span></h3>
+</div>
+<table summary="Multipath Configuration
+  Defaults" style="border: solid 1px;">
+<thead><tr>
+<th class="td-colsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性</font></font></th>
+<th style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">描述</font></font></th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">POLLING_INTERVAL</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以秒为单位指定两次路径检查之间的间隔。</font><font style="vertical-align: inherit;">对于正常运行的路径，检查之间的间隔将逐渐增加到（4 * </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">polling_interval</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）。</font><font style="vertical-align: inherit;">默认值为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">udev_dir</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建udev设备节点的目录。</font><font style="vertical-align: inherit;">默认值为/ dev。</font></font></td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath_dir</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">存储动态共享对象的目录。</font><font style="vertical-align: inherit;">默认值取决于系统，通常为
+         </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ lib / multipath</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">赘言</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认的详细程度。</font><font style="vertical-align: inherit;">较高的值会增加详细程度。</font><font style="vertical-align: inherit;">有效级别介于0和6之间。默认值为2。</font></font></td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">path_selector</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定用于确定用于下一个I / O操作的路径的默认算法。</font><font style="vertical-align: inherit;">可能的值包括：</font></font></p>
+
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">循环0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：循环遍历路径组中的每个路径，向每个路径发送相同数量的I / O.</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">queue-length 0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：使用最少数量的未完成I / O请求沿路径发送下一组I / O.</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">service-time 0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：使用最短的估计服务时间沿路径发送下一组I / O，这是通过将未完成的I / O的总大小除以其相对吞吐量来确定的。</font></font></p>
+            </li>
+</ul></div>
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">round-robin 0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+        </td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">path_grouping_policy</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定要应用于未指定的多路径的默认路径分组策略。</font><font style="vertical-align: inherit;">可能的值包括：</font></font></p>
+
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">failover</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =每个优先级组1个路径</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multibus</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> = 1个优先级组中的所有有效路径</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">group_by_serial</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =每个检测到的序列号的1个优先级组</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">group_by_prio</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =每个路径优先级值的1个优先级组</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">group_by_node_name</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> =每个目标节点名称的1个优先级组。</font></font></p>
+            </li>
+</ul></div>
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障转移。</font></font></span></p>
+        </td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">getuid_callout</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定要调用以获取唯一路径标识符的默认程序和参数。</font><font style="vertical-align: inherit;">需要绝对路径。
+        </font></font><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ lib / udev / scsi_id --whitelisted --device = / dev /％n。</font></font></span></p>
+</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PRIO</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定要调用以获取路径优先级值的默认函数。</font><font style="vertical-align: inherit;">例如，SPC-3中的ALUA位提供可利用的prio值。</font><font style="vertical-align: inherit;">可能的值包括：</font></font></p>
+
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">const</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：为所有路径设置优先级1。</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">emc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：生成EMC阵列的路径优先级。</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">alua</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：根据SCSI-3 ALUA设置生成路径优先级。</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">netapp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：为NetApp阵列生成路径优先级。</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rdac</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：生成LSI / Engenio RDAC控制器的路径优先级。</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hp_sw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：在主用/备用模式下为Compaq / HP控制器生成路径优先级。</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hds</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：为Hitachi HDS Modular存储阵列生成路径优先级。</font></font></p>
+            </li>
+</ul></div>
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">const</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+        </td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prio_args</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">传递给prio函数的参数字符串大多数prio函数不需要参数。</font><font style="vertical-align: inherit;">数据库优先级需要一个。</font><font style="vertical-align: inherit;">例如，</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“timeout = 1000 preferredsds = foo”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">默认值为（null）</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+        </td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">特征</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径设备的额外功能。</font><font style="vertical-align: inherit;">唯一现有的功能是</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">queue_if_no_path</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，这与将</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no_path_retry设置</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为
+         </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">queue</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">相同</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有关使用此功能时可能出现的问题的信息，请参见</font></font><a class="link" href="multipath-admin-and-troubleshooting.html#multipath-issues-with-queue_if_no_path" title="queue_if_no_path的问题"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“queue_if_no_path功能问题”一节</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的path_checker</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定用于确定路径状态的默认方法。</font><font style="vertical-align: inherit;">可能的值包括：</font></font></p>
+
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">readsector0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：读取器件的第一个扇区。</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tur</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：向设备发出TEST UNIT READY。</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">emc_clariion</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：查询EMC Clariion特定EVPD页面0xC0以确定路径。</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hp_sw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：检查具有活动/备用固件的HP存储阵列的路径状态。</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rdac</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：检查LSI / Engenio RDAC存储控制器的路径状态。</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"> <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">directio</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：使用直接I / O读取第一个扇区。</font></font></p>
+            </li>
+</ul></div>
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">directio</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+        </td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障恢复</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">管理路径组故障回复。</font></font></p>
+
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">值</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">immediate</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+              指定立即故障回复到包含活动路径的最高优先级路径组。</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">manual</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的值</font><font style="vertical-align: inherit;">
+              指定不应该立即进行故障恢复，但只有操作员干预才能进行故障恢复。</font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">大于零的数值指定延迟故障回复，以秒为单位表示。</font></font></p>
+            </li>
+</ul></div>
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">manual</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+        </td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rr_min_io</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定在切换到当前路径组中的下一个路径之前路由到路径的I / O请求数。</font></font><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值为</font></font><span class="code literal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1000</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rr_weight</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果设置为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">优先级</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，则不是</font><font style="vertical-align: inherit;">在调用</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">path_selector</font></span><font style="vertical-align: inherit;">选择下</font><font style="vertical-align: inherit;">一个路径之前向路径</font><font style="vertical-align: inherit;">发送</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rr_min_io</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请求</font><font style="vertical-align: inherit;">，而是</font><font style="vertical-align: inherit;">由</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">rr_min_io</font></span><font style="vertical-align: inherit;">确定</font><font style="vertical-align: inherit;">路径优先级（</font><font style="vertical-align: inherit;">由</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">prio</font></span><font style="vertical-align: inherit;">函数确定）确定的请求数</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果设置为</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">uniform</font></span><font style="vertical-align: inherit;">，则所有路径权重相等。</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值是</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">统一的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no_path_retry</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此属性的数值指定系统在禁用排队之前应尝试使用故障路径的次数。</font><font style="vertical-align: inherit;">失败值表示</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">立即</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">失败，没有排队。</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">queue</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的值
+         </font><font style="vertical-align: inherit;">表示在路径修复之前不应该停止排队。</font></font><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值为
+         </font></font><span class="code literal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">user_friendly_names</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果设置为yes，即该系统应该使用
+	 </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的/ etc /多/绑定</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件到一个持久的和独特的分配</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">别名</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为
+         </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，在mpathN的格式。</font><font style="vertical-align: inherit;">如果设置为无，即该系统应该使用WWID作为
+         </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">别名</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">在任何一种情况下，此处指定的内容都将被您在配置文件的multipaths部分中指定的任何特定于设备的别名覆盖。</font></font><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">queue_without_daemon</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果设置为no，</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipathd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+        守护程序将在关闭时禁用所有设备的排队。
+        </font></font><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">yes</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">flush_on_last_del</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果设置为yes，则</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+        将在删除设备的最后一条路径时禁用排队。
+        </font></font><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">max_fds</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipathd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护程序</font><font style="vertical-align: inherit;">可以打开的最大打开文件描述符数</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这相当于ulimit -n命令。</font><font style="vertical-align: inherit;">值max将从</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ proc / sys / fs / nr_open</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置为系统限制</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果未设置，则从调用进程中获取最大打开文件描述符数; </font><font style="vertical-align: inherit;">它通常是1024.为安全起见，如果该数字大于1024，则应将其设置为最大路径数加上32。</font></font></td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">checker_timer</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于以明显超时发出SCSI命令的路径检查程序的超时（以秒为单位）。 </font></font><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值取自</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ sys / block / sdx / device / timeout</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font><font style="vertical-align: inherit;">截至12.04 LTS </font><font style="vertical-align: inherit;">为
+         </font></font><span class="code literal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">30</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">秒</font></font></p>
+</td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fast_io_fail_tmo</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在对远程端口上的设备进行I / O故障之前，SCSI层在FC远程端口上检测到问题后将等待的秒数。</font><font style="vertical-align: inherit;">该值应小于dev_loss_tmo的值。</font><font style="vertical-align: inherit;">将此设置为off将禁用超时。</font></font><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认值由OS确定。</font></font></p>
+</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dev_loss_tmo</font></font></span>
+        </td>
+<td style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在从系统中删除之前，SCSI层在FC远程端口上检测到问题后将等待的秒数。</font><font style="vertical-align: inherit;">将此值设置为无穷大将设置为2147483647秒或68年。</font><font style="vertical-align: inherit;">默认值由OS确定。</font></font></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-config-multipath"><div class="inner">
+<div class="hgroup"><h2 class="title">
+<a name="config-multipath-title"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件多路径属性</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表</font></font><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-attributes-table" title="多路径属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径属性</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">显示可以在</font><span class="file filename"><font style="vertical-align: inherit;">multipath.conf</font></span><font style="vertical-align: inherit;">配置文件</font><font style="vertical-align: inherit;">的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipaths</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分中
+       </font><font style="vertical-align: inherit;">为每个特定多路径设备</font><font style="vertical-align: inherit;">设置的属性</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这些属性仅适用于指定的多路径。</font><font style="vertical-align: inherit;">这些默认值由DM-Multipath使用，并覆盖</font><font style="vertical-align: inherit;">multipath.conf文件</font><font style="vertical-align: inherit;">的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">defaults</font></span><font style="vertical-align: inherit;">和
+       </font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">devices</font></span><font style="vertical-align: inherit;">部分中</font><font style="vertical-align: inherit;">设置的属性</font><font style="vertical-align: inherit;">。</font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<div class="table">
+<a name="multipath-attributes-table"></a><div class="title">
+<a name="attributes-table-title"></a><h3><span class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径属性</font></font></span></h3>
+</div>
+<table summary="Multipath Attributes" style="border: solid 1px;">
+<thead><tr>
+<th class="td-colsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性</font></font></th>
+<th style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">描述</font></font></th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WWID</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多</font></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">路径</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性应用于</font><font style="vertical-align: inherit;">的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">多路径</font></span><font style="vertical-align: inherit;">设备 
+         </font><font style="vertical-align: inherit;">的WWID 
+         </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">此参数对</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件的</font><font style="vertical-align: inherit;">此部分是必需的 
+         </font><font style="vertical-align: inherit;">。</font></font></td>
+</tr>
+<tr class="shade">
+<td class="td-colsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">别号</font></font></span>
+        </td>
+<td style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多</font></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">路径</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性应用于</font><font style="vertical-align: inherit;">的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">多路径</font></span><font style="vertical-align: inherit;">设备 
+         </font><font style="vertical-align: inherit;">的符号名称 
+         </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果您使用的是 
+         </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">user_friendly_names</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请不要将此值设置为mpathn; </font><font style="vertical-align: inherit;">这可能与自动分配的用户友好名称冲突，并为您提供不正确的设备节点名称。</font></font></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此外，可以在此</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分中</font><font style="vertical-align: inherit;">覆盖以下参数
+      </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_grouping_policy" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">path_grouping_policy</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_selector" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">path_selector</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-failback" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障恢复</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-prio" title=""> <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PRIO</font></font></span>
+          </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-prio_args" title=""><span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prio_args</font></font></span></a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-no_path_retry" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no_path_retry</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-rr_min_io" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rr_min_io</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-rr_weight" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rr_weight</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-flush_on_last_del" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">flush_on_last_del</font></font></span> </a></p>
+        </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下示例显示了配置文件中为两个特定多路径设备指定的多路径属性。</font><font style="vertical-align: inherit;">第一个设备的WWID为3600508b4000156d70001200000b0000，符号名称为黄色。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例中的第二个多路径设备的WWID为1DEC_____321816758474，符号名称为红色。</font><font style="vertical-align: inherit;">在此示例中，
+       </font></font><a class="link" href="multipath-dm-multipath-config-file.html#attribute-rr_weight" title=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rr_weight</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      属性设置为</font><a class="link" href="multipath-dm-multipath-config-file.html#attribute-rr_weight" title=""><font style="vertical-align: inherit;">priority</font></a><font style="vertical-align: inherit;">。</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipaths {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       multipath {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              wwid 3600508b4000156d70001200000b0000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              别名黄色</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              path_grouping_policy multibus</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              path_selector“round-robin 0”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              故障恢复手册</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              rr_weight优先级</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              no_path_retry 5</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       }</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       multipath {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              wwid 1DEC_____321816758474</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              别名红色</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              rr_weight优先级</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        }</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+}</font></font><font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-config-device"><div class="inner">
+<div class="hgroup"><h2 class="title">
+<a name="config-device-title"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件设备</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表</font></font><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-device-attributes-table" title="设备属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备属性</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">显示可以在multipath.conf配置文件的devices部分中为每个单独的存储设备设置的属性。</font><font style="vertical-align: inherit;">这些属性由DM-Multipath使用，除非它们被</font><span class="file filename"><font style="vertical-align: inherit;">multipath.conf</font></span><font style="vertical-align: inherit;">文件</font><font style="vertical-align: inherit;">的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipaths</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分中
+       </font><font style="vertical-align: inherit;">指定的属性覆盖，以</font><font style="vertical-align: inherit;">包含设备的路径。</font><font style="vertical-align: inherit;">这些属性会覆盖</font><span class="file filename"><font style="vertical-align: inherit;">multipath.conf</font></span><font style="vertical-align: inherit;">文件</font><font style="vertical-align: inherit;">的</font><span class="em em-bold emphasis"><font style="vertical-align: inherit;">defaults</font></span><font style="vertical-align: inherit;">部分中
+       </font><font style="vertical-align: inherit;">设置的属性</font><font style="vertical-align: inherit;">。</font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认情况下，许多支持多路径的设备都包含在多路径配置中。</font><font style="vertical-align: inherit;">默认支持的设备的值列在
+       </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath.conf.defaults</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中。</font><font style="vertical-align: inherit;">您可能不需要修改这些设备的值，但如果这样做，您可以通过在配置文件中包含覆盖这些值的设备的条目来覆盖默认值。</font><font style="vertical-align: inherit;">您可以从</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath.conf.annotated.gz</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">复制设备配置默认值，
+       </font><font style="vertical-align: inherit;">或者如果您希望有一个简短的配置文件，</font><font style="vertical-align: inherit;">设备的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath.conf.synthetic</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件并覆盖您要更改的值。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要将设备添加到默认情况下未自动配置的配置文件的此部分，您必须设置</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">供应商</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">产品</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参数。</font><font style="vertical-align: inherit;">您可以通过查看</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ sys / block / device_name / device / vendor</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和
+       </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ sys / block / device_name / device / model</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来查找这些值，</font><font style="vertical-align: inherit;">
+      其中device_name是要进行多径处理的设备，如下例所示：</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#cat / sys / block / sda / device / vendor</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+WINSYS  </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#cat / sys / block / sda / device / model</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+SF2372</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要指定的其他参数取决于您的特定设备。</font><font style="vertical-align: inherit;">如果设备处于活动/活动状态，您通常不需要设置其他参数。</font><font style="vertical-align: inherit;">您可能希望将</font></font><a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_grouping_policy" title=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">path_grouping_policy</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置</font><font style="vertical-align: inherit;">为
+       </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multibus</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">您可能需要设置的其他参数是</font></font><a class="link" href="multipath-dm-multipath-config-file.html#attribute-no_path_retry" title=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no_path_retry</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      和</font></font><a class="link" href="multipath-dm-multipath-config-file.html#attribute-rr_min_io" title=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rr_min_io</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，如表</font></font><a class="xref" href="multipath-dm-multipath-config-file.html#multipath-attributes-table" title="多路径属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">多路径属性中所述</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果设备是主动/被动，但它会自动将具有I / O的路径切换到被动路径，则需要将检查器功能更改为不向路径发送I / O以检测其是否正常工作（否则，您的设备将继续失败）。</font><font style="vertical-align: inherit;">这几乎总是意味着你将</font></font><a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_checker" title=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">path_checker</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置</font><font style="vertical-align: inherit;">为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tur</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ; </font><font style="vertical-align: inherit;">这适用于所有支持Test Unit Ready命令的SCSI设备，大多数都支持。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果设备需要特殊命令来切换路径，则将该设备配置为多路径需要硬件处理程序内核模块。</font><font style="vertical-align: inherit;">当前可用的硬件处理程序是emc。</font><font style="vertical-align: inherit;">如果这对您的设备来说还不够，则可能无法将设备配置为多路径。</font></font></p>
+<div class="table">
+<a name="multipath-device-attributes-table"></a><div class="title">
+<a name="device-attributes-table-title"></a><h3><span class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备属性</font></font></span></h3>
+</div>
+<table summary="Device Attributes" style="border: solid 1px;">
+<thead><tr>
+<th class="td-colsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性</font></font></th>
+<th style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">描述</font></font></th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">供应商</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定应用设备属性的存储设备的供应商名称，例如</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">COMPAQ</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">产品</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定应用设备属性的存储设备的产品名称，例如</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HSV110（C）COMPAQ</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">调整</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定存储设备的产品修订标识符。</font></font></td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">product_blacklist</font></font></span>
+        </td>
+<td class="td-rowsep" style="text-align: left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定用于按产品对设备进行黑名单的正则表达式。</font></font></td>
+</tr>
+<tr>
+<td class="td-colsep" style="text-align: left;">
+          <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hardware_handler</font></font></span>
+        </td>
+<td style="text-align: left;">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定在切换路径组或处理I / O错误时将用于执行硬件特定操作的模块。</font><font style="vertical-align: inherit;">可能的值包括：</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+<p class="para"><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1 emc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：EMC存储阵列的硬件处理程序</font></font></p>
+</li>
+<li class="list itemizedlist">
+<p class="para"><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1 alua</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：SCSI-3 ALUA阵列的硬件处理程序。</font></font></p>
+</li>
+<li class="list itemizedlist">
+<p class="para">
+<span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1 hp_sw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：Compaq / HP控制器的硬件处理程序。</font></font></p>
+</li>
+<li class="list itemizedlist">
+<p class="para"><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1 rdac</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：LSI / Engenio RDAC控制器的硬件处理程序。</font></font></p>
+</li>
+</ul></div>
+
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此外，可以在此</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分中</font><font style="vertical-align: inherit;">覆盖以下参数
+      </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_grouping_policy" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">path_grouping_policy</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-getuid_callout" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">getuid_callout</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_selector" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">path_selector</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-path_checker" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的path_checker</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-features" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">特征</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-failback" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障恢复</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-prio" title=""> <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PRIO</font></font></span>
+          </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-prio_args" title=""><span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prio_args</font></font></span></a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-no_path_retry" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no_path_retry</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-rr_min_io" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rr_min_io</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-rr_weight" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rr_weight</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-fast_io_fail_tmo" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fast_io_fail_tmo</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-dev_loss_tmo" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dev_loss_tmo</font></font></span> </a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><a class="link" href="multipath-dm-multipath-config-file.html#attribute-flush_on_last_del" title="">
+          <span class="cmd parameter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">flush_on_last_del</font></font></span> </a></p>
+        </li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">每当指定hardware_handler时，您有责任确保加载适当的内核模块以支持指定的接口。</font><font style="vertical-align: inherit;">这些模块可以在
+         </font></font><span class="em em-bold emphasis"><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ lib / modules /`uname -r` / kernel / drivers / scsi / device_handler /中找到</font></font></span></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">必须将必需模块集成到initrd中，以确保在引导期间可以获得必要的发现和故障转移 - 故障恢复容量。</font><font style="vertical-align: inherit;">例，</font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#echo scsi_dh_alua &gt;&gt; / etc / initramfs-tools / modules ##将模块附加到文件</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#update-initramfs -u -k all</font></font></pre></div><p></p>
+      </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下示例显示了多路径配置文件中的设备条目。</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃设备 {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃device {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#corpomer“COMPAQ”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#product“MSA1000”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#path_grouping_policy multibus</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#path_checker tur</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#rr_weight优先级</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃}</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃}</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">供应商</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">产品</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修订</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">字段中</font><font style="vertical-align: inherit;">保留的间距</font><font style="vertical-align: inherit;">非常重要，因为多路径正在对这些属性执行直接匹配，这些属性的格式由SCSI规范定义，特别是</font></font><a href="http://en.wikipedia.org/wiki/SCSI_Inquiry_Command" class="ulink" title="http://en.wikipedia.org/wiki/SCSI_Inquiry_Command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">标准查询</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令。</font><font style="vertical-align: inherit;">使用引号时，将严格按照规范解释供应商，产品和修订字段。</font><font style="vertical-align: inherit;">正则表达式可以集成到带引号的字符串中。</font><font style="vertical-align: inherit;">如果定义了一个没有必要间距的字段，multipath会将字符串复制到适当大小的缓冲区中，并使用适当数量的空格填充。</font><font style="vertical-align: inherit;">规范要求整个字段由可打印字符或空格填充，如上例所示</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">供应商：8个字符</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">产品：16个字符</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修订版：4个字符</font></font></p>
+        </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要创建更健壮的配置文件，还可以使用正则表达式。</font><font style="vertical-align: inherit;">运算符包括</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">^ $ []。</font><font style="vertical-align: inherit;">*？</font><font style="vertical-align: inherit;">+</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">通过检查</font><span class="file filename"><font style="vertical-align: inherit;">/ usr / share / doc / multipath-tools / examples中</font></span><font style="vertical-align: inherit;">的live multipath数据库和</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">multipath.conf
+      </font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例文件，
+       </font><font style="vertical-align: inherit;">可以找到函数正则表达式的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例：</font></font></span></p>
+<p class="para"></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#echo'show config'| </font><font style="vertical-align: inherit;">multipathd -k</font></font></pre></div><p></p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="multipath-setting-up-dm-multipath.html" title="设置DM-Multipath概述"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="multipath-admin-and-troubleshooting.html" title="DM-Multipath管理和故障排除"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Kerberos的</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="network-authentication.html" title="网络身份验证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络身份验证</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="samba-ldap.html" title="Samba和LDAP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="kerberos-ldap.html" title="Kerberos和LDAP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kerberos的</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+    <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kerberos</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是基于受信任第三方原理的网络身份验证系统。</font><font style="vertical-align: inherit;">另外两方是用户和用户希望认证的服务。</font><font style="vertical-align: inherit;">并非所有服务和应用程序都可以使用Kerberos，但对于那些可以使用Kerberos，它会使网络环境更接近单点登录（SSO）。
+    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    本节介绍Kerberos服务器的安装和配置，以及一些示例客户端配置。
+    </font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="kerberos.html#kerberos-overview" title="概观"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">概观</font></font></a></li>
+<li class="links"><a class="xref" href="kerberos.html#kerberos-server" title="Kerberos服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kerberos服务器</font></font></a></li>
+<li class="links"><a class="xref" href="kerberos.html#kerberos-secondary-kdc" title="中学KDC"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中学KDC</font></font></a></li>
+<li class="links"><a class="xref" href="kerberos.html#kerberos-linux-client" title="Kerberos Linux客户端"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kerberos Linux客户端</font></font></a></li>
+<li class="links"><a class="xref" href="kerberos.html#kerberos-resources" title="资源"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="kerberos-overview"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">概观</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      如果您不熟悉Kerberos，那么在设置Kerberos服务器之前，有一些条款值得理解。</font><font style="vertical-align: inherit;">大多数术语与您在其他环境中可能熟悉的内容有关：
+      </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Principal：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器提供的任何用户，计算机和服务都需要定义为Kerberos Principals。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实例：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于服务主体和特殊管理主体。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">领域：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Kerberos安装提供的独特控制领域。</font><font style="vertical-align: inherit;">将其视为您的主机和用户所属的域或组。</font><font style="vertical-align: inherit;">公约规定领域应该是大写的。</font><font style="vertical-align: inherit;">默认情况下，ubuntu将使用转换为大写（EXAMPLE.COM）的DNS域作为领域。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密钥分发中心：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（KDC）由三部分组成，即所有主体的数据库，身份验证服务器和票证授予服务器。</font><font style="vertical-align: inherit;">对于每个领域，必须至少有一个KDC。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">票证授予票证：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">由认证服务器（AS）颁发，票证授予票证（TGT）在用户密码中加密，该密码仅为用户和KDC所知。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">票证授予服务器：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（TGS）根据请求向客户发出服务票证。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">门票：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">确认两位校长的身份。</font><font style="vertical-align: inherit;">一个主体是用户，另一个是用户请求的服务。</font><font style="vertical-align: inherit;">票证在经过身份验证的会话期间建立用于安全通信的加密密钥。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Keytab文件：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是从KDC主体数据库中提取的文件，包含服务或主机的加密密钥。
+          </font></font></p>
+        </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      为了将这些部分组合在一起，Realm至少有一个KDC，最好是更多用于冗余的KDC，其中包含Principal数据库。</font><font style="vertical-align: inherit;">当用户主体登录到配置为进行Kerberos身份验证的工作站时，KDC会发出故障单授予故障单（TGT）。</font><font style="vertical-align: inherit;">如果用户提供的凭据匹配，则对用户进行身份验证，然后可以从故障单授予服务器（TGS）请求Kerberized服务的票证。</font><font style="vertical-align: inherit;">服务票证允许用户在不输入其他用户名和密码的情况下对服务进行身份验证。
+      </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="kerberos-server"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kerberos服务器</font></font></h2></div>
+<div class="region">
+<div class="contents"></div>
+<div class="sect3 sect" id="kerberos-server-installation"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	在本次讨论中，我们将创建一个具有以下功能的MIT Kerberos域（根据您的需要编辑它们）：
+        </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">领域：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> EXAMPLE.COM 
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主要KDC：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> kdc01.example.com（192.168.0.1）
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">辅助KDC：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> kdc02.example.com（192.168.0.2）
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户负责人：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">史蒂夫 
+            </font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">管理员校长：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">史蒂夫/管理员 
+            </font></font></p>
+          </li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents"> 
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          这是</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">强烈</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">建议您的网络身份验证的用户拥有比你的本地用户的不同范围的UID（比方说，开始于5000）。 
+          </font></font></p>
+        </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+        在安装Kerberos服务器之前，您的域需要正确配置的DNS服务器。</font><font style="vertical-align: inherit;">由于按照约定Kerberos域与域名匹配，因此本节使用</font><font style="vertical-align: inherit;">在DNS文档的</font><a class="xref" href="dns-configuration.html#dns-primarymaster-configuration" title="小学硕士"><font style="vertical-align: inherit;">Primary Master</font></a><font style="vertical-align: inherit;">中</font><font style="vertical-align: inherit;">配置</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EXAMPLE.COM</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域 
+         </font><font style="vertical-align: inherit;">。  
+        </font></font><a class="xref" href="dns-configuration.html#dns-primarymaster-configuration" title="小学硕士"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        此外，Kerberos是一种时间敏感的协议。</font><font style="vertical-align: inherit;">因此，如果客户端计算机与服务器之间的本地系统时间相差超过五分钟（默认情况下），则工作站将无法进行身份验证。</font><font style="vertical-align: inherit;">要解决此问题，所有主机应使用相同的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络时间协议（NTP）</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器</font><font style="vertical-align: inherit;">同步其时间
+	 </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有关设置NTP的详细信息，请参阅</font></font><a class="xref" href="NTP.html" title="时间同步"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">时间同步</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+        </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        创建Kerberos领域的第一步是安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5-kdc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">   和 
+         </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5-admin-server</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包。</font><font style="vertical-align: inherit;">从终端输入：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install krb5-kdc krb5-admin-server</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        安装结束时将要求您提供Kerberos和Admin服务器的主机名，这些服务器可能是也可能不是同一服务器。
+        </font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          默认情况下，域是从KDC的域名创建的。
+          </font></font></p>
+        </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        接下来，使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdb5_newrealm</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序</font><font style="vertical-align: inherit;">创建新领域</font><font style="vertical-align: inherit;">：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo krb5_newrealm</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="kerberos-server-configuration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        安装期间提出的问题用于配置</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/krb5.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件。</font><font style="vertical-align: inherit;">如果需要调整密钥分发中心（KDC）设置，只需编辑该文件并重新启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5-kdc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护程序。</font><font style="vertical-align: inherit;">如果您需要从头开始重新配置Kerberos，可能要更改域名，您可以通过键入来完成
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo dpkg-reconfigure krb5-kdc</font></font></span>
+</pre></div>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            一旦KDC正常运行，就需要管理员用户 -
+	     </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">管理员委托人</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">建议您使用日常用户名中的其他用户名。</font><font style="vertical-align: inherit;">在终端提示符中</font><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kadmin.local</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序，输入：
+            </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo kadmin.local </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用密码验证为主体root/admin@EXAMPLE.COM。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+kadmin.local：</font></font></span><span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">addprinc steve / admin </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">警告：没有为steve/admin@EXAMPLE.COM指定策略; </font><font style="vertical-align: inherit;">违约没有政策</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+输入主体“steve/admin@EXAMPLE.COM”的密码： </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+重新输入主体“steve/admin@EXAMPLE.COM”的密码： </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+校长“steve/admin@EXAMPLE.COM”创建。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+kadmin.local：</font></font></span><span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">退出</font></font></span>
+</pre></div>
+
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            在上面的示例中，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">steve</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Principal</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">， 
+             </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ admin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实例</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">， 
+             </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@ EXAMPLE.COM</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表示领域。</font><font style="vertical-align: inherit;">在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“天天向上”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+            校长，又名</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户主体</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">steve@EXAMPLE.COM</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，并且应该只有普通用户权限。            
+            </font></font></p>
+
+            <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              替换</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EXAMPLE.COM</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并</font><font style="vertical-align: inherit;">使用您的Realm和admin用户名进行</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">steve</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </div></div></div></div>
+
+          </li>
+<li class="steps">
+ 
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            接下来，新的管理员用户需要具有适当的访问控制列表（ACL）权限。</font><font style="vertical-align: inherit;">权限在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/krb5kdc/kadm5.acl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件</font><font style="vertical-align: inherit;">中配置</font><font style="vertical-align: inherit;">：
+            </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">steve/admin@EXAMPLE.COM *
+</font></font></pre></div>
+
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            此条目授予</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">steve / admin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对领域中所有主体执行任何操作的能力。</font><font style="vertical-align: inherit;">您可以使用更具限制性的权限配置主体，如果您需要初级员工可以在Kerberos客户端中使用的管理主体，这很方便。</font><font style="vertical-align: inherit;">有关详细信息，</font><font style="vertical-align: inherit;">请参阅 
+	     </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kadm5.acl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手册页。
+            </font></font></p>
+
+          </li>
+<li class="steps">
+
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            现在重新启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5-admin-server</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以使新ACL </font><span class="app application"><font style="vertical-align: inherit;">生效</font></span><font style="vertical-align: inherit;">：
+            </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart krb5-admin-server.service</font></font></span>
+</pre></div>
+
+          </li>
+<li class="steps">
+
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            可以使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kinit实用程序</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试新的用户主体</font><font style="vertical-align: inherit;">：
+            </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kinit steve / admin </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">steve/admin@EXAMPLE.COM的密码：</font></font></span>
+</pre></div>          
+
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            输入密码后，使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">klist</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序查看有关票证授予票证（TGT）的信息：
+            </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">klist </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">凭据缓存：FILE：/ tmp / krb5cc_1000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        负责人：steve/admin@EXAMPLE.COM</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  发布到期校长</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+7月13日17:53:34 Jul 14 03:53:34 krbtgt/EXAMPLE.COM@EXAMPLE.COM</font></font></span>
+</pre></div>
+
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    缓存文件名</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5cc_1000</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">由前缀</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5cc_</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和用户id（uid）组成，在本例中为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1000</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">您可能需要在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / hosts中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为KDC </font><font style="vertical-align: inherit;">添加一个条目 
+	     </font><font style="vertical-align: inherit;">，以便客户端可以找到KDC。</font><font style="vertical-align: inherit;">例如：
+            </font></font></p>
+            
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">192.168.0.1 kdc01.example.com kdc01
+</font></font></pre></div>
+
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用您的KDC的IP地址</font><font style="vertical-align: inherit;">
+            替换</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">192.168.0.1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">当您拥有包含由路由器分隔的不同网络的Kerberos领域时，通常会发生这种情况。
+            </font></font></p>
+
+          </li>
+<li class="steps">
+          
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    允许客户端自动确定Realm的KDC的最佳方法是使用DNS SRV记录。</font><font style="vertical-align: inherit;">将以下内容添加到 
+             </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/named/db.example.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+            </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">_kerberos._udp.EXAMPLE.COM。</font><font style="vertical-align: inherit;">IN SRV 1 0 88 kdc01.example.com。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+_kerberos._tcp.EXAMPLE.COM。</font><font style="vertical-align: inherit;">IN SRV 1 0 88 kdc01.example.com。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+_kerberos._udp.EXAMPLE.COM。</font><font style="vertical-align: inherit;">IN SRV 10 0 88 kdc02.example.com。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+_kerberos._tcp.EXAMPLE.COM。</font><font style="vertical-align: inherit;">IN SRV 10 0 88 kdc02.example.com。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+_kerberos-adm._tcp.EXAMPLE.COM。</font><font style="vertical-align: inherit;">IN SRV 1 0 749 kdc01.example.com。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+_kpasswd._udp.EXAMPLE.COM。</font><font style="vertical-align: inherit;">IN SRV 1 0 464 kdc01.example.com。</font></font><font></font>
+</pre></div>
+
+            <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EXAMPLE.COM</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdc01</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdc02替换</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为您的域名，主KDC和辅助KDC。
+              </font></font></p>
+            </div></div></div></div>
+
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            有关</font><font style="vertical-align: inherit;">设置DNS的详细说明，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="dns.html" title="域名服务（DNS）"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名服务（DNS）</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+            </font></font></p>
+
+          </li>
+</ol></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        您的新Kerberos Realm现在可以对客户端进行身份验证。
+        </font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="kerberos-secondary-kdc"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中学KDC</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      在网络上有一个密钥分发中心（KDC）后，最好在主服务器不可用时使用辅助KDC。</font><font style="vertical-align: inherit;">此外，如果您的Kerberos客户端位于不同的网络中（可能由使用NAT的路由器分隔），则最好在每个网络中放置一个辅助KDC。
+      </font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+        
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        首先，安装软件包，当要求输入Kerberos和Admin服务器名称时，输入主KDC的名称：        
+        </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install krb5-kdc krb5-admin-server</font></font></span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        安装软件包后，创建辅助KDC的主机主体。</font><font style="vertical-align: inherit;">在终端提示符下输入：
+        </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kadmin -q“addprinc -randkey host / kdc02.example.com”</font></font></span>
+</pre></div>
+    
+        <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          发出任何</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kadmin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令</font><font style="vertical-align: inherit;">后，系统</font><font style="vertical-align: inherit;">将提示您 
+           </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">输入username/admin@EXAMPLE.COM</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主密码。
+          </font></font></p>
+        </div></div></div></div>
+      
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          解压缩</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">keytab</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kadmin -q“ktadd -norandkey -k keytab.kdc02 host / kdc02.example.com”</font></font></span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          现在应该</font><font style="vertical-align: inherit;">在当前目录中</font><font style="vertical-align: inherit;">有一个</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">keytab.kdc02</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，将文件移动到 
+           </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/krb5.keytab</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mv keytab.kdc02 /etc/krb5.keytab</font></font></span>
+</pre></div>
+
+          <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            如果</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">keytab.kdc02</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件</font><font style="vertical-align: inherit;">的路径</font><font style="vertical-align: inherit;">不同，则相应调整。 
+            </font></font></p>
+          </div></div></div></div>
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          此外，您可以在Keytab文件中列出主体，这在使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">klist</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序进行</font><font style="vertical-align: inherit;">故障排除时非常有用 
+           </font><font style="vertical-align: inherit;">：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo klist -k /etc/krb5.keytab</font></font></span>
+</pre></div>
+
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-k</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项表示该文件是一个密钥表文件。
+            </font></font></p>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          接下来，</font><font style="vertical-align: inherit;">每个KDC上都</font><font style="vertical-align: inherit;">需要一个</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kpropd.acl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件，列出了Realm的所有KDC。</font><font style="vertical-align: inherit;">例如，在主KDC和辅助KDC上，创建</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/krb5kdc/kpropd.acl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+          </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">host/kdc01.example.com@EXAMPLE.COM</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+host/kdc02.example.com@EXAMPLE.COM</font></font><font></font>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">辅助KDC</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上创建一个空数据库</font><font style="vertical-align: inherit;">：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo kdb5_util -s create</font></font></span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          现在启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kpropd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护程序，它侦听来自</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kprop</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序的</font><font style="vertical-align: inherit;">连接 
+           </font><font style="vertical-align: inherit;">。  </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kprop</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于传输转储文件：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo kpropd -S</font></font></span>
+</pre></div>
+      
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          从</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主KDC</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上的终端</font><font style="vertical-align: inherit;">，创建主体数据库的转储文件：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo kdb5_util dump / var / lib / krb5kdc / dump</font></font></span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          解压缩主KDC的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">keytab</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件并将其复制到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/krb5.keytab</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kadmin -q“ktadd -k keytab.kdc01 host / kdc01.example.com” </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mv keytab.kdc01 /etc/krb5.keytab</font></font></span>
+</pre></div>
+
+          <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            确保有一个</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主机</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kdc01.example.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提取密钥表之前。
+            </font></font></p>
+          </div></div></div></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kprop</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序将数据库推送到辅助KDC：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo kprop -r EXAMPLE.COM -f / var / lib / krb5kdc / dump kdc02.example.com</font></font></span>
+</pre></div>
+
+          <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            应该有一个</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SUCCEEDED</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">消息，如果传播的工作。</font><font style="vertical-align: inherit;">如果有错误消息，请检查</font><font style="vertical-align: inherit;">辅助KDC上的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / log / syslog</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以获取更多信息。
+            </font></font></p>
+          </div></div></div></div>
+      
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          您可能还希望创建一个</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cron</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">作业，以定期更新辅助KDC上的数据库。</font><font style="vertical-align: inherit;">例如，以下内容将每小时推送数据库（请注意，长行已拆分以适合此文档的格式）：
+          </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#mh dom mon dow命令</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+0 * * * * / usr / sbin / kdb5_util dump / var / lib / krb5kdc / dump &amp;&amp; </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/ usr / sbin / kprop -r EXAMPLE.COM -f / var / lib / krb5kdc / dump kdc02.example.com</font></font><font></font>
+</pre></div>
+  
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          返回</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">辅助KDC</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，创建一个</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">存储</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件以保存Kerberos主密钥：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo kdb5_util stash</font></font></span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          最后，</font><font style="vertical-align: inherit;">在辅助KDC上</font><font style="vertical-align: inherit;">启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5-kdc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护程序：
+          </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl start krb5-kdc.service</font></font></span>
+</pre></div>
+
+        </li>
+</ol></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      本</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">次KDC</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">现在应该能够发出门票境界。</font><font style="vertical-align: inherit;">您可以通过停止</font><font style="vertical-align: inherit;">主KDC上</font><font style="vertical-align: inherit;">的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5-kdc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护程序，然后使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kinit</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请求票证</font><font style="vertical-align: inherit;">来测试这一点</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果一切顺利，您应该从中学KDC收到一张票。</font><font style="vertical-align: inherit;">否则，请检查</font><font style="vertical-align: inherit;">辅助KDC中的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / log / syslog</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和
+       </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/log/auth.log</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+      </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="kerberos-linux-client"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kerberos Linux客户端</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      本节介绍如何将Linux系统配置为</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kerberos</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">客户端。</font><font style="vertical-align: inherit;">一旦用户成功登录系统，这将允许访问任何kerberized服务。
+      </font></font></p></div>
+<div class="sect3 sect" id="kerberos-client-installation"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        为了对Kerberos领域进行身份验证，需要使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5-user</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libpam-krb5</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+        软件包，以及其他一些不是绝对必要但使生活更轻松的软件包。</font><font style="vertical-align: inherit;">要安装软件包，请在终端提示符中输入以下内容：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install krb5-user libpam-krb5 libpam-ccreds auth-client-config</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AUTH-客户端配置</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包允许从多个来源的身份验证PAM的简单配置，以及</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libpam将-ccreds</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将缓存身份验证凭据让您在登录的情况下密钥分发中心（KDC）是不可用的。</font><font style="vertical-align: inherit;">此软件包对于可以在公司网络上使用Kerberos进行身份验证的笔记本电脑也很有用，但也需要通过网络访问。
+        </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="kerberos-client-configuration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        要在终端中配置客户端，请输入：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo dpkg-reconfigure krb5-config</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        然后，系统将提示您输入Kerberos领域的名称。</font><font style="vertical-align: inherit;">此外，如果您没有使用Kerberos </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SRV</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">记录</font><font style="vertical-align: inherit;">配置DNS 
+         </font><font style="vertical-align: inherit;">，则菜单将提示您输入密钥分发中心（KDC）和域管理服务器的主机名。
+        </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的dpkg-重新配置</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">条目添加到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的/etc/krb5.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您境界文件。</font><font style="vertical-align: inherit;">您应该具有类似于以下内容的条目：
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[libdefaults]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        default_realm = EXAMPLE.COM</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[领域]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        EXAMPLE.COM = {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                kdc = 192.168.0.1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                admin_server = 192.168.0.1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        }</font></font><font></font>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  如果您按照</font></font><a class="xref" href="kerberos.html#kerberos-server-installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装中的</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">建议将每个经过网络身份验证的用户的uid设置为5000，那么 
+	   </font><font style="vertical-align: inherit;">您可以告诉pam仅尝试使用uid&gt; 5000的Kerberos用户进行身份验证：
+	  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃Kerberos只应该应用于ldap / kerberos用户，而不是本地用户。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+for i in common-auth common-session common-account common-password; </font><font style="vertical-align: inherit;">做</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ sudo sed -i -r \ </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ -e's / pam_krb5.so minimum_uid = 1000 / pam_krb5.so minimum_uid = 5000 /'\ </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ /etc/pam.d/$i </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+DONE </font></font></span>
+</pre></div>
+	  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  这将避免在使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">passwd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更改其密码时被要求提供本地身份验证用户的（不存在的）Kerberos密码</font><font style="vertical-align: inherit;">。
+	  </font></font></p>
+	</div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        您可以使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kinit</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序</font><font style="vertical-align: inherit;">请求票证来测试配置</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">例如：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kinit steve@EXAMPLE.COM steve@EXAMPLE.COM </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">密码：</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        授予票证后，可以使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">klist</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查看详细信息</font><font style="vertical-align: inherit;">：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">klist </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">票证缓存：FILE：/ tmp / krb5cc_1000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+默认主体：steve@EXAMPLE.COM</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+有效的起始过期服务主体</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+07/24/08 05:18:56 07/24/08 15:18:56 krbtgt/EXAMPLE.COM@EXAMPLE.COM</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        续约至07/25/08 05:18:57</font></font><font></font>
+<font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+Kerberos 4票证缓存：/ tmp / tkt1000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+klist：你没有缓存的门票</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        接下来，使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">auth-client-config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libpam-krb5</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模块以在登录期间请求票证：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo auth-client-config -a -p kerberos_example</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        现在，您应该在成功登录身份验证后收到票证。 
+        </font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="kerberos-resources"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关MIT版Kerberos的更多信息，请参阅</font></font><a href="http://web.mit.edu/Kerberos/" class="ulink" title="http://web.mit.edu/Kerberos/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MIT Kerberos</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">站点。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          在</font></font><a href="https://help.ubuntu.com/community/Kerberos" class="ulink" title="https://help.ubuntu.com/community/Kerberos"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu的维基Kerberos的</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">页面有更多的细节。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          O'Reilly的</font></font><a href="http://oreilly.com/catalog/9780596004033/" class="ulink" title="http://oreilly.com/catalog/9780596004033/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kerberos：The Definitive Guide</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是设置Kerberos时的一个很好的参考。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          另外，</font><font style="vertical-align: inherit;">  
+          如果您有Kerberos问题</font><font style="vertical-align: inherit;">，请随意停止</font><a href="http://freenode.net/" class="ulink" title="http://freenode.net/"><font style="vertical-align: inherit;">Freenode</font></a><font style="vertical-align: inherit;"> 
+	  上</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃ubuntu-server</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+	  和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#kerberos</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> IRC频道</font><font style="vertical-align: inherit;">。
+          </font></font><a href="http://freenode.net/" class="ulink" title="http://freenode.net/"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+        </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="samba-ldap.html" title="Samba和LDAP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="kerberos-ldap.html" title="Kerberos和LDAP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

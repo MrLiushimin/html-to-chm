@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>As a Domain Controller</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="samba.html" title="Samba">Samba</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="samba-fileprint-security.html" title="Securing File and Print Server">Previous</a><a class="nextlinks-next" href="samba-ad-integration.html" title="Active Directory Integration">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">As a Domain Controller</h1></div>
+<div class="region">
+<div class="contents"><p class="para">
+    A Samba server can be configured to
+    appear as a Windows NT4-style domain controller.  A major advantage of this configuration is the ability to centralize 
+    user and machine credentials.  Samba can also use multiple backends to store the user information.
+    </p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="samba-dc.html#samba-pdc-smbpasswd" title="Primary Domain Controller">Primary Domain Controller</a></li>
+<li class="links"><a class="xref" href="samba-dc.html#samba-bdc-smbpasswd" title="Backup Domain Controller">Backup Domain Controller</a></li>
+<li class="links"><a class="xref" href="samba-dc.html#samba-dc-resources" title="Resources">Resources</a></li>
+</ul></div>
+<div class="sect2 sect" id="samba-pdc-smbpasswd"><div class="inner">
+<div class="hgroup"><h2 class="title">Primary Domain Controller</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      This section covers configuring Samba as a Primary Domain Controller (PDC) using the default smbpasswd backend.
+      </p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+
+          <p class="para">
+          First, install Samba, and <span class="app application">libpam-winbind</span> to sync the user accounts,
+          by entering the following in a terminal prompt:
+          </p>
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install samba libpam-winbind</span>
+</pre></div>
+        
+        </li>
+<li class="steps">
+
+          <p class="para">
+          Next, configure Samba by editing <span class="file filename">/etc/samba/smb.conf</span>. 
+          The <span class="em emphasis">security</span> mode should be set to <span class="em emphasis">user</span>, and
+          the <span class="em emphasis">workgroup</span> should relate to your organization:
+          </p>
+
+<div class="code"><pre class="contents ">   workgroup = EXAMPLE
+   ...
+   security = user
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para">
+          In the commented <span class="quote">“Domains”</span> section add or uncomment the following (the last line has been split to fit the format of this document):
+          </p>
+
+<div class="code"><pre class="contents ">   domain logons = yes
+   logon path = \\%N\%U\profile
+   logon drive = H:
+   logon home = \\%N\%U
+   logon script = logon.cmd
+   add machine script = sudo /usr/sbin/useradd -N -g machines -c Machine -d
+         /var/lib/samba -s /bin/false %u
+</pre></div>
+
+          <div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+            <p class="para">
+            If you wish to not use <span class="em emphasis">Roaming Profiles</span> leave the <span class="em emphasis">logon home</span>
+            and <span class="em emphasis">logon path</span> options commented.
+            </p>
+          </div></div></div></div>
+ 
+          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis">domain logons:</span> provides the netlogon service causing Samba to act as a domain controller.
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis">logon path:</span> places the user's Windows profile into their home directory.  It is also
+              possible to configure a <span class="em emphasis">[profiles]</span> share placing all profiles under a single directory.
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis">logon drive:</span> specifies the home directory local path.
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis">logon home:</span> specifies the home directory location.
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis">logon script:</span> determines the script to be run locally once a user has logged in.
+              The script needs to be placed in the <span class="em emphasis">[netlogon]</span> share. 
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis">add machine script:</span> a script that will automatically create the 
+              <span class="em emphasis">Machine Trust Account</span> needed for a workstation to join the domain.
+              </p>
+              <p class="para">
+              In this example the <span class="em emphasis">machines</span> group will need to be created using the 
+              <span class="app application">addgroup</span> utility see <a class="xref" href="user-management.html#adding-deleting-users" title="Adding and Deleting Users">Adding and Deleting Users</a> for details.
+              </p>
+
+            </li>
+</ul></div>
+
+        </li>
+<li class="steps">
+     
+          <p class="para">
+          Uncomment the <span class="em emphasis">[homes]</span> share to allow the <span class="em emphasis">logon home</span>
+          to be mapped:
+          </p>
+
+<div class="code"><pre class="contents ">[homes]
+   comment = Home Directories
+   browseable = no
+   read only = no
+   create mask = 0700
+   directory mask = 0700
+   valid users = %S
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para">
+          When configured as a domain controller a <span class="em emphasis">[netlogon]</span> share needs to be configured.  To 
+          enable the share, uncomment:
+          </p>
+
+<div class="code"><pre class="contents ">[netlogon]
+   comment = Network Logon Service
+   path = /srv/samba/netlogon
+   guest ok = yes
+   read only = yes
+   share modes = no
+</pre></div>
+
+          <div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+            <p class="para">
+            The original <span class="em emphasis">netlogon</span> share path is <span class="file filename">/home/samba/netlogon</span>, but according 
+            to the Filesystem Hierarchy Standard (FHS), 
+            <a href="http://www.pathname.com/fhs/pub/fhs-2.3.html#SRVDATAFORSERVICESPROVIDEDBYSYSTEM" class="ulink" title="http://www.pathname.com/fhs/pub/fhs-2.3.html#SRVDATAFORSERVICESPROVIDEDBYSYSTEM">/srv</a> is the 
+            correct location for site-specific data provided by the system.
+            </p>
+          </div></div></div></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para">
+          Now create the <span class="file filename">netlogon</span> directory, and an empty (for now) 
+          <span class="file filename">logon.cmd</span> script file:
+          </p> 
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo mkdir -p /srv/samba/netlogon</span>
+<span class="cmd command">sudo touch /srv/samba/netlogon/logon.cmd</span>
+</pre></div>
+ 
+          <p class="para">
+          You can enter any normal Windows logon script commands in <span class="file filename">logon.cmd</span> to customize the
+          client's environment.
+          </p>
+
+        </li>
+<li class="steps">
+
+          <p class="para">
+          Restart Samba to enable the new domain controller:
+          </p> 
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart smbd.service nmbd.service</span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para">
+          Lastly, there are a few additional commands needed to setup the appropriate rights.
+          </p>
+
+          <p class="para">
+          With <span class="em emphasis">root</span> being disabled by default, in order to join a workstation to the domain, a system
+          group needs to be mapped to the Windows <span class="em emphasis">Domain Admins</span> group.  
+          Using the <span class="app application">net</span> utility, from a terminal enter:
+          </p>
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo net groupmap add ntgroup="Domain Admins" unixgroup=sysadmin rid=512 type=d</span>
+</pre></div>
+
+          <div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+            <p class="para">
+            Change <span class="em emphasis">sysadmin</span> to whichever group you prefer.  Also, the user
+            used to join the domain needs to be a member of the <span class="em emphasis">sysadmin</span> group, as well 
+            as a member of the system <span class="em emphasis">admin</span> group.  The <span class="em emphasis">admin</span> group allows 
+            <span class="app application">sudo</span> use.  
+            </p>
+            <p class="para">
+            If the user does not have Samba credentials yet, you can add them with
+            the <span class="app application">smbpasswd</span> utility, change the <span class="em emphasis">sysadmin</span> username appropriately:
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo smbpasswd -a sysadmin</span>
+</pre></div>
+            </p>
+          </div></div></div></div>
+
+          <p class="para">
+          Also, rights need to be explicitly provided to the <span class="em emphasis">Domain Admins</span> group to allow the 
+          <span class="em emphasis">add machine script</span> (and other admin functions) to work. This is achieved by executing:
+          </p>
+<div class="screen"><pre class="contents "><span class="cmd command">net rpc rights grant -U sysadmin "EXAMPLE\Domain Admins" SeMachineAccountPrivilege \
+SePrintOperatorPrivilege SeAddUsersPrivilege SeDiskOperatorPrivilege \
+SeRemoteShutdownPrivilege</span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para">
+          You should now be able to join Windows clients to the Domain in the same manner as joining them to an 
+          NT4 domain running on a Windows server.
+          </p>
+
+        </li>
+</ol></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="samba-bdc-smbpasswd"><div class="inner">
+<div class="hgroup"><h2 class="title">Backup Domain Controller</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      With a Primary Domain Controller (PDC) on the network it is best to have a Backup Domain Controller (BDC) as well.
+      This will allow clients to authenticate in case the PDC becomes unavailable.
+      </p>
+<p class="para">
+      When configuring Samba as a BDC you need a way to sync account information with the PDC.  There are multiple ways of 
+      accomplishing this <span class="app application">scp</span>, <span class="app application">rsync</span>, or by using <span class="app application">LDAP</span> as
+      the <span class="em emphasis">passdb backend</span>.
+      </p>
+<p class="para">
+      Using LDAP is the most robust way to sync account information, because both domain controllers can use the same information in real time.
+      However, setting up a LDAP server may be overly complicated for a small number of user and computer accounts.  
+      See <a class="xref" href="samba-ldap.html" title="Samba and LDAP">Samba and LDAP</a> for details.
+      </p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+   
+          <p class="para">
+          First, install <span class="app application">samba</span> and <span class="app application">libpam-winbind</span>.  From a terminal enter:
+          </p>
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install samba libpam-winbind</span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para">
+          Now, edit <span class="file filename">/etc/samba/smb.conf</span> and uncomment the following in the <span class="em emphasis">[global]</span>:
+          </p>
+
+<div class="code"><pre class="contents ">   workgroup = EXAMPLE
+   ...
+   security = user
+</pre></div>
+
+        </li>
+<li class="steps">
+
+        <p class="para">
+        In the commented <span class="em emphasis">Domains</span> uncomment or add:
+        </p>
+
+<div class="code"><pre class="contents ">   domain logons = yes
+   domain master = no
+</pre></div>
+        
+        </li>
+<li class="steps">
+
+          <p class="para">
+          Make sure a user has rights to read the files in <span class="file filename">/var/lib/samba</span>.  For example, to allow users in the 
+          <span class="em emphasis">admin</span> group to <span class="app application">scp</span> the files, enter:
+          </p>
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo chgrp -R admin /var/lib/samba</span>
+</pre></div>
+
+        </li>
+<li class="steps">
+
+          <p class="para">
+          Next, sync the user accounts, using <span class="app application">scp</span> to copy the <span class="file filename">/var/lib/samba</span> 
+          directory from the PDC:
+          </p>
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo scp -r username@pdc:/var/lib/samba /var/lib</span>
+</pre></div>
+
+          <div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+            <p class="para">
+            Replace <span class="em emphasis">username</span> with a valid username and <span class="em emphasis">pdc</span> with the hostname or IP Address of your
+            actual PDC. 
+            </p>
+          </div></div></div></div>
+
+        </li>
+<li class="steps">
+          
+          <p class="para">
+          Finally, restart <span class="app application">samba</span>:
+          </p>
+
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart smbd.service nmbd.service</span>
+</pre></div>
+
+        </li>
+</ol></div></div>
+<p class="para">
+      You can test that your Backup Domain controller is working by stopping the Samba daemon on the PDC, then trying to login to a 
+      Windows client joined to the domain.
+      </p>
+<p class="para">
+      Another thing to keep in mind is if you have configured the <span class="em emphasis">logon home</span> option as a directory on the PDC,
+      and the PDC becomes unavailable, access to the user's <span class="em emphasis">Home</span> drive will also be unavailable.  For this reason
+      it is best to configure the <span class="em emphasis">logon home</span> to reside on a separate file server from the PDC and BDC.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="samba-dc-resources"><div class="inner">
+<div class="hgroup"><h2 class="title">Resources</h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para">
+          For in depth Samba configurations see the 
+          <a href="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/" class="ulink" title="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/">Samba HOWTO Collection</a>
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          The guide is also available in 
+          <a href="http://www.amazon.com/exec/obidos/tg/detail/-/0131882228" class="ulink" title="http://www.amazon.com/exec/obidos/tg/detail/-/0131882228">printed format</a>.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          O'Reilly's <a href="http://www.oreilly.com/catalog/9780596007690/" class="ulink" title="http://www.oreilly.com/catalog/9780596007690/">Using Samba</a> is also a good
+          reference.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <a href="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/samba-pdc.html" class="ulink" title="http://samba.org/samba/docs/man/Samba-HOWTO-Collection/samba-pdc.html">Chapter 4</a> 
+          of the Samba HOWTO Collection explains setting up a Primary Domain Controller.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <a href="http://us3.samba.org/samba/docs/man/Samba-HOWTO-Collection/samba-bdc.html" class="ulink" title="http://us3.samba.org/samba/docs/man/Samba-HOWTO-Collection/samba-bdc.html">Chapter 5</a> 
+          of the Samba HOWTO Collection explains setting up a Backup Domain Controller.
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          The <a href="https://help.ubuntu.com/community/Samba" class="ulink" title="https://help.ubuntu.com/community/Samba">Ubuntu Wiki Samba </a> page.
+          </p>
+        </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="samba-fileprint-security.html" title="Securing File and Print Server">Previous</a><a class="nextlinks-next" href="samba-ad-integration.html" title="Active Directory Integration">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

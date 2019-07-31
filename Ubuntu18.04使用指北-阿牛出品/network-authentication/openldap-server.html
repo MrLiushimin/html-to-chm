@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>OpenLDAP服务器</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="network-authentication.html" title="网络身份验证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络身份验证</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="network-authentication.html" title="网络身份验证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="samba-ldap.html" title="Samba和LDAP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenLDAP服务器</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	轻量级目录访问协议（LDAP）是用于查询和修改通过TCP / IP运行的基于X.500的目录服务的协议。</font><font style="vertical-align: inherit;">当前的LDAP版本是LDAPv3，如</font></font><a href="http://tools.ietf.org/html/rfc4510" class="ulink" title="http://tools.ietf.org/html/rfc4510"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">RFC4510中</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所定义</font><font style="vertical-align: inherit;">，Ubuntu中的实现是OpenLDAP。“
+    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	因此LDAP协议访问LDAP目录。</font><font style="vertical-align: inherit;">以下是一些关键概念和术语：
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		LDAP目录是一种数据</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">条目</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">树，</font><font style="vertical-align: inherit;">本质上是分层的，称为目录信息树（DIT）。
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		条目由一组</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性组成</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		属性具有</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">类型</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（名称/描述）和一个或多个</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">值</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		必须在至少一个</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objectClass中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">定义每个属性</font><font style="vertical-align: inherit;">。
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		属性和对象类在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模式</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中定义</font><font style="vertical-align: inherit;">（对象类实际上被视为一种特殊的属性）。
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		每个条目都有一个唯一的标识符：其可</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分辨名称</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（DN或dn）。</font><font style="vertical-align: inherit;">反过来，这包括一个</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">相对专有名称</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（RDN），后跟父条目的DN。
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		条目的DN不是属性。</font><font style="vertical-align: inherit;">它不被视为条目本身的一部分。
+		</font></font></p>
+		</li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		术语</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对象</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">容器</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">节点</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">具有某些内涵，但它们基本上与</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">入口</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">相同</font><font style="vertical-align: inherit;">，即技术上正确的术语。
+		</font></font></p>
+	</div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	例如，下面我们有一个由11个属性组成的条目，其中满足以下条件：
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist" style="list-style-type: disc">
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		DN是“cn = John Doe，dc = example，dc = com”
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		RDN是“cn = John Doe”
+		</font></font></p>
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		父DN是“dc = example，dc = com”
+		</font></font></p>
+		</li>
+</ul></div>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> dn：cn = John Doe，dc = example，dc = com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ cn：John Doe</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ givenName：约翰</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ sn：Doe</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 电话号码：+1 888 555 6789</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 电话号码：+1 888 555 1232</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ mail：john@example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 经理：cn = Larry Smith，dc = example，dc = com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ objectClass：inetOrgPerson</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ objectClass：organizationalPerson</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ objectClass：person</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ objectClass：顶部</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	以上条目采用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LDIF</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">格式（LDAP数据交换格式）。</font><font style="vertical-align: inherit;">您提供给DIT的任何信息也必须采用这种格式。</font><font style="vertical-align: inherit;">它在</font></font><a href="http://tools.ietf.org/html/rfc2849" class="ulink" title="http://tools.ietf.org/html/rfc2849"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">RFC2849中</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">定义</font><font style="vertical-align: inherit;">。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        虽然本指南将介绍如何将其用于集中身份验证，但LDAP适用于涉及对大多数读取，基于属性（名称：值）后端的大量访问请求的任何内容。</font><font style="vertical-align: inherit;">示例包括地址簿，电子邮件地址列表和邮件服务器配置。
+        </font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="openldap-server.html#openldap-server-installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a></li>
+<li class="links"><a class="xref" href="openldap-server.html#openldap-server-postinstall" title="安装后检查"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装后检查</font></font></a></li>
+<li class="links"><a class="xref" href="openldap-server.html#openldap-server-populate" title="修改/填充数据库"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改/填充数据库</font></font></a></li>
+<li class="links"><a class="xref" href="openldap-server.html#openldap-configuration" title="修改slapd配置数据库"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改slapd配置数据库</font></font></a></li>
+<li class="links"><a class="xref" href="openldap-server.html#openldap-server-logging" title="记录"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">记录</font></font></a></li>
+<li class="links"><a class="xref" href="openldap-server.html#openldap-server-replication" title="复制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">复制</font></font></a></li>
+<li class="links"><a class="xref" href="openldap-server.html#openldap-server-acl" title="访问控制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">访问控制</font></font></a></li>
+<li class="links"><a class="xref" href="openldap-server.html#openldap-tls" title="TLS"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TLS</font></font></a></li>
+<li class="links"><a class="xref" href="openldap-server.html#openldap-tls-replication" title="复制和TLS"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">复制和TLS</font></font></a></li>
+<li class="links"><a class="xref" href="openldap-server.html#openldap-auth-config" title="LDAP身份验证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LDAP身份验证</font></font></a></li>
+<li class="links"><a class="xref" href="openldap-server.html#ldap-usergroup-management" title="用户和组管理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户和组管理</font></font></a></li>
+<li class="links"><a class="xref" href="openldap-server.html#ldap-backup" title="备份还原"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">备份还原</font></font></a></li>
+<li class="links"><a class="xref" href="openldap-server.html#openldap-server-resources" title="资源"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="openldap-server-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	安装OpenLDAP服务器守护程序和传统的LDAP管理实用程序。</font><font style="vertical-align: inherit;">这些可以分别在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldap-utils</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包中找到</font><font style="vertical-align: inherit;">。 
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        slapd的安装将创建一个工作配置。</font><font style="vertical-align: inherit;">特别是，它将创建一个可用于存储数据的数据库实例。</font><font style="vertical-align: inherit;">但是，此实例的后缀（或基本DN）将根据主机的域名确定。</font><font style="vertical-align: inherit;">如果您想要不同的东西，您可以在安装后立即更改它，但仍然没有任何有用的数据。
+	</font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		本指南将使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dc = example，dc = com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的数据库后缀</font><font style="vertical-align: inherit;">。
+		</font></font></p>
+	</div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	继续安装：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install slapd ldap-utils</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        如果你想改变你的DIT后缀，现在是个好时机，因为更改它会丢弃现有的后缀。</font><font style="vertical-align: inherit;">要更改后缀，请运行以下命令：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo dpkg-reconfigure slapd</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">例如，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+        要将DIT后缀切换为</font><span class="em emphasis"><font style="vertical-align: inherit;">dc = example，dc = com</font></span><font style="vertical-align: inherit;">，以便更密切地遵循本指南，</font><font style="vertical-align: inherit;">当询问DNS域名时，请</font><font style="vertical-align: inherit;">回答</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">example.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+        </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        由于Ubuntu 8.10 slapd旨在通过为此目的专用单独的DIT来配置slapd本身。</font><font style="vertical-align: inherit;">这允许人们动态配置slapd而无需重新启动服务。</font><font style="vertical-align: inherit;">此配置数据库由位于</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ldap/slapd.d</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下的一组基于文本的LDIF文件组成</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这种工作方式有几个名称：slapd-config方法，RTC方法（实时配置）或cn = config方法。</font><font style="vertical-align: inherit;">您仍然可以使用传统的平面文件方法（slapd.conf），但不建议这样做; </font><font style="vertical-align: inherit;">功能最终将被淘汰。
+        </font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		Ubuntu现在使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapd-config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">方法进行slapd配置，本指南反映了这一点。
+		</font></font></p>
+	</div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 	在安装过程中，系统会提示您定义管理凭据。</font><font style="vertical-align: inherit;">这些是</font><font style="vertical-align: inherit;">
+	数据库实例</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rootDN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的</font><font style="vertical-align: inherit;">基于LDAP的凭据</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">默认情况下，此用户的DN为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = admin，dc = example，dc = com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">此外，默认情况下，没有为slapd-config数据库创建管理帐户，因此您需要在LDAP外部进行身份验证才能访问它。</font><font style="vertical-align: inherit;">我们稍后会看到如何做到这一点。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	现在，一些经典的模式（余弦，nis，inetorgperson）内置了slapd。</font><font style="vertical-align: inherit;">还有一个包含“核心”架构，这是任何架构工作的先决条件。
+	</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="openldap-server-postinstall"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装后检查</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	安装过程设置了2个DIT。</font><font style="vertical-align: inherit;">一个用于slapd-config，另一个用于您自己的数据（dc = example，dc = com）。</font><font style="vertical-align: inherit;">让我们来看看。
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		这就是slapd-config数据库/ DIT的样子。</font><font style="vertical-align: inherit;">回想一下，这个数据库是基于LDIF的，位于</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ldap/slapd.d</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下</font><font style="vertical-align: inherit;">：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/cn=config.ldif</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/cn=config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/cn=config/cn=schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/cn=config/cn=schema/cn={1}cosine.ldif</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/cn=config/cn=schema/cn={0}core.ldif</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/cn=config/cn=schema/cn={2}nis.ldif</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/cn=config/cn=schema/cn={3}inetorgperson.ldif</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/cn=config/cn=module{0}.ldif</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/cn=config/olcDatabase={0}config.ldif</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/cn=config/olcDatabase={-1}frontend.ldif</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/cn=config/olcDatabase={1}mdb.ldif</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/cn=config/olcBackend={0}mdb.ldif</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    /etc/ldap/slapd.d/cn=config/cn=schema.ldif</font></font><font></font>
+</span>
+</pre></div>
+
+	<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		不要直接编辑slapd-config数据库。</font><font style="vertical-align: inherit;">通过LDAP协议（实用程序）进行更改。
+		</font></font></p>
+	</div></div></div></div>
+
+		</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		这就是slapd-config DIT通过LDAP协议看起来的样子：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapsearch -Q -LLL -Y EXTERNAL -H ldapi：/// -b cn = config dn</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn =模块{0}，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = {0} core，cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = {1}余弦，cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = {2} nis，cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = {3} inetorgperson，cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcBackend = {0} mdb，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcDatabase = { -  1}前端，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcDatabase = {0} config，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcDatabase = {1} mdb，cn = config</font></font><font></font>
+</span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		参赛作品说明：
+		</font></font></p>
+
+		<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：全局设置
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = module {0}，cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：动态加载的模块
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = schema，cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：包含硬编码的系统级模式
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = {0} core，cn = schema，cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：硬编码的核心模式
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = {1}余弦，cn = schema，cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：余弦架构
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = {2} nis，cn = schema，cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：nis架构
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = {3} inetorgperson，cn = schema，cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：inetorgperson模式
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">olcBackend = {0} mdb，cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：'mdb'后端存储类型
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">olcDatabase = { -  1}前端，cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：前端数据库，其他数据库的默认设置
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">olcDatabase = {0} config，cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：slapd配置数据库（cn = config）
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">olcDatabase = {1} mdb，cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：您的数据库实例（dc = example，dc = com）
+			</font></font></p>
+			</li>
+</ul></div>
+
+		</li>
+<li class="list itemizedlist">
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		这就是dc = example，dc = com DIT的样子：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapsearch -x -LLL -H ldap：/// -b dc = example，dc = com dn</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：dc = example，dc = com</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = admin，dc = example，dc = com</font></font><font></font>
+</span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		参赛作品说明：
+		</font></font></p>
+
+		<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dc = example，dc = com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：DIT的基础
+			</font></font></p>
+			</li>
+<li class="list itemizedlist">
+			<p class="para">
+			<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = admin，dc = example，dc = com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：此DIT的管理员（rootDN）（在程序包安装期间设置）
+			</font></font></p>
+			</li>
+</ul></div>
+
+		</li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="openldap-server-populate"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改/填充数据库</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	我们将一些内容介绍给我们的数据库。</font><font style="vertical-align: inherit;">我们将添加以下内容：
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	一个名为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">People</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的节点</font><font style="vertical-align: inherit;">（用于存储用户）
+	</font></font></p>
+        </li>
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	一个名为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Groups</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的节点</font><font style="vertical-align: inherit;">（用于存储组）
+	</font></font></p>
+        </li>
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	一个叫</font><span class="em emphasis"><font style="vertical-align: inherit;">矿工</font></span><font style="vertical-align: inherit;">的团体</font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span>
+	</p>
+        </li>
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	一个叫</font><span class="em emphasis"><font style="vertical-align: inherit;">john</font></span><font style="vertical-align: inherit;">的用户</font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span>
+	</p>
+        </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	创建以下LDIF文件并将其</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命名为add_content.ldif</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dn：ou = People，dc = example，dc = com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：organizationalUnit</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ou：人</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：ou = Groups，dc = example，dc = com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：organizationalUnit</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ou：团体</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn =矿工，ou =群组，dc =示例，dc = com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：posixGroup</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn：矿工</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+gidNumber：5000</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：uid = john，ou = People，dc = example，dc = com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：inetOrgPerson</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：posixAccount</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：shadowAccount</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+uid：约翰</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sn：Doe</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+givenName：约翰</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn：John Doe</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+displayName：John Doe</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+uidNumber：10000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+gidNumber：5000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+userPassword：johnldap</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+gecos：John Doe</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+loginShell：/ bin / bash</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+homeDirectory：/ home / john</font></font><font></font>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		重要的是目录中的uid和gid值不会与本地值冲突。</font><font style="vertical-align: inherit;">使用高数字范围，例如从5000开始。通过将lid和gid值设置为ldap，您还可以更轻松地控制本地用户与ldap可以执行的操作。</font><font style="vertical-align: inherit;">稍后会详细介绍。
+		</font></font></p>
+	</div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	添加内容：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapadd -x -D cn = admin，dc = example，dc = com -W -f add_content.ldif </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+输入LDAP密码：</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">********</font></font></span><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+添加新条目“ou = People，dc = example，dc = com”</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+添加新条目“ou = Groups，dc = example，dc = com”</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+添加新条目“cn = miners，ou = Groups，dc = example，dc = com”</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+添加新条目“uid = john，ou = People，dc = example，dc = com”</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	我们可以使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapsearch</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序</font><font style="vertical-align: inherit;">检查信息是否已正确添加</font><font style="vertical-align: inherit;">：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapsearch -x -LLL -b dc = example，dc = com'uid = john'cn gidNumber</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：uid = john，ou = People，dc = example，dc = com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn：John Doe</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+gidNumber：5000</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	开关说明：
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	<p class="para">
+	<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-x：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> “简单”绑定; </font><font style="vertical-align: inherit;">不会使用默认的SASL方法
+	</font></font></p>
+        </li>
+<li class="list itemizedlist">
+	<p class="para">
+	<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-LLL：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">禁用打印无关信息
+	</font></font></p>
+        </li>
+<li class="list itemizedlist">
+	<p class="para">
+	<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uid = john：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于查找john用户的“过滤器”
+	</font></font></p>
+        </li>
+<li class="list itemizedlist">
+	<p class="para">
+	<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn gidNumber：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请求显示某些属性（默认为显示所有属性）
+	</font></font></p>
+        </li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="openldap-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改slapd配置数据库</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       	还可以查询和修改slapd-config DIT。</font><font style="vertical-align: inherit;">这里有一些例子。
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapmodify</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将“Index”（DbIndex属性）添加到</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{1} mdb，cn = config</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	数据库（dc = example，dc = com）。</font><font style="vertical-align: inherit;">使用以下内容</font><font style="vertical-align: inherit;">创建一个文件，名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uid_index.ldif</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：              
+	</font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dn：olcDatabase = {1} mdb，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcDbIndex</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：mail eq，sub</font></font><font></font>
+</pre></div>
+
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	然后发出命令：
+	</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapmodify -Q -Y EXTERNAL -H ldapi：/// -f uid_index.ldif</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+修改条目“olcDatabase = {1} mdb，cn = config”</font></font><font></font>
+</span>
+</pre></div>
+
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	您可以通过以下方式确认更改：
+	</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapsearch -Q -LLL -Y EXTERNAL -H ldapi：/// -b \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn = config'（olcDatabase = {1} mdb）'olcDbIndex</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcDatabase = {1} mdb，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：objectClass eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：cn，uid eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：uidNumber，gidNumber eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：member，memberUid eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：mail eq，sub</font></font><font></font>
+</span>
+</pre></div>
+
+	</li>
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	我们来添加一个架构。</font><font style="vertical-align: inherit;">首先需要将其转换为LDIF格式。</font><font style="vertical-align: inherit;">除了</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / ldap / schema</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录</font><font style="vertical-align: inherit;">中的转换模式之外，您还可以找到未转换的</font><span class="file filename"><font style="vertical-align: inherit;">模式</font></span><font style="vertical-align: inherit;">。
+	</font></font></p>
+
+	<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+        <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	  	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		从slapd-config数据库中删除模式并非易事。</font><font style="vertical-align: inherit;">练习在测试系统上添加模式。
+	  	</font></font></p>
+	</li>
+<li class="list itemizedlist">
+	  	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		在添加任何模式之前，您应该检查已经安装了哪些模式（显示为默认的，开箱即用的输出）：
+	  	</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapsearch -Q -LLL -Y EXTERNAL -H ldapi：/// -b \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn = schema，cn = config dn</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = {0} core，cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = {1}余弦，cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = {2} nis，cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = {3} inetorgperson，cn = schema，cn = config</font></font><font></font>
+</span>
+</pre></div>
+	</li>
+</ul></div>
+	</div></div></div></div>
+
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	在以下示例中，我们将添加CORBA架构。
+	</font></font></p>
+
+	<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">                  
+		创建</font><font style="vertical-align: inherit;">包含以下行</font><font style="vertical-align: inherit;">的转换配置文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">schema_convert.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+		</font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包括/etc/ldap/schema/core.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/collective.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/corba.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/cosine.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/duaconf.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/dyngroup.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/inetorgperson.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/java.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/misc.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/nis.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/openldap.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/ppolicy.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/ldapns.schema</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括/etc/ldap/schema/pmi.schema</font></font><font></font>
+</pre></div>
+
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		创建输出目录</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldif_output</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+		</font></font></p> 
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		确定架构的索引：
+		</font></font></p> 
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapcat -f schema_convert.conf -F ldif_output -n 0 | </font><font style="vertical-align: inherit;">grep corba，cn = schema</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+CN = {2} CORBA，CN =架构，CN =配置</font></font><font></font>
+</span>
+</pre></div>
+
+		<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+			<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			当slapd使用相同的父DN接收对象时，它将</font><font style="vertical-align: inherit;">为该对象</font><font style="vertical-align: inherit;">创建</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">索引</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">索引包含在大括号中：</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{X}</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+			</font></font></p>
+		</div></div></div></div>
+
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapcat</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">执行转换：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapcat -f schema_convert.conf -F ldif_output -n0 -H \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ldap：/// cn = {2} corba，cn = schema，cn = config -l cn = corba.ldif</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		转换后的模式现在位于</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = corba.ldif中</font></font></span>
+		</p>
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn = corba.ldif</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以获得以下属性：
+		</font></font></p> 
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dn：cn = corba，cn = schema，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn：corba</font></font><font></font>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		同时从底部删除以下行：
+		</font></font></p> 
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">structuralObjectClass：olcSchemaConfig</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+entryUUID：52109a02-66ab-1030-8be2-bbf166230478</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+creatorsName：cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+createTimestamp：20110829165435Z</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+entryCSN：20110829165435.935248Z＃000000＃000＃000000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+modifiersName：cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+modifyTimestamp：20110829165435Z</font></font><font></font>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		您的属性值会有所不同。
+		</font></font></p>
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		最后，使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapadd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将新模式添加到slapd-config DIT：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapadd -Q -Y EXTERNAL -H ldapi：/// -f cn \ = corba.ldif</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+添加新条目“cn = corba，cn = schema，cn = config”</font></font><font></font>
+</span>
+</pre></div>
+
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		确认当前加载的模式：
+		</font></font></p> 
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapsearch -Q -LLL -Y EXTERNAL -H ldapi：/// -b cn = schema，cn = config dn</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = {0} core，cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = {1}余弦，cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = {2} nis，cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = {3} inetorgperson，cn = schema，cn = config</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn = {4} corba，cn = schema，cn = config</font></font><font></font>
+</span>
+</pre></div>
+
+	</li>
+</ol></div></div>
+
+	</li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	  	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  	对于使用LDAP进行身份验证的外部应用程序和客户端，每个应用程序都需要专门配置才能执行此操作。</font><font style="vertical-align: inherit;">有关详细信息，请参阅相应的客户端文档。	 
+	  	</font></font></p>
+	</div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="openldap-server-logging"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">记录</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	在实施基于OpenLDAP的解决方案时，slapd的活动日志记录是必不可少的，但必须在软件安装后手动启用。</font><font style="vertical-align: inherit;">否则，日志中只会显示基本消息。</font><font style="vertical-align: inherit;">与任何其他slapd配置一样，通过slapd-config数据库启用日志记录。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	OpenLDAP带有多个日志记录子系统（级别），每个子系统包含较低的子系统（添加剂）。</font><font style="vertical-align: inherit;">值得一试的是</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">统计数据</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">该</font></font><a href="http://manpages.ubuntu.com/manpages/en/man5/slapd-config.5.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man5/slapd-config.5.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapd的-配置</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	手册页有更多的不同的子系统说。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下内容</font><font style="vertical-align: inherit;">
+	创建文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">logging.ldif</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dn：cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+changetype：修改</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+替换：olcLogLevel</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcLogLevel：统计数据</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	实施变更：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapmodify -Q -Y EXTERNAL -H ldapi：/// -f logging.ldif</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	这将产生大量的日志记录，并且您将希望在系统投入生产后重新调整到较不详细的级别。</font><font style="vertical-align: inherit;">在这种详细模式下，主机的syslog引擎（rsyslog）可能很难跟上并可能丢弃消息：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rsyslogd-2177：由于速率限制，imuxsock从pid 2547丢失了228条消息
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	您可以考虑更改rsyslog的配置。</font><font style="vertical-align: inherit;">在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/rsyslog.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，放：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃禁用速率限制</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃（默认是5秒内200条消息;下面我们将5变为0）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ SystemLogRateLimitInterval 0</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	然后重启rsyslog守护进程：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart syslog.service</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="openldap-server-replication"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">复制</font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	随着越来越多的网络系统开始依赖LDAP服务，LDAP服务变得越来越重要。</font><font style="vertical-align: inherit;">在这样的环境中，标准做法是在LDAP中构建冗余（高可用性）以防止LDAP服务器无响应时造成破坏。</font><font style="vertical-align: inherit;">这是通过</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LDAP复制</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">完成的</font><font style="vertical-align: inherit;">。 
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	通过</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Syncrepl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">引擎</font><font style="vertical-align: inherit;">实现复制</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这允许使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consumer</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Provider</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模型</font><font style="vertical-align: inherit;">同步更改
+	 </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">我们将在本指南中实现的特定复制类型是以下模式的组合：</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">refreshAndPersist</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">delta-syncrepl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这使得Provider一旦发布就将更改的条目更改为消费者，但此外，仅发送实际更改，而不是整个条目。
+	</font></font></p>
+</div>
+<div class="sect3 sect" id="openldap-provider-configuration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提供商配置</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	首先配置</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Provider</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	</font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		创建具有以下内容的LDIF文件，并将其命名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">provider_sync.ldif</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+		</font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃将索引添加到前端数据库。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcDatabase = {1} mdb，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+changetype：修改</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcDbIndex</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：entryCSN eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+- </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcDbIndex</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：entryUUID eq</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#Load syncprov和accesslog模块。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：cn =模块{0}，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+changetype：修改</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcModuleLoad</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcModuleLoad：syncprov</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+- </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcModuleLoad</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcModuleLoad：accesslog</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#Accesslog数据库定义</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcDatabase = {2} mdb，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：olcDatabaseConfig</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：olcMdbConfig</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDatabase：{2} mdb</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbDirectory：/ var / lib / ldap / accesslog</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcSuffix：cn = accesslog</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcRootDN：cn = admin，dc = example，dc = com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：默认eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：entryCSN，objectClass，reqEnd，reqResult，reqStart</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#Accesslog db syncprov。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcOverlay = syncprov，olcDatabase = {2} mdb，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+changetype：添加</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：olcOverlayConfig</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：olcSyncProvConfig</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcOverlay：syncprov</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcSpNoPresent：是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcSpReloadHint：是的</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#syncrepl用于主数据库的提供程序</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcOverlay = syncprov，olcDatabase = {1} mdb，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+changetype：添加</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：olcOverlayConfig</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：olcSyncProvConfig</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcOverlay：syncprov</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcSpNoPresent：是的</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+主数据库的#addlog覆盖定义</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcOverlay = accesslog，olcDatabase = {1} mdb，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：olcOverlayConfig</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：olcAccessLogConfig</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcOverlay：accesslog</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccessLogDB：cn = accesslog</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccessLogOps：写道</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccessLogSuccess：TRUE</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃每天扫描accesslog数据库，清除超过7天的条目</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccessLogPurge：07 + 00:00 01 + 00:00</font></font><font></font>
+</pre></div>
+          
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	更改LDIF文件中的rootDN以匹配您的目录。
+	</font></font></p>
+
+        </li>
+<li class="steps">
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		创建目录：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo -u openldap mkdir / var / lib / ldap / accesslog</font></font></span>
+</pre></div>
+
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		添加新内容：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapadd -Q -Y EXTERNAL -H ldapi：/// -f provider_sync.ldif</font></font></span>
+</pre></div>
+
+	</li>
+</ol></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        现在已配置提供程序。
+        </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="openldap-consumer-configuration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">消费者配置</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	现在配置</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">消费者</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	</font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		通过</font></font><a class="xref" href="openldap-server.html#openldap-server-installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来</font><a class="xref" href="openldap-server.html#openldap-server-installation" title="安装"><font style="vertical-align: inherit;">安装</font></a><font style="vertical-align: inherit;">软件</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">确保slapd-config数据库与Provider的数据库完全相同。</font><font style="vertical-align: inherit;">特别是，确保模式和数据库后缀相同。
+		</font></font></p>
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		创建具有以下内容的LDIF文件，并将其命名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">consumer_sync.ldif</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+		</font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dn：cn =模块{0}，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+changetype：修改</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcModuleLoad</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcModuleLoad：syncprov</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcDatabase = {1} mdb，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+changetype：修改</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcDbIndex</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcDbIndex：entryUUID eq</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+- </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcSyncRepl</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcSyncRepl：rid = 0 provider = ldap：//ldap01.example.com bindmethod = simple binddn =“cn = admin，dc = example，dc = com”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  credentials = secret searchbase =“dc = example，dc = com”logbase =“cn = accesslog”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  logfilter =“（＆（objectClass = auditWriteObject）（reqResult = 0））”schemachecking = on</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  type = refreshAndPersist retry =“60 +”syncdata = accesslog</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+- </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcUpdateRef</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcUpdateRef：ldap：//ldap01.example.com</font></font><font></font>
+</pre></div>
+
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	确保以下属性具有正确的值：
+	</font></font></p>
+
+	<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">provider</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（提供者服务器的主机名 - 在此示例中为ldap01.example.com  - 或IP地址）</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">binddn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（你正在使用的管理员DN）</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">凭证</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（您正在使用的管理员DN密码）</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">searchbase</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（您正在使用的数据库后缀）</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">olcUpdateRef</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（提供者服务器的主机名或IP地址）</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rid</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（副本ID，一个唯一的3位数字，用于标识副本。每个消费者应该至少有一个摆脱）</font></font></p></li>
+</ul></div>
+
+        </li>
+<li class="steps">
+
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	添加新内容：
+	</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapadd -Q -Y EXTERNAL -H ldapi：/// -f consumer_sync.ldif</font></font></span>
+</pre></div>
+
+	</li>
+</ol></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        你完成了。</font><font style="vertical-align: inherit;">两个数据库（后缀：dc = example，dc = com）现在应该是同步的。
+        </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="openldap-testing"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	复制开始后，您可以通过运行进行监控
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapsearch -z1 -LLLQY EXTERNAL -H ldapi：/// -s base -b dc = example，dc = com contextCSN</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：dc = example，dc = com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+contextCSN：20120201193408.178454Z＃000000＃000＃000000</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	在提供者和消费者身上。</font><font style="vertical-align: inherit;">一旦</font><font style="vertical-align: inherit;"> 
+	两台机器</font><font style="vertical-align: inherit;">的输出（</font></font><span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20120201193408.178454Z＃000000＃000＃000000</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在上例中）匹配，就可以进行复制。</font><font style="vertical-align: inherit;">每次在提供者中进行更改时，此值都将更改，因此消费者中的值也将更改。 
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如果您的连接速度很慢和/或您的ldap数据库很大，那么消费者的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">contextCSN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可能需要一段时间才能   </font><font style="vertical-align: inherit;">
+	与提供商进行匹配。</font><font style="vertical-align: inherit;">但是，你会知道它正在发展，因为消费者的   </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">contextCSN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将会稳步增长。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如果消费者的   </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">contextCSN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">缺失或与提供者不匹配，您应该在继续之前停止并找出问题。</font><font style="vertical-align: inherit;">尝试检查提供程序中的slapd（syslog）和auth日志文件，以查看使用者的身份验证请求是否成功，或者检索数据的请求（它们看起来像很多ldapsearch语句）都不会返回错误。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	要测试它是否只是在Consumer上查询，数据库中的DN：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapsearch -Q -LLL -Y EXTERNAL -H ldapi：/// -b dc = example，dc = com dn</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	您应该看到用户'john'和组'矿工'以及节点'People'和'Groups'。
+	</font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="openldap-server-acl"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">访问控制</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	管理应该向资源授予何种类型的访问（读，写等）用户称为
+	 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">访问控制</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">涉及的配置指令称为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">访问控制列表</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或ACL。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	当我们安装slapd软件包时，会自动设置各种ACL。</font><font style="vertical-align: inherit;">我们将研究这些默认值的一些重要结果，这样，我们就可以了解ACL的工作原理以及它们的配置方式。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	要获得LDAP查询的有效ACL，我们需要查看要查询的数据库的ACL条目以及特殊前端数据库实例的ACL条目。</font><font style="vertical-align: inherit;">属于后者的ACL充当默认值，以防前者的ACL不匹配。</font><font style="vertical-align: inherit;">前端数据库是第二个被查阅的数据库，要应用的ACL是第一个在这两个ACL源中匹配（“第一次匹配获胜”）的ACL。</font><font style="vertical-align: inherit;">以下命令将分别给出mdb数据库的ACL（“dc = example，dc = com”）和前端数据库的ACL：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapsearch -Q -LLL -Y EXTERNAL -H ldapi：/// -b \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn = config'（olcDatabase = {1} mdb）'olcAccess</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcDatabase = {1} mdb，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccess：{0} to attrs = userPassword by anonymous auth by * none</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccess：{1} to attrs = shadowLastChange by self write by * read</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccess：{2}到* by * read</font></font><font></font>
+</span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	  	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		rootDN始终拥有其数据库的完全权限，不需要包含在任何ACL中。
+	  	</font></font></p>
+	</div></div></div></div>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapsearch -Q -LLL -Y EXTERNAL -H ldapi：/// -b \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn = config'（olcDatabase = { -  1}前端）'olcAccess</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcDatabase = { -  1}前端，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccess：{0}到*由dn.exact = gidNumber = 0 + uidNumber = 0，cn = peercred，cn = external</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ ，cn = auth由* break管理</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccess：{1}到dn.exact =“”by * read</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccess：{2}到dn.base =“cn = Subschema”by * read</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	前两个ACL至关重要：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">olcAccess：{0} to attrs = userPassword by anonymous auth by * none</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccess：{1} to attrs = shadowLastChange by self write by * read</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	这可以用不同的方式表示，以便于消化：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">到attrs = userPassword</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	通过自我写</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	通过匿名身份验证</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	by * none</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+到attrs = shadowLastChange</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	通过自我写</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	通过*阅读</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	这些ACL强制执行以下操作：
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	匿名“auth”访问权限提供给</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">userPassword</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性，以便用户可以进行身份​​验证或</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">绑定</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">也许与直觉相反，即使匿名访问DIT是不需要的，也需要“通过匿名身份验证”，否则这将是鸡和鸡蛋问题：在身份验证之前，所有用户都是匿名的。
+	</font></font></p>
+	</li>
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过自写</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ACL授予写入访问</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的userPassword</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	属性谁认证为用户</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其中属性的生活。</font><font style="vertical-align: inherit;">换句话说，用户可以更新</font><font style="vertical-align: inherit;">自己条目</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">userPassword</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性。
+	</font></font></p>
+	</li>
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	该</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">userPassword的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性是所有其他用户，否则不可访问，与rootdn就例外，谁总是访问，并不需要被明确提及。
+	</font></font></p>
+	</li>
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	为了让用户使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">passwd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或其他实用程序</font><font style="vertical-align: inherit;">更改自己的密码，</font><font style="vertical-align: inherit;">用户自己的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">shadowLastChange</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性需要是可写的。</font><font style="vertical-align: inherit;">所有其他目录用户都可以读取此属性的内容。
+	</font></font></p>
+	</li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	可以匿名搜索此DIT，因为此ACL中的“to * by * read”允许任何人（包括匿名者）对其他所有内容进行读取访问：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">至 *</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	通过*阅读</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如果这是不需要的，那么您需要更改ACL。</font><font style="vertical-align: inherit;">要在绑定请求期间强制进行身份验证，您可以选择（或与修改后的ACL结合使用）使用'olcRequire：authc'指令。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如前所述，没有为slapd-config数据库创建管理帐户（“rootDN”）。</font><font style="vertical-align: inherit;">但是，有一个SASL标识被授予对它的完全访问权限。</font><font style="vertical-align: inherit;">它代表localhost的超级用户（root / sudo）。</font><font style="vertical-align: inherit;">这里是：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dn.exact =的gidNumber = 0 + uidNumber = 0，CN = peercred，CN =外部，CN = AUTH 
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        以下命令将显示slapd-config数据库的ACL：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapsearch -Q -LLL -Y EXTERNAL -H ldapi：/// -b \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn = config'（olcDatabase = {0} config）'olcAccess</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：olcDatabase = {0} config，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcAccess：{0}到*由dn.exact = gidNumber = 0 + uidNumber = 0，cn = peercred，</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              cn = external，cn = auth由* break管理</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	由于这是一个SASL身份，我们需要</font><font style="vertical-align: inherit;">在调用有问题的LDAP实用程序时</font><font style="vertical-align: inherit;">使用SASL </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">机制</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，我们在本指南中已经多次看到它。</font><font style="vertical-align: inherit;">它是EXTERNAL机制。</font><font style="vertical-align: inherit;">有关示例，请参阅上一个命令。</font><font style="vertical-align: inherit;">注意：
+	</font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		必须使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">成为root标识才能使ACL匹配。
+		</font></font></p>
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		EXTERNAL机制通过</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IPC</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（UNIX域套接字）工作。</font><font style="vertical-align: inherit;">这意味着您必须使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapi</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+		URI格式。
+		</font></font></p>
+	</li>
+</ol></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	获取所有ACL的简洁方法如下：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapsearch -Q -LLL -Y EXTERNAL -H ldapi：/// -b \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn = config'（olcAccess = *）'olcAccess olcSuffix</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        关于访问控制的话题有很多话要说。</font><font style="vertical-align: inherit;">请参见</font></font><a href="http://manpages.ubuntu.com/manpages/en/man5/slapd.access.5.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man5/slapd.access.5.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapd.access</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的手册页
+	 </font><font style="vertical-align: inherit;">。
+        </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="openldap-tls"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TLS</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	在向OpenLDAP服务器进行身份验证时，最好使用加密会话进行身份验证。</font><font style="vertical-align: inherit;">这可以使用传输层安全性（TLS）来完成。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	在这里，我们将成为我们自己的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">证书颁发机构</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，然后创建和签署我们的LDAP服务器证书作为该CA. </font><font style="vertical-align: inherit;">由于</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gnutls</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">库</font><font style="vertical-align: inherit;">编译的</font><font style="vertical-align: inherit;">，因此我们将使用
+	 </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">certtool</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序来完成这些任务。
+	</font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gnutls-bin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ssl-cert</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt安装gnutls-bin ssl-cert</font></font></span>
+</pre></div>
+
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		为证书颁发机构创建私钥：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo sh -c“certtool --generate-privkey&gt; /etc/ssl/private/cakey.pem”</font></font></span>
+</pre></div>
+
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		创建模板/文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ssl/ca.info</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以定义CA：
+		</font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cn =示例公司</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+CA</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cert_signing_key</font></font><font></font>
+</pre></div>
+
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		创建自签名CA证书：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo certtool  - 生成自签名\</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--load-privkey /etc/ssl/private/cakey.pem \ </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--template /etc/ssl/ca.info \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--outfile /etc/ssl/certs/cacert.pem</font></font></span>
+</pre></div>
+
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		为服务器创建一个私钥：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo certtool --generate-privkey \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+- 比特1024 \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--outfile /etc/ssl/private/ldap01_slapd_key.pem</font></font></span>
+</pre></div>
+
+		<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+			<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			将</font><font style="vertical-align: inherit;">文件名中的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldap01</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换</font><font style="vertical-align: inherit;">为服务器的主机名。</font><font style="vertical-align: inherit;">为将要使用它们的主机和服务命名证书和密钥将有助于保持清晰。
+			</font></font></p>
+		</div></div></div></div>
+
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		创建</font><font style="vertical-align: inherit;">包含以下内容</font><font style="vertical-align: inherit;">的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ssl/ldap01.info</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">信息文件：
+		</font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">organization =示例公司</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn = ldap01.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+tls_www_server</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+encryption_key</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+signing_key</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+expiration_days = 3650</font></font><font></font>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		上述证书有效期为10年。</font><font style="vertical-align: inherit;">相应调整。
+		</font></font></p>
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		创建服务器的证书：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo certtool --generate-certificate \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--load-privkey /etc/ssl/private/ldap01_slapd_key.pem \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--load-ca-certificate /etc/ssl/certs/cacert.pem \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--load-ca-privkey /etc/ssl/private/cakey.pem \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--template /etc/ssl/ldap01.info \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--outfile /etc/ssl/certs/ldap01_slapd_cert.pem</font></font></span>
+</pre></div>
+
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		调整权限和所有权：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chgrp openldap /etc/ssl/private/ldap01_slapd_key.pem </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chmod 0640 /etc/ssl/private/ldap01_slapd_key.pem </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo gpasswd -a openldap ssl-cert</font></font></span>
+</pre></div>
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		现在重新启动</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，因为我们将'openldap'用户添加到'ssl-cert'组：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl重启slapd.service</font></font></span>
+</pre></div>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		您的服务器现在已准备好接受新的TLS配置。
+		</font></font></p>
+	</li>
+</ol></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下内容</font><font style="vertical-align: inherit;">
+	创建文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">certinfo.ldif</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（相应地调整，我们的示例假设我们使用https://www.cacert.org创建了证书）：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dn：cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcTLSCACertificateFile</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcTLSCACertificateFile：/etc/ssl/certs/cacert.pem</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+- </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcTLSCertificateFile</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcTLSCertificateFile：/etc/ssl/certs/ldap01_slapd_cert.pem</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+- </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcTLSCertificateKeyFile</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcTLSCertificateKeyFile：/etc/ssl/private/ldap01_slapd_key.pem</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapmodify</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令通过slapd-config数据库告诉slapd我们的TLS工作：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapmodify -Y EXTERNAL -H ldapi：/// -f certinfo.ldif</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        与普遍看法相反，您不需要</font><font style="vertical-align: inherit;">在</font><span class="file filename"><font style="vertical-align: inherit;">/ etc / default / slapd</font></span><font style="vertical-align: inherit;"> 
+	中使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldaps：//</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来使用加密。</font><font style="vertical-align: inherit;">你应该只有：
+        </font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SLAPD_SERVICES =“ldap：/// ldapi：///”
+</font></font></pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		不赞成使用LDAP over TLS / SSL（ldaps：//）以支持</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">StartTLS</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">后者指的是现有的LDAP会话（侦听TCP端口389）受TLS / SSL保护，而LDAPS（如HTTPS）是一种独立的加密启动协议，通过TCP端口636进行操作。
+		</font></font></p>
+	</div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="openldap-tls-replication"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">复制和TLS</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如果已在服务器之间设置复制，则通常会对复制流量进行加密（StartTLS）以防止出现问题。</font><font style="vertical-align: inherit;">这与使用加密和身份验证不同，如上所述。</font><font style="vertical-align: inherit;">在本节中，我们将基于TLS身份验证工作。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	这里假设您已根据</font></font><a class="xref" href="openldap-server.html#openldap-server-replication" title="复制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Replication</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Provider和Consumer之间设置了复制，并</font><font style="vertical-align: inherit;">
+	通过遵循</font></font><a class="xref" href="openldap-server.html#openldap-tls" title="TLS"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TLS</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Provider上配置了TLS以进行身份​​验证</font><font style="vertical-align: inherit;">。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如前所述，复制的目标（对我们而言）是LDAP服务的高可用性。</font><font style="vertical-align: inherit;">由于我们在提供商上有TLS进行身份验证，因此我们在Consumer上需要相同的内容。</font><font style="vertical-align: inherit;">但是，除此之外，我们还希望加密复制流量。</font><font style="vertical-align: inherit;">还有待完成的工作是为Consumer创建一个密钥和证书，然后进行相应的配置。</font><font style="vertical-align: inherit;">我们将在Provider上生成密钥/证书，以避免必须创建另一个CA证书，然后将必要的材料传输给Consumer。
+	</font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                在提供者，
+                </font></font></p>
+
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		创建一个保留目录（将用于最终传输），然后创建Consumer的私钥：
+                </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mkdir ldap02-ssl </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cd ldap02-ssl </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo certtool --generate-privkey \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+- 比特1024 \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--outfile ldap02_slapd_key.pem</font></font></span>
+</pre></div>
+
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为Consumer服务器</font><font style="vertical-align: inherit;">
+                创建一个信息文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldap02.info</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，相应地调整其值：
+                </font></font></p>  
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">organization =示例公司</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn = ldap02.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+tls_www_server</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+encryption_key</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+signing_key</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+expiration_days = 3650</font></font><font></font>
+</pre></div>
+
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                创建消费者证书：
+                </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo certtool --generate-certificate \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--load-privkey ldap02_slapd_key.pem \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--load-ca-certificate /etc/ssl/certs/cacert.pem \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--load-ca-privkey /etc/ssl/private/cakey.pem \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--template ldap02.info \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--outfile ldap02_slapd_cert.pem</font></font></span>
+</pre></div>
+
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                获取CA证书的副本：
+                </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cp /etc/ssl/certs/cacert.pem。</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		我们完成了。</font><font style="vertical-align: inherit;">现在将</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldap02-ssl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录</font><font style="vertical-align: inherit;">传输</font><font style="vertical-align: inherit;">给Consumer。</font><font style="vertical-align: inherit;">这里我们使用scp（相应调整）：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cd .. </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">scp -r ldap02-ssl user @ consumer：</font></font></span>
+</pre></div>
+
+	</li>
+<li class="steps">  
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		关于消费者，
+		</font></font></p>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		配置TLS身份验证：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install ssl-cert </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo gpasswd -a openldap ssl-cert </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo cp ldap02_slapd_cert.pem cacert.pem / etc / ssl / certs </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo cp ldap02_slapd_key.pem / etc / ssl / private </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chgrp openldap / etc / ssl / private / ldap02_slapd_key .pem </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chmod 0640 /etc/ssl/private/ldap02_slapd_key.pem </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart slapd.service</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下内容</font><font style="vertical-align: inherit;">
+		创建文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ssl/certinfo.ldif</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（相应地调整）：
+		</font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dn：cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcTLSCACertificateFile</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcTLSCACertificateFile：/etc/ssl/certs/cacert.pem</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+- </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcTLSCertificateFile</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcTLSCertificateFile：/etc/ssl/certs/ldap02_slapd_cert.pem</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+- </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+add：olcTLSCertificateKeyFile</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcTLSCertificateKeyFile：/etc/ssl/private/ldap02_slapd_key.pem</font></font><font></font>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		配置slapd-config数据库：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapmodify -Y EXTERNAL -H ldapi：/// -f certinfo.ldif</font></font></span>
+</pre></div>
+	
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在提供程序（SLAPD_SERVICES）上</font><font style="vertical-align: inherit;">
+		配置</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / default / slapd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+		</font></font></p>
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		关于消费者，
+		</font></font></p>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		为消费者端复制配置TLS。</font><font style="vertical-align: inherit;">通过添加一些TLS选项来</font><font style="vertical-align: inherit;">修改现有的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">olcSyncrepl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性。</font><font style="vertical-align: inherit;">通过这样做，我们将首次看到如何更改属性的值。
+		</font></font></p>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下内容</font><font style="vertical-align: inherit;">
+		创建文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">consumer_sync_tls.ldif</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+		</font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dn：olcDatabase = {1} mdb，cn = config</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+替换：olcSyncRepl</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+olcSyncRepl：rid = 0 provider = ldap：//ldap01.example.com bindmethod = simple</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ binddn =“cn = admin，dc = example，dc = com”credentials = secret searchbase =“dc = example，dc = com”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ logbase =“cn = accesslog”logfilter =“（＆（objectClass = auditWriteObject）（reqResult = 0））”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ schemachecking = on type = refreshAndPersist retry =“60 +”syncdata = accesslog</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ starttls = critical tls_reqcert = demand</font></font><font></font>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		额外选项分别指定使用者必须使用StartTLS并且需要CA证书来验证提供者的身份。</font><font style="vertical-align: inherit;">另请注意用于更改属性值（'replace'）的LDIF语法。
+		</font></font></p>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		实施这些变化：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapmodify -Y EXTERNAL -H ldapi：/// -f consumer_sync_tls.ldif</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		并重新启动slapd：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl重启slapd.service</font></font></span>
+</pre></div>
+
+	</li>
+<li class="steps">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		在提供者，
+		</font></font></p>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		检查是否已建立TLS会话。</font><font style="vertical-align: inherit;">在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / log / syslog中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，如果设置了'conns'级别的日志记录，您应该看到类似于以下内容的消息：		      
+		</font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapd [3620]：conn = 1047 fd = 20 ACCEPT from IP = 10.153.107.229：57922（IP = 0.0.0.0：389）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+slapd [3620]：conn = 1047 op = 0 EXT oid = 1.3.6.1.4.1.1466.20037</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+slapd [3620]：conn = 1047 op = 0 STARTTLS</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+slapd [3620]：conn = 1047 op = 0 RESULT oid = err = 0 text =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+slapd [3620]：conn = 1047 fd = 20 TLS建立tls_ssf = 128 ssf = 128</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+slapd [3620]：conn = 1047 op = 1 BIND dn =“cn = admin，dc = example，dc = com”method = 128</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+slapd [3620]：conn = 1047 op = 1 BIND dn =“cn = admin，dc = example，dc = com”mech = SIMPLE ssf = 0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+slapd [3620]：conn = 1047 op = 1 RESULT tag = 97 err = 0 text</font></font><font></font>
+</pre></div>
+
+	</li>
+</ol></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="openldap-auth-config"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LDAP身份验证</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	一旦有了正常工作的LDAP服务器，您将需要在客户端上安装库，这些库将知道如何以及何时联系它。</font><font style="vertical-align: inherit;">在Ubuntu上，传统上通过安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libnss-ldap</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包来完成。</font><font style="vertical-align: inherit;">该软件包将引入其他工具，帮助您完成配置步骤。</font><font style="vertical-align: inherit;">立即安装此软件包：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install libnss-ldap</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        系统将提示您输入LDAP服务器的详细信息。</font><font style="vertical-align: inherit;">如果您犯了错误，可以再试一次：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo dpkg-reconfigure ldap-auth-config</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	对话框的结果可以在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ldap.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">看到</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果您的服务器需要菜单中未涵盖的选项，请相应地编辑此文件。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	现在为NSS配置LDAP配置文件：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo auth-client-config -t nss -p lac_ldap</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	配置系统以使用LDAP进行身份验证：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo pam-auth-update</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	从菜单中，选择LDAP和您需要的任何其他身份验证机制。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	您现在应该能够使用基于LDAP的凭据登录。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如果正在使用复制，LDAP客户端将需要引用多个服务器。</font><font style="vertical-align: inherit;">在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ldap.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你会有类似的东西：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uri ldap：//ldap01.example.com ldap：//ldap02.example.com
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	请求将超时，如果Provider（ldap01）无响应，将尝试联系Consumer（ldap02）。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如果要使用LDAP存储Samba用户，则需要将Samba服务器配置为使用LDAP进行身份验证。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">详细信息，</font><font style="vertical-align: inherit;">请参阅
+	 </font></font><a class="xref" href="samba-ldap.html" title="Samba和LDAP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba和LDAP</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	</font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libnss-ldap</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包</font><font style="vertical-align: inherit;">
+		的替代方法</font><font style="vertical-align: inherit;">是</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">libnss-ldapd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+		包。</font><font style="vertical-align: inherit;">然而，这将引入可能</font><font style="vertical-align: inherit;">不需要</font><font style="vertical-align: inherit;">的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nscd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包。</font><font style="vertical-align: inherit;">之后只需将其取下即可。
+		</font></font></p>
+	</div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="ldap-usergroup-management"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户和组管理</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LDAP-utils的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包提供了足够的工具来管理目录，但可以让他们使用一种负担所需选项的长字符串。</font><font style="vertical-align: inherit;">该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapscripts</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包中包含的包装脚本这些工具，有些人觉得更容易使用。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	安装包：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install ldapscripts</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	然后编辑文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ldapscripts/ldapscripts.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以获得类似于以下内容的内容：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SERVER =本地主机</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+指定binddn = CN =管理员，DC =例如，DC = com公司</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+BINDPWDFILE = “的/ etc / ldapscripts / ldapscripts.passwd”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+SUFFIX ='DC =例如，DC = com公司</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+GSUFFIX = 'OU =组'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+USUFFIX ='OU =人民</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+MSUFFIX = 'OU =计算机'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+GIDSTART = 10000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+UIDSTART = 10000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+MIDSTART = 10000</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	现在，创建</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapscripts.passwd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件以允许rootDN访问目录：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo sh -c“echo -n'secret'&gt; /etc/ldapscripts/ldapscripts.passwd”sudo </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chmod 400 /etc/ldapscripts/ldapscripts.passwd</font></font></span>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		将</font></font><span class="quote"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“secret”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换</font><font style="vertical-align: inherit;">为数据库rootDN用户的实际密码。
+		</font></font></p>
+	</div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	现在，脚本已准备好帮助管理您的目录。</font><font style="vertical-align: inherit;">以下是如何使用它们的一些示例：
+	</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		创建一个新用户：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapadduser乔治的例子</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		这将创建一个使用uid </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">george</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的用户，并将用户的主要组（gid）设置为
+		 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">example</font></font></span>
+		</p>
+	</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		更改用户密码：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapsetpasswd george </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更改用户uid = george的密码，ou = People，dc = example，dc = com </font></font></span>
+<span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">新密码：</font></font></span>
+<span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">新密码（验证）：</font></font></span>
+</pre></div>
+
+	</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		删除用户：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapdeleteuser乔治</font></font></span>
+</pre></div>
+
+	</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		添加组：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapaddgroup qa</font></font></span>
+</pre></div>
+
+	</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		删除组：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapdeletegroup qa</font></font></span>
+</pre></div>
+
+	</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		将用户添加到组：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapaddusertogroup george qa</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		您现在应该看到</font><span class="em emphasis"><font style="vertical-align: inherit;">qa</font></span><font style="vertical-align: inherit;">组</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">memberUid</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性，其</font><font style="vertical-align: inherit;">值为</font><span class="em emphasis"><font style="vertical-align: inherit;">george</font></span><font style="vertical-align: inherit;">。
+		</font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+	</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		从组中删除用户：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapdeleteuserfromgroup george qa</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		该</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">memberUid</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">属性现在应该予以除名</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QA</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+		组。
+		</font></font></p>
+	</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapmodifyuser</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">脚本允许您添加，删除或替换用户的属性。</font><font style="vertical-align: inherit;">该脚本使用与</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapmodify</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序</font><font style="vertical-align: inherit;">相同的语法</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">例如：
+		</font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ldapmodifyuser george </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃即将修改以下条目：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：uid = george，ou = People，dc = example，dc = com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：帐户</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：posixAccount</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn：乔治</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+uid：乔治</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+uidNumber：1001</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+gidNumber：1001</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+homeDirectory：/ home / george</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+loginShell：/ bin / bash</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+gecos：乔治</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+说明：用户帐户</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+userPassword :: e1NTSEF9eXFsTFcyWlhwWkF1eGUybVdFWHZKRzJVMjFTSG9vcHk =</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃在此输入您的修改，以CTRL-D结尾。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dn：uid = george，ou = People，dc = example，dc = com </font></font></span>
+<span class="input userinput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">replace：gecos</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+gecos：乔治卡林</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		用户的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gecos</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">现在应该是</font></font><span class="quote"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“George Carlin”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+		</font></font></p>
+	</li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapscripts的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+		一个很好的功能</font><font style="vertical-align: inherit;">是模板系统。</font><font style="vertical-align: inherit;">模板允许您自定义用户，组和计算机对象的属性。</font><font style="vertical-align: inherit;">例如，要启用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模板，请编辑
+		 </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ldapscripts/ldapscripts.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更改：
+		</font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UTEMPLATE = “的/ etc / ldapscripts / ldapadduser.template”
+</font></font></pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><span class="file filename"><font style="vertical-align: inherit;">/ usr / share / doc / ldapscripts / examples</font></span><font style="vertical-align: inherit;">目录中</font><font style="vertical-align: inherit;">
+		有</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模板</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">将</font><span class="file filename"><font style="vertical-align: inherit;">ldapadduser.template.sample</font></span><font style="vertical-align: inherit;">文件</font><font style="vertical-align: inherit;">复制或重命名</font><font style="vertical-align: inherit;">为
+		 </font><span class="file filename"><font style="vertical-align: inherit;">/etc/ldapscripts/ldapadduser.template</font></span><font style="vertical-align: inherit;">：
+		</font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo cp /usr/share/doc/ldapscripts/examples/ldapadduser.template.sample \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/etc/ldapscripts/ldapadduser.template</font></font></span>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		编辑新模板以添加所需的属性。</font><font style="vertical-align: inherit;">以下将使用objectClass为inetOrgPerson创建新用户：
+		</font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dn：uid = &lt;user&gt;，&lt;usuffix&gt;，&lt;suffix&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：inetOrgPerson</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+objectClass：posixAccount</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cn：&lt;user&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sn：&lt;ask&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+uid：&lt;user&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+uidNumber：&lt;uid&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+gidNumber：&lt;gid&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+homeDirectory：&lt;home&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+loginShell：&lt;shell&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+gecos：&lt;user&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+说明：用户帐户</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+标题：员工</font></font><font></font>
+</pre></div>
+
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		注意</font><font style="vertical-align: inherit;">用于</font><span class="em emphasis"><font style="vertical-align: inherit;">sn</font></span><font style="vertical-align: inherit;">属性</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;ask&gt;</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这将使</font><span class="app application"><font style="vertical-align: inherit;">ldapadduser</font></span><font style="vertical-align: inherit;">提示您输入其值。
+		</font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+	</li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        包中有些实用程序未在此处介绍。</font><font style="vertical-align: inherit;">这是一个完整的清单：
+        </font></font></p>
+<div class="code"><pre class="contents "><a href="http://manpages.ubuntu.com/manpages/en/man1/ldaprenamemachine.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldaprenamemachine.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldaprenamemachine </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapadduser.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapadduser.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapadduser </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapdeleteuserfromgroup.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapdeleteuserfromgroup.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapdeleteuserfromgroup </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapfinger.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapfinger.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapfinger </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapid.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapid.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapid </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapgid.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapgid.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapgid </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapmodifyuser.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapmodifyuser.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapmodifyuser </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldaprenameuser.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldaprenameuser.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldaprenameuser </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/lsldap.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/lsldap.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lsldap </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapaddusertogroup.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapaddusertogroup.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapaddusertogroup </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapsetpasswd.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapsetpasswd.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapsetpasswd </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapinit.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapinit.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapinit </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapaddgroup.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapaddgroup.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapaddgroup </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapdeletegroup.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapdeletegroup.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapdeletegroup </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapmodifygroup.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapmodifygroup.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapmodifygroup </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapdeletemachine.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapdeletemachine.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapdeletemachine </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldaprenamegroup.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldaprenamegroup.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldaprenamegroup </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapaddmachine.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapaddmachine.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapaddmachine </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapmodifymachine.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapmodifymachine.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapmodifymachine </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapsetprimarygroup.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapsetprimarygroup.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapsetprimarygroup </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man1/ldapdeleteuser.1.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man1/ldapdeleteuser.1.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ldapdeleteuser</font></font></a>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="ldap-backup"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">备份还原</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	现在我们已经按照我们想要的方式运行ldap，现在是时候确保我们可以保存所有工作并根据需要恢复它。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	我们需要的是一种备份ldap数据库的方法，特别是后端（cn = config）和前端（dc = example，dc = com）。</font><font style="vertical-align: inherit;">如果我们要将这些数据库备份到 
+	 </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ export / backup中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，我们可以使用 
+	 </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapcat</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	，如下面的脚本所示，名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ usr / local / bin / ldapbackup</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃！/斌/庆典</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+BACKUP_PATH = /导出/备份</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+用于slapcat = / usr / sbin目录/用于slapcat</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+nice $ {SLAPCAT} -n 0&gt; $ {BACKUP_PATH} /config.ldif</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+好的$ {SLAPCAT} -n 1&gt; $ {BACKUP_PATH} /example.com.ldif</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+好的$ {SLAPCAT} -n 2&gt; $ {BACKUP_PATH} /access.ldif</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+chmod 640 $ {BACKUP_PATH} / * .ldif</font></font><font></font>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		这些文件是未压缩的文本文件，包含ldap数据库中的所有内容，包括树布局，用户名和每个密码。</font><font style="vertical-align: inherit;">因此，您可能需要考虑制作</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/导出/备份</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+		加密分区，甚至让脚本在创建它们时加密这些文件。</font><font style="vertical-align: inherit;">理想情况下，您应该两者兼顾，但这取决于您的安全要求。
+		</font></font></p>
+	</div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	然后，只需要一个cron脚本来运行这个程序就像我们感觉舒服一样。</font><font style="vertical-align: inherit;">对于许多人来说，每天一次就足够了。</font><font style="vertical-align: inherit;">对于其他人，通常需要更多。</font><font style="vertical-align: inherit;">下面是一个名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/cron.d/ldapbackup</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的cron脚本示例，</font><font style="vertical-align: inherit;">
+	它每晚22:45运行：
+	</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MAILTO=backup-emails@domain.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+45 22 * * * root / usr / local / bin / ldapbackup</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	现在创建文件，应将它们复制到备份服务器。 
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	假设我们重新安装了ldap，恢复过程可能是这样的：
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl stop slapd.service </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mkdir / var / lib / ldap / accesslog </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo slapadd -F /etc/ldap/slapd.d -n 0 -l /export/backup/config.ldif </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo slapadd -F / etc / ldap / slapd.d -n 1 -l /export/backup/domain.com.ldif </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo slapadd -F /etc/ldap/slapd.d -n 2 -l /export/backup/access.ldif </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chown -R openldap：openldap /etc/ldap/slapd.d/ </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chown -R openldap：openldap / var / lib / ldap / </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl start slapd.service</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="openldap-server-resources"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	主要资源是上游文档：</font></font><a href="http://www.openldap.org/" class="ulink" title="http://www.openldap.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">www.openldap.org</font></font></a>
+	</p>
+	</li>
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	slapd包附带了许多手册页。</font><font style="vertical-align: inherit;">以下是一些重要的内容，特别是考虑到本指南中提供的内容：
+	</font></font></p>
+
+<div class="code"><pre class="contents "><a href="http://manpages.ubuntu.com/manpages/en/man8/slapd.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/slapd.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapd </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man5/slapd-config.5.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man5/slapd-config.5.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapd-config </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man5/slapd.access.5.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man5/slapd.access.5.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapd.access </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man5/slapo-syncprov.5.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man5/slapo-syncprov.5.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">slapo-syncprov</font></font></a>
+</pre></div>
+
+	</li>
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	其他手册页：
+	</font></font></p>
+
+<div class="code"><pre class="contents "><a href="http://manpages.ubuntu.com/manpages/en/man8/auth-client-config.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/auth-client-config.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">auth-client-config </font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man8/pam-auth-update.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man8/pam-auth-update.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pam-auth-update</font></font></a>
+</pre></div>
+
+	</li>
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	Zytrax的</font></font><a href="http://www.zytrax.com/books/ldap/" class="ulink" title="http://www.zytrax.com/books/ldap/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">火箭科学家LDAP</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ; </font><font style="vertical-align: inherit;">对LDAP的一种较少迂腐但全面的处理
+	</font></font></p>
+	</li>
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	Ubuntu社区</font></font><a href="https://help.ubuntu.com/community/OpenLDAPServer" class="ulink" title="https://help.ubuntu.com/community/OpenLDAPServer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenLDAP wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">页面包含一系列注释
+	</font></font></p>
+	</li>
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	O'Reilly的</font></font><a href="http://www.oreilly.com/catalog/ldapsa/" class="ulink" title="http://www.oreilly.com/catalog/ldapsa/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LDAP系统管理</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（教科书; 2003）
+	</font></font></p>
+	</li>
+<li class="list itemizedlist">
+	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	Packt </font></font><a href="http://www.packtpub.com/OpenLDAP-Developers-Server-Open-Source-Linux/book" class="ulink" title="http://www.packtpub.com/OpenLDAP-Developers-Server-Open-Source-Linux/book"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">掌握OpenLDAP</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（教科书; 2007）
+	</font></font></p>
+	</li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="network-authentication.html" title="网络身份验证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="samba-ldap.html" title="Samba和LDAP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

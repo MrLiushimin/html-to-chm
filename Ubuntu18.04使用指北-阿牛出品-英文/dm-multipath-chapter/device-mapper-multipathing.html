@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Device Mapper Multipathing</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="dm-multipath-chapter.html" title="DM-Multipath">DM-Multipath</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="dm-multipath-chapter.html" title="DM-Multipath">Previous</a><a class="nextlinks-next" href="multipath-devices.html" title="Multipath Devices">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Device Mapper Multipathing</h1></div>
+<div class="region">
+<div class="contents"><p class="para">Device mapper multipathing (DM-Multipath) allows you to configure
+    multiple I/O paths between server nodes and storage arrays into a single
+    device. These I/O paths are physical SAN connections that can include
+    separate cables, switches, and controllers. Multipathing aggregates the
+    I/O paths, creating a new device that consists of the aggregated paths.
+    This chapter provides a summary of the features of DM-Multipath that are
+    new for the initial release of Ubuntu Server 12.04. Following that, this
+    chapter provides a high-level overview of DM Multipath and its components,
+    as well as an overview of DM-Multipath setup.</p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="device-mapper-multipathing.html#multipath-new-and-changed-features" title="New and Changed Features for Ubuntu Server 12.04">New and Changed Features for Ubuntu Server 12.04</a></li>
+<li class="links"><a class="xref" href="device-mapper-multipathing.html#multipath-overview" title="Overview">Overview</a></li>
+<li class="links"><a class="xref" href="device-mapper-multipathing.html#multipath-storage-array-support" title="Storage Array Overview">Storage Array Overview</a></li>
+<li class="links"><a class="xref" href="device-mapper-multipathing.html#multipath-dm-multipath-components" title="DM-Multipath components">DM-Multipath components</a></li>
+<li class="links"><a class="xref" href="device-mapper-multipathing.html#multipath-dm-multipath-setup-overview" title="DM-Multipath Setup Overview">DM-Multipath Setup Overview</a></li>
+</ul></div>
+<div class="sect2 sect" id="multipath-new-and-changed-features"><div class="inner">
+<div class="hgroup"><h2 class="title">New and Changed Features for Ubuntu Server 12.04</h2></div>
+<div class="region">
+<div class="contents"><p class="para">Migrated from multipath-0.4.8 to multipath-0.4.9</p></div>
+<div class="sect3 sect" id="multipath-migration-from-previous-release"><div class="inner">
+<div class="hgroup"><h3 class="title">Migration from 0.4.8</h3></div>
+<div class="region"><div class="contents">
+<p class="para">The priority checkers are no longer run as standalone binaries,
+        but as shared libraries. The key value name for this feature has also
+        slightly changed. Copy the attribute named <span class="em em-bold emphasis">prio_callout</span> to <span class="em em-bold emphasis">prio</span>, also modify the argument the name of the
+        priority checker, a system path is no longer necessary. Example
+        conversion:<div class="screen"><pre class="contents ">device {
+        vendor "NEC"
+        product "DISK ARRAY"
+        prio_callout mpath_prio_alua /dev/%n
+        prio    alua
+}</pre></div></p>
+<p class="para">See Table <a class="xref" href="device-mapper-multipathing.html#priority-checker-conversion-table" title="Priority Checker
+          Conversion">Priority Checker
+          Conversion</a> for a complete listing</p>
+<div class="table">
+<a name="priority-checker-conversion-table"></a><div class="title">
+<a name="checker-conversion-table"></a><h4><span class="title">Priority Checker
+          Conversion</span></h4>
+</div>
+<table summary="Priority Checker
+          Conversion" style="border: solid 1px;">
+<thead><tr>
+<th class="td-colsep" style="text-align: center;">v0.4.8</th>
+<th style="text-align: center;">v0.4.9</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="td-colsep"><span class="em em-bold emphasis">prio_callout mpath_prio_emc
+                /dev/%n</span></td>
+<td><span class="em em-bold emphasis">prio emc</span></td>
+</tr>
+<tr class="shade">
+<td class="td-colsep"><span class="em em-bold emphasis">prio_callout mpath_prio_alua
+                /dev/%n</span></td>
+<td><span class="em em-bold emphasis">prio alua</span></td>
+</tr>
+<tr>
+<td class="td-colsep"><span class="em em-bold emphasis">prio_callout mpath_prio_netapp
+                /dev/%n</span></td>
+<td><span class="em em-bold emphasis">prio netapp</span></td>
+</tr>
+<tr class="shade">
+<td class="td-colsep"><span class="em em-bold emphasis">prio_callout mpath_prio_rdac
+                /dev/%n</span></td>
+<td><span class="em em-bold emphasis">prio rdac</span></td>
+</tr>
+<tr>
+<td class="td-colsep"><span class="em em-bold emphasis">prio_callout mpath_prio_hp_sw
+                /dev/%n</span></td>
+<td><span class="em em-bold emphasis">prio hp_sw</span></td>
+</tr>
+<tr class="shade">
+<td class="td-colsep"><span class="em em-bold emphasis">prio_callout
+                mpath_prio_hds_modular %b</span></td>
+<td><span class="em em-bold emphasis">prio hds</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="para">Since the multipath config file parser essentially parses all
+        key/value pairs it finds and then makes use of them, it is safe for
+        both <span class="em em-bold emphasis">prio_callout</span> and <span class="em em-bold emphasis">prio</span> to coexist and is recommended that the
+        <span class="em em-bold emphasis">prio</span> attribute be inserted before
+        beginning migration. After which you can safely delete the legacy
+        <span class="em em-bold emphasis">prio_calliout</span> attribute without
+        interrupting service.</p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="multipath-overview"><div class="inner">
+<div class="hgroup"><h2 class="title">Overview</h2></div>
+<div class="region"><div class="contents">
+<p class="para">DM-Multipath can be used to provide:</p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><span class="em emphasis"> Redundancy </span> DM-Multipath can provide
+          failover in an active/passive configuration. In an active/passive
+          configuration, only half the paths are used at any time for I/O. If
+          any element of an I/O path (the cable, switch, or controller) fails,
+          DM-Multipath switches to an alternate path.</p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><span class="em emphasis"> Improved Performance </span> Performance
+          DM-Multipath can be configured in active/active mode, where I/O is
+          spread over the paths in a round-robin fashion. In some
+          configurations, DM-Multipath can detect loading on the I/O paths and
+          dynamically re-balance the load.</p>
+        </li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-storage-array-support"><div class="inner">
+<div class="hgroup"><h2 class="title">Storage Array Overview</h2></div>
+<div class="region"><div class="contents"><p class="para">By default, DM-Multipath includes support for the most common
+      storage arrays that support DM-Multipath. The supported devices can be
+      found in the multipath.conf.defaults file. If your storage array
+      supports DM-Multipath and is not configured by default in this file, you
+      may need to add them to the DM-Multipath configuration file,
+      multipath.conf. For information on the DM-Multipath configuration file,
+      see Section, <a class="link" href="multipath-dm-multipath-config-file.html" title="The DM-Multipath Configuration File">The
+      DM-Multipath Configuration File</a>. Some storage arrays require
+      special handling of I/O errors and path switching. These require
+      separate hardware handler kernel modules.</p></div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-dm-multipath-components"><div class="inner">
+<div class="hgroup"><h2 class="title">DM-Multipath components</h2></div>
+<div class="region"><div class="contents">
+<p class="para">Table <a class="link" href="device-mapper-multipathing.html#multipath-components-table" title="DM-Multipath Components">DM-Multipath
+      Components</a> describes the components of the DM-Multipath package.</p>
+<div class="table">
+<a name="multipath-components-table"></a><div class="title"><h3><span class="title">DM-Multipath Components</span></h3></div>
+<table summary="DM-Multipath Components" style="border: solid 1px;">
+<thead><tr>
+<th class="td-colsep" style="text-align: left;">Component</th>
+<th style="text-align: left;">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">dm_multipath kernel module</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">Reroutes I/O and supports <span class="em em-bold emphasis">failover</span> for paths and path groups.</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">multipath command</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">Lists and configures <span class="em em-bold emphasis">multipath</span>
+        devices. Normally started up with <span class="file filename">/etc/rc.sysinit</span>, it can also be
+        started up by a udev program whenever a block device is added or it
+        can be run by the initramfs file system.</td>
+</tr>
+<tr>
+<td class="td-colsep td-rowsep" style="text-align: left;">
+          <span class="em em-bold emphasis">multipathd daemon</span>
+        </td>
+<td class="td-rowsep" style="text-align: left;">Monitors paths; as paths fail and come back, it may initiate
+        path group switches. Provides for interactive changes to <span class="em em-bold emphasis">multipath</span> devices. This daemon must be restarted for
+        any changes to the <span class="file filename">/etc/multipath.conf</span> file to take effect.</td>
+</tr>
+<tr class="shade">
+<td class="td-colsep" style="text-align: left;">
+          <span class="em em-bold emphasis">kpartx command</span>
+        </td>
+<td style="text-align: left;">Creates device mapper devices for the partitions on a device It
+        is necessary to use this command for DOS-based partitions with DM-Multipath.
+        The kpartx is provided in its own package, but the <span class="em em-bold emphasis">multipath-tools</span> package depends on it.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="multipath-dm-multipath-setup-overview"><div class="inner">
+<div class="hgroup"><h2 class="title">DM-Multipath Setup Overview</h2></div>
+<div class="region"><div class="contents"><p class="para">DM-Multipath includes compiled-in default settings that are
+      suitable for common multipath configurations. Setting up DM-multipath is
+      often a simple procedure. The basic procedure for configuring your
+      system with DM-Multipath is as follows: <div class="list orderedlist"><ol class="list orderedlist">
+<li class="list orderedlist">
+            <p class="para">Install the <span class="em em-bold emphasis">multipath-tools</span>
+            and <span class="em em-bold emphasis">multipath-tools-boot</span>
+            packages</p>
+          </li>
+<li class="list orderedlist">
+            <p class="para">Create an empty config file, <span class="file filename">/etc/multipath.conf</span>, that
+            re-defines the <a class="link" href="multipath-setting-up-dm-multipath.html#multipath-skel-config" title="">following</a></p>
+          </li>
+<li class="list orderedlist">
+            <p class="para">If necessary, edit the <span class="em em-bold emphasis">multipath.conf</span> configuration file to modify
+            default values and save the updated file.</p>
+          </li>
+<li class="list orderedlist">
+            <p class="para">Start the multipath daemon</p>
+          </li>
+<li class="list orderedlist">
+            <p class="para">Update initial ramdisk</p>
+          </li>
+</ol></div> For detailed setup instructions for multipath
+      configuration see Section, <a class="link" href="multipath-setting-up-dm-multipath.html#multipath-setup-overview" title="Setting Up DM-Multipath">Setting Up
+      DM-Multipath</a>.</p></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="dm-multipath-chapter.html" title="DM-Multipath">Previous</a><a class="nextlinks-next" href="multipath-devices.html" title="Multipath Devices">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

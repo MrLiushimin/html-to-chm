@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>SSSD和Active Directory</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="network-authentication.html" title="网络身份验证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络身份验证</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="kerberos-ldap.html" title="Kerberos和LDAP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="../dns/dns.html" title="域名服务（DNS）"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSSD和Active Directory</font></font></h1></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    	本节介绍如何使用sssd通过使用sssd的“ad”提供程序对Active Directory的用户登录进行身份验证。</font><font style="vertical-align: inherit;">在先前版本的sssd中，可以使用“ldap”提供程序进行身份验证。</font><font style="vertical-align: inherit;">但是，在针对Microsoft Windows AD域控制器进行身份验证时，通常需要在域控制器上安装POSIX AD扩展。</font><font style="vertical-align: inherit;">“ad”提供程序简化了配置，无需修改AD结构。
+    </font></font></p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="sssd-ad.html#sssd-ad-requirements" title="先决条件，假设和要求"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">先决条件，假设和要求</font></font></a></li>
+<li class="links"><a class="xref" href="sssd-ad.html#sssd-ad-installation" title="软件安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件安装</font></font></a></li>
+<li class="links"><a class="xref" href="sssd-ad.html#sssd-ad-kerberos" title="Kerberos配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kerberos配置</font></font></a></li>
+<li class="links"><a class="xref" href="sssd-ad.html#sssd-ad-samba" title="Samba配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba配置</font></font></a></li>
+<li class="links"><a class="xref" href="sssd-ad.html#sssd-ad-sssdconfig" title="SSSD配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSSD配置</font></font></a></li>
+<li class="links"><a class="xref" href="sssd-ad.html#sssd-ad-nsswitch" title="验证nsswitch.conf配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">验证nsswitch.conf配置</font></font></a></li>
+<li class="links"><a class="xref" href="sssd-ad.html#sssd-ad-hosts" title="修改/ etc / hosts"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改/ etc / hosts</font></font></a></li>
+<li class="links"><a class="xref" href="sssd-ad.html#sssd-ad-join" title="加入Active Directory"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加入Active Directory</font></font></a></li>
+<li class="links"><a class="xref" href="sssd-ad.html#sssd-ad-test" title="测试认证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试认证</font></font></a></li>
+<li class="links"><a class="xref" href="sssd-ad.html#sssd-ad-mkhomedir" title="带pam_mkhomedir的主目录（可选）"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">带pam_mkhomedir的主目录（可选）</font></font></a></li>
+<li class="links"><a class="xref" href="sssd-ad.html#sssd-ad-desktop" title="桌面Ubuntu身份验证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">桌面Ubuntu身份验证</font></font></a></li>
+<li class="links"><a class="xref" href="sssd-ad.html#sssd-ad-resources" title="资源"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="sssd-ad-requirements"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">先决条件，假设和要求</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+        		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本指南不介绍Active Directory，它如何工作，如何设置，或如何维护它。</font><font style="vertical-align: inherit;">它可能无法</font><font style="vertical-align: inherit;">为您的环境</font><font style="vertical-align: inherit;">提供</font></font><span class="quote"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“最佳实践”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+<li class="list itemizedlist">
+				<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本指南假定已配置了正在运行的Active Directory域。</font></font></p>
+</li>
+<li class="list itemizedlist">
+				<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域控制器充当域的权威DNS服务器。</font></font></p>
+</li>
+<li class="list itemizedlist">
+				<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域控制器是</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/resolv.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定的主DNS解析器   </font><font style="vertical-align: inherit;">。</font></font></p>
+			</li>
+<li class="list itemizedlist">
+				<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在DNS区域中配置</font><font style="vertical-align: inherit;">相应的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">_kerberos</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">_ldap</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">_kpasswd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">等条目（请参阅参考资料部分中的外部链接）。</font></font></p>
+</li>
+<li class="list itemizedlist">
+				<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">系统时间在域控制器上同步（Kerberos必需）。</font></font></p>
+</li>
+<li class="list itemizedlist">
+				<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">此示例中使用的域是</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">myubuntu.example.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</li>
+</ul></div></div></div>
+</div></div>
+<div class="sect2 sect" id="sssd-ad-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">需要以下软件包：</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5-user</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">samba</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sssd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ntp</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">即使系统未导出共享，也需要安装Samba。</font><font style="vertical-align: inherit;">此步骤需要Kerberos域和域控制器的FQDN或IP。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">立即安装这些包。
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install krb5-user samba sssd chrony</font></font></span></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请参阅下一节，了解</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5-user</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装后脚本</font><font style="vertical-align: inherit;">提出的问题的答案</font><font style="vertical-align: inherit;">。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="sssd-ad-kerberos"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kerberos配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">krb5-user</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的安装</font><font style="vertical-align: inherit;">将提示域名（在ALL UPPERCASE中），kdc服务器（即域控制器）和管理服务器（在本例中也是域控制器）。这将写入[realm]和[domain_realm] </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/krb5.conf中的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果域自动发现正在运行，则可能不需要这些部分。</font><font style="vertical-align: inherit;">如果没有，那么两者都是必需的。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果域名是</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">myubuntu.example.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请输入领域</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MYUBUNTU.EXAMPLE.COM</font></font></span>
+		</p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（可选）</font><font style="vertical-align: inherit;">使用一些其他设置</font><font style="vertical-align: inherit;">编辑</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/krb5.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以指定Kerberos票证生存期（这些值可以安全地用作默认值）：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[libdefaults]</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+default_realm = MYUBUNTU.EXAMPLE.COM</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ticket_lifetime = 24h＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+renew_lifetime = 7d</font></font><font></font>
+		</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果未指定default_realm，则可能需要使用</font></font><span class="quote"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“username @ domain”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">而不是</font></font><span class="quote"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“username”登录</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Active Directory成员上的系统时间需要与域控制器的系统时间一致，否则Kerberos身份验证可能会失败。</font><font style="vertical-align: inherit;">理想情况下，域控制器服务器本身将提供NTP服务。</font><font style="vertical-align: inherit;">编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/chrony/chrony.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器dc.myubuntu.example.com
+</font></font></pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="sssd-ad-samba"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">即使没有导出文件共享，Samba也将用于执行与Active Directory身份验证相关的netbios / nmbd服务。</font><font style="vertical-align: inherit;">编辑文件/etc/samba/smb.conf并将以下内容添加到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[global]</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[全球]</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+workgroup = MYUBUNTU</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+客户签名=是</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+客户使用spnego =是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+kerberos方法=秘密和密钥表</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+realm = MYUBUNTU.EXAMPLE.COM</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+安全=广告</font></font><font></font>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">某些指南指定应指定“密码服务器”并指向域控制器。</font><font style="vertical-align: inherit;">仅在未正确设置DNS以查找DC时才需要这样做。</font><font style="vertical-align: inherit;">默认情况下，如果使用“security = ads”指定“密码服务器”，Samba将显示警告。</font></font></p></div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="sssd-ad-sssdconfig"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SSSD配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不存在用于默认/示例配置文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/sssd/sssd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">列入SSSD包。</font><font style="vertical-align: inherit;">有必要创建一个。</font><font style="vertical-align: inherit;">这是一个最小的工作配置文件：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[SSSD]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+services = nss，pam</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+config_file_version = 2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+domains = MYUBUNTU.EXAMPLE.COM</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[域/ MYUBUNTU.EXAMPLE.COM]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+id_provider = ad</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+access_provider = ad</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃如果用户在/登录，请使用此选项。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃此示例将/ home / DOMAIN-FQDN / user指定为$ HOME。</font><font style="vertical-align: inherit;">与pam_mkhomedir.so一起使用</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+override_homedir = / home /％d /％u</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃如果客户端计算机主机名与DC上的计算机对象不匹配，则取消注释。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃ad_hostname = mymachine.myubuntu.example.com</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃如果DNS SRV解析不起作用，则取消注释</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃ad_server = dc.mydomain.example.com</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃如果AD域的名称与Samba域不同，则取消注释</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃ad_domain = MYUBUNTU.EXAMPLE.COM</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃出于性能原因，不鼓励枚举。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#enumerate = true</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存此文件后，将所有权设置为root，将文件权限设置为600：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chown root：root /etc/sssd/sssd.conf</font></font></span></pre></div>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chmod 600 /etc/sssd/sssd.conf</font></font></span></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果所有权或权限不正确，sssd将拒绝启动。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="sssd-ad-nsswitch"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">验证nsswitch.conf配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sssd包的安装后脚本会自动对/etc/nsswitch.conf进行一些修改。</font><font style="vertical-align: inherit;">它应该看起来像这样：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">passwd：compat sss</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+group：compat sss</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+netgroup：nis sss</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudoers：文件sss</font></font><font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="sssd-ad-hosts"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改/ etc / hosts</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将别名添加到/ etc / hosts中指定FQDN的localhost条目。</font><font style="vertical-align: inherit;">例如：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">192.168.1.10 myserver myserver.myubuntu.example.com</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这与动态DNS更新结合使用非常有用。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="sssd-ad-join"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加入Active Directory</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">现在，重启chrony和samba并启动sssd。</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart chrony.service </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart smbd.service nmbd.service </font></font></span> 
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl start sssd.service</font></font></span></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过获取Kerberos票证来测试配置：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo kinit管理员</font></font></span></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">验证票证：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo klist</font></font></span></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果列出了具有过期日期的票证，则可以加入域名：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo网络广告加入-k</font></font></span></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关“未配置DNS域。无法执行DNS更新”的警告。</font><font style="vertical-align: inherit;">可能意味着</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / hosts中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">没有（正确的）别名</font><font style="vertical-align: inherit;">，并且系统无法在Active Directory更新中提供自己的FQDN。</font><font style="vertical-align: inherit;">这是动态DNS更新所必需的。</font><font style="vertical-align: inherit;">验证</font><font style="vertical-align: inherit;">上面“修改/ etc / hosts”中描述的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / hosts</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中</font><font style="vertical-align: inherit;">的别名</font><font style="vertical-align: inherit;">。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（消息“NT_STATUS_UNSUCCESSFUL”表示域加入失败，有些内容不正确。请在继续之前查看前面的步骤）。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下是一些（可选）检查，以验证域加入是否成功。</font><font style="vertical-align: inherit;">请注意，如果域已成功加入但其中一个或两个步骤都失败，则可能需要等待1-2分钟再重试。</font><font style="vertical-align: inherit;">某些更改似乎是异步的。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">验证选项＃1：</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">检查Active Directory中计算机帐户的默认组织单位，以验证是否已创建计算机帐户。</font><font style="vertical-align: inherit;">（Active Directory中的组织单位是本指南范围之外的主题）。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">验证选项＃2</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为特定AD用户（例如管理员）执行此命令</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">getent passwd用户名</font></font></span></pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">枚举=真</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在设置</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sssd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">getent passwd中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">没有用户名参数将列出所有域用户。</font><font style="vertical-align: inherit;">这可能对测试很有用，但速度很慢，不建议用于生产。</font></font></p></div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="sssd-ad-test"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试认证</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">现在应该可以使用Active Directory用户的凭据进行身份验证：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">su  - 用户名</font></font></span></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果这样可行，那么其他登录方法（getty，ssh）也应该有效。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果创建了计算机帐户，表明系统已“加入”域，但身份验证不成功，则查看</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/pam.d</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nssswitch.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以及此前面描述的文件更改</font><font style="vertical-align: inherit;">可能会有所帮助</font><font style="vertical-align: inherit;">。指南。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="sssd-ad-mkhomedir"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">带pam_mkhomedir的主目录（可选）</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用Active Directory用户帐户登录时，用户可能没有主目录。</font><font style="vertical-align: inherit;">这可以通过pam_mkdhomedir.so修复，它将在登录时创建用户的主目录。</font><font style="vertical-align: inherit;">编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/pam.d/common-session</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，并在</font><span class="em emphasis"><font style="vertical-align: inherit;">会话需要</font></span><font style="vertical-align: inherit;">后直接添加此行</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pam_unix.so：</font></font></span></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">会话需要pam_mkhomedir.so skel = / etc / skel / umask = 0022
+</font></font></pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这可能还需要</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">override_homedir</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sssd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">正常工作，所以要确保我们设置。</font></font></p></div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="sssd-ad-desktop"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">桌面Ubuntu身份验证</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">也可以使用Active Directory帐户对Ubuntu Desktop的登录进行身份验证。</font><font style="vertical-align: inherit;">AD帐户不会显示在本地用户的选择列表中，因此需要修改lightdm。</font><font style="vertical-align: inherit;">编辑文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/lightdm/lightdm.conf.d/50-unity-greeter.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并附加以下两行：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">招待员出现手动登录=真</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+迎宾隐藏用户=真</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">重新启动以重新启动lightdm。</font><font style="vertical-align: inherit;">现在应该可以使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名/用户名@域</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">格式</font><font style="vertical-align: inherit;">使用域帐户登录</font><font style="vertical-align: inherit;">。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="sssd-ad-resources"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para"><a href="https://github.com/SSSD/sssd" class="ulink" title="https://github.com/SSSD/sssd"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GitHub SSSD项目</font></font></a></p></li>
+<li class="list itemizedlist"><p class="para"><a href="https://technet.microsoft.com/en-us/library/cc759550%28v=ws.10%29.aspx" class="ulink" title="https://technet.microsoft.com/en-us/library/cc759550%28v=ws.10%29.aspx"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Active Directory DNS区域条目</font></font></a></p></li>
+<li class="list itemizedlist"><p class="para"><a href="http://web.mit.edu/kerberos/krb5-1.12/doc/admin/conf_files/krb5_conf.html" class="ulink" title="http://web.mit.edu/kerberos/krb5-1.12/doc/admin/conf_files/krb5_conf.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kerberos配置选项</font></font></a></p></li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="kerberos-ldap.html" title="Kerberos和LDAP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="dns.html" title="域名服务（DNS）"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

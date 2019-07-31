@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LXC</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="virtualization.html" title="虚拟化"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟化</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="lxd.html" title="LXD"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="../clustering/clustering.html" title="聚类"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">容器是一种轻量级虚拟化技术。</font><font style="vertical-align: inherit;">它们更像是增强的chroot而不是像Qemu或VMware这样的完全虚拟化，因为它们不会模拟硬件，因为容器与主机共享相同的操作系统。</font><font style="vertical-align: inherit;">容器类似于Solaris区域或BSD jails。</font><font style="vertical-align: inherit;">Linux-vserver和OpenVZ是两个预先存在的，独立开发的Linux容器类功能实现。</font><font style="vertical-align: inherit;">事实上，容器是由于vserver和OpenVZ功能的上游工作而产生的。
+    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">容器有两个用户空间实现，每个实现利用相同的内核功能。</font><font style="vertical-align: inherit;">Libvirt允许通过连接到'lxc：///'通过LXC驱动程序使用容器。</font><font style="vertical-align: inherit;">这可以非常方便，因为它支持与其他驱动程序相同的用法。</font><font style="vertical-align: inherit;">另一个实现，简称为“LXC”，与libvirt不兼容，但使用更多用户空间工具更灵活。</font><font style="vertical-align: inherit;">尽管存在可能导致混淆的特性，但可以在两者之间切换。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在本文档中，我们将主要描述
+     </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包。</font><font style="vertical-align: inherit;">由于缺少对libvirt-lxc容器的Apparmor保护，通常不建议使用libvirt-lxc。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在本文档中，容器名称将显示为CN，C1或C2。</font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="lxc.html#lxc-installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-basic-usage" title="基本用法"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基本用法</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-global-conf" title="全局配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">全局配置</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-network" title="联网"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联网</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-startup" title="LXC启动"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC启动</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-backinstores" title="支持商店"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持商店</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-templates" title="模板"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模板</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-autostart" title="自动开启"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自动开启</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-apparmor" title="AppArmor的"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor的</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-cgroups" title="控制组"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">控制组</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-cloning" title="克隆"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">克隆</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-hooks" title="生命周期管理挂钩"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生命周期管理挂钩</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-consoles" title="控制台"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">控制台</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-debugging" title="故障排除"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障排除</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#python-lxc" title="LXC API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC API</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-security" title="安全"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安全</font></font></a></li>
+<li class="links"><a class="xref" href="lxc.html#lxc-resources" title="资源"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="lxc-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所述</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包可以使用安装</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo apt install lxc</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这将引入所需的和建议的依赖关系，以及为要使用的容器设置网桥。</font><font style="vertical-align: inherit;">如果您希望使用非特权容器，则需要确保用户具有足够的已分配子流和子标记，并且可能希望允许用户将容器连接到网桥（请参阅
+       </font></font><a class="xref" href="lxc.html#lxc-unpriv" title="基本无特权用法"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基本非特权用法</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）。
+      </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxc-basic-usage"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基本用法</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      LXC可以通过两种不同的方式使用 - 特权，通过以root用户身份运行lxc命令; </font><font style="vertical-align: inherit;">或者，通过以非root用户身份运行lxc命令来实现非特权。</font><font style="vertical-align: inherit;">（root用户可以启动非特权容器，但这里没有描述。）非特权容器更受限制，例如无法创建设备节点或挂载块支持的文件系统。</font><font style="vertical-align: inherit;">但是它们对主机的危险性较小，因为容器中的root用户标识映射到主机上的非root用户标识。
+      </font></font></p></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基本特权使用</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      要创建特权容器，您只需执行以下操作：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-create --template download --name u1</font></font><font></font>
+</span><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+或者，缩写</font></font><font></font>
+<span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-create -t​​ download -n u1</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      这将以交互方式请求下载容器根文件系统类型 - 特别是分发，发布和体系结构。</font><font style="vertical-align: inherit;">要以非交互方式创建容器，可以在命令行上指定这些值：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-create -t​​ download -n u1  -  --dist ubuntu --release bionic --arch amd64</font></font><font></font>
+</span><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+要么</font></font><font></font>
+<span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-create -t​​ download -n u1  -  -d ubuntu -r bionic -a amd64</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      您现在可以使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-ls</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">列出容器，使用
+       </font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-info</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">获取详细的容器信息，使用
+       </font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-start</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">启动并使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-stop</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      来停止容器。  </font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-attach</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和
+       </font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-console</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">允许您输入容器，如果ssh不是一个选项。  </font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-destroy</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">删除容器，包括其rootfs。</font><font style="vertical-align: inherit;">有关每个命令的更多信息，请参见手册页。</font><font style="vertical-align: inherit;">示例会话可能如下所示：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-ls --fancy</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-start --name u1 --daemon</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-info --name u1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-stop --name u1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-destroy --name u1</font></font><font></font>
+</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名称空间</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      非特权容器允许用户在没有任何root权限的情况下创建和管理容器。</font><font style="vertical-align: inherit;">支撑此功能的功能称为用户命名空间。</font><font style="vertical-align: inherit;">用户命名空间是分层的，父命名空间中的特权任务能够将其ID映射到子命名空间。</font><font style="vertical-align: inherit;">默认情况下，主机上的每个任务都在初始用户命名空间中运行，其中整个范围的ID都映射到整个范围。</font><font style="vertical-align: inherit;">这可以通过查看/ proc / self / uid_map和/ proc / self / gid_map看出，当从初始用户命名空间读取时，它们都将显示“0 0 4294967295”。</font><font style="vertical-align: inherit;">从Ubuntu 14.04开始，创建新用户时，默认情况下会提供一系列用户ID。
+      </font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / subgid</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      有关更多信息，请参阅各自的联机帮助页。</font><font style="vertical-align: inherit;">按照惯例，子标识和子标记从id 100000开始，以避免与系统用户冲突。
+      </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      如果用户是在早期版本上创建的，则可以使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">usermod</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为其授予一系列ID </font><font style="vertical-align: inherit;">，如下所示：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo usermod -v 100000-200000 -w 100000-200000 user1</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        程序</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">newuidmap</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	newgidmap</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uidmap</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	包</font><font style="vertical-align: inherit;">中的setuid-root程序，</font><font style="vertical-align: inherit;">lxc在内部使用它来将子主机和subgids从主机映射到非特权容器。</font><font style="vertical-align: inherit;">它们确保用户仅映射主机配置授权的ID。
+      </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="lxc-unpriv"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基本无特权用法</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+      </p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      要创建无特权的容器，需要几个第一步。</font><font style="vertical-align: inherit;">您将需要创建默认容器配置文件，指定所需的ID映射和网络设置，以及配置主机以允许非特权用户挂接到主机网络。</font><font style="vertical-align: inherit;">以下示例假定您的映射用户和组ID范围是100000-165536。</font><font style="vertical-align: inherit;">检查您的实际用户和组ID范围并相应地修改示例：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+grep $ USER / etc / subuid</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+grep $ USER / etc / subgid</font></font><font></font>
+</span>
+</pre></div>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+mkdir -p~ / .config / lxc</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+echo“lxc.id_map = u 0 100000 65536”&gt;〜/ .config / lxc / default.conf</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+echo“lxc.id_map = g 0 100000 65536”&gt;&gt;〜/ .config / lxc / default.conf</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+echo“lxc.network.type = veth”&gt;&gt;〜/ .config / lxc / default.conf</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+echo“lxc.network.link = lxcbr0”&gt;&gt;〜/ .config / lxc / default.conf</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+echo“$ USER veth lxcbr0 2”| </font><font style="vertical-align: inherit;">sudo tee -a / etc / lxc / lxc-usernet</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      在此之后，您可以使用与特权容器相同的方式创建非特权容器，而无需使用sudo。
+    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc-create -t​​ download -n u1  -  -d ubuntu -r bionic -a amd64</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc-start -n u1 -d</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc-attach -n u1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc-stop -n u1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc-destroy -n u1</font></font><font></font>
+</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="lxc-nesting"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">嵌套</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为了在容器内运行容器（称为嵌套容器），父容器配置文件中必须存在两行：
+</font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc.mount.auto = cgroup</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc.aa_profile = lxc-container-default-with-nesting</font></font><font></font>
+</pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	第一个将导致cgroup管理器套接字绑定到容器中，以便容器内的lxc能够管理其嵌套容器的cgroup。</font><font style="vertical-align: inherit;">第二个导致容器在更宽松的Apparmor策略中运行，该策略允许容器执行启动容器所需的安装。</font><font style="vertical-align: inherit;">请注意，此策略与特权容器一起使用时，不如常规策略或非特权容器安全。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="lxc.html#lxc-apparmor" title="AppArmor的"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apparmor</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	</font></font><p></p></div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="lxc-global-conf"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">全局配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      LXC会查阅以下配置文件。</font><font style="vertical-align: inherit;">对于特权用途，它们位于</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / lxc下</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，而对于非特权用途，它们位于</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">〜/ .config / lxc下</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+      </font></font></p><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	  <p class="para"><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以选择为多个lxc设置指定备用值，包括lxcpath，默认配置，要使用的cgroup，cgroup创建模式以及lvm和zfs的存储后端设置。</font></font></p>
+	</li>
+<li class="list itemizedlist">
+	  <p class="para"><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">default.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定每个新创建的容器应包含的配置。</font><font style="vertical-align: inherit;">这通常至少包含网络部分，对于非特权用户，通常包含id映射部分</font></font></p>
+	</li>
+<li class="list itemizedlist">
+	  <p class="para"><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-usernet.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定非特权用户如何将其容器连接到主机拥有的网络。</font></font></p>
+	</li>
+</ul></div>
+    <p></p>
+<p class="para">
+      <span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">default.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">都在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / lxc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ HOME / .config / lxc下</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，而</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-usernet.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">只在主机范围内。
+    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      默认情况下，容器位于root用户的/ var / lib / lxc下，否则位于$ HOME / .local / share / lxc。</font><font style="vertical-align: inherit;">可以使用“-P | --lxcpath”参数为所有lxc命令指定位置。
+    </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxc-network"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">联网</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认情况下，LXC为每个容器创建一个专用网络命名空间，其中包括第2层网络堆栈。</font><font style="vertical-align: inherit;">容器通常通过将物理NIC或veth隧道端点传递到容器来连接到外部世界。</font><font style="vertical-align: inherit;">LXC在主机启动时创建一个NATed桥，lxcbr0。</font><font style="vertical-align: inherit;">使用默认配置创建的容器将具有一个veth NIC，其远程端插入lxcbr0桥。</font><font style="vertical-align: inherit;">NIC一次只能存在于一个命名空间中，因此传入容器的物理NIC在主机上不可用。  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以创建没有专用网络命名空间的容器。</font><font style="vertical-align: inherit;">在这种情况下，容器将像任何其他应用程序一样访问主机网络。</font><font style="vertical-align: inherit;">请注意，如果容器正在运行带有upstart的发行版（如Ubuntu），这是特别危险的，因为与init通信的程序（如</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">shutdown</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）将通过抽象的Unix域套接字与主机的新手进行通信，并关闭主机。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      要在lxcbr0上为容器提供基于域名的持久IP地址，您可以将条目写入</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/lxc/dnsmasq.conf，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如：
+</font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DHCP主机= lxcmail，10.0.3.100</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+DHCP主机= ttrss，10.0.3.101</font></font><font></font>
+</pre></div>
+      <p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果容器可以公开访问，那么有几种方法可以解决。</font><font style="vertical-align: inherit;">例如，一种是使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iptables</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      将主机端口转发到容器
+
+</font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> iptables -t nat -A PREROUTING -p tcp -i eth0 --dport 587 -j DNAT \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 	- 到目的地10.0.3.100：587</font></font><font></font>
+ </pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      另一种方法是桥接主机的网络接口（请参阅Ubuntu Server Guide的网络配置章节，
+       </font></font><a class="xref" href="network-configuration.html#bridging" title="桥接"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">桥接</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）。</font><font style="vertical-align: inherit;">然后，例如，在容器配置文件中指定主机的桥接器代替lxcbr0
+
+</font></font><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc.network.type = veth</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc.network.link = br0</font></font><font></font>
+</pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      最后，您可以要求LXC将macvlan用于容器的NIC。</font><font style="vertical-align: inherit;">请注意，这具有限制，并且取决于配置可能不允许容器与主机本身通信。</font><font style="vertical-align: inherit;">因此，其他两个选项是首选且更常用。</font></font><p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有几种方法可以确定容器的IP地址。</font><font style="vertical-align: inherit;">首先，您可以使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-ls --fancy</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来打印所有正在运行的容器的ip地址，或者使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-info -i -H -n C1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      来打印C1的ip地址。</font><font style="vertical-align: inherit;">如果主机上安装了dnsmasq，您还可以在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/dnsmasq.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加一个条目，</font><font style="vertical-align: inherit;">如下所示
+</font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器= / LXC / 10.0.3.1
+</font></font></pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      之后dnsmasq将在本地解析C1.lxc，以便您可以执行以下操作：
+</font></font><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ping C1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ssh C1</font></font><font></font>
+</pre></div>
+      <p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关更多信息，请参阅lxc.conf联机帮助页以及</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ usr / share / doc / lxc / examples /</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下的示例网络配置</font><font style="vertical-align: inherit;">。
+      </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxc-startup"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC启动</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC没有长时间运行的守护进程。</font><font style="vertical-align: inherit;">但它确实有三个新贵工作。</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+           <p class="para"><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/init/lxc-net.conf：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是一个可选作业，只有在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   / etc / default / lxc-net</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定USE_LXC_BRIDGE </font><font style="vertical-align: inherit;">时才运行</font><font style="vertical-align: inherit;">（默认为true）。</font><font style="vertical-align: inherit;">它为容器设置了一个NAT桥。</font></font></p>
+         </li>
+<li class="list itemizedlist">
+           <p class="para"><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/init/lxc.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加载lxc apparmor配置文件，并可选择启动任何自动启动容器。</font><font style="vertical-align: inherit;">如果在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / default / lxc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中将LXC_AUTO（默认为true）设置为true，则将忽略自动启动容器
+            </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有关自动启动容器的更多信息，请参见lxc-autostart手册页。
+	   </font></font></p>
+         </li>
+<li class="list itemizedlist">
+	  <p class="para"><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/init/lxc-instance.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	  由</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/init/lxc.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	  用于自动启动容器。
+	  </font></font></p>
+	 </li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxc-backinstores"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持商店</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC支持容器根文件系统的多个后备存储。</font><font style="vertical-align: inherit;">默认是一个简单的目录后备存储，因为它不需要先前的主机自定义，只要底层文件系统足够大。</font><font style="vertical-align: inherit;">它还不需要root权限来创建后备存储，因此它可以无限制地用于非特权用途。</font><font style="vertical-align: inherit;">特权目录支持容器的rootfs（默认情况下）位于
+	 </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / lib / lxc / C1 / rootfs下</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，而非特权容器的rootfs位于
+	 </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">〜/ .local / share / lxc / C1 / rootfs下</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果在lxc.system.com中指定了自定义lxcpath，则容器rootfs将位于</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ lxcpath / C1 / rootfs下</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+        </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	目录支持的容器C1的快照克隆C2成为overlayfs支持的容器，其rootfs称为
+	 </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">overlayfs：/ var / lib / lxc / C1 / rootfs：/ var / lib / lxc / C2 / delta0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">其他后备存储类型包括loop，btrfs，LVM和zfs。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	btrfs支持的容器大多看起来像一个目录支持的容器，其根文件系统位于同一位置。</font><font style="vertical-align: inherit;">但是，根文件系统包含子卷，因此使用子卷快照创建快照克隆。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LVM支持的容器的根文件系统可以是任何单独的LV。</font><font style="vertical-align: inherit;">可以在lxc.conf中指定默认的VG名称。</font><font style="vertical-align: inherit;">使用lxc-create可以为每个容器配置文件系统类型和大小。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	zfs支持容器的rootfs是一个单独的zfs文件系统，安装在传统的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / lib / lxc / C1 / rootfs</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	位置下。</font><font style="vertical-align: inherit;">可以在lxc-create中指定zfsroot，并且可以在lxc.system.conf中指定缺省值。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  有关使用各种后备存储创建容器的更多信息，请参阅lxc-create手册页。
+	</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxc-templates"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模板</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	创建容器通常涉及为容器创建根文件系统。  </font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-create</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将此工作委托给
+	 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模板</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，这些</font><span class="em emphasis"><font style="vertical-align: inherit;">模板</font></span><font style="vertical-align: inherit;">通常是按分发的。</font><font style="vertical-align: inherit;">lxc附带的lxc模板可以在
+	 </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ usr / share / lxc / templates下找到</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，并包含用于创建Ubuntu，Debian，Fedora，Oracle，centos和gentoo容器等的模板。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	在大多数情况下创建分发映像需要能够创建设备节点，通常需要其他发行版中不可用的工具，并且通常非常耗时。</font><font style="vertical-align: inherit;">因此lxc附带了一个特殊的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下载</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模板，可以从中央lxc服务器下载预先构建的容器映像。</font><font style="vertical-align: inherit;">最重要的用例是允许非root用户简单地创建非特权容器，而非root用户无法轻松运行</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">debootstrap</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	当运行</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC-创建</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，这跟从所有选项
+	 </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">传递给模板。</font><font style="vertical-align: inherit;">在下面的命令，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--name</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--template</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--bdev</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">传递给</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC-创造</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，而</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--release</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">被传递到模板：
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc-create --template ubuntu --name c1 --bdev loop  -  --release bionic</font></font><font></font>
+</span>
+</pre></div>
+	<p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	您可以通过将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--help</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和模板名称</font><font style="vertical-align: inherit;">传递</font><font style="vertical-align: inherit;">给</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-create</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来获取任何特定容器支持的选项的帮助</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">例如，有关下载模板的帮助，
+	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc-create --template download --help</font></font><font></font>
+</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxc-autostart"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自动开启</font></font></h2></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC支持标记要在系统引导时启动的容器。</font><font style="vertical-align: inherit;">在Ubuntu 14.04之前，这是使用目录</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / lxc / auto</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下的符号链接完成的
+	 </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">从Ubuntu 14.04开始，它通过容器配置文件完成。</font><font style="vertical-align: inherit;">一个条目
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc.start.auto = 1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc.start.delay = 5</font></font><font></font>
+</span>
+</pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	意味着容器应该在启动时启动，系统应该在启动下一个容器之前等待5秒。</font><font style="vertical-align: inherit;">LXC还支持容器的订购和分组，以及自动启动组的重启和关闭。</font><font style="vertical-align: inherit;">有关更多信息，请参见lxc-autostart和lxc.container.conf的手册页。
+	</font></font><p></p></div></div>
+</div></div>
+<div class="sect2 sect" id="lxc-apparmor"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor的</font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC附带默认的Apparmor配置文件，旨在保护主机免受意外滥用容器内的权限。</font><font style="vertical-align: inherit;">例如，容器将无法写入
+         </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ proc / sysrq-trigger</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或大多数
+         </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ sys</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">该</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">usr.bin.lxc启动</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件是通过运行进入</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC-开始</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">此配置文件主要阻止
+         </font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-start</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在容器的根文件系统之外安装新的文件系统。</font><font style="vertical-align: inherit;">在执行容器的</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">init</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">之前
+         </font><font style="vertical-align: inherit;">，</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请求切换到容器的配置文件。</font><font style="vertical-align: inherit;">默认情况下，此配置文件是
+         </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-container-default</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">策略，该策略在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apparmor.d/lxc/lxc-default中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">定义
+         </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">此配置文件可防止容器访问许多危险路径，以及安装大多数文件系统。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">容器中的程序无法进一步限制 - 例如，MySQL在容器配置文件（保护主机）下运行，但无法进入MySQL配置文件（以保护容器）。</font></font></p>
+<p class="para"><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-execute</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">不会输入Apparmor配置文件，但它产生的容器将被限制。</font></font></p>
+</div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自定义容器策略</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您发现</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-start</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">由于其Apparmor策略拒绝的合法访问而失败，您可以通过执行以下操作来禁用lxc-start配置文件：</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apparmor_parser -R /etc/apparmor.d/usr.bin.lxc-start</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo ln -s /etc/apparmor.d/usr.bin.lxc-start /etc/apparmor.d/disabled/</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这将使</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-start</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">运行无限制，但继续限制容器本身。</font><font style="vertical-align: inherit;">如果您还希望禁用容器的限制，那么除了禁用
+         </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">usr.bin.lxc-start</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件之外，还必须添加：</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc.aa_profile =无限制
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">到容器的配置文件。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	LXC附带了一些容器的备用策略。</font><font style="vertical-align: inherit;">如果您希望在容器内运行容器（嵌套），则可以通过将以下行添加到容器配置文件中来使用lxc-container-default-with-nesting配置文件
+	</font></font></p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc.aa_profile = lxc-container-default-with-nesting
+	</font></font></pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如果您希望在容器内使用libvirt，则需要</font><font style="vertical-align: inherit;">通过取消注释以下行</font><font style="vertical-align: inherit;">来编辑该策略（在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apparmor.d/lxc/lxc-default-with-nesting中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">定义
+	 </font><font style="vertical-align: inherit;">）：
+	</font></font><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mount fstype = cgroup  - &gt; / sys / fs / cgroup / **，
+	</font></font></pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	并重新加载该政策。</font></font><p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请注意，具有特权容器的嵌套策略远不如默认策略安全，因为它允许容器</font><font style="vertical-align: inherit;">
+	在非标准位置</font><font style="vertical-align: inherit;">重新挂载</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ sys</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ proc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，从而绕过apparmor保护。</font><font style="vertical-align: inherit;">非特权容器没有这个缺点，因为容器根不能写入root拥有的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">proc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	和</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sys</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc附带的另一个配置文件允许容器挂载块文件系统类型，如ext4。</font><font style="vertical-align: inherit;">这在某些情况下（例如maas供应）很有用，但由于内核中的超级块处理程序未经过审计以安全处理不受信任的输入，因此通常被认为是不安全的。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果需要在自定义配置文件中运行容器，可以在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apparmor.d/lxc/</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下创建新的配置文件
+         </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">其名称必须以
+         </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-开头</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，以便允许</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-start</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">转换到该配置文件。</font><font style="vertical-align: inherit;">该
+         </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC-默认</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件包括可重复使用的抽象文件
+         </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apparmor.d/abstractions/lxc/container-base</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">因此，启动新配置文件的简便方法是执行相同操作，然后在策略底部添加额外权限。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建策略后，使用以下命令加载它：</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apparmor_parser -r /etc/apparmor.d/lxc-containers
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">重新启动后将自动加载配置文件，因为它是由文件
+         </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apparmor.d/lxc-containers提供的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">最后，要使容器</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用这个新的
+         </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-CN-profile</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请将以下行添加到其配置文件中：</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc.aa_profile = lxc-CN-profile
+</font></font></pre></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="lxc-cgroups"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">控制组</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">控制组（cgroup）是一个内核功能，提供分层任务分组和每个cgroup资源记帐和限制。</font><font style="vertical-align: inherit;">它们用于容器中以限制块和字符设备访问以及冻结（暂停）容器。</font><font style="vertical-align: inherit;">它们可以进一步用于限制内存使用和阻止i / o，保证最小cpu共享，并将容器锁定到特定的cpu。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认情况下，特权容器CN将分配给名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ lxc / CN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的cgroup </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">在名称冲突（使用自定义lxcpaths时可能发生）的情况下，后缀“-n”（其中n是从0开始的整数）将附加到cgroup名称。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认情况下，特权容器CN将在</font><font style="vertical-align: inherit;">启动容器的任务的cgroup下</font><font style="vertical-align: inherit;">分配给名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的cgroup，例如
+	 </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/usr/1000.user/1.session/CN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">容器根将被赋予目录的组所有权（但不是所有文件），以便允许它创建新的子cgroup。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	从Ubuntu 14.04开始，LXC使用cgroup管理器（cgmanager）来管理cgroup。</font><font style="vertical-align: inherit;">cgroup管理器通过Unix socket </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ sys / fs / cgroup / cgmanager / sock</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">接收D-Bus请求</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">为方便安全的嵌套容器，行
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc.mount.auto = cgroup</font></font><font></font>
+</span>
+</pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	可以添加到容器配置中，从而导致将
+	 </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ sys / fs / cgroup / cgmanager</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录绑定到容器中。</font><font style="vertical-align: inherit;">容器反过来应该启动cgroup管理代理（如果cgmanager包安装在容器中，默认情况下完成），这会将</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ sys / fs / cgroup / cgmanager</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	目录移动到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/sys/fs/cgroup/cgmanager.lower</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，然后开始在自己的socket </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ sys / fs / cgroup / cgmanager / sock</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上侦听代理请求
+	 </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">主机cgmanager将确保嵌套容器无法转义其分配的cgroup或发出未经授权的请求。
+	</font></font><p></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxc-cloning"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">克隆</font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对于快速配置，您可能希望根据需要自定义规范容器，然后制作多个副本。</font><font style="vertical-align: inherit;">这可以通过</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-clone</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">程序完成。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">克隆是快照或另一个容器的副本。</font><font style="vertical-align: inherit;">副本是从原始副本复制的新容器，并在主机上占用与原始容器相同的空间。</font><font style="vertical-align: inherit;">快照利用底层后备存储的快照功能，使写入时复制容器引用第一个。</font><font style="vertical-align: inherit;">可以从btrfs，LVM，zfs和目录支持的容器创建快照。</font><font style="vertical-align: inherit;">每个后备存储都有自己的特点 - 例如，不是精简配置的LVM容器不能支持快照的快照; </font><font style="vertical-align: inherit;">在释放所有快照之前，无法删除具有快照的zfs容器; </font><font style="vertical-align: inherit;">必须更仔细地规划LVM容器，因为底层文件系统可能不支持增长; </font><font style="vertical-align: inherit;">btrfs没有遭受任何这些缺点，但遭受fsync性能降低导致dpkg并且容易变慢。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	使用overlay文件系统创建目录打包容器的快照。</font><font style="vertical-align: inherit;">例如，特权目录支持的容器C1将其根文件系统置于
+	 </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / lib / lxc / C1 / rootfs下</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">将启动一个名为C2的C1的快照克隆，其中C1的rootfs只在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / lib / lxc / C2 / delta0下安装</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">重要的是，在这种情况下，C2运行时不允许运行或删除C1。</font><font style="vertical-align: inherit;">建议将C1视为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	规范的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基本容器，并仅使用其快照。
+	</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	给定一个名为C1的现有容器，可以使用以下命令创建副本：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-clone -o C1 -n C2</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以使用以下方法创建快照：</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-clone -s -o C1 -n C2</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 有关更多信息，请参见lxc-clone联机帮助页。</font></font></p>
+</div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快照</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为了更轻松地支持使用快照克隆进行迭代容器开发，LXC支持</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快照</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">在处理容器C1时，在进行潜在危险或难以还原的更改之前，您可以创建快照
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-snapshot -n C1</font></font><font></font>
+</span>
+</pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  这是在/ var / lib / lxcsnaps或$ HOME / .local / share / lxcsnaps下名为'snap0'的快照克隆。</font><font style="vertical-align: inherit;">下一个快照将被称为“snap1”等。现有的快照可以使用</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-snapshot -L -n C1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">列出
+	   </font><font style="vertical-align: inherit;">，并且可以恢复快照 - 删除当前的C1容器 - 使用
+	   </font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-snapshot -r snap1 -n C1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">执行restore命令后，snap1快照将继续存在，并且先前的C1将被删除并替换为snap1快照。
+	  </font></font><p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  btrfs，lvm，zfs和overlayfs容器支持快照。</font><font style="vertical-align: inherit;">如果在目录支持的容器上调用lxc-snapshot，则会记录错误，并将快照创建为副本克隆。</font><font style="vertical-align: inherit;">这样做的原因是，如果用户创建目录支持容器的overlayfs快照，然后对目录支持的容器进行更改，则原始容器更改将部分反映在快照中。</font><font style="vertical-align: inherit;">如果需要目录支持的容器C1的快照，则应创建C1的overlayfs克隆，不应再次触摸C1，并且可以随意编辑和快照overlayfs clone，如此
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc-clone -s -o C1 -n C2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc-start -n C2 -d＃进行一些更改</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc-stop -n C2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc-snapshot -n C2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc-start -n C2＃等</font></font><font></font>
+</span>
+</pre></div>
+	  <p></p>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">短暂的容器</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虽然快照对于图像的长期增量开发很有用，但是临时容器利用快照来快速，一次性使用一次性容器。</font><font style="vertical-align: inherit;">给定基础容器C1，您可以使用启动临时容器
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+lxc-start-ephemeral -o C1</font></font><font></font>
+</span>
+</pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  容器以C1的快照开始。</font><font style="vertical-align: inherit;">登录容器的说明将打印到控制台。</font><font style="vertical-align: inherit;">关机后，短暂的容器将被销毁。</font><font style="vertical-align: inherit;">有关更多选项，请参见lxc-start-ephemeral手册页。
+	  </font></font><p></p></div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="lxc-hooks"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生命周期管理挂钩</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">从Ubuntu 12.10开始，可以定义在容器生命周期的特定点执行的钩子：</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在容器ttys，控制台或挂载启动之前，预启动挂钩在主机的命名空间中运行。</font><font style="vertical-align: inherit;">如果在此挂钩中进行任何安装，则应在后挂钩中清洁它们。</font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">预安装挂钩在容器的命名空间中运行，但在挂载根文件系统之前。</font><font style="vertical-align: inherit;">当容器关闭时，在此挂钩中完成的安装将自动清理。</font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">挂载挂钩在挂载容器文件系统之后运行，但在容器调用
+             </font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pivot_root</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以更改其根文件系统之前运行。</font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在执行容器的init之前立即运行启动挂钩。</font><font style="vertical-align: inherit;">由于这些是在转入容器的文件系统后执行的，因此必须将要执行的命令复制到容器的文件系统中。</font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在容器关闭后执行停止后挂钩。</font></font></p>
+          </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果任何钩子返回错误，容器的运行将被中止。</font><font style="vertical-align: inherit;">任何</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">后停止</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">挂钩仍将执行。</font><font style="vertical-align: inherit;">脚本生成的任何输出都将以调试优先级记录。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关指定挂钩的配置文件格式，请参见lxc.container.conf手册页。</font><font style="vertical-align: inherit;">一些示例挂钩随lxc包一起提供，作为如何编写和使用此类挂钩的示例。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxc-consoles"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">控制台</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">容器具有可配置数量的控制台。</font><font style="vertical-align: inherit;">一个总是存在于容器的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / console中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">除非</font><font style="vertical-align: inherit;">指定</font><font style="vertical-align: inherit;">了</font><span class="em emphasis"><font style="vertical-align: inherit;">-d</font></span><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">，否则</font><font style="vertical-align: inherit;">它将显示在运行</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-start</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的终端上</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">可以使用</font><span class="em emphasis"><font style="vertical-align: inherit;">-c console-file</font></span><font style="vertical-align: inherit;">选项将
+         </font><span class="file filename"><font style="vertical-align: inherit;">/ dev / console</font></span><font style="vertical-align: inherit;">上的输出
+         </font><font style="vertical-align: inherit;">重定向到文件</font><span class="cmd command"><font style="vertical-align: inherit;">lxc-start</font></span><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">额外控制台的数量由</font><span class="cmd command"><font style="vertical-align: inherit;">lxc.tty</font></span><font style="vertical-align: inherit;">变量</font><font style="vertical-align: inherit;">指定</font><font style="vertical-align: inherit;">，通常设置为4.这些控制台显示在</font><span class="file filename"><font style="vertical-align: inherit;">/ dev / ttyN上</font></span><font style="vertical-align: inherit;"> 
+        （对于1 &lt;= N &lt;= 4）。</font><font style="vertical-align: inherit;">要从主机登录控制台3，请使用：</font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="cmd command"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="cmd command"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-console -n container -t 3</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或者如果</font><font style="vertical-align: inherit;">未指定</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-t N</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项，将自动选择未使用的控制台。</font><font style="vertical-align: inherit;">要退出控制台，请使用转义序列Ctrl-a q。</font><font style="vertical-align: inherit;">请注意，转义序列在</font><font style="vertical-align: inherit;">
+        没有</font><span class="em emphasis"><font style="vertical-align: inherit;">-d</font></span><font style="vertical-align: inherit;">选项的</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-start</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">导致的控制台中不起作用</font><font style="vertical-align: inherit;">。</font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">每个容器控制台实际上是主机（不是客户端）pty挂载中的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unix98</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pty，绑定挂载在guest </font><span class="file filename"><font style="vertical-align: inherit;">虚拟机</font></span><font style="vertical-align: inherit;">的
+         </font><span class="file filename"><font style="vertical-align: inherit;">/ dev / ttyN</font></span><font style="vertical-align: inherit;">和</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / console上</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">因此，如果访客卸载那些或以其他方式尝试访问实际的角色设备</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4：N</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，它将不会为LXC控制台提供getty。</font><font style="vertical-align: inherit;">（使用默认设置，容器将无法访问该字符设备，因此getty将失败。）当引导脚本盲目地安装新的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">时，很容易发生这种情况</font><font style="vertical-align: inherit;">。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxc-debugging"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障排除</font></font></h2></div>
+<div class="region">
+<div class="contents"></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">记录</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 如果在启动容器时出现问题，第一步应该是从LXC获取完整的日志记录：
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-start -n C1 -l trace -o debug.out</font></font><font></font>
+</span>
+</pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	这将导致lxc以最详细的级别记录，</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">跟踪</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并将日志信息输出到名为“debug.out”的文件中。</font><font style="vertical-align: inherit;">如果文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">debug.out</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">已存在，则将附加新的日志信息。
+	</font></font><p></p></div></div>
+</div></div>
+<div class="sect3 sect" id="lxc-monitoring"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">监控容器状态</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有两个命令可用于监视容器状态更改。
+        </font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-monitor</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">监视一个或多个容器的状态变化。</font><font style="vertical-align: inherit;">它通常使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-n</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">获取容器名称
+         </font><font style="vertical-align: inherit;">，但在这种情况下，容器名称可以是posix正则表达式，以允许监视所需的容器集。</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-monitor</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在打印容器更改时继续运行。</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc-wait</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">等待特定的状态更改然后退出。</font><font style="vertical-align: inherit;">例如，</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-monitor -n cont [0-5] *</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将所有状态更改打印到与列出的正则表达式匹配的任何容器，而</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-wait -n cont1 -s'STOPPED | FROZEN'</font></font><font></font>
+</span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将等待容器cont1进入状态STOPPED或状态FROZEN然后退出。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">连接</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	从Ubuntu 14.04开始，可以附加到容器的命名空间。</font><font style="vertical-align: inherit;">最简单的情况就是这样做
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-attach -n C1</font></font><font></font>
+</span>
+</pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	这将启动附加到C1命名空间的shell，或者，有效地在容器内部。</font><font style="vertical-align: inherit;">附加功能非常灵活，允许附加到容器命名空间和安全上下文的子集。</font><font style="vertical-align: inherit;">有关更多信息，请参见手册页。
+	</font></font><p></p></div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">容器初始化冗长</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	如果LXC完成容器启动，但容器init无法完成（例如，没有显示登录提示），则从init进程请求额外的详细程度会很有用。</font><font style="vertical-align: inherit;">对于upstart容器，这可能是：
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-start -n C1 / sbin / init loglevel = debug</font></font><font></font>
+</span>
+</pre></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	例如，您也可以使用完全不同的程序代替init
+</font></font><div class="screen"><pre class="contents "><span class="cmd command"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-start -n C1 / bin / bash</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-start -n C1 / bin / sleep 100</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo lxc-start -n C1 / bin / cat / proc / 1 / status</font></font><font></font>
+</span>
+</pre></div>
+	<p></p></div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="python-lxc"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC API</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">现在可以通过</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">liblxc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">导出的API访问大多数LXC功能</font><font style="vertical-align: inherit;">，其中绑定可以使用多种语言，包括Python，lua，ruby和go。
+      </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      下面是一个使用python绑定（在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">python3-lxc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包</font><font style="vertical-align: inherit;">中可用）的示例
+       </font><font style="vertical-align: inherit;">，它创建并启动一个容器，然后等待它关闭：
+      </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#sudo python3</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+Python 3.2.3（默认，2012年8月28日，08：26：03）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+linux2上的[GCC 4.7.1 20120814（预发布）]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+输入“帮助”，“版权”，“信用”或“许可”以获取更多信息。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&gt;&gt;&gt; import lxc</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+__main __：1：警告：python-lxc API尚未稳定，可能会在任何p处发生变化</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+未来的oint。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&gt;&gt;&gt; c = lxc.Container（“C1”）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&gt;&gt;&gt; c.create（“ubuntu”）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+真正</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&gt;&gt;&gt; c.start（）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+真正</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&gt;&gt;&gt; c.wait（“停止”）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+真正</font></font><font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxc-security"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安全</font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命名空间将ID映射到资源。</font><font style="vertical-align: inherit;">通过不向容器提供用于引用资源的任何id，可以保护资源。</font><font style="vertical-align: inherit;">这是为容器用户提供的一些安全性的基础。</font><font style="vertical-align: inherit;">例如，IPC命名空间是完全隔离的。</font><font style="vertical-align: inherit;">但是，其他命名空间具有各种</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">泄漏</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font><font style="vertical-align: inherit;">这些</font><span class="em emphasis"><font style="vertical-align: inherit;">泄漏</font></span><font style="vertical-align: inherit;">允许将特权从容器不适当地施加到另一个容器或主机中。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认情况下，LXC容器在Apparmor策略下启动以限制某些操作。</font><font style="vertical-align: inherit;">AppArmor与lxc集成的详细信息在</font></font><a class="xref" href="lxc.html#lxc-apparmor" title="AppArmor的"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apparmor</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分
+       </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">通过将容器中的根映射到非特权主机用户标识，可以进一步实现非特权容器。</font><font style="vertical-align: inherit;">这可以防止访问</font><font style="vertical-align: inherit;">
+      表示主机资源的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ proc</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ sys</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件，以及主机上root拥有的任何其他文件。
+      </font></font></p>
+</div>
+<div class="sect3 sect" id="lxc-seccomp"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可利用的系统调用</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">容器与主机共享内核是核心容器功能。</font><font style="vertical-align: inherit;">因此，如果内核包含任何可利用的系统调用，容器也可以利用它们。</font><font style="vertical-align: inherit;">一旦容器控制内核，它就可以完全控制主机已知的任何资源。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">由于Ubuntu 12.10（Quantal），容器也可以通过seccomp过滤器进行约束。</font><font style="vertical-align: inherit;">Seccomp是一种新的内核功能，可过滤任务及其子任务可能使用的系统调用。</font><font style="vertical-align: inherit;">虽然预计在不久的将来会改进和简化策略管理，但目前的策略包括系统呼叫号码的简单白名单。</font><font style="vertical-align: inherit;">策略文件以第一行的版本号（必须为1）和第二行的策略类型（必须为“白名单”）开头。</font><font style="vertical-align: inherit;">接下来是一个数字列表，每行一个。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通常，要运行完整的分发容器，将需要大量的系统调用。</font><font style="vertical-align: inherit;">但是对于应用程序容器，可以将可用系统调用的数量减少到只有少数几个。</font><font style="vertical-align: inherit;">即使对于运行完整分发的系统容器，也可能获得安全性增益，例如通过删除64位容器中的32位兼容性系统调用。</font><font style="vertical-align: inherit;">有关如何配置容器以使用seccomp的详细信息，请参见lxc.container.conf手册页。</font><font style="vertical-align: inherit;">默认情况下，不加载任何seccomp策略。</font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="lxc-resources"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DeveloperWorks文章</font></font><a href="https://www.ibm.com/developerworks/linux/library/l-lxc-containers/" class="ulink" title="https://www.ibm.com/developerworks/linux/library/l-lxc-containers/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC：Linux容器工具</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是对容器使用的早期介绍。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在</font></font><a href="http://www.ibm.com/developerworks/linux/library/l-lxc-security/index.html" class="ulink" title="http://www.ibm.com/developerworks/linux/library/l-lxc-security/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          安全容器食谱</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">演示了使用的安全模块，使容器更安全。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上面引用的手册页可以在以下位置找到：</font></font></p>
+          <div class="screen"><pre class="contents "><a href="http://manpages.ubuntu.com/manpages/en/man7/capabilities.7.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man7/capabilities.7.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">能力</font></font></a>
+<a href="http://manpages.ubuntu.com/manpages/en/man5/lxc.conf.5.html" class="ulink" title="http://manpages.ubuntu.com/manpages/en/man5/lxc.conf.5.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lxc.conf</font></font></a>
+</pre></div>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上游LXC项目由</font></font><a href="http://linuxcontainers.org" class="ulink" title="http://linuxcontainers.org"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">linuxcontainers.org</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">托管</font><font style="vertical-align: inherit;">。</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LXC </font><a href="http://wiki.ubuntu.com/LxcSecurity" class="ulink" title="http://wiki.ubuntu.com/LxcSecurity"><font style="vertical-align: inherit;">Security wiki页面</font></a><font style="vertical-align: inherit;">列出并讨论了LXC安全问题</font></font><a href="http://wiki.ubuntu.com/LxcSecurity" class="ulink" title="http://wiki.ubuntu.com/LxcSecurity"><font style="vertical-align: inherit;"></font></a></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关Linux中命名空间的更多信息，请参阅：S。Bhattiprolu，EW Biederman，SE Hallyn和D. Lezcano。</font><font style="vertical-align: inherit;">主流Linux中的虚拟服务器和检查点/重启。</font><font style="vertical-align: inherit;">SIGOPS Operating Systems Review，42（5），2008。</font></font></p>
+        </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="lxd.html" title="LXD"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="clustering.html" title="聚类"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

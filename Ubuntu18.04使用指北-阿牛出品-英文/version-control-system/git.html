@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Git</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="version-control-system.html" title="Version Control System">Version Control System</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="bazaar.html" title="Bazaar">Previous</a><a class="nextlinks-next" href="subversion.html" title="Subversion">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Git</h1></div>
+<div class="region">
+<div class="contents"><p class="para">Git is an open source distributed version control system originally developped by Linus Torvalds to support the development of the linux kernel.  
+            Every Git working directory is a full-fledged repository with complete history and full version tracking capabilities, 
+            not dependent on network access or a central server.</p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="git.html#git-installation" title="Installation">Installation</a></li>
+<li class="links"><a class="xref" href="git.html#git-configuration" title="Configuration">Configuration</a></li>
+<li class="links"><a class="xref" href="git.html#git-usage" title="Basic usage">Basic usage</a></li>
+<li class="links"><a class="xref" href="git.html#git-installing-gitolite" title="Installing a gitolite server">Installing a gitolite server</a></li>
+<li class="links"><a class="xref" href="git.html#git-configuring-gitolite" title="Gitolite configuration">Gitolite configuration</a></li>
+<li class="links"><a class="xref" href="git.html#git-gitolite-management" title="Managing gitolite users and repositories">Managing gitolite users and repositories</a></li>
+<li class="links"><a class="xref" href="git.html#git-gitolite-usage" title="Using your server">Using your server</a></li>
+</ul></div>
+<div class="sect2 sect" id="git-installation"><div class="inner">
+<div class="hgroup"><h2 class="title">Installation</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+            The <span class="app application">git</span> version control system is installed with the following command
+            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install git</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="git-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Configuration</h2></div>
+<div class="region"><div class="contents">
+<p class="para">Every git user should first introduce himself to git, by running these two commands:</p>
+<div class="screen"><pre class="contents "><span class="cmd command">git config --global user.email "you@example.com"</span>
+<span class="cmd command">git config --global user.name "Your Name"</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="git-usage"><div class="inner">
+<div class="hgroup"><h2 class="title">Basic usage</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+                The above is already sufficient to use git in a distributed and 
+                secure way, provided users have access to the machine assuming 
+                the server role via SSH. On the server machine, creating a new 
+                repository can be done with:
+            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">git init --bare /path/to/repository</span>
+</pre></div>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents"><p class="para">This creates a bare repository, that cannot be used to edit files directly. If you would rather have a working copy of the contents of the repository on the server, ommit the <span class="em emphasis">--bare</span> option.</p></div></div></div></div>
+<p class="para">
+                Any client with SSH access to the machine can then clone the 
+                repository with:
+            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">git clone username@hostname:/path/to/repository</span>
+</pre></div>
+<p class="para">
+                Once cloned to the client's machine, the client can edit files, then commit and share them with:
+            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">cd /path/to/repository</span>
+<span class="cmd command">#(edit some files</span>
+<span class="cmd command">git commit -a # Commit all changes to the local version of the repository</span>
+<span class="cmd command">git push origin master # Push changes to the server's version of the repository</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="git-installing-gitolite"><div class="inner">
+<div class="hgroup"><h2 class="title">Installing a gitolite server</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+                While the above is sufficient to create, clone and edit repositories, users wanting to install git on a server will most likely want to have git work like a more
+                traditional source control management server, with multiple users and access rights management.  
+                The suggested solution is to install <span class="app application">gitolite</span> with the following command:
+            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install gitolite</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="git-configuring-gitolite"><div class="inner">
+<div class="hgroup"><h2 class="title">Gitolite configuration</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+            Configuration of the <span class="app application">gitolite</span> server is a little different that most other servers on Unix-like systems.  
+            Instead of the traditional configuration files in /etc/, gitolite stores its configuration in a git repository. 
+            The first step to configuring a new installation is therefore to allow access to the configuration repository.
+        </p>
+<p class="para">
+        First of all, let's create a user for gitolite to be accessed as.
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo adduser --system --shell /bin/bash --group --disabled-password --home /home/git git</span>
+</pre></div>
+<p class="para">
+        Now we want to let gitolite know about the repository administrator's public SSH key. This assumes that the current user is the repository administrator.
+        If you have not yet configured an SSH key, refer to <a class="xref" href="openssh-server.html#openssh-keys" title="SSH Keys">SSH Keys</a>
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">cp ~/.ssh/id_rsa.pub /tmp/$(whoami).pub</span>
+</pre></div>
+<p class="para">
+        Let's switch to the git user and import the administrator's key into gitolite.
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo su - git</span>
+<span class="cmd command">gl-setup /tmp/*.pub</span>
+</pre></div>
+<p class="para">
+        Gitolite will allow you to make initial changes to its configuration file during the setup process. You can now clone and modify the gitolite configuration repository from your administrator user (the user whose public SSH key you imported). Switch back to that user, then clone the configuration repository:
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">exit</span>
+<span class="cmd command">git clone git@$IP_ADDRESS:gitolite-admin.git</span>
+<span class="cmd command">cd gitolite-admin</span>
+</pre></div>
+<p class="para">The gitolite-admin contains two subdirectories, "conf" and "keydir". The configuration files are in the conf dir, and the keydir directory contains the list of user's public SSH keys.</p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="git-gitolite-management"><div class="inner">
+<div class="hgroup"><h2 class="title">Managing gitolite users and repositories</h2></div>
+<div class="region"><div class="contents">
+<p class="para">Adding new users to gitolite is simple: just obtain their public SSH key and add it to the keydir directory as $DESIRED_USER_NAME.pub. Note that the gitolite usernames don't have to match the system usernames - they are only used in the gitolite configuration file to manage access control. Similarly, users are deleted by deleting their public key file. After each change, do not forget to commit the changes to git, and push the changes back to the server with</p>
+<div class="screen"><pre class="contents "><span class="cmd command">git commit -a</span>
+<span class="cmd command">git push origin master</span>
+</pre></div>
+<p class="para">Repositories are managed by editing the conf/gitolite.conf file. The syntax is space separated, and simply specifies the list of repositories followed by some access rules. The following is a default example</p>
+<div class="code"><pre class="contents ">repo    gitolite-admin
+        RW+     =   admin
+        R       =   alice
+
+repo    project1
+        RW+     =   alice
+        RW      =   bob
+        R       =   denise
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="git-gitolite-usage"><div class="inner">
+<div class="hgroup"><h2 class="title">Using your server</h2></div>
+<div class="region"><div class="contents">
+<p class="para">To use the newly created server, users have to have the gitolite admin import their public key into the gitolite configuration repository, they can then access any project they have access to with the following command:</p>
+<div class="screen"><pre class="contents "><span class="cmd command">git clone git@$SERVER_IP:$PROJECT_NAME.git</span>
+</pre></div>
+<p class="para">Or add the server's project as a remote for an existing git repository:</p>
+<div class="screen"><pre class="contents "><span class="cmd command">git remote add gitolite git@$SERVER_IP:$PROJECT_NAME.git</span>
+</pre></div>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="bazaar.html" title="Bazaar">Previous</a><a class="nextlinks-next" href="subversion.html" title="Subversion">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

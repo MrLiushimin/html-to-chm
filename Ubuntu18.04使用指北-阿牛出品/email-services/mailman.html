@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>邮差</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="email-services.html" title="电邮服务"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电子邮件服务</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="dovecot-server.html" title="Dovecot服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="mail-filtering.html" title="邮件过滤"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮差</font></font></h1></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          Mailman是一个用于管理电子邮件讨论和电子通讯列表的开源程序。</font><font style="vertical-align: inherit;">许多开源邮件列表（包括所有</font></font><a href="http://lists.ubuntu.com" class="ulink" title="http://lists.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu邮件列表</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）都使用Mailman作为他们的邮件列表软件。</font><font style="vertical-align: inherit;">它功能强大且易于安装和维护。
+          </font></font></p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="mailman.html#mailman-installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a></li>
+<li class="links"><a class="xref" href="mailman.html#mailman-configuration" title="组态"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></a></li>
+<li class="links"><a class="xref" href="mailman.html#mailman-admin" title="管理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">管理</font></font></a></li>
+<li class="links"><a class="xref" href="mailman.html#mailman-users" title="用户"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户</font></font></a></li>
+<li class="links"><a class="xref" href="mailman.html#mailman-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="mailman-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			Mailman为管理员和用户提供Web界面，使用外部邮件服务器发送和接收电子邮件。</font><font style="vertical-align: inherit;">它与以下邮件服务器完美配合：
+            </font></font></p>
+<p class="para">
+            </p><div class="list itemizedlist"><ul class="list itemizedlist compact">
+<li class="list itemizedlist">
+                    <p class="para"><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">后缀</font></font></span></p>
+                </li>
+<li class="list itemizedlist">
+                    <p class="para"><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">进出口</font></font></span></p>
+                </li>
+<li class="list itemizedlist">
+                    <p class="para"><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">发邮件</font></font></span></p>
+                </li>
+<li class="list itemizedlist">
+                    <p class="para"><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Qmail的</font></font></span></p>
+                </li>
+</ul></div>
+            <p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            我们将看到如何安装和配置Mailman，Apache Web服务器以及Postfix或Exim邮件服务器。</font><font style="vertical-align: inherit;">如果您希望使用其他邮件服务器安装Mailman，请参阅参考资料部分。 
+            </font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	       <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		您只需要安装一个邮件服务器，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是默认的Ubuntu邮件传输代理。
+	       </font></font></p>
+	     </div></div></div></div>
+</div>
+<div class="sect3 sect" id="mailman-apache2"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的Apache2</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                要安装apache2，请参阅</font></font><a class="xref" href="httpd.html#http-installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以获取详细信息。
+              </font></font></p></div></div>
+</div></div>
+<div class="sect3 sect" id="mailman-postfix"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">后缀</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    有关安装和配置Postfix的说明，请参阅</font></font><a class="xref" href="postfix.html" title="后缀"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></a>
+	    </p></div></div>
+</div></div>
+<div class="sect3 sect" id="mailman-exim4"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的exim4</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              要安装Exim4，请参阅</font></font><a class="xref" href="exim4.html" title="的exim4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exim4</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	      </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      安装exim4后，配置文件将存储在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / exim4</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录中。</font><font style="vertical-align: inherit;">在Ubuntu中，默认情况下，exim4配置文件分为不同的文件。</font><font style="vertical-align: inherit;">您可以通过更改</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/exim4/update-exim4.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中</font><font style="vertical-align: inherit;">的以下变量来更改此行为</font><font style="vertical-align: inherit;">：
+          </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dc_use_split_config = '真'
+</font></font></pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="mailman-mailman"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮差</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              要安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mailman</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请在终端提示符处运行以下命令：
+	      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt安装mailman</font></font></span> 
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     它将安装文件复制到
+	      </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / lib / mailman</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录中。</font><font style="vertical-align: inherit;">它将CGI脚本安装在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ usr / lib / cgi-bin / mailman</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	     目录中。</font><font style="vertical-align: inherit;">它创建</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">列表</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> linux用户。</font><font style="vertical-align: inherit;">它创建了</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">列表</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> linux组。</font><font style="vertical-align: inherit;">邮递员进程将由该用户拥有。 
+             </font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="mailman-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            本节假定您已成功安装
+             </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mailman</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，
+             </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apache2</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和
+	     </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">exim4</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">现在你只需要配置它们。 
+            </font></font></p></div>
+<div class="sect3 sect" id="mailman-conf-apache2"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的Apache2</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      一个示例Apache配置文件随</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mailman一起提供</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，位于</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/mailman/apache.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">为了让Apache使用配置文件，需要将其复制到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / apache2 / sites-available</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+	      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo cp /etc/mailman/apache.conf /etc/apache2/sites-available/mailman.conf</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      这将为</font><font style="vertical-align: inherit;">Mailman管理站点</font><font style="vertical-align: inherit;">设置新的Apache </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VirtualHost</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">现在启用新配置并重新启动Apache：
+	      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo a2ensite mailman.conf </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart apache2.service</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      Mailman使用apache2来呈现其CGI脚本。</font><font style="vertical-align: inherit;">邮件CGI脚本安装在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ usr / lib / cgi-bin / mailman</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	      目录中。</font><font style="vertical-align: inherit;">因此，邮递员网址将是http：// hostname / cgi-bin / mailman /。</font><font style="vertical-align: inherit;">如果要更改此行为，</font><font style="vertical-align: inherit;">可以对
+	       </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apache2/sites-available/mailman.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件进行更改。
+              </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="mailman-conf-postfix"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">后缀</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    对于</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">集成，我们将域lists.example.com与邮件列表相关联。</font><font style="vertical-align: inherit;">请将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lists.example.com</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换</font><font style="vertical-align: inherit;">为您选择的域名。
+	    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    您可以使用postconf命令将必要的配置添加到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/postfix/main.cf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo postconf -e'relay_domains = lists.example.com'sudo </font></font></span>
+<font style="vertical-align: inherit;"><span class="cmd command"><font style="vertical-align: inherit;">postconf -e'transport_maps = </font></span></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hash：/ etc / postfix / transport'sudo </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">postconf -e'mailman_destination_recipient_limit = 1'</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/postfix/master.cf中，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">仔细检查您是否有以下传输：
+	  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mailman unix  -  nn  -   -  pipe</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  flags = FR user = list argv = / usr / lib / mailman / bin / postfix-to-mailman.py</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  $ {nexthop} $ {user}</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">当邮件传递到列表时，</font><font style="vertical-align: inherit;">
+	  它会调用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">postfix-to-mailman.py</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">脚本。
+	  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  使用传输映射将域lists.example.com与Mailman传输相关联。</font><font style="vertical-align: inherit;">编辑文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / postfix / transport</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： 
+	  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lists.example.com mailman：
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  现在让</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postfix</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通过在终端提示符下输入以下内容来构建传输映射：
+	  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo postmap -v / etc / postfix / transport</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  然后重新启动Postfix以启用新配置：
+	  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl重启postfix.service</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="mailman-conf-exim4"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的exim4</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              安装Exim4后，可以使用终端提示符中的以下命令启动Exim服务器：
+	      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl start exim4.service</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+为了使邮件员能够使用Exim4，您需要配置Exim4。</font><font style="vertical-align: inherit;">如前所述，默认情况下，Exim4使用不同类型的多个配置文件。</font><font style="vertical-align: inherit;">有关详细信息，请参阅</font></font><a href="http://www.exim.org" class="ulink" title="http://www.exim.org"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exim</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网站。</font><font style="vertical-align: inherit;">要运行mailman，我们应该将新配置文件添加到以下配置类型： 
+              </font></font></p><div class="list itemizedlist"><ul class="list itemizedlist compact">
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主要</font></font></p>
+              </li>
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">运输</font></font></p>
+              </li>
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">路由器</font></font></p>
+              </li>
+</ul></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              Exim通过对所有这些迷你配置文件进行排序来创建主配置文件。</font><font style="vertical-align: inherit;">因此，这些配置文件的顺序非常重要。
+              </font></font><p></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="mailman-conf-main"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主要</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              属于主类型的所有配置文件都存储在
+               </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/exim4/conf.d/main/</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录中。</font><font style="vertical-align: inherit;">您可以将以下内容添加到名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">04_exim4-config_mailman</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的新文件中</font><font style="vertical-align: inherit;">：
+
+</font></font></p><div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#start</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#Lomeman安装的主目录 - 也就是Mailman的前缀</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃ 目录。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃在Ubuntu上这应该是“/ var / lib / mailman”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃这通常与~mailman相同</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+MM_HOME =的/ var / lib中/邮差</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#Mailman的用户和组，应该与--with-mail-gid匹配</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃切换到Mailman的配置脚本。</font><font style="vertical-align: inherit;">价值通常是“邮递员”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+MM_UID =名单</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+MM_GID =名单</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃列表所在的域名 - 冒号分隔列表</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃您可能希望将这些添加到local_domains中</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+域名列表mm_domains = hostname.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃ -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  -  =  - =  -  =  -  =  -  =  -  =  -  =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃这些值来自上面的值，不需要</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃编辑除非你已经安装了邮件员</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#Mailman邮件包装器脚本的路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+MM_WRAP = MM_HOME /邮件/邮差</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃列表配置文件的路径（用作所需文件时）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃验证列表地址）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+MM_LISTCHK = MM_HOME /列表/ $ {LC :: $ local_part} /config.pck</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃ 结束</font></font><font></font>
+</pre></div>
+          <p></p></div></div>
+</div></div>
+<div class="sect3 sect" id="mailman-conf-transport"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">运输</font></font></h3></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+属于传输类型的所有配置文件都存储在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/exim4/conf.d/transport/</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录中。</font><font style="vertical-align: inherit;">您可以将以下内容添加到名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+40_exim4-config_mailman</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的新文件中</font><font style="vertical-align: inherit;">：
+
+</font></font></p><div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  mailman_transport：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   driver = pipe</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   command = MM_WRAP \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+               '$ {if def：local_part_suffix \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                     {$ {sg {$ local_part_suffix} { - （\\ w +）（\\ +。*）？} {\ $ 1}}} \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                     {post}}'\</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+               $ local_part</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    current_directory = MM_HOME</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    home_directory = MM_HOME</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    user = MM_UID</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    group = MM_GID</font></font><font></font>
+</pre></div>
+              <p></p></div></div>
+</div></div>
+<div class="sect3 sect" id="mailman-conf-router"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">路由器</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+属于路由器类型的所有配置文件都存储在
+ </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/exim4/conf.d/router/</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录中。</font><font style="vertical-align: inherit;">您可以将以下内容添加到名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">101_exim4-config_mailman</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的新文件中</font><font style="vertical-align: inherit;">：
+</font></font></p><div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  mailman_router：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   司机=接受</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   require_files = MM_HOME / lists / $ local_part / config.pck</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   local_part_suffix_optional</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   local_part_suffix = -bounces：-bounces + *：\</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                       -confirm + *：-join：-leave：\</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                       -owner：-request：-admin</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   transport = mailman_transport</font></font><font></font>
+</pre></div>
+
+              <p></p>
+<div class="note note-warning" title="警告"><div class="inner"><div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+主服务器和传输配置文件的顺序可以是任何顺序。</font><font style="vertical-align: inherit;">但是，路由器配置文件的顺序必须相同。</font><font style="vertical-align: inherit;">此特定文件必须出现在
+ </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">200_exim4-config_primary</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件之前。</font><font style="vertical-align: inherit;">这两个配置文件包含相同类型的信息。</font><font style="vertical-align: inherit;">第一个文件优先。</font><font style="vertical-align: inherit;">有关详细信息，请参阅参考部分。
+</font></font></p>
+</div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="mailman-conf-mailman"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮差</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      安装mailman后，您可以使用以下命令运行它：
+	      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl start mailman.service</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      安装mailman后，您应该创建默认邮件列表。</font><font style="vertical-align: inherit;">运行以下命令以创建邮件列表：
+	      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo / usr / sbin / newlist mailman</font></font></span>
+</pre></div>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  输入运行列表的人员的电子邮件地址：bh​​uvan at ubuntu.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  初始邮递员密码：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  要完成邮件列表的创建，您必须编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / aliases</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（或</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  等效）文件通过添加以下行，并可能运行</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  `newaliases'计划：</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  ## mailman邮件列表</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  mailman：“| / var / lib / mailman / mail / mailman post mailman”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  mailman-admin：“| / var / lib / mailman / mail / mailman admin mailman”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  mailman-bounces：“| / var / lib / mailman / mail / mailman反弹邮递员”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  mailman-confirm：“| / var / lib / mailman / mail / mailman确认邮递员”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  mailman-join：“| / var / lib / mailman / mail / mailman join mailman”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  mailman-leave：“| / var / lib / mailman / mail / mailman leave mailman”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  mailman-owner：“| / var / lib / mailman / mail / mailman owner mailman”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  mailman-request：“| / var / lib / mailman / mail / mailman request mailman”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  mailman-subscribe：“| / var / lib / mailman / mail / mailman subscribe mailman”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  mailman-unsubscribe：“| / var / lib / mailman / mail / mailman unsubscribe mailman”</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  点击进入通知邮递员所有者......</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  ＃ </font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     我们已将Postfix或Exim4配置为识别来自mailman的所有电子邮件。</font><font style="vertical-align: inherit;">因此，不必在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / aliases中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建任何新条目
+	      </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果您对配置文件进行了任何更改，请确保在继续下一部分之前重新启动这些服务。
+	     </font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+         <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+         Exim4不使用上述别名将邮件转发给Mailman，因为它使用了</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">发现</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">方法。</font><font style="vertical-align: inherit;">要在创建列表时禁止别名，可以</font><font style="vertical-align: inherit;">在Mailman配置文件</font><span class="file filename"><font style="vertical-align: inherit;">/etc/mailman/mm_cfg.py中</font></span><font style="vertical-align: inherit;">添加
+          </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MTA = None</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">行</font><font style="vertical-align: inherit;">。
+         </font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+         </div></div></div></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="mailman-admin"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">管理</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+我们假设您有默认安装。</font><font style="vertical-align: inherit;">mailman cgi脚本仍在
+ </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ usr / lib / cgi-bin / mailman /</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录中。</font><font style="vertical-align: inherit;">Mailman提供基于Web的管理工具。</font><font style="vertical-align: inherit;">要访问此页面，请将浏览器指向以下URL： 
+
+</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+HTTP：//主机名/ cgi-bin目录/邮差/管理
+</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+默认邮件列表</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mailman</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将显示在此屏幕中。</font><font style="vertical-align: inherit;">如果单击邮件列表名称，它将询问您的验证密码。</font><font style="vertical-align: inherit;">如果输入正确的密码，则可以更改此邮件列表的管理设置。</font><font style="vertical-align: inherit;">您可以使用命令行实用程序（</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ usr / sbin / newlist</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）</font><font style="vertical-align: inherit;">创建新的邮件列表</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">或者，您可以使用Web界面创建新的邮件列表。 
+</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="mailman-users"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+Mailman为用户提供基于Web的界面。</font><font style="vertical-align: inherit;">要访问此页面，请将浏览器指向以下URL：
+</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+HTTP：//主机名/ cgi-bin目录/邮差/列表信息
+</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+默认邮件列表</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mailman</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将显示在此屏幕中。</font><font style="vertical-align: inherit;">如果单击邮件列表名称，它将显示订阅表单。</font><font style="vertical-align: inherit;">您可以输入您的电子邮件地址，姓名（可选）和密码进行订阅。</font><font style="vertical-align: inherit;">系统会向您发送电子邮件邀请。</font><font style="vertical-align: inherit;">您可以按照电子邮件中的说明进行订阅。
+</font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="mailman-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+<a href="http://www.list.org/mailman-install/index.html" class="ulink" title="http://www.list.org/mailman-install/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> GNU Mailman  - 安装手册</font></font></a>
+</p>
+<p class="para">
+<a href="http://www.exim.org/howto/mailman21.html" class="ulink" title="http://www.exim.org/howto/mailman21.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HOWTO  - 一起使用Exim 4和Mailman 2.1</font></font></a>
+</p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          另外，请参阅</font></font><a href="https://help.ubuntu.com/community/Mailman" class="ulink" title="https://help.ubuntu.com/community/Mailman"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mailman Ubuntu Wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">页面。
+          </font></font></p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="dovecot-server.html" title="Dovecot服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="mail-filtering.html" title="邮件过滤"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

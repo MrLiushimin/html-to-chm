@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>数据平面开发套件</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="networking.html" title="联网"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="NTP.html" title="时间同步"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="../dm-multipath-chapter/dm-multipath-chapter.html" title="DM-多路径"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">数据平面开发套件</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		  DPDK是一组用于快速数据包处理的库和驱​​动程序，主要在Linux用户空间中运行。</font><font style="vertical-align: inherit;">它是一组提供所谓的“环境抽象层”（EAL）的库。</font><font style="vertical-align: inherit;">EAL隐藏了环境的细节，并提供了标准的编程接口。</font><font style="vertical-align: inherit;">常见用例围绕特殊解决方案，例如网络功能虚拟化和高级高吞吐量网络交换。</font><font style="vertical-align: inherit;">DPDK使用运行完成模型来实现快速数据平面性能，并通过轮询访问设备，以消除在更高CPU消耗的折衷下中断处理的延迟。</font><font style="vertical-align: inherit;">它被设计为在任何处理器上运行。</font><font style="vertical-align: inherit;">第一个支持的CPU是Intel x86，现在扩展到IBM Power 8，EZchip TILE-Gx和ARM。
+	  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		  Ubuntu目前支持DPDK 2.2版，并提供一些基础设施以简化其可用性。
+	  </font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="DPDK.html#dpdk-prerequisites" title="先决条件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">先决条件</font></font></a></li>
+<li class="links"><a class="xref" href="DPDK.html#dpdk-config-dev" title="DPDK设备配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DPDK设备配置</font></font></a></li>
+<li class="links"><a class="xref" href="DPDK.html#dpdk-config-hp" title="DPDK HugePage配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DPDK HugePage配置</font></font></a></li>
+<li class="links"><a class="xref" href="DPDK.html#dpdk-apps" title="编译DPDK应用程序"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">编译DPDK应用程序</font></font></a></li>
+<li class="links"><a class="xref" href="DPDK.html#dpdk-openvswitch" title="OpenVswitch-DPDK"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVswitch-DPDK</font></font></a></li>
+<li class="links"><a class="xref" href="DPDK.html#dpdk-openvswitch-guest" title="OpenVswitch DPDK到KVM的访客"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVswitch DPDK到KVM的访客</font></font></a></li>
+<li class="links"><a class="xref" href="DPDK.html#dpdk-in-guest" title="KVM宾客中的DPDK"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">KVM宾客中的DPDK</font></font></a></li>
+<li class="links"><a class="xref" href="DPDK.html#ovs-dpdk-tuning" title="调整Openvswitch-DPDK"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">调整Openvswitch-DPDK</font></font></a></li>
+<li class="links"><a class="xref" href="DPDK.html#dpdk-support" title="支持和故障排除"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持和故障排除</font></font></a></li>
+<li class="links"><a class="xref" href="DPDK.html#dpdk-references" title="资源"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="dpdk-prerequisites"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">先决条件</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  目前，该软件包是为尽可能低的CPU要求而编译的。</font><font style="vertical-align: inherit;">至少仍需要CPU支持SSE3。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  可以在</font></font><a href="http://dpdk.org/doc/nics" class="ulink" title="http://dpdk.org/doc/nics"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持的NIC</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上找到上游支持DPDK的</font><a href="http://dpdk.org/doc/nics" class="ulink" title="http://dpdk.org/doc/nics"><font style="vertical-align: inherit;">网卡列表</font></a><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">但是在上游项目中默认禁用了很多，因为它们尚未处于稳定状态。</font><font style="vertical-align: inherit;">在Ubuntu 16.04中可用的DPDK在软件包中启用的网卡子集是：
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  英特尔
+		  </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/doc/guides/nics/e1000em.html" class="ulink" title="http://dpdk.org/doc/guides/nics/e1000em.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e1000</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（82540,82545,82546）</font></font></p>
+				  </li>
+<li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/browse/dpdk/tree/drivers/net/e1000/" class="ulink" title="http://dpdk.org/browse/dpdk/tree/drivers/net/e1000/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e1000e</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（82571..82574,82583，ICH8..ICH10，PCH..PCH2）</font></font></p>
+				  </li>
+<li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/browse/dpdk/tree/drivers/net/e1000/" class="ulink" title="http://dpdk.org/browse/dpdk/tree/drivers/net/e1000/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">igb</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（82575..82576,82580，I210，I211，I350，I354，DH89xx）</font></font></p>
+				  </li>
+<li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/doc/guides/nics/ixgbe.html" class="ulink" title="http://dpdk.org/doc/guides/nics/ixgbe.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ixgbe</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（82598..82599，X540，X550）</font></font></p>
+				  </li>
+<li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/browse/dpdk/tree/drivers/net/i40e/" class="ulink" title="http://dpdk.org/browse/dpdk/tree/drivers/net/i40e/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">i40e</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（X710，XL710，X722）</font></font></p>
+				  </li>
+<li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/doc/guides/nics/fm10k.html" class="ulink" title="http://dpdk.org/doc/guides/nics/fm10k.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fm10k</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（FM10420）</font></font></p>
+				  </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  Chelsio公司
+		  </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist"><li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/doc/guides/nics/cxgbe.html" class="ulink" title="http://dpdk.org/doc/guides/nics/cxgbe.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cxgbe</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（终结者5）</font></font></p>
+				  </li></ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  思科
+		  </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist"><li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/browse/dpdk/tree/drivers/net/enic" class="ulink" title="http://dpdk.org/browse/dpdk/tree/drivers/net/enic"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enic</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（UCS虚拟接口卡）</font></font></p>
+				  </li></ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  半虚拟化
+		  </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/doc/guides/nics/virtio.html" class="ulink" title="http://dpdk.org/doc/guides/nics/virtio.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟网络</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（QEMU）</font></font></p>
+				  </li>
+<li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/doc/guides/nics/vmxnet3.html" class="ulink" title="http://dpdk.org/doc/guides/nics/vmxnet3.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VMXNET3</font></font></a></p>
+				  </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  其他
+		  </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/browse/dpdk/tree/drivers/net/af_packet" class="ulink" title="http://dpdk.org/browse/dpdk/tree/drivers/net/af_packet"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">af_packet</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（Linux AF_PACKET套接字）</font></font></p>
+				  </li>
+<li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/doc/guides/nics/pcap_ring.html#rings-based-pmd" class="ulink" title="http://dpdk.org/doc/guides/nics/pcap_ring.html#rings-based-pmd"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戒指</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（记忆）</font></font></p>
+				  </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  最重要的是，它实验性地启用了以下两个PMD驱动程序，因为它们代表了最终用户非常容易访问的（虚拟）设备。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  半虚拟化
+		  </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist"><li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/doc/guides/xen/pkt_switch.html#xen-pmd-frontend-prerequisites" class="ulink" title="http://dpdk.org/doc/guides/xen/pkt_switch.html#xen-pmd-frontend-prerequisites"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">xenvirt</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（Xen）</font></font></p>
+				  </li></ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  其他
+		  </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist"><li class="list itemizedlist">
+					  <p class="para"><a href="http://dpdk.org/doc/guides/nics/pcap_ring.html#libpcap-based-pmd" class="ulink" title="http://dpdk.org/doc/guides/nics/pcap_ring.html#libpcap-based-pmd"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pcap</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（文件或内核驱动程序）</font></font></p>
+				  </li></ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  卡必须从其内核驱动程序中取消分配，而是分配给vfio-pci的uio_pci_generic。</font><font style="vertical-align: inherit;">uio_pci_generic较旧，通常更容易上班。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  较新的vfio-pci要求您激活以下内核参数以启用iommu。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iommu = pt intel_iommu = on
+		  </font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  在vfio-pci的顶部，您必须相应地配置和分配iommu组。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  注意：在基于virtio的环境中，从内核驱动程序“取消分配”设备就足够了。</font><font style="vertical-align: inherit;">如果没有这个，DPDK将拒绝使用该设备以避免内核和DPDK同时在设备上工作的问题。</font><font style="vertical-align: inherit;">由于DPDK可以直接在virtio设备上工作，因此不需要为这些设备分配例如uio_pci_generic。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  手动配置和状态检查可以通过sysfs或工具dpdk_nic_bind完成
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dpdk_nic_bind --help</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+用法：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+------</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     dpdk_nic_bind [options] DEVICE1 DEVICE2 ....</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     其中DEVICE1，DEVICE2等通过PCI“domain：bus：slot.func”语法指定</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     或“bus：slot.func”语法。</font><font style="vertical-align: inherit;">对于绑定到Linux内核驱动程序的设备，它们可能会</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     也可以通过Linux接口名称引用，例如eth0，eth1，em0，em1等。</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     选项：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+         --help， -  usage：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+         显示使用信息并退出</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     -s， -  status：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             打印所有已知网络接口的当前状态。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             对于每个设备，它显示PCI域，总线，插槽和功能，</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             以及设备的文字说明。</font><font style="vertical-align: inherit;">取决于是否</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             内核驱动程序，igb_uio驱动程序正在使用设备，或者没有</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             驱动程序，将显示其他相关信息：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             * Linux接口名称，例如if = eth0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             *正在使用的驱动程序，例如drv = igb_uio</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             *目前没有使用该设备的任何合适的驱动程序</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                 例如unused = igb_uio</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+         注意：如果此标志与bind / unbind选项一起传递，则为状态</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+         在其他操作发生后，将始终显示。</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     -b driver， -  bind = driver：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             选择要使用的驱动程序或“无”解除绑定设备</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+         -u， -  unbind：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+         取消绑定设备（相当于“-b none”）</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     - 力：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             默认情况下，Linux使用的设备 - 如所示</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             路由表中的路由 - 无法修改。</font><font style="vertical-align: inherit;">使用--force</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             flag会覆盖此行为，允许强制使用活动链接</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             绑定。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             警告：这可能导致网络连接丢失，应该使用</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             慎用。</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     例子：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     ---------</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     要显示当前设备状态：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             dpdk_nic_bind --status</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     从当前驱动程序绑定eth1并移动到使用igb_uio</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             dpdk_nic_bind --bind = igb_uio eth1</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     解除使用任何驱动程序0000：01：00.0的绑定</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             dpdk_nic_bind -u 0000：01：00.0</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     将0000：02：00.0和0000：02：00绑定到ixgbe内核驱动程序</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             dpdk_nic_bind -b ixgbe 02：00.0 02:00</font></font><font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dpdk-config-dev"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DPDK设备配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              软件包</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dpdk</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提供了init脚本，可以简化设备分配和大页面的配置。</font><font style="vertical-align: inherit;">它也使它们在重新启动时持续存在。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  以下是配置网卡两个端口的文件/ etc / dpdk / interfaces的示例。</font><font style="vertical-align: inherit;">一个是uio_pci_generic，另一个是vfio-pci
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃&lt;bus&gt;目前仅支持“pci”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃&lt;id&gt;指定总线上的设备ID</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃&lt;driver&gt;要绑定的驱动程序（vfio-pci或uio_pci_generic）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃请注意两个DPDK兼容的驱动程序uio_pci_generic和vfio-pci是</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#linux-image-extra- &lt;VERSION&gt;包的一部分。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃默认情况下并不总是安装此软件包 - 例如在云图像中。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃所以请安装它，以防您遇到丢失的模块问题。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃&lt;bus&gt; &lt;id&gt; &lt;driver&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+pci 0000：04：00.0 uio_pci_generic</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+pci 0000：04：00.1 vfio-pci</font></font><font></font>
+		  </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  卡由其PCI-ID标识。</font><font style="vertical-align: inherit;">如果您不确定可以使用工具dpdk_nic_bind来显示当前可用的设备及其分配的驱动程序。
+		  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dpdk_nic_bind --status</font></font></span>
+<span class="output computeroutput"><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+使用DPDK兼容驱动程序的网络设备</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+============================================</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+0000：04：00.0'以太网控制器10-Gigabit X540-AT2'drv = uio_pci_generic unused = ixgbe</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+网络设备使用内核驱动程序</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+===================================</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+0000：02：00.0'NetXtreme BCM5719千兆以太网PCIe'if = eth0 drv = tg3 unused = uio_pci_generic * Active *</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+0000：02：00.1'NetXtreme BCM5719千兆以太网PCIe'如果= eth1 drv = tg3 unused = uio_pci_generic</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+0000：02：00.2'NetXtreme BCM5719千兆以太网PCIe'如果= eth2 drv = tg3 unused = uio_pci_generic</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+0000：02：00.3'NetXtreme BCM5719千兆以太网PCIe'如果= eth3 drv = tg3 unused = uio_pci_generic</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+0000：04：00.1'以太网控制器10-Gigabit X540-AT2'if = eth5 drv = ixgbe unused = uio_pci_generic</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+其他网络设备</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+=====================</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;无&gt;</font></font><font></font>
+</span>
+		  </pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dpdk-config-hp"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DPDK HugePage配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  DPDK大量使用大页面来消除TLB的压力。</font><font style="vertical-align: inherit;">因此，必须在系统中配置大页面。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              该</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DPDK</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包有一个配置文件和脚本，尽量缓解hugepage配置DPDK的形式</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/dpdk/dpdk.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果你的系统中有更多的庞大页面消费者而不仅仅是DPDK，或者非常特殊的要求如何设置你的大页面你可能想要自己分配/控制它们。</font><font style="vertical-align: inherit;">如果不是这样可以很好地简化DPDK以满足您的需求。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  这里有一个示例配置1024个Huge页面，每个2M和4个1G页面。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NR_2M_PAGES = 1024</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+NR_1G_PAGES = 4</font></font><font></font>
+		  </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  如图所示，这支持配置2M和更大的1G大页面（或两者的混合）。</font><font style="vertical-align: inherit;">它将确保有适当的hugetlbfs挂载点，DPDK可以找到这两种尺寸，无论您的默认大页面大小是什么。</font><font style="vertical-align: inherit;">如果要通过内核参数手动分配大页面，配置文件本身可以保存有关某些极端情况的更多详细信息和一些提示。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  这取决于您需要的尺寸--1G页面对于TLB压力肯定更有效。</font><font style="vertical-align: inherit;">但是有报道称它们在DPDK内存分离中分裂。</font><font style="vertical-align: inherit;">此外，在系统生命周期的后期获取足够的可用空间以设置一定量的1G页面可能更难。
+		  </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dpdk-apps"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">编译DPDK应用程序</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  目前，很多DPDK库的消费者都没有稳定和发布。</font><font style="vertical-align: inherit;">OpenVswitch-DPDK是一个例外（见下文），但一般情况下，您可能希望/必须针对库编译应用程序。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  您经常会找到指南，告诉您获取DPDK源，根据您的需要构建它们，并最终通过为构建系统设置值RTE_ *来构建基于DPDK的应用程序。</font><font style="vertical-align: inherit;">由于Ubunutu提供已编译的DPDK，您可以跳过所有这些。</font><font style="vertical-align: inherit;">要简化设置正确的变量，您可以在构建应用程序之前获取文件/usr/share/dpdk/dpdk-sdk-env.sh。</font><font style="vertical-align: inherit;">这里摘录了使用dpdk-doc包提供的l2fwd示例应用程序。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt-get install dpdk-dev libdpdk-dev</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+。</font><font style="vertical-align: inherit;">/usr/share/dpdk/dpdk-sdk-env.sh</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+make -C / usr / share / dpdk / examples / l2fwd</font></font><font></font>
+		  </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  根据您构建的内容，在make之前安装所有DPDK构建依赖项可能是一个很好的补充。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt-get install build-dep dpdk
+		  </font></font></pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dpdk-openvswitch"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVswitch-DPDK</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  作为一个图书馆，它本身并没有做很多事情，所以它依赖于利用它的新兴项目。</font><font style="vertical-align: inherit;">已经捆绑在Ubuntu 16.04版本中的库的一个消费者是OpenVswitch-open-dpdk包中支持DPDK的OpenVswitch。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  下面举例说明如何使用DPDK安装和配置基本的OpenVswitch，以便以后通过libvirt / qemu-kvm使用。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt-get install openvswitch-switch-dpdk</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo update-alternatives --set ovs-vswitchd / usr / lib / openvswitch-switch-dpdk / ovs-vswitchd-dpdk</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+echo“DPDK_OPTS =' -  dpdk -c 0x1 -n 4 -m 2048 --vhost-owner libvirt-qemu：kvm --vhost-perm 0664'”| </font><font style="vertical-align: inherit;">sudo tee -a / etc / default / openvswitch-switch</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo service openvswitch-switch restart</font></font><font></font>
+		  </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  请记住，在重新启动之前，必须将设备分配给兼容DPDK的驱动程序（参见上文）。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  部分</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--vhost-owner libvirt-qemu：kvm --vhost-perm</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 0664将使用所有者/权限设置vhost_user端口，以便与运行qemu-kvm / libvirt的Ubuntus方式兼容，同时降低权限以提高安全性。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  请注意，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-m 2048</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分</font><font style="vertical-align: inherit;">是单插槽系统最基本的numa设置。</font><font style="vertical-align: inherit;">如果您有多个套接字，则可能需要定义如何在其中分割内存，例如</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-m 1024,1024</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">请注意，DPDK将尝试仅使用本地内存来处理它所使用的网卡（出于性能原因）。</font><font style="vertical-align: inherit;">也就是说，如果您有多个节点，但所有网卡都在一个节点上，您应该考虑传播您的卡。</font><font style="vertical-align: inherit;">如果不是至少将您的内存分配给卡所在的节点，例如在节点＃2的两个节点中： - </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">m 0,2048</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">您可以使用</font><span class="em emphasis"><font style="vertical-align: inherit;">hwloc-nox</font></span><font style="vertical-align: inherit;">软件包中</font><font style="vertical-align: inherit;">的工具</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lstopo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来查看您的卡所在的插槽。
+		  </font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  您现在启动的OpenVswitch支持OpenVswitch通常使用的所有端口类型，以及DPDK端口类型。</font><font style="vertical-align: inherit;">这里是一个如何创建桥接器的示例 - 而不是普通的外部端口 - 为其添加外部DPDK端口。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ovs-vsctl add-br ovsdpdkbr0  -  set bridge ovsdpdkbr0 datapath_type = netdev</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vsctl add-port ovsdpdkbr0 dpdk0  - 设置接口dpdk0 type = dpdk</font></font><font></font>
+		  </pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+		    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                在版本2.6中，Open vSwitch中DPDK的启用已更改。</font><font style="vertical-align: inherit;">因此对于版本&gt; = 16.10的用户，以及</font></font><a href="https://wiki.ubuntu.com/OpenStack/CloudArchive" class="ulink" title="https://wiki.ubuntu.com/OpenStack/CloudArchive"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu Cloud Archive</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &gt; = neutron的用户，与Ubuntu 16.04的用户相比，启用已发生变化。</font><font style="vertical-align: inherit;">之前通过</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DPDK_OPTS</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">传递的选项</font><font style="vertical-align: inherit;">现在通过ovs-vsctl配置到Open vSwitch配置数据库中。
+            </font></font></p>
+		    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                与上面相同的例子将以新的方式看起来像：
+            </font></font></p>
+		  <div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃启用DPDK</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vsctl设置Open_vSwitch。</font><font style="vertical-align: inherit;">“other_config：DPDK-的init =真”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃在核心0上运行</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vsctl设置Open_vSwitch。</font><font style="vertical-align: inherit;">“other_config：DPDK-L核心掩模=为0x1”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃分配2G大页面（不知道Numa节点）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vsctl设置Open_vSwitch。</font><font style="vertical-align: inherit;">“other_config：DPDK-ALLOC-MEM = 2048”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#vhost-user套接字的组/权限（使用libvirt / qemu时需要）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vsctl设置Open_vSwitch。</font><font style="vertical-align: inherit;">\</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   “other_config：dpdk-extra =  -  vhost-owner libvirt-qemu：kvm --vhost-perm 0666”</font></font><font></font>
+		  </pre></div>
+		    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                有关更多详细信息，请参阅相关的上游文档以及程序包提供的vswitch配置的手册页：
+                </font></font></p><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para"><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/usr/share/doc/openvswitch-common/INSTALL.DPDK.md.gz</font></font></span></p></li>
+<li class="list itemizedlist"><p class="para"><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/usr/share/doc/openvswitch-common/INSTALL.DPDK-ADVANCED.md.gz</font></font></span></p></li>
+<li class="list itemizedlist"><p class="para"><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">man ovs-vswitchd.conf.db</font></font></span></p></li>
+</ul></div>
+            <p></p>
+          </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dpdk-openvswitch-guest"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVswitch DPDK到KVM的访客</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  如果您没有在DPDK之上构建某种SDN交换机或NFV，则很可能您希望将流量转发给KVM来宾。</font><font style="vertical-align: inherit;">好消息是，使用Ubuntu 16.04中的新qemu / libvirt / dpdk / openvswitch版本，这不再是手动附加命令行字符串。</font><font style="vertical-align: inherit;">本章介绍如何将KVM guest虚拟机连接到OpenVswitch-DPDK实例的基本配置。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  Guest必须由DPDK / vhost_user的共享大页面支持才能工作。</font><font style="vertical-align: inherit;">为了确保libvirt / qemu-kvm找到适当的巨大页面挂载点，你可以在/ etc / default / qemu-kvm中启用KVM_HUGEPAGES。</font><font style="vertical-align: inherit;">然后重新启动服务以获取更改的配置。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sed -ri -e's，（KVM_HUGEPAGES =）。*，\ 11，'/ etc / default / qemu-kvm</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+服务qemu-kvm重启</font></font><font></font>
+		  </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  现在还通过最近的libvirt支持guest虚拟机支持guestpirt，只需将以下代码段添加到virsh xml（或您使用的等效libvirt接口）。</font><font style="vertical-align: inherit;">这些xmls也可以用作模板，通过“uvt-kvm create”轻松生成客户。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;沼&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;cell id ='0'cpus ='0'memory ='6291456'unit ='KiB'memAccess ='shared'/&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;/沼&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[...]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;memoryBacking&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;大页面&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;page size =“2”unit =“M”nodeset =“0”/&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;/大页面&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;/ memoryBacking&gt;</font></font><font></font>
+		  </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  获取KVM guest虚拟机的新方法是使用vhost_user。</font><font style="vertical-align: inherit;">这将导致DPDK创建一个qemu将客户端连接到的套接字。</font><font style="vertical-align: inherit;">这是一个如何将这样的端口添加到您创建的桥的示例（参见上文）。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ovs-vsctl add-port ovsdpdkbr0 vhost-user-1  - 设置接口vhost-user-1 type = dpdkvhostuser
+		  </font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  这将在/ var / run / openvswitch / vhost-user-1中创建一个vhost_user套接字
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  要让libvirt / kvm使用此套接字并为其创建guest虚拟机网络设备，请将此类代码段添加到您的guest虚拟机定义中作为网络定义。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;interface type ='vhostuser'&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;source type ='unix'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+路径= '的/ var /运行/ openvswitch /虚拟主机用户-1'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+模式= '客户'/&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;model type ='virtio'/&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;/接口&gt;</font></font><font></font>
+		  </pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dpdk-in-guest"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">KVM宾客中的DPDK</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  如果您无法访问支持DPDK的网卡，则仍可以使用其对virtio的支持来使用DPDK。</font><font style="vertical-align: inherit;">要做到这一点，你必须创建由大页面支持的访客（见上文）。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  最重要的是，它至少需要SSE3。</font><font style="vertical-align: inherit;">qemu / libvirt使用的默认CPU型号仅适用于SSE2。</font><font style="vertical-align: inherit;">因此，您必须定义一个传递正确功能标志的模型 - 当然还有一个支持它的主机系统。</font><font style="vertical-align: inherit;">可以在以下代码片段中找到您的virsh xml（或您使用的等效virsh界面）的示例。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;cpu mode ='host-passthrough'&gt;
+		  </font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  此示例相当令人反感并传递所有主机功能。</font><font style="vertical-align: inherit;">这反过来使客人不能很容易迁移，因为目标也需要所有功能。</font><font style="vertical-align: inherit;">“更软”的方法是将sse3添加到默认模型，如下例所示。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;cpu mode ='custom'matse ='exact'&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;model fallback ='allow'&gt; qemu64 &lt;/ model&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;feature policy ='require'name ='ssse3'/&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;/ CPU&gt;</font></font><font></font>
+		  </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  此外，virtio现在支持多队列，DPDK可以利用这种多队列来提高速度。</font><font style="vertical-align: inherit;">要将常规virtio定义修改为具有多个队列，请将以下内容添加到接口定义中。</font><font style="vertical-align: inherit;">这是关于增强正常的virtio nic以具有多个队列，以后稍后将被消费者例如由DPDK消费。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;driver name =“vhost”queues =“4”/&gt;
+		  </font></font></pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="ovs-dpdk-tuning"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">调整Openvswitch-DPDK</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  DPDK有很多选择 - 结合Openvswitch-DPDK，最常用的两个是：
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ovs-vsctl设置Open_vSwitch。</font><font style="vertical-align: inherit;">other_config：正DPDK-rxqs = 2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vsctl设置Open_vSwitch。</font><font style="vertical-align: inherit;">other_config：PMD-CPU-掩模= 0x6从</font></font><font></font>
+		  </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  第一个选择每个DPDK接口使用多少个rx队列，第二个控制PMD线程的运行次数和位置。</font><font style="vertical-align: inherit;">上面的示例将使用两个rx队列并在CPU 1和2上运行PMD线程。有关更多信息，请参阅本文档末尾的“EAL命令行选项”和“OpenVswitch DPDK安装”的引用链接。
+		  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  与调整一样，您必须非常了解您的系统和工作负载 - 因此请验证任何与您的实际用例匹配的工作负载调整。
+		  </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dpdk-support"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持和故障排除</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  DPDK是一个快速发展的项目。</font><font style="vertical-align: inherit;">在任何搜索支持和进一步指南的情况下，强烈建议首先检查它们是否适用于当前版本。
+		  </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+				  <p class="para">
+					  <a href="http://dpdk.org/ml" class="ulink" title="http://dpdk.org/ml"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DPDK邮件列表</font></font></a>
+				  </p>
+			  </li>
+<li class="list itemizedlist">
+				  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+					  对于OpenVswitch-DPDK </font></font><a href="http://openvswitch.org/mlists" class="ulink" title="http://openvswitch.org/mlists"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenStack邮件列表</font></font></a>
+				  </p>
+			  </li>
+<li class="list itemizedlist">
+				  <p class="para"><font style="vertical-align: inherit;"><a href="https://bugs.launchpad.net/ubuntu/+source/dpdk" class="ulink" title="https://bugs.launchpad.net/ubuntu/+source/dpdk"><font style="vertical-align: inherit;">DPDK Launchpad Area中的</font></a><font style="vertical-align: inherit;"> 
+					  已知问题</font></font><a href="https://bugs.launchpad.net/ubuntu/+source/dpdk" class="ulink" title="https://bugs.launchpad.net/ubuntu/+source/dpdk"><font style="vertical-align: inherit;"></font></a>
+				  </p>
+			  </li>
+<li class="list itemizedlist">
+				  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+					  加入freenode上的IRC频道#DPDK或#openvswitch。
+				  </font></font></p>
+			  </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		问题通常是由于缺少常规设置中的小细节。</font><font style="vertical-align: inherit;">后来，这些缺失的细节会导致难以追查其根本原因的问题。</font><font style="vertical-align: inherit;">一个常见的情况似乎是“无法打开网络设备dpdk0（没有这样的设备）”问题。</font><font style="vertical-align: inherit;">在使用DPDK的Open vSwitch中设置端口时，这种情况发生得相当晚。</font><font style="vertical-align: inherit;">但是大部分时间的根本原因是在设置和初始化的早期阶段。</font><font style="vertical-align: inherit;">这里是一个如何正确初始化设备的示例 - 在启用DPDK的Open vSwitch启动时，可以在syslog / journal中找到它。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ovs-ctl [3560]：EAL：NUMA套接字0上的PCI设备0000：04：00.1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：探测驱动程序：8086：1528 rte_ixgbe_pmd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：PCI内存映射为0x7f2140000000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：PCI内存映射为0x7f2140200000</font></font><font></font>
+		  </pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		如果缺少这一点，无论是被忽略的卡，初始化失败还是其他原因，稍后将没有DPDK设备可供参考。</font><font style="vertical-align: inherit;">不幸的是，日志记录分布在syslog / journal和openvswitch日志中。</font><font style="vertical-align: inherit;">为了允许在这里进行一些交叉检查，可以在这些日志中找到相对于输入命令的示例。
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#Note：这个日志是用dpdk 2.2和openvswitch 2.5拍摄的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+标题：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+CMD：你输入</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+SYSLOG :(包含EAL和OVS消息）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+OVS-LOG :( Openvswitch消息）</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃制备</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+将接口绑定到DPDK UIO驱动程序，使Hugepages可用，在OVS上启用DPDK</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+CMD：sudo service openvswitch-switch restart</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+SYSLOG：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：31.372Z | 00003 | daemon_unix（显示器）| INFO | pid 3329死亡，死亡（终止），退出</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：33.377Z | 00002 | vlog | INFO |打开日志文件/var/log/openvswitch/ovs-vswitchd.log</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：33.381Z | 00003 | ovs_numa | INFO |在NUMA节点0上发现12个CPU内核</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：33.381Z | 00004 | ovs_numa | INFO |发现1个NUMA节点和12个CPU核心</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：33.381Z | 00005 |重新连接| INFO | unix：/var/run/openvswitch/db.sock：连接...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：33.383Z | 00006 |重新连接| INFO | unix：/var/run/openvswitch/db.sock：已连接</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：33.386Z | 00007 | bridge | INFO | ovs-vswitchd（Open vSwitch）2.5.0</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+OVS-LOG：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+systemd [1]：停止打开vSwitch ...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+systemd [1]：停止打开vSwitch。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+systemd [1]：停止打开vSwitch内部单元...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3541]：*杀死ovs-vswitchd（3329）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3541]：*杀死ovsdb-server（3318）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+systemd [1]：停止打开vSwitch内部单元。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+systemd [1]：启动Open vSwitch内部单元......</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：*启动ovsdb-server</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vsctl：ovs | 00001 | vsctl | INFO |称为ovs-vsctl --no-wait  -  init  - 设置Open_vSwitch。</font><font style="vertical-align: inherit;">DB-版本7.12.1 =</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vsctl：ovs | 00001 | vsctl | INFO |称为ovs-vsctl --no-wait set Open_vSwitch。</font><font style="vertical-align: inherit;">ovs-version = 2.5.0“external-ids：system-id = \”e7c5ba80-bb14-45c1-b8eb-628f3ad03903 \“”“system-type = \”Ubuntu \“”“system-version = \”16.04- xenial \ “”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：*配置Open vSwitch系统ID</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：2016-01-22T08：58：31Z | 00001 | dpdk | INFO |没有提供-vhost_sock_dir  - 默认为/ var / run / openvswitch</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd：ovs | 00001 | dpdk | INFO |没有提供-vhost_sock_dir  - 默认为/ var / run / openvswitch</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：在套接字0上检测到lcore 0为核0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：在套接字0上检测到lcore 1为核1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：在套接字0上检测到lcore 2为核心2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：在套接字0上检测到lcore 3为核心3</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：在套接字0上检测到lcore 4作为核心4</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：在套接字0上检测到lcore 5作为核心5</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：在套接字0上检测到lcore 6为核0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：在套接字0上检测到lcore 7为核1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：在套接字0上检测到核心2的核心2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：在套接字0上检测到lcore 9作为核心3</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：在套接字0上检测到lcore 10为核心4</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：在套接字0上检测到lcore 11作为核心5</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：通过配置支持最多128个逻辑核心。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：检测到12个核心</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：VFIO模块并非全部加载，跳过VFIO支持......</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：设置物理上连续的内存......</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：询问虚拟区域0x100000000字节</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：虚拟区域位于0x7f2040000000（大小= 0x100000000）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：从套接字0请求4页大小为1024MB的页面</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：TSC频率为~2397202KHz</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3592]：EAL：TSC频率为~2397202KHz</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3592]：EAL：主lcore 0准备就绪（tid = fc6cbb00; cpuset = [0]）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3592]：EAL：NUMA套接字0上的PCI设备0000：04：00.0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3592]：EAL：探测驱动程序：8086：1528 rte_ixgbe_pmd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3592]：EAL：不受支持的内核驱动程序管理，跳过</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3592]：EAL：NUMA套接字0上的PCI设备0000：04：00.1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3592]：EAL：探测驱动程序：8086：1528 rte_ixgbe_pmd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3592]：EAL：PCI内存映射为0x7f2140000000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3592]：EAL：PCI内存映射为0x7f2140200000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：主lcore 0准备就绪（tid = fc6cbb00; cpuset = [0]）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：NUMA套接字0上的PCI设备0000：04：00.0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：探测驱动程序：8086：1528 rte_ixgbe_pmd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：不受支持的内核驱动程序管理，跳过</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：NUMA套接字0上的PCI设备0000：04：00.1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：探测驱动程序：8086：1528 rte_ixgbe_pmd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：PCI内存映射为0x7f2140000000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：EAL：PCI内存映射为0x7f2140200000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3592]：PMD：eth_ixgbe_dev_init（）：MAC：4，PHY：3</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3592]：PMD：eth_ixgbe_dev_init（）：port 0 vendorID = 0x8086 deviceID = 0x1528</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：PMD：eth_ixgbe_dev_init（）：MAC：4，PHY：3</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：PMD：eth_ixgbe_dev_init（）：port 0 vendorID = 0x8086 deviceID = 0x1528</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：区域0：名称：&lt;RG_MP_log_history&gt;，phys：0x83fffdec0，len：0x2080，virt：0x7f213fffdec0，socket_id：0，flags：0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：区域1：名称：&lt;MP_log_history&gt;，phys：0x83fd73d40，len：0x28a0c0，virt：0x7f213fd73d40，socket_id：0，flags：0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：区域2：名称：&lt;rte_eth_dev_data&gt;，phys：0x83fd43380，len：0x2f700，virt：0x7f213fd43380，socket_id：0，flags：0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：*从ovs-vswitchd开始</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-ctl [3560]：*启用远程OVSDB管理器</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+systemd [1]：开始打开vSwitch内部单元。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+systemd [1]：启动Open vSwitch ...</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+systemd [1]：开始打开vSwitch。</font></font><font></font>
+<font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+CMD：sudo ovs-vsctl add-br ovsdpdkbr0  -  set bridge ovsdpdkbr0 datapath_type = netdev</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+SYSLOG：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：56.344Z | 00008 |内存| INFO | 37256 kB 24.5秒后峰值驻留设置大小</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：56.346Z | 00009 | ofproto_dpif | INFO | netdev @ ovs-netdev：Datapath支持再循环</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：56.346Z | 00010 | ofproto_dpif | INFO | netdev @ ovs-netdev：MPLS标签堆栈长度探测为3</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：56.346Z | 00011 | ofproto_dpif | INFO | netdev @ ovs-netdev：Datapath支持独特的流ID</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：56.346Z | 00012 | ofproto_dpif | INFO | netdev @ ovs-netdev：Datapath不支持ct_state</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：56.346Z | 00013 | ofproto_dpif | INFO | netdev @ ovs-netdev：Datapath不支持ct_zone</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：56.346Z | 00014 | ofproto_dpif | INFO | netdev @ ovs-netdev：Datapath不支持ct_mark</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：56.346Z | 00015 | ofproto_dpif | INFO | netdev @ ovs-netdev：Datapath不支持ct_label</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：56.360Z | 00016 | bridge | INFO | bridge ovsdpdkbr0：在端口65534上添加了接口ovsdpdkbr0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：56.361Z | 00017 | bridge | INFO | bridge ovsdpdkbr0：using datapath ID 00005a4a1ed0a14d</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：58：56.361Z | 00018 | connmgr | INFO | ovsdpdkbr0：添加服务控制器“punix：/var/run/openvswitch/ovsdpdkbr0.mgmt”</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+OVS-LOG：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vsctl：ovs | 00001 | vsctl | INFO |称为ovs-vsctl add-br ovsdpdkbr0  -  set bridge ovsdpdkbr0 datapath_type = netdev</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+systemd-udevd [3607]：无法为ovs-netdev生成持久性MAC地址：没有这样的文件或目录</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+内核：[50165.886554]设备ovs-netdev进入混杂模式</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+内核：[50165.901261]设备ovsdpdkbr0进入混杂模式</font></font><font></font>
+<font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+CMD：sudo ovs-vsctl add-port ovsdpdkbr0 dpdk0  -  set interface dpdk0 type = dpdk</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+SYSLOG：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：59：06.369Z | 00019 |内存| INFO |峰驻留集大小在过去10.0秒内增长了155％，从37256 kB增加到95008 kB</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：59：06.369Z | 00020 |内存| INFO |处理程序：4端口：1个revalidators：2规则：5</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：59：30.989Z | 00021 | dpdk | INFO |端口0：8c：dc：d4：b3：6d：e9</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：59：31.520Z | 00022 | dpdk | INFO |端口0：8c：dc：d4：b3：6d：e9</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：59：31.521Z | 00023 | dpif_netdev | INFO |在numa节点0上创建1 pmd线程</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：59：31.522Z | 00001 | dpif_netdev（pmd16）| INFO |核心0处理端口'dpdk0'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：59：31.522Z | 00024 | bridge | INFO | bridge ovsdpdkbr0：在端口1上添加了接口dpdk0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：59：31.522Z | 00025 | bridge | INFO | bridge ovsdpdkbr0：using datapath ID 00008cdcd4b36de9</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T08：59：31.523Z | 00002 | dpif_netdev（pmd16）| INFO |核心0处理端口'dpdk0'</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+OVS-LOG：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vsctl：ovs | 00001 | vsctl | INFO |称为ovs-vsctl add-port ovsdpdkbr0 dpdk0  - 设置接口dpdk0 type = dpdk</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a79ebc0 hw_ring = 0x7f211a7a6c00 dma_addr = 0x81a7a6c00</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_rx_queue_setup（）：sw_ring = 0x7f211a78a6c0 sw_sc_ring = 0x7f211a786580 hw_ring = 0x7f211a78e800 dma_addr = 0x81a78e800</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_rx_function（）：启用向量rx，请确保RX突发大小不小于4（端口= 0）。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a79ebc0 hw_ring = 0x7f211a7a6c00 dma_addr = 0x81a7a6c00</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a76e4c0 hw_ring = 0x7f211a776500 dma_addr = 0x81a776500</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a756440 hw_ring = 0x7f211a75e480 dma_addr = 0x81a75e480</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a73e3c0 hw_ring = 0x7f211a746400 dma_addr = 0x81a746400</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a726340 hw_ring = 0x7f211a72e380 dma_addr = 0x81a72e380</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a70e2c0 hw_ring = 0x7f211a716300 dma_addr = 0x81a716300</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a6f6240 hw_ring = 0x7f211a6fe280 dma_addr = 0x81a6fe280</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a6de1c0 hw_ring = 0x7f211a6e6200 dma_addr = 0x81a6e6200</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a6c6140 hw_ring = 0x7f211a6ce180 dma_addr = 0x81a6ce180</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a6ae0c0 hw_ring = 0x7f211a6b6100 dma_addr = 0x81a6b6100</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a696040 hw_ring = 0x7f211a69e080 dma_addr = 0x81a69e080</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a67dfc0 hw_ring = 0x7f211a686000 dma_addr = 0x81a686000</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_tx_queue_setup（）：sw_ring = 0x7f211a665e40 hw_ring = 0x7f211a66de80 dma_addr = 0x81a66de80</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：使用简单的tx代码路径</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_tx_function（）：启用向量tx。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_dev_rx_queue_setup（）：sw_ring = 0x7f211a78a6c0 sw_sc_ring = 0x7f211a786580 hw_ring = 0x7f211a78e800 dma_addr = 0x81a78e800</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：PMD：ixgbe_set_rx_function（）：启用向量rx，请确保RX突发大小不小于4（端口= 0）。</font></font><font></font>
+<font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+CMD：sudo ovs-vsctl add-port ovsdpdkbr0 vhost-user-1  - 设置接口vhost-user-1 type = dpdkvhostuser</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+OVS-LOG：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T09：00：35.145Z | 00026 | dpdk | INFO |为vhost用户端口vhost-user-1创建的Socket / var / run / openvswitch / vhost-user-1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T09：00：35.145Z | 00003 | dpif_netdev（pmd16）| INFO |核心0处理端口'dpdk0'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T09：00：35.145Z | 00004 | dpif_netdev（pmd16）| INFO |核心0处理端口'vhost-user-1'</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+2016-01-22T09：00：35.145Z | 00027 | bridge | INFO | bridge ovsdpdkbr0：在端口2上添加了接口vhost-user-1</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+SYSLOG：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vsctl：ovs | 00001 | vsctl | INFO |称为ovs-vsctl add-port ovsdpdkbr0 vhost-user-1  - 设置接口vhost-user-1 type = dpdkvhostuser</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：VHOST_CONFIG：socket创建，fd：46</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ovs-vswitchd [3595]：VHOST_CONFIG：绑定到/ var / run / openvswitch / vhost-user-1</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+最终我们可以在顶部看到民意调查线程</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  PID用户PR NI VIRT RES SHR S％CPU％MEM TIME + COMMAND</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 3595 root 10 -10 4975344 103936 9916 S 100.0 0.3 33：13.56 ovs-vswitchd</font></font><font></font>
+		  </pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dpdk-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+				  <p class="para">
+					  <a href="http://dpdk.org/doc" class="ulink" title="http://dpdk.org/doc"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DPDK文件</font></font></a>
+				  </p>
+			  </li>
+<li class="list itemizedlist">
+				  <p class="para">
+					  <a href="http://dpdk.org/doc/guides/rel_notes/release_2_2.html" class="ulink" title="http://dpdk.org/doc/guides/rel_notes/release_2_2.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">与Ubuntu 16.04中的版本包匹配的发行说明</font></font></a>
+				  </p>
+			  </li>
+<li class="list itemizedlist">
+				  <p class="para">
+					  <a href="http://dpdk.org/doc/guides/linux_gsg/index.html" class="ulink" title="http://dpdk.org/doc/guides/linux_gsg/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux DPDK用户入门</font></font></a>
+				  </p>
+			  </li>
+<li class="list itemizedlist">
+				  <p class="para">
+					  <a href="http://dpdk.org/doc/guides/testpmd_app_ug/run_app.html" class="ulink" title="http://dpdk.org/doc/guides/testpmd_app_ug/run_app.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EAL命令行选项</font></font></a>
+				  </p>
+			  </li>
+<li class="list itemizedlist">
+				  <p class="para">
+					  <a href="http://dpdk.org/doc/api/" class="ulink" title="http://dpdk.org/doc/api/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DPDK Api文档</font></font></a>
+				  </p>
+			  </li>
+<li class="list itemizedlist">
+				  <p class="para">
+					  <a href="https://github.com/openvswitch/ovs/blob/branch-2.5/INSTALL.DPDK.md" class="ulink" title="https://github.com/openvswitch/ovs/blob/branch-2.5/INSTALL.DPDK.md"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVswitch DPDK安装</font></font></a>
+				  </p>
+			  </li>
+<li class="list itemizedlist">
+				  <p class="para">
+					  <a href="https://en.wikipedia.org/wiki/Data_Plane_Development_Kit" class="ulink" title="https://en.wikipedia.org/wiki/Data_Plane_Development_Kit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">维基百科对DPDK的定义</font></font></a>
+				  </p>
+			  </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="NTP.html" title="时间同步"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="dm-multipath-chapter.html" title="DM-多路径"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

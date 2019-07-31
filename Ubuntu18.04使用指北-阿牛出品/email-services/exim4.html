@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>的exim4</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="email-services.html" title="电邮服务"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电子邮件服务</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="postfix.html" title="后缀"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="dovecot-server.html" title="Dovecot服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的exim4</font></font></h1></div>
+<div class="region">
+<div class="contents"><p class="para">
+            <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exim4</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是剑桥大学开发的另一种消息传输代理（MTA），用于连接到Internet的Unix系统。</font><font style="vertical-align: inherit;">进出口可以安装到位的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sendmail的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，虽然配置
+             </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">进出口</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是到完全不同</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的sendmail</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+          </font></font></p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="exim4.html#exim4-installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a></li>
+<li class="links"><a class="xref" href="exim4.html#exim4-configuration" title="组态"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></a></li>
+<li class="links"><a class="xref" href="exim4.html#exim4-smtp-auth" title="SMTP验证"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SMTP验证</font></font></a></li>
+<li class="links"><a class="xref" href="exim4.html#exim4-sasl" title="配置SASL"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置SASL</font></font></a></li>
+<li class="links"><a class="xref" href="exim4.html#exim4-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="exim4-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h2></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            要安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">exim4</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请运行以下命令：
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install exim4</font></font></span>
+</pre></div>
+            <p></p></div></div>
+</div></div>
+<div class="sect2 sect" id="exim4-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            要配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exim4</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请运行以下命令：
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo dpkg-reconfigure exim4-config</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            将显示用户界面。</font><font style="vertical-align: inherit;">用户界面允许您配置许多参数。</font><font style="vertical-align: inherit;">例如，在
+             </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exim4中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，配置文件分为多个文件。</font><font style="vertical-align: inherit;">如果您希望将它们放在一个文件中，则可以在此用户界面中进行相应配置。
+            </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            您在用户界面中配置的所有参数都存储在
+             </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/exim4/update-exim4.conf.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中。</font><font style="vertical-align: inherit;">如果要重新配置，请重新运行配置向导或使用您喜欢的编辑器手动编辑此文件。</font><font style="vertical-align: inherit;">配置完成后，可以运行以下命令生成主配置文件：
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo update-exim4.conf</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            生成主配置文件，并将其存储在
+             </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/lib/exim4/config.autogenerated中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。 
+            </font></font></p>
+<div class="note note-warning" title="警告"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            您无需</font><font style="vertical-align: inherit;">
+            手动</font><font style="vertical-align: inherit;">编辑主配置文件
+             </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/lib/exim4/config.autogenerated</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">每次运行</font><span class="cmd command"><font style="vertical-align: inherit;">update-exim4.conf</font></span><font style="vertical-align: inherit;">时都会自动
+             </font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更新</font></font></span>
+            </p>
+            </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            您可以运行以下命令来启动
+             </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exim4</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">守护程序。
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl start exim4.service</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="exim4-smtp-auth"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SMTP验证</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  本节介绍如何将Exim4配置为使用带有TLS和SASL的SMTP-AUTH。
+	  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          第一步是创建用于TLS的证书。</font><font style="vertical-align: inherit;">在终端提示中输入以下内容： 
+	  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo / usr / share / doc / exim4-base / examples / exim-gencert</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  现在需要通过编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/exim4/conf.d/main/03_exim4-config_tlsoptions</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为TLS配置</font><span class="file filename"><font style="vertical-align: inherit;">Exim4，</font></span><font style="vertical-align: inherit;"> 
+	   添加以下内容：
+	  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MAIN_TLS_ENABLE =是的
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   接下来，您需要配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exim4</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">saslauthd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	   进行身份验证。</font><font style="vertical-align: inherit;">编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/exim4/conf.d/auth/30_exim4-config_examples</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并取消注释</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">plain_saslauthd_server</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">login_saslauthd_server</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分：
+	  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> plain_saslauthd_server：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   driver = plaintext</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   public_name = PLAIN</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   server_condition = $ {if saslauthd {{$ auth2} {$ auth3}} {1} {0}}</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   server_set_id = $ auth2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   server_prompts =：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   .ifndef AUTH_SERVER_ALLOW_NOTLS_PASSWORDS</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   server_advertise_condition = $ {if eq {$ tls_cipher} {} {} {*}}</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   。万一</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ login_saslauthd_server：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   driver = plaintext</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   public_name = LOGIN</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   server_prompts =“Username ::：Password ::”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   ＃不要通过未加密的连接发送系统密码</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   server_condition = $ {if saslauthd {{$ auth1} {$ auth2}} {1} {0}}</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   server_set_id = $ auth1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   .ifndef AUTH_SERVER_ALLOW_NOTLS_PASSWORDS</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   server_advertise_condition = $ {if eq {$ tls_cipher} {} {} {*}}</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   。万一</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          此外，为了使外部邮件客户端能够连接到新的exim服务器，需要使用以下命令将新用户添加到exim中。
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo / usr / share / doc / exim4-base / examples / exim-adduser</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户应使用以下命令保护新的exim密码文件。</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chown root：Debian-exim / etc / exim4 / passwd </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chmod 640 / etc / exim4 / passwd</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  最后，更新Exim4配置并重新启动服务：
+	  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo update-exim4.conf </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart exim4.service</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="exim4-sasl"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置SASL</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  本节提供有关配置saslauthd以便为Exim4提供身份验证的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">详细信息</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  	  第一步是安装sasl2-bin软件包。</font><font style="vertical-align: inherit;">在终端提示符下输入以下内容：
+	  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install sasl2-bin</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  要配置saslauthd，请编辑/ etc / default / saslauthd配置文件并将START = no设置为：
+	  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">START = YES
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  接下来，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Debian-exim</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户需要成为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sasl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组的</font><font style="vertical-align: inherit;">一部分，</font><font style="vertical-align: inherit;">以便Exim4使用saslauthd服务：
+	  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo adduser Debian-exim sasl</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  现在开始</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">saslauthd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务：
+	  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl start saslauthd.service</font></font></span>
+</pre></div>
+<p class="para">
+	  <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exim4</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">现在使用TLS和SASL身份验证配置SMTP-AUTH。
+	  </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="exim4-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              有关</font><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a href="http://www.exim.org/" class="ulink" title="http://www.exim.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">exim.org</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              还有一本</font></font><a href="http://www.uit.co.uk/content/exim-smtp-mail-server" class="ulink" title="http://www.uit.co.uk/content/exim-smtp-mail-server"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exim4 Book</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              另一个资源是</font></font><a href="https://help.ubuntu.com/community/Exim4" class="ulink" title="https://help.ubuntu.com/community/Exim4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exim4 Ubuntu Wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">页面。
+              </font></font></p>
+            </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="postfix.html" title="后缀"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="dovecot-server.html" title="Dovecot服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

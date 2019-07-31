@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>动态主机配置协议（DHCP）</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="networking.html" title="联网"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网络</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="tcpip.html" title="TCP / IP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="NTP.html" title="时间同步"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">动态主机配置协议（DHCP）</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    动态主机配置协议（DHCP）是一种网络服务，它使主机能够从服务器自动分配设置，而不是手动配置每个网络主机。</font><font style="vertical-align: inherit;">配置为DHCP客户端的计算机无法控制从DHCP服务器接收的设置，并且配置对计算机用户是透明的。
+	    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    DHCP服务器向DHCP客户端提供的最常见设置包括：
+	    </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist compact">
+<li class="list itemizedlist">
+                    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IP地址和网络掩码</font></font></p>
+                </li>
+<li class="list itemizedlist">
+                    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要使用的默认网关的IP地址</font></font></p>
+                </li>
+<li class="list itemizedlist">
+                    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要使用的DNS服务器的IP地址</font></font></p>
+                </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    但是，DHCP服务器还可以提供配置属性，例如：
+	    </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist compact">
+<li class="list itemizedlist">
+                    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主机名</font></font></p>
+                </li>
+<li class="list itemizedlist">
+                    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名</font></font></p>
+                </li>
+<li class="list itemizedlist">
+                    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">时间服务器</font></font></p>
+                </li>
+<li class="list itemizedlist">
+                    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打印服务器</font></font></p>
+                </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    使用DHCP的优点是只需在DHCP服务器上更改网络更改（例如DNS服务器地址的更改），并在下次DHCP客户端轮询DHCP服务器时重新配置所有网络主机。</font><font style="vertical-align: inherit;">作为一个额外的优势，将新计算机集成到网络中也更容易，因为无需检查IP地址的可用性。</font><font style="vertical-align: inherit;">IP地址分配中的冲突也会减少。
+	    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    DHCP服务器可以使用以下方法提供配置设置：
+	    </font></font></p>
+<div class="terms variablelist"><dl class="terms variablelist">
+<dt class="terms"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手动分配（MAC地址）</font></font></dt>
+<dd class="terms">
+                        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			该方法需要使用DHCP来识别连接到网络的每个网卡的唯一硬件地址，然后每次DHCP客户端使用该网络设备向DHCP服务器发出请求时，不断提供常量配置。</font><font style="vertical-align: inherit;">这可确保根据网络的MAC地址自动为该网卡分配特定地址。
+			</font></font></p>
+                    </dd>
+<dt class="terms"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">动态分配（地址池）</font></font></dt>
+<dd class="terms">
+                        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			在此方法中，DHCP服务器将从地址池（有时也称为范围或范围）中分配IP地址一段时间或租约，在服务器上配置或直到客户端通知服务器它没有再也不需要地址了。</font><font style="vertical-align: inherit;">这样，客户端将以“先到先得”的方式动态地接收其配置属性。</font><font style="vertical-align: inherit;">当DHCP客户端在指定时间段内不再在网络上时，配置已过期并释放回地址池以供其他DHCP客户端使用。</font><font style="vertical-align: inherit;">这样，地址可以租用或使用一段时间。</font><font style="vertical-align: inherit;">在此期间之后，客户端必须与服务器重新关联租约以维护地址的使用。
+			</font></font></p>
+                    </dd>
+<dt class="terms"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自动分配</font></font></dt>
+<dd class="terms">
+                        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			使用此方法，DHCP会自动为设备永久分配IP地址，并从可用地址池中选择它。</font><font style="vertical-align: inherit;">通常，DHCP用于为客户端分配临时地址，但DHCP服务器可以允许无限的租用时间。
+			</font></font></p>
+                    </dd>
+</dl></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    最后两种方法可以被认为是“自动的”，因为在每种情况下，DHCP服务器都分配一个地址而不需要额外的干预。</font><font style="vertical-align: inherit;">它们之间的唯一区别在于IP地址的租用时间，换句话说，客户端的地址是否随时间变化。</font><font style="vertical-align: inherit;">DHCP服务器Ubuntu提供的是
+         </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dhcpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（动态主机配置协议守护程序），它易于安装和配置，并将在系统引导时自动启动。
+	    </font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="dhcp.html#dhcp-installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a></li>
+<li class="links"><a class="xref" href="dhcp.html#dhcp-configuration" title="组态"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></a></li>
+<li class="links"><a class="xref" href="dhcp.html#dhcp-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="dhcp-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  在终端提示符下，输入以下命令以安装
+           </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dhcpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+	  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install isc-dhcp-server</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  您可能需要通过编辑/etc/dhcp/dhcpd.conf来更改默认配置，以满足您的需求和特定配置。
+	  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  您还可能需要编辑/ etc / default / isc-dhcp-server来指定dhcpd应该监听的接口。
+	  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  注意：dhcpd的消息正在发送到syslog。</font><font style="vertical-align: inherit;">查看诊断消息。
+	  </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dhcp-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    安装结束的错误消息可能有点令人困惑，但以下步骤将帮助您配置服务：
+	    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    最常见的是，您要做的是随机分配IP地址。</font><font style="vertical-align: inherit;">这可以通过以下设置完成：
+	    </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#minimal sample /etc/dhcp/dhcpd.conf</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+default-lease-time 600;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+max-lease-time 7200;</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+子网192.168.1.0 netmask 255.255.255.0 {</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 范围192.168.1.150 192.168.1.200;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 选项路由器192.168.1.254;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ option domain-name-servers 192.168.1.1,192.168.1.2;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 选项域名“mydomain.example”;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+}</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    这将导致DHCP服务器为客户端提供范围为192.168.1.150-192.168.1.200的IP地址。</font><font style="vertical-align: inherit;">如果客户端没有要求特定的时间范围，它将租用IP地址600秒。</font><font style="vertical-align: inherit;">否则，最大（允许）租约将为7200秒。</font><font style="vertical-align: inherit;">服务器还将“建议”客户端使用192.168.1.254作为默认网关，并使用192.168.1.1和192.168.1.2作为其DNS服务器。
+	    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  更改配置文件后，您必须重新启动
+           </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dhcpd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+	  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart isc-dhcp-server.service</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dhcp-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              在</font></font><a href="https://help.ubuntu.com/community/dhcp3-server" class="ulink" title="https://help.ubuntu.com/community/dhcp3-server"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用dhcp3-server Ubuntu的维基</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">页面有更多信息。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              有关更多</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/dhcp/dhcpd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项，请参见
+               </font></font><a href="http://manpages.ubuntu.com/manpages/bionic/en/man5/dhcpd.conf.5.html" class="ulink" title="http://manpages.ubuntu.com/manpages/bionic/en/man5/dhcpd.conf.5.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dhcpd.conf手册页</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <a href="http://www.isc.org/software/dhcp" class="ulink" title="http://www.isc.org/software/dhcp"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ISC dhcp-server</font></font></a>
+              </p>
+            </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="tcpip.html" title="TCP / IP"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="NTP.html" title="时间同步"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

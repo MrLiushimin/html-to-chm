@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>AppArmor的</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="security.html" title="安全"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安全性</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="firewall.html" title="火墙"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="certificates-and-security.html" title="证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor的</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+	  <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是基于名称的强制访问控制的Linux安全模块实现。</font><font style="vertical-align: inherit;">AppArmor将各个程序限制为一组列出的文件和posix 1003.1e草稿功能。
+	  </font></font></p>
+<p class="para">
+	  <span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认情况下安装并加载</font><span class="app application"><font style="vertical-align: inherit;">AppArmor</font></span><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">它使用</font><font style="vertical-align: inherit;">应用程序的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">来确定应用程序所需的文件和权限。</font><font style="vertical-align: inherit;">有些软件包会安装自己的配置文件，其他配置文件可以在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apparmor-profiles</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包中找到。
+	  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  要从</font><font style="vertical-align: inherit;">终端提示符</font><font style="vertical-align: inherit;">安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apparmor-profiles</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包：
+	  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install apparmor-profiles</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  AppArmor配置文件有两种执行模式：
+	  </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      抱怨/学习：允许并记录配置文件违规。</font><font style="vertical-align: inherit;">用于测试和开发新的配置文件。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      强制/限制：强制执行配置文件策略以及记录违规。
+	      </font></font></p>
+	    </li>
+</ul></div>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="apparmor.html#apparmor-usage" title="使用AppArmor"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用AppArmor</font></font></a></li>
+<li class="links"><a class="xref" href="apparmor.html#apparmor-profiles" title="简介"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">简介</font></font></a></li>
+<li class="links"><a class="xref" href="apparmor.html#apparmor-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="apparmor-usage"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用AppArmor</font></font></h2></div>
+<div class="region"><div class="contents">
+<div class="note note-warning" title="警告"><div class="inner"><div class="region"><div class="contents">
+   		  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   		  此部分受到错误（</font></font><a href="https://bugs.launchpad.net/ubuntu/+source/apparmor/+bug/1304134" class="ulink" title="https://bugs.launchpad.net/ubuntu/+source/apparmor/+bug/1304134"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LP＃1304134</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）的</font><font style="vertical-align: inherit;">困扰，</font><font style="vertical-align: inherit;">并且说明将不如宣传的那样有效。
+   		  </font></font></p>
+	       </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor的-utils的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包中包含的命令行工具，你可以用它来改变
+	     </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">执行模式，找到一个配置文件的状态，创建新的配置文件，等等。
+	    </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	    	<p class="para">
+	    	<span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apparmor_status</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于查看AppArmor配置文件的当前状态。
+	    	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apparmor_status</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para">
+		<span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aa-complain</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将个人资料置于</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">投诉</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模式。
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo aa-complain / path / to / bin</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para">
+		<span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aa-enforce</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将配置文件置于</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">强制</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模式。
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo aa-enforce / path / to / bin</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+	    	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   	该</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apparmor.d中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录是AppArmor配置文件的位置。</font><font style="vertical-align: inherit;">它可用于操纵</font><font style="vertical-align: inherit;">所有配置文件</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模式</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	    	</font></font></p>
+	    	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    	输入以下内容将所有配置文件置于投诉模式：
+	    	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo aa-complain /etc/apparmor.d/*</font></font></span>
+</pre></div>
+	    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    要将所有配置文件置于强制模式：
+	    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo aa-enforce /etc/apparmor.d/*</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para">
+		<span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apparmor_parser</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于将配置文件加载到内核中。</font><font style="vertical-align: inherit;">它还可用于使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-r</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">重新加载当前加载的配置文件</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要加载配置文件：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cat /etc/apparmor.d/profile.name | </font><font style="vertical-align: inherit;">sudo apparmor_parser -a</font></font></span>
+</pre></div>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要重新加载配置文件：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cat /etc/apparmor.d/profile.name | </font><font style="vertical-align: inherit;">sudo apparmor_parser -r</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+	   	<p class="para">
+	   	<span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">systemctl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可用于</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">重新加载</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">所有配置文件：
+	   	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl reload apparmor.service</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+	    	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    	所述</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apparmor.d/disable</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录可以与被用于沿着</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apparmor_parser -R</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+		选项来</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">禁用</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的轮廓。
+	    	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ln -s /etc/apparmor.d/profile.name /etc/apparmor.d/disable/ </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apparmor_parser -R /etc/apparmor.d/profile.name</font></font></span>
+</pre></div>
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">重新启用</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">已禁用的配置文件，请删除</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apparmor.d/disable/中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件的符号链接 
+		 </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">然后使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-a</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">加载配置文件</font><font style="vertical-align: inherit;">。
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo rm /etc/apparmor.d/disable/profile.name </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cat /etc/apparmor.d/profile.name | </font><font style="vertical-align: inherit;">sudo apparmor_parser -a</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+	    	<p class="para">
+	    	<span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以禁用</font><span class="app application"><font style="vertical-align: inherit;">AppArmor</font></span><font style="vertical-align: inherit;">，并通过输入以下内容卸载内核模块：
+	    	</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl stop apparmor.service </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo update-rc.d -f apparmor remove</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   	要重新启用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor，请</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">输入：
+		</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl start apparmor.service </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo update-rc.d apparmor默认值</font></font></span>
+</pre></div>
+	      </li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">profile.name</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换</font><font style="vertical-align: inherit;">为您要操作的配置文件的名称。</font><font style="vertical-align: inherit;">另外，将 
+	       </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ path / to / bin /</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换为实际的可执行文件路径。</font><font style="vertical-align: inherit;">例如，对于</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ping</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+	      命令，使用</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ bin / ping</font></font></span>
+	      </p>
+	    </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="apparmor-profiles"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">简介</font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+	    <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件是位于</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apparmor.d/</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中的简单文本文件</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这些文件以其可配置的可执行文件的完整路径命名，将“/”替换为“。”。</font><font style="vertical-align: inherit;">例如</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apparmor.d/bin.ping</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ bin / ping</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	    命令</font><font style="vertical-align: inherit;">的AppArmor配置文件</font><font style="vertical-align: inherit;">。  
+	    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 	    配置文件中使用了两种主要的规则：
+	    </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	        <p class="para">
+	        <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">路径条目：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">详细说明应用程序可以在文件系统中访问的文件。
+	        </font></font></p>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para">
+	        <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">功能条目：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">确定允许使用受限进程的权限。
+	        </font></font></p>
+	      </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    举个例子，看看</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apparmor.d/bin.ping</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+	    </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#include &lt;tunables / global&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/ bin / ping flags =（抱怨）{</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  #include &lt;abstractions / base&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  #include &lt;abstractions / consoles&gt;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  #include &lt;abstractions / nameservice&gt;</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  能力net_raw，</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  能力setuid，</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  网络无生气，</font></font><font></font>
+  <font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  / bin / ping mixr，</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  /etc/modules.conf r，</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+}</font></font><font></font>
+</pre></div>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	        <p class="para">
+		<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#include &lt;tunables / global&gt;：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含其他文件的语句。</font><font style="vertical-align: inherit;">这允许将与多个应用程序相关的语句放在公共文件中。
+	        </font></font></p>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para">
+		<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ bin / ping flags =（抱怨）：配置文件</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">程序的路径，也将模式设置为 
+	         </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">抱怨</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	        </font></font></p>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para">
+		<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">capability net_raw ,:</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">允许应用程序访问CAP_NET_RAW Posix.1e功能。
+	        </font></font></p>
+	      </li>
+<li class="list itemizedlist">
+	        <p class="para">
+		<span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ bin / ping mixr：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">允许应用程序读取和执行对文件的访问。
+	        </font></font></p>
+	      </li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      编辑配置文件后，必须重新加载配置文件。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">详细信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="apparmor.html#apparmor-usage" title="使用AppArmor"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用AppArmor</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	      </font></font></p>
+	    </div></div></div></div>
+</div>
+<div class="sect3 sect" id="apparmor-profiles-new"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建个人资料</font></font></h3></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	          <p class="para">
+	       	  <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设计测试计划：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">尝试考虑如何运用应用程序。</font><font style="vertical-align: inherit;">测试计划应分为小测试用例。</font><font style="vertical-align: inherit;">每个测试用例都应该有一个小描述并列出要遵循的步骤。
+	          </font></font></p>
+		  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		  一些标准测试用例是：
+	          </font></font></p>
+	          <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">		
+		      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	              启动程序。
+    		      </font></font></p>
+		    </li>
+<li class="list itemizedlist">		
+		      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      		      停止程序。
+    		      </font></font></p>
+		    </li>
+<li class="list itemizedlist">		
+		      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      		      重新加载程序。
+    		      </font></font></p>
+		    </li>
+<li class="list itemizedlist">		
+		      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      	              测试init脚本支持的所有命令。
+    		      </font></font></p>
+		    </li>
+</ul></div>
+		</li>
+<li class="list itemizedlist">
+	          <p class="para">
+		  <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生成新配置文件：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aa-genprof</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生成新配置文件。</font><font style="vertical-align: inherit;">从终端：
+		  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo aa-genprof可执行文件</font></font></span>
+</pre></div>
+		    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		    例如：
+		    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo aa-genprof slapd</font></font></span>
+</pre></div>
+		</li>
+<li class="list itemizedlist">
+		  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		  要将新配置文件包含在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">apparmor-profiles</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包中，请在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Launchpad中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">针对</font></font><a href="https://bugs.launchpad.net/ubuntu/+source/apparmor/+filebug" class="ulink" title="https://bugs.launchpad.net/ubuntu/+source/apparmor/+filebug"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+		  包</font><font style="vertical-align: inherit;">提交错误 
+		   </font><font style="vertical-align: inherit;">：
+		  </font></font></p>
+		  <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+		      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		      包括您的测试计划和测试用例。
+  		      </font></font></p>
+		    </li>
+<li class="list itemizedlist">
+		      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		      将您的新个人资料附加到该错误。
+		      </font></font></p>
+		    </li>
+</ul></div>
+		</li>
+</ul></div></div></div>
+</div></div>
+<div class="sect3 sect" id="apparmor-profiles-update"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更新配置文件</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      当程序行为不正常时，审计消息将发送到日志文件。</font><font style="vertical-align: inherit;">程序</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aa-logprof</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可用于扫描</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">审核消息的</font><font style="vertical-align: inherit;">日志文件</font><font style="vertical-align: inherit;">，查看它们并更新配置文件。</font><font style="vertical-align: inherit;">从终端：
+	      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo aa-logprof</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="apparmor-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents">
+<div class="list itemizedlist"><ul class="list itemizedlist"><li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		有关</font><font style="vertical-align: inherit;">高级配置选项，</font><font style="vertical-align: inherit;">请参阅“ </font></font><a href="http://www.novell.com/documentation/apparmor/apparmor201_sp10_admin/index.html?page=/documentation/apparmor/apparmor201_sp10_admin/data/book_apparmor_admin.html" class="ulink" title="http://www.novell.com/documentation/apparmor/apparmor201_sp10_admin/index.html?page=/documentation/apparmor/apparmor201_sp10_admin/data/book_apparmor_admin.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor管理指南”</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+  	        </font></font></p>
+	      </li></ul></div>
+<div class="list itemizedlist"><ul class="list itemizedlist"><li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	        有关将AppArmor与其他Ubuntu版本一起使用的详细信息，请参阅</font></font><a href="https://help.ubuntu.com/community/AppArmor" class="ulink" title="https://help.ubuntu.com/community/AppArmor"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		AppArmor社区Wiki</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">页面。
+  	        </font></font></p>
+	      </li></ul></div>
+<div class="list itemizedlist"><ul class="list itemizedlist"><li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		在</font></font><a href="http://en.opensuse.org/SDB:AppArmor_geeks" class="ulink" title="http://en.opensuse.org/SDB:AppArmor_geeks"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenSUSE系统AppArmor的</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">页面是另一个介绍AppArmor的。
+  	        </font></font></p>
+	      </li></ul></div>
+<div class="list itemizedlist"><ul class="list itemizedlist"><li class="list itemizedlist">
+	  	<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		要求提供</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AppArmor</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">帮助并参与Ubuntu服务器社区</font><font style="vertical-align: inherit;">的好地方</font><font style="vertical-align: inherit;">是</font><a href="http://freenode.net" class="ulink" title="http://freenode.net"><font style="vertical-align: inherit;">freenode</font></a><font style="vertical-align: inherit;">上</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃ubuntu-server</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> IRC频道</font><font style="vertical-align: inherit;">。
+          	</font></font><a href="http://freenode.net" class="ulink" title="http://freenode.net"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></p>
+	      </li></ul></div>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="firewall.html" title="火墙"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="certificates-and-security.html" title="证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>WordPress</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="lamp-applications.html" title="LAMP Applications">LAMP Applications</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="phpmyadmin.html" title="phpMyAdmin">Previous</a><a class="nextlinks-next" href="../file-servers/file-servers.html" title="File Servers">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">WordPress</h1></div>
+<div class="region">
+<div class="contents"><p class="para">
+          Wordpress is a blog tool, publishing platform and CMS 
+          implemented in PHP and licensed under the GNU GPLv2.
+      </p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="wordpress.html#wordpress-installation" title="Installation">Installation</a></li>
+<li class="links"><a class="xref" href="wordpress.html#wordpress-configuration" title="Configuration">Configuration</a></li>
+<li class="links"><a class="xref" href="wordpress.html#wordpress-references" title="References">References</a></li>
+</ul></div>
+<div class="sect2 sect" id="wordpress-installation"><div class="inner">
+<div class="hgroup"><h2 class="title">Installation</h2></div>
+<div class="region"><div class="contents">
+<p class="para">To install <span class="app application">WordPress</span>, run the following
+              comand in the command prompt:
+          </p>
+<div class="screen"><pre class="contents ">    <span class="cmd command">sudo apt install wordpress</span>
+</pre></div>
+<p class="para">
+           You should also install <span class="app application">apache2</span> web
+           server and <span class="app application">mysql</span> server. For installing <span class="app application">apache2</span> web
+           server, please refer to <a class="xref" href="httpd.html#http-installation" title="Installation">Installation</a>
+           sub-section in <a class="xref" href="httpd.html" title="HTTPD - Apache2 Web Server">HTTPD - Apache2 Web Server</a> section.
+            For installing <span class="app application">mysql</span> server, please refer
+            to <a class="xref" href="mysql.html#mysql-installation" title="Installation">Installation</a> sub-section in 
+            <a class="xref" href="mysql.html" title="MySQL">MySQL</a> section.
+           </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="wordpress-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Configuration</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+               For configuring your first <span class="app application">WordPress</span>
+               application, configure an apache site.
+               Open <span class="file filename">/etc/apache2/sites-available/wordpress.conf</span> and write the
+               following lines:
+           </p>
+<div class="code"><pre class="contents ">        Alias /blog /usr/share/wordpress
+        &lt;Directory /usr/share/wordpress&gt;
+            Options FollowSymLinks
+            AllowOverride Limit Options FileInfo
+            DirectoryIndex index.php
+            Order allow,deny
+            Allow from all
+        &lt;/Directory&gt;
+        &lt;Directory /usr/share/wordpress/wp-content&gt;
+            Options FollowSymLinks
+            Order allow,deny
+            Allow from all
+        &lt;/Directory&gt;
+           </pre></div>
+<p class="para">Enable this new <span class="app application">WordPress</span> site</p>
+<div class="screen"><pre class="contents ">    <span class="cmd command">sudo a2ensite wordpress</span>
+</pre></div>
+<p class="para">
+         Once you configure the <span class="app application">apache2</span> web server and
+         make it ready for your <span class="app application">WordPress</span>
+         application, you should restart it. You
+         can run the following command to restart the
+         <span class="app application">apache2</span> web server:
+         </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart apache2.service</span>
+</pre></div>
+<p class="para">
+        To facilitate multiple <span class="app application">WordPress</span> installations, the name of this
+        configuration file is based on the Host header of the HTTP request.
+        This means that you can have a configuration per VirtualHost by simply
+        matching the hostname portion of this configuration with your Apache
+        Virtual Host. e.g. /etc/wordpress/config-10.211.55.50.php,
+        /etc/wordpress/config-hostalias1.php, etc. These instructions assume
+        you can access Apache via the localhost hostname (perhaps by using an
+        ssh tunnel) if not, replace /etc/wordpress/config-localhost.php with
+        /etc/wordpress/config-NAME_OF_YOUR_VIRTUAL_HOST.php.
+    </p>
+<p class="para">
+        Once the configuration file is written, it is up to you to choose a
+        convention for username and password to mysql for each
+        <span class="app application">WordPress</span>
+        database instance. This documentation shows only one, localhost,
+        example.
+    </p>
+<p class="para">
+        Now configure <span class="app application">WordPress</span> to use a mysql database.
+        Open <span class="file filename">/etc/wordpress/config-localhost.php</span> file and write
+        the following lines:
+    </p>
+<div class="code"><pre class="contents ">&lt;?php
+define('DB_NAME', 'wordpress');
+define('DB_USER', 'wordpress');
+define('DB_PASSWORD', 'yourpasswordhere');
+define('DB_HOST', 'localhost');
+define('WP_CONTENT_DIR', '/usr/share/wordpress/wp-content');
+?&gt;
+</pre></div>
+<p class="para">Now create this mysql database. Open a temporary file with mysql commands
+        <span class="file filename">wordpress.sql</span> and write the following lines:
+        </p>
+<div class="code"><pre class="contents ">CREATE DATABASE wordpress;
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER
+ON wordpress.*
+TO wordpress@localhost
+IDENTIFIED BY 'yourpasswordhere';
+FLUSH PRIVILEGES;
+</pre></div>
+<p class="para">Execute these commands.</p>
+<div class="screen"><pre class="contents "><span class="cmd command">cat wordpress.sql | sudo mysql --defaults-extra-file=/etc/mysql/debian.cnf</span>
+</pre></div>
+<p class="para">Your new <span class="app application">WordPress</span> can now be configured by visiting
+            <a href="http://localhost/blog/wp-admin/install.php" class="ulink" title="http://localhost/blog/wp-admin/install.php">http://localhost/blog/wp-admin/install.php</a>.
+            (Or <a href="http://NAME_OF_YOUR_VIRTUAL_HOST/blog/wp-admin/install.php" class="ulink" title="http://NAME_OF_YOUR_VIRTUAL_HOST/blog/wp-admin/install.php">http://NAME_OF_YOUR_VIRTUAL_HOST/blog/wp-admin/install.php</a>
+            if your server has no GUI and you are completing <span class="app application">WordPress</span>
+            configuration via a web browser running on another computer.) Fill out the Site Title,
+            username, password, and E-mail and click Install WordPress.
+        </p>
+<p class="para">Note the generated password (if applicable) and click the login password. Your 
+<span class="app application">WordPress</span> is now ready for use.
+        </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="wordpress-references"><div class="inner">
+<div class="hgroup"><h2 class="title">References</h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para">
+            <a href="https://codex.wordpress.org/" class="ulink" title="https://codex.wordpress.org/">WordPress.org Codex</a>
+            </p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para">
+            <a href="https://help.ubuntu.com/community/WordPress" class="ulink" title="https://help.ubuntu.com/community/WordPress">Ubuntu Wiki WordPress</a>
+            </p>
+          </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="phpmyadmin.html" title="phpMyAdmin">Previous</a><a class="nextlinks-next" href="file-servers.html" title="File Servers">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

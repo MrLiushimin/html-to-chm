@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>高级安装</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="installation.html" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="installing-upgrading.html" title="升级"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="kernel-crash-dump.html" title="内核崩溃转储"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高级安装</font></font></h1></div>
+<div class="region">
+<div class="contents"></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="advanced-installation.html#software-raid" title="软件RAID"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件RAID</font></font></a></li>
+<li class="links"><a class="xref" href="advanced-installation.html#lvm" title="逻辑卷管理器（LVM）"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">逻辑卷管理器（LVM）</font></font></a></li>
+<li class="links"><a class="xref" href="advanced-installation.html#iscsi" title="iSCSI的"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iSCSI的</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="software-raid"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件RAID</font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        冗余独立磁盘阵列“RAID”是一种使用多个磁盘提供不同平衡的方法，可提高数据可靠性和/或提高输入/输出性能，具体取决于所使用的RAID级别。</font><font style="vertical-align: inherit;">RAID在任一软件中实现（操作系统知道两个驱动器并主动维护它们）或硬件（其中特殊控制器使操作系统认为只有一个驱动器并且无形地维护驱动器）。
+        </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        当前版本的Linux（和Ubuntu）中包含的RAID软件基于</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“mdadm”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+        驱动程序，运行良好，甚至比许多所谓的“硬件”RAID控制器更好。</font><font style="vertical-align: inherit;">本节将指导您在两个物理硬盘驱动器上使用两个RAID1分区安装Ubuntu Server Edition，一个用于 
+         </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和另一个用于</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">交换</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+        </font></font></p>
+</div>
+<div class="sect3 sect" id="raid-partitioning"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分区</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          按照安装步骤操作，直到进入</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Partition disks</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">步骤，然后：
+          </font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              选择“ </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手动”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">作为分区方法。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              选择第一个硬盘驱动器，并同意</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“在此设备上创建一个新的空分区表？” </font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              对希望成为RAID阵列一部分的每个驱动器重复此步骤。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在第一个驱动器上</font><font style="vertical-align: inherit;">
+              选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“FREE SPACE”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，然后选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“Create a new partition”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。 
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              接下来，选择</font><font style="vertical-align: inherit;">分区</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">大小</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">此分区将是</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">交换</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分区，交换大小的一般规则是RAM的两倍。</font><font style="vertical-align: inherit;">输入分区大小，然后选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Primary</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，然后</font><font style="vertical-align: inherit;">选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Beginning</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。 
+              </font></font></p>
+
+              <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                可能并不总是需要两倍于可用RAM容量的交换分区大小，尤其是在具有大量RAM的系统上。</font><font style="vertical-align: inherit;">计算服务器的交换分区大小很大程度上取决于系统的使用方式。
+                </font></font></p>
+              </div></div></div></div>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              选择</font><font style="vertical-align: inherit;">顶部</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“用作：”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">行。</font><font style="vertical-align: inherit;">默认情况下，这是 
+               </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“Ext4日记文件系统”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，将其更改为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“RAID的物理卷”，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+              然后</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“完成设置分区”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。 
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              对于</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> partition再次选择</font><font style="vertical-align: inherit;">第一个驱动器上的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“Free Space”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，然后选择
+               </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“Create a new partition”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。 
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              使用驱动器上的其余可用空间</font><font style="vertical-align: inherit;">，然后</font><font style="vertical-align: inherit;">选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">继续</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，然后</font><font style="vertical-align: inherit;">选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主要</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。 
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              与交换分区一样，选择</font><font style="vertical-align: inherit;">顶部</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“用作：”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">行，将其更改为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“RAID的物理卷”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">同时选择 
+               </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“Bootable flag：”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">行将值更改为 
+               </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“on”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">然后选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“完成设置分区”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。 
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              对其他磁盘和分区重复步骤3到8。 
+              </font></font></p>
+
+            </li>
+</ol></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="raid-configuration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">RAID配置</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          通过分区设置，可以配置阵列：
+          </font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              返回主“Partition Disks”页面，选择</font><font style="vertical-align: inherit;">顶部的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“Configure Software RAID”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“是”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将更改写入磁盘。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“创建MD设备”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              对于此示例，请选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“RAID1”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，但如果使用其他设置，请选择适当的类型（RAID0 RAID1 RAID5）。
+              </font></font></p>
+
+              <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                要使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">RAID5，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您至少需要</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">三个</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">驱动器。</font><font style="vertical-align: inherit;">使用RAID0或RAID1只</font><font style="vertical-align: inherit;">需要</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">两个</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">驱动器。
+                </font></font></p>
+              </div></div></div></div>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              输入</font><font style="vertical-align: inherit;">阵列</font><font style="vertical-align: inherit;">的活动设备数</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“2”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或硬盘驱动器数量。</font><font style="vertical-align: inherit;">然后选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“继续”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              接下来，</font><font style="vertical-align: inherit;">默认</font><font style="vertical-align: inherit;">输入备用设备的数量</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“0”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，然后选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“继续”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              选择要使用的分区。</font><font style="vertical-align: inherit;">通常它们将是sda1，sdb1，sdc1等。数字通常匹配，不同的字母对应不同的硬盘。  
+              </font></font></p>
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              对于</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">交换</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分区，请选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sda1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sdb1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“继续”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以转到下一步。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">对于</font><span class="em emphasis"><font style="vertical-align: inherit;">/</font></span><font style="vertical-align: inherit;"> partition选择 
+               </font><span class="em emphasis"><font style="vertical-align: inherit;">sda2</font></span><font style="vertical-align: inherit;">和</font><span class="em emphasis"><font style="vertical-align: inherit;">sdb2，</font></span><font style="vertical-align: inherit;"> 
+              重复步骤</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">7</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              完成后选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“完成”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+</ol></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="raid-formatting"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">格式化</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          现在应该有一个硬盘驱动器和RAID设备列表。</font><font style="vertical-align: inherit;">下一步是格式化并设置RAID设备的安装点。</font><font style="vertical-align: inherit;">将RAID设备视为本地硬盘驱动器，格式化并相应安装。
+          </font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在</font><span class="em emphasis"><font style="vertical-align: inherit;">“RAID1 device＃0”</font></span><font style="vertical-align: inherit;">分区</font><font style="vertical-align: inherit;">下</font><font style="vertical-align: inherit;">
+              选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“＃1”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。 
+              </font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“用作：”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">然后选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“交换区域”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，然后选择 
+               </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“完成设置分区”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              接下来，</font><font style="vertical-align: inherit;">在</font><span class="em emphasis"><font style="vertical-align: inherit;">“RAID1 device＃1”</font></span><font style="vertical-align: inherit;">分区</font><font style="vertical-align: inherit;">下</font><font style="vertical-align: inherit;">选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“＃1”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。 
+              </font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“用作：”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">然后选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“Ext4日记文件系统”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              然后选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“挂载点”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“/  - 根文件系统”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">根据需要更改任何其他选项，然后选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“完成设置分区”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              最后，选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“完成分区并将更改写入磁盘”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+</ol></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          如果您选择将根分区放在RAID阵列上，安装程序将询问您是否要以</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">降级</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">状态</font><font style="vertical-align: inherit;">启动</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">详细信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a class="xref" href="advanced-installation.html#raid-degraded" title="降级的RAID"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">降级RAID</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。  
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          然后，安装过程将继续正常进行。
+          </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="raid-degraded"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">降级的RAID</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          在计算机生命周期的某些时刻，可能发生磁盘故障事件。</font><font style="vertical-align: inherit;">发生这种情况时，使用软件RAID，操作系统会将阵列置于所谓的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">降级</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">状态。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          如果阵列已经降级，由于数据损坏的可能性，默认情况下Ubuntu Server Edition将</font><font style="vertical-align: inherit;">在30秒后</font><font style="vertical-align: inherit;">启动到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">initramfs</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">一旦initramfs启动，有一个十五秒的提示，让您可以选择继续启动系统，或尝试手动恢复。</font><font style="vertical-align: inherit;">引导到initramfs提示符可能是也可能不是所需的行为，尤其是在计算机位于远程位置时。</font><font style="vertical-align: inherit;">可以通过多种方式配置引导至降级阵列：
+          </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参阅dpkg-重新配置</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">工具可以用来配置默认行为，过程中你会被问及有关阵列其他设置。</font><font style="vertical-align: inherit;">如监控，电子邮件警报等。要重新配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mdadm，请</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">输入以下内容：  
+              </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo dpkg-reconfigure mdadm</font></font></span>
+</pre></div>
+
+             </li>
+<li class="list itemizedlist">
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              在</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参阅dpkg-重新配置mdadm的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">进程将改变</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/initramfs-tools/conf.d/mdadm</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+              配置文件。</font><font style="vertical-align: inherit;">该文件的优点是能够预先配置系统的行为，也可以手动编辑：
+              </font></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BOOT_DEGRADED =真
+</font></font></pre></div>
+
+          <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            可以使用Kernel参数覆盖配置文件。
+            </font></font></p>
+          </div></div></div></div>          
+
+            </li>
+<li class="list itemizedlist">
+    
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              使用Kernel参数也允许系统引导到降级数组：
+              </font></font></p>
+
+              <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  当服务器启动时按下</font></font><span class="key keycap"><kbd>Shift</kbd></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以打开</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Grub</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">菜单。
+                  </font></font></p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  按</font></font><span class="key keycap"><kbd>e</kbd></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以编辑内核命令选项。
+                  </font></font></p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  按</font></font><span class="key keycap"><kbd>down</kbd></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">箭头以突出显示内核行。
+                  </font></font></p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“bootdegraded = true”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（不带引号）添加到行尾。
+                  </font></font></p>
+                </li>
+<li class="list itemizedlist">
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  按</font></font><span class="keyseq keycombo"><span class="key keycap"><kbd>Ctrl</kbd></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+</font></font><span class="key keycap"><kbd>x</kbd></span></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">启动系统。
+                  </font></font></p>
+                </li>
+</ul></div>
+
+            </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+           系统启动后，您可以修复阵列，请参阅</font></font><a class="xref" href="advanced-installation.html#raid-maintenance" title="RAID维护"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">RAID维护</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以获取详细信息，或者由于主要硬件故障将重要数据复制到另一台计算机。
+           </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="raid-maintenance"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">RAID维护</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          所述</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mdadm的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">实用程序可用于查看一个阵列的状态，将磁盘添加到阵列，删除磁盘等：
+          </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              要查看阵列的状态，请在终端提示符下输入：
+              </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mdadm -D / dev / md0</font></font></span>
+</pre></div>
+            
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              所述</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-D</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">告诉</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mdadm的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">显示</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">详细</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关信息</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的/ dev / MD0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设备。</font><font style="vertical-align: inherit;">将</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / md0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换为相应的RAID设备。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              要查看阵列中磁盘的状态：
+              </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mdadm -E / dev / sda1</font></font></span>
+</pre></div>
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              输出如果与</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mdadm -D</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令</font><font style="vertical-align: inherit;">非常相似，请</font><font style="vertical-align: inherit;">为每个磁盘</font><font style="vertical-align: inherit;">调整</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / sda1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              如果磁盘发生故障并需要从阵列中删除，请输入：
+              </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mdadm --remove / dev / md0 / dev / sda1</font></font></span>
+</pre></div>
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              将</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / md0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / sda1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更改为相应的RAID设备和磁盘。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              同样，要添加新磁盘：
+              </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo mdadm --add / dev / md0 / dev / sda1</font></font></span>
+</pre></div>
+            </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有时，</font><font style="vertical-align: inherit;">即使驱动器没有任何物理错误，</font><font style="vertical-align: inherit;">磁盘也可能会更改为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">故障</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">状态。</font><font style="vertical-align: inherit;">通常值得从阵列中删除驱动器然后重新添加它。</font><font style="vertical-align: inherit;">这将导致驱动器与阵列重新同步。</font><font style="vertical-align: inherit;">如果驱动器不与阵列同步，则表明硬件故障。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的/ proc / mdstat</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件还包含了系统的RAID设备的有用信息：
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cat / proc / mdstat </font></font></span>
+<span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">个性：[线性] [multipath] [raid0] [raid1] [raid6] [raid5] [raid4] [raid10]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+md0：活动raid1 sda1 [0] sdb1 [1]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      10016384块[2/2] [UU]</font></font><font></font>
+      <font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+未使用的设备：&lt;无&gt;</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          以下命令非常适合查看同步驱动器的状态：
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">watch-n1 cat / proc / mdstat</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          按</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ctrl + c</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可停止</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">监视</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          如果确实需要更换故障驱动器，则在更换并同步驱动器后，</font><font style="vertical-align: inherit;">需要安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">grub</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要</font><font style="vertical-align: inherit;">在新驱动器上</font><font style="vertical-align: inherit;">安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">grub</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请输入以下内容：
+          </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo grub-install / dev / md0</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          将</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / md0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换为相应的阵列设备名称。
+          </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="raid-resources"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          RAID阵列的主题是复杂的，因为RAID可以配置的方式过多。</font><font style="vertical-align: inherit;">有关更多信息，请参阅以下链接：
+          </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para">
+              <a href="https://help.ubuntu.com/community/Installation#raid" class="ulink" title="https://help.ubuntu.com/community/Installation#raid"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关于RAID的Ubuntu Wiki文章</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <a href="http://www.faqs.org/docs/Linux-HOWTO/Software-RAID-HOWTO.html" class="ulink" title="http://www.faqs.org/docs/Linux-HOWTO/Software-RAID-HOWTO.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件RAID HOWTO</font></font></a>
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <a href="http://oreilly.com/catalog/9781565927308/" class="ulink" title="http://oreilly.com/catalog/9781565927308/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在Linux上管理RAID</font></font></a>
+              </p>
+            </li>
+</ul></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="lvm"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">逻辑卷管理器（LVM）</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        逻辑卷</font><font style="vertical-align: inherit;">管理器（</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LVM</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">）允许管理员</font><font style="vertical-align: inherit;">从一个或多个物理硬盘</font><font style="vertical-align: inherit;">创建</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">逻辑卷</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">可以在软件RAID分区和驻留在单个磁盘上的标准分区上创建LVM卷。</font><font style="vertical-align: inherit;">还可以扩展卷，随着需求的变化为系统提供更大的灵活性。
+        </font></font></p></div>
+<div class="sect3 sect" id="lvm-overview"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">概观</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          LVM的功效和灵活性的副作用是更大程度的复杂化。</font><font style="vertical-align: inherit;">在深入了解LVM安装过程之前，最好熟悉一些术语。
+          </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">物理卷（PV）：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">物理硬盘，磁盘分区或格式化为LVM PV的软件RAID分区。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">卷组（VG）：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">由一个或多个物理卷组成。</font><font style="vertical-align: inherit;">可以通过添加更多PV来扩展VG。</font><font style="vertical-align: inherit;">VG就像一个虚拟磁盘驱动器，从中刻出一个或多个逻辑卷。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              <span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">逻辑卷（LV）：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">类似于非LVM系统中的分区。</font><font style="vertical-align: inherit;">LV使用所需的文件系统（EXT3，XFS，JFS等）格式化，然后可用于安装和数据存储。
+              </font></font></p>
+            </li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="lvm-installation"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          作为示例，本节介绍</font><font style="vertical-align: inherit;">如何在LVM卷上安装</font><font style="vertical-align: inherit;">带有</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Ubuntu Server Edition </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">在初始安装期间，只有一个物理卷（PV）将成为卷组（VG）的一部分。</font><font style="vertical-align: inherit;">安装后将添加另一个PV，以演示如何扩展VG。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          LVM有几种安装选项，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“引导 - 使用整个磁盘和设置LVM”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，这也允许您为</font><span class="em emphasis"><font style="vertical-align: inherit;">LVM</font></span><font style="vertical-align: inherit;">分配一部分可用空间，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“引导 - 使用整个和设置加密的LVM”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，或</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手动</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置分区并配置LVM。</font><font style="vertical-align: inherit;">此时，在安装期间配置具有LVM和标准分区的系统的唯一方法是使用手动方法。
+          </font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              按照安装步骤操作，直到进入</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Partition disks</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">步骤，然后：
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“Partition Disks”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">屏幕上选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“Manual”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              选择硬盘，然后在下一个屏幕上选择“是”以</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“在此设备上创建新的空分区表”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              接下来，</font><font style="vertical-align: inherit;">使用您喜欢的任何文件系统</font><font style="vertical-align: inherit;">创建标准</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/启动</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">交换</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分区。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              对于LVM </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，创建一个新的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">逻辑</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">分区。</font><font style="vertical-align: inherit;">然后改变</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“用作”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+              到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“物理卷的LVM”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然后</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“完成设置分区”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              现在选择</font><font style="vertical-align: inherit;">顶部的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“配置逻辑卷管理器”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，然后选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“是”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将更改写入磁盘。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              对于</font><font style="vertical-align: inherit;">下一个屏幕上</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“LVM配置操作”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“创建卷组”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">输入VG的名称，例如</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vg01</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，或更具描述性的名称。</font><font style="vertical-align: inherit;">输入名称后，选择为LVM配置的分区，然后选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“继续”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              返回</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“LVM配置操作”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">屏幕，选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“创建逻辑卷”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">选择新创建的卷组，然后输入新LV的名称，例如</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">srv，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">因为这是预期的安装点。</font><font style="vertical-align: inherit;">然后选择一个大小，可能是完整分区，因为它总是可以在以后扩展。</font><font style="vertical-align: inherit;">选择 
+               </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“完成”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，您应该返回主</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“分区磁盘”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">屏幕。    
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              现在将文件系统添加到新LVM。</font><font style="vertical-align: inherit;">选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“LVM VG vg01，LV srv”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下的分区</font><font style="vertical-align: inherit;">或您选择的任何名称，选择“ </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用作”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">将文件系统设置为正常选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ srv</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">作为安装点。</font><font style="vertical-align: inherit;">完成后，选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“完成设置分区”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              最后，选择</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“完成分区并将更改写入磁盘”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">然后确认更改并继续安装的其余部分。
+              </font></font></p>
+
+            </li>
+</ol></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有一些有用的实用程序可以查看有关LVM的信息： 
+          </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pvdisplay：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">显示有关Physical Volumes的信息。</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vgdisplay：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">显示有关卷组的信息。</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lvdisplay：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">显示有关逻辑卷的信息。</font></font></p></li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="lvm-extending"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">扩展卷组</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          继续将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">srv</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">作为LVM卷示例，本节将介绍如何添加第二个硬盘，创建物理卷（PV），将其添加到卷组（VG），扩展逻辑卷</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">srv</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          以及最后扩展文件系统。</font><font style="vertical-align: inherit;">此示例假定已将第二个硬盘添加到系统中。</font><font style="vertical-align: inherit;">在此示例中，此硬盘将命名为</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / sdb</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，我们将整个磁盘用作物理卷（您可以选择创建分区并将其用作不同的物理卷）
+          </font></font></p>
+<div class="note note-warning" title="警告"><div class="inner"><div class="region"><div class="contents">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在发出以下命令之前，</font><font style="vertical-align: inherit;">
+              请确保您还没有现有的</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ dev / sdb</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果在非空磁盘上发出这些命令，则可能会丢失一些数据。 
+          </font></font></p>
+        </div></div></div></div>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              首先，在终端执行中创建物理卷：
+              </font></font></p>
+
+                <div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo pvcreate / dev / sdb</font></font></span>
+                </pre></div>
+
+            </li>
+<li class="steps">
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              现在扩展卷组（VG）：
+              </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo vgextend vg01 / dev / sdb</font></font></span>
+</pre></div>
+
+            </li>
+<li class="steps">
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vgdisplay</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查找可用的物理范围 - 自由PE /大小（您可以分配的大小）。</font><font style="vertical-align: inherit;">我们假设免费大小为511 PE（相当于2GB，PE大小为4MB），我们将使用整个可用空间。</font><font style="vertical-align: inherit;">使用您自己的PE和/或可用空间。
+              </font></font></p>
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              逻辑卷（LV）现在可以通过不同的方法扩展，我们只会看到如何使用PE来扩展LV：
+              </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo lvextend / dev / vg01 / srv -l +511</font></font></span>
+</pre></div>
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-l</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项允许LV使用PE来扩展。</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-L</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项允许LV使用梅格，吉格，特拉等字节被扩展。
+              </font></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              即使您应该能够在</font><font style="vertical-align: inherit;">不首先卸载它的情况下</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">扩展</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ext3或ext4文件系统，但最好还是卸载它并检查文件系统，这样您就不会陷入想要减少的日期。逻辑卷（在这种情况下，首先卸载是强制性的）。
+              </font></font></p>
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              以下命令适用于</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EXT3</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EXT4</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件系统。</font><font style="vertical-align: inherit;">如果您使用的是其他文件系统，则可能还有其他实用程序。
+              </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo umount / srv </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo e2fsck -f / dev / vg01 / srv</font></font></span>
+</pre></div>
+
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">即使系统看起来干净</font><font style="vertical-align: inherit;">，</font><span class="app application"><font style="vertical-align: inherit;">e2fsck</font></span><font style="vertical-align: inherit;"> 
+              的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-f</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">也会强制检查。
+              </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              最后，调整文件系统的大小：
+              </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo resize2fs / dev / vg01 / srv</font></font></span>
+</pre></div>
+
+            </li>
+<li class="steps">
+ 
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              现在挂载分区并检查其大小。
+              </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mount / dev / vg01 / srv / srv &amp;&amp; df -h / srv</font></font></span>
+</pre></div>
+
+            </li>
+</ol></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="lvm-resources"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h3></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              请参阅</font></font><a href="https://help.ubuntu.com/community/Installation#lvm" class="ulink" title="https://help.ubuntu.com/community/Installation#lvm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu Wiki LVM文章</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              有关</font><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a href="http://tldp.org/HOWTO/LVM-HOWTO/index.html" class="ulink" title="http://tldp.org/HOWTO/LVM-HOWTO/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LVM HOWTO</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              另一篇好文章是 
+               </font><font style="vertical-align: inherit;">
+              在O'Reilly的linuxdevcenter.com网站上</font></font><a href="http://www.linuxdevcenter.com/pub/a/linux/2006/04/27/managing-disk-space-with-lvm.html" class="ulink" title="http://www.linuxdevcenter.com/pub/a/linux/2006/04/27/managing-disk-space-with-lvm.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用LVM管理磁盘空间</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              有关</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fdisk的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参见
+               </font></font><a href="http://manpages.ubuntu.com/manpages/bionic/en/man8/fdisk.8.html" class="ulink" title="http://manpages.ubuntu.com/manpages/bionic/en/man8/fdisk.8.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fdisk手册页</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+              </font></font></p>
+            </li>
+</ul></div></div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="iscsi"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iSCSI的</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iSCSI协议可用于在连接或不连接硬盘的系统上安装Ubuntu。</font></font></p></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在无盘系统上安装</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">无盘iSCSI安装的第一步与</font></font><a class="xref" href="installing-from-cd.html" title="使用debian-installer进行安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用debian-installer</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分直至“硬盘布局” </font><font style="vertical-align: inherit;">的</font><a class="xref" href="installing-from-cd.html" title="Installation using debian-installer"><font style="vertical-align: inherit;">安装</font></a><font style="vertical-align: inherit;">相同</font><font style="vertical-align: inherit;">。</font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装程序将显示警告，并显示以下消息：</font></font></p>
+
+              <div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">未检测到磁盘驱动器。</font><font style="vertical-align: inherit;">如果您知道磁盘驱动器所需的驱动程序名称，则可以从列表中选择它。</font></font></pre></div>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选择标题为</font><span class="em emphasis"><font style="vertical-align: inherit;">登录到iSCSI目标</font></span><font style="vertical-align: inherit;">的列表中的项目</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></span></p>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">系统将提示您输入IP地址以扫描iSCSI目标，并提供该地址格式的说明。</font><font style="vertical-align: inherit;">输入iSCSI目标位置的IP地址，然后导航到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;继续&gt;</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然后单击
+              </font></font><span class="key keycap"><kbd>ENTER</kbd></span></p>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果要访问iSCSI设备需要身份验证</font><font style="vertical-align: inherit;">，请在下一个字段中</font><font style="vertical-align: inherit;">提供</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">否则留空。</font></font></p>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您的系统能够连接到iSCSI提供程序，则应该会看到可以安装操作系统的可用iSCSI目标列表。</font><font style="vertical-align: inherit;">该列表应类似于以下内容：</font></font></p>
+
+              <div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选择要使用的iSCSI目标。</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+iSCSI目标位于192.168.1.29:3260：</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[] iqn.2016-03.TrustyS-iscsitarget：storage.sys0</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;返回&gt; &lt;继续&gt;</font></font><font></font>
+<font></font>
+</pre></div>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选择要与空格键一起使用的iSCSI目标。</font><font style="vertical-align: inherit;">使用箭头键导航到要选择的目标。</font></font></p>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">导航到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;继续&gt;</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并点击
+               </font></font><span class="key keycap"><kbd>ENTER</kbd></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+            </li>
+</ol></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果与iSCSI目标的连接成功，将会提示您</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[!!]分区磁盘</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          安装菜单。</font><font style="vertical-align: inherit;">其余过程与连接磁盘上的任何正常安装相同。</font><font style="vertical-align: inherit;">安装完成后，系统会要求您重新启动。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在附带磁盘的系统上安装</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同样，连接一个或多个磁盘的普通服务器上的iSCSI安装与</font></font><a class="xref" href="installing-from-cd.html" title="使用debian-installer进行安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用debian-installer</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">部分</font><font style="vertical-align: inherit;">的</font><a class="xref" href="installing-from-cd.html" title="使用debian-installer进行安装"><font style="vertical-align: inherit;">安装</font></a><font style="vertical-align: inherit;">相同，</font><font style="vertical-align: inherit;">直到我们到达磁盘分区菜单。</font><font style="vertical-align: inherit;">我们需要执行以下步骤，而不是使用任何引导选择：</font></font></p>
+<div class="steps"><div class="inner"><ol class="steps">
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">导航到“手动”菜单条目</font></font></p>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选择“配置iSCSI卷”菜单项</font></font></p>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选择登录iSCSI目标</font></font></p>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">系统将提示您输入IP地址以扫描iSCSI目标。</font><font style="vertical-align: inherit;">以及地址格式的描述。</font><font style="vertical-align: inherit;">输入IP地址并导航至
+               </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&lt;继续&gt;</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然后点击</font></font><span class="key keycap"><kbd>ENTER</kbd></span></p>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果需要进行身份验证才能访问iSCSI设备，请</font><font style="vertical-align: inherit;">在下一个字段中</font><font style="vertical-align: inherit;">提供</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或将其留空。</font></font></p>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您的系统能够连接到iSCSI提供程序，则应该会看到可以安装操作系统的可用iSCSI目标列表。</font><font style="vertical-align: inherit;">该列表应类似于以下内容：</font></font></p>
+
+            <div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选择要使用的iSCSI目标。</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+iSCSI目标位于192.168.1.29:3260：</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[] iqn.2016-03.TrustyS-iscsitarget：storage.sys0</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+&lt;返回&gt; &lt;继续&gt;</font></font><font></font>
+</pre></div>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选择要与空格键一起使用的iSCSI目标。</font><font style="vertical-align: inherit;">使用箭头键导航到要选择的目标</font></font></p>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">导航到&lt;继续&gt;并点击</font></font><span class="key keycap"><kbd>ENTER</kbd></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+            </li>
+<li class="steps">
+              <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果成功，您将返回菜单，要求您登录iSCSI目标。</font><font style="vertical-align: inherit;">导航到完成并点击</font></font><span class="key keycap"><kbd>ENTER</kbd></span></p>
+            </li>
+</ol></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">新连接的iSCSI磁盘将作为前缀为SCSI的设备显示在概述部分中。</font><font style="vertical-align: inherit;">这是您应该选择作为安装盘的磁盘。</font><font style="vertical-align: inherit;">识别后，您可以选择任何分区方法。</font></font></p>
+<div class="note note-warning" title="警告"><div class="inner"><div class="region"><div class="contents">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根据您的系统配置，可能有其他SCSI磁盘连接到系统。</font><font style="vertical-align: inherit;">在继续安装之前，请务必小心识别正确的设备。</font><font style="vertical-align: inherit;">否则，在错误的磁盘上执行安装可能会导致不可逆转的数据丢失。</font></font></p>
+          </div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">重新启动到iSCSI目标</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">该过程特定于您的硬件平台。</font><font style="vertical-align: inherit;">例如，以下是使用iPXE重新启动iSCSI目标的方法</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iPXE&gt; dhcp</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+Configuring （net0 52：54：00：a4：f2：a9）.......ok</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+iPXE&gt; sanboot iscsi：192.168.1.29 :::: iqn.2016-03.TrustyS-iscsitarget：storage.sys0</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果该过程成功，您应该会在屏幕上看到Grub菜单。</font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="installing-upgrading.html" title="升级"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="kernel-crash-dump.html" title="内核崩溃转储"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

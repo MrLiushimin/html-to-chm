@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Dovecot Server</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="email-services.html" title="Email Services">Email Services</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="exim4.html" title="Exim4">Previous</a><a class="nextlinks-next" href="mailman.html" title="Mailman">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Dovecot Server</h1></div>
+<div class="region">
+<div class="contents"><p class="para">
+          <span class="app application">Dovecot</span> is a Mail Delivery Agent, written with security
+          primarily in mind. It supports the major mailbox formats: mbox
+          or Maildir. This section explain how to set it up as an imap or
+          pop3 server.
+          </p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="dovecot-server.html#dovecot-installation" title="Installation">Installation</a></li>
+<li class="links"><a class="xref" href="dovecot-server.html#dovecot-configuration" title="Configuration">Configuration</a></li>
+<li class="links"><a class="xref" href="dovecot-server.html#dovecot-ssl" title="Dovecot SSL Configuration">Dovecot SSL Configuration</a></li>
+<li class="links"><a class="xref" href="dovecot-server.html" title="Firewall Configuration for an Email Server">Firewall Configuration for an Email Server</a></li>
+<li class="links"><a class="xref" href="dovecot-server.html#dovecot-references" title="References">References</a></li>
+</ul></div>
+<div class="sect2 sect" id="dovecot-installation"><div class="inner">
+<div class="hgroup"><h2 class="title">Installation</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+            To install a basic <span class="app application">Dovecot</span> server with common pop3 and imap functions, run the following command in the command prompt:
+            </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install dovecot-imapd dovecot-pop3d</span>
+</pre></div>
+<p class="para">
+                There are various other <span class="app application">Dovecot</span> modules like <span class="app application">dovecot-sieve</span> (mail filtering), <span class="app application">dovecot-solr</span> (full text search), ...
+            </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dovecot-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Configuration</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+            To configure <span class="app application">Dovecot</span>, you can edit the file
+            <span class="file filename">/etc/dovecot/dovecot.conf</span> and its included configfiles in <span class="file filename">/etc/dovecot/conf.d/</span>.
+            By default all installed protocols will be enabled via an include directive in <span class="file filename">/etc/dovecot/dovecot.conf</span>.
+            </p>
+<div class="code"><pre class="contents ">!include_try /usr/share/dovecot/protocols.d/*.protocol
+</pre></div>
+<p class="para">
+          IMAPS and POP3S are more secure because they use SSL encryption to
+          connect. A basic self signed ssl certificate is automatically set up
+          by package ssl-cert and used by dovecot in <span class="file filename">/etc/dovecot/conf.d/10-ssl.conf</span>.
+      </p>
+<div class="note" title="Note"><div class="inner"><div class="region"><div class="contents">
+        <p class="para">
+            By default mbox format is configured, if required you can also use maildir.
+            More about that can be found in the comments at <span class="file filename">/etc/dovecot/conf.d//10-mail.conf</span>
+            Further benefits and details are discussed on <a href="https://wiki2.dovecot.org/MailboxFormat" class="ulink" title="https://wiki2.dovecot.org/MailboxFormat">the Dovecot web site</a>.
+        </p>
+      </div></div></div></div>
+<p class="para">
+      You should configure your Mail Transport Agent (MTA) to transfer the
+      incoming mail to the selected type of mailbox if it is different from the one
+      you have configured.
+      </p>
+<p class="para">
+          Once you have configured dovecot, restart the <span class="app application">Dovecot</span> daemon
+          in order to test your setup:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl restart dovecot.service</span>
+</pre></div>
+<p class="para">
+          If you have enabled imap, or pop3, you can also try to log in
+          with the commands <span class="cmd command">telnet localhost pop3</span> or
+          <span class="cmd command">telnet localhost imap2</span>. If you see
+          something like the following, the installation has been
+          successful:
+      </p>
+<div class="code"><pre class="contents ">bhuvan@rainbow:~$ telnet localhost pop3
+Trying 127.0.0.1...
+Connected to localhost.localdomain.
+Escape character is '^]'.
++OK Dovecot ready.
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="dovecot-ssl"><div class="inner">
+<div class="hgroup"><h2 class="title">Dovecot SSL Configuration</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+                <span class="app application">Dovecot</span> is now automatically configured to use SSL.
+                It uses the package ssl-cert which provides a self signed certificate.
+                You can edit the file <span class="file filename">/etc/dovecot/conf.d/10-ssl.conf</span> and amend
+                following lines if you want to set up a custom certificate (See <a class="xref" href="certificates-and-security.html" title="Certificates">Certificates</a> for more details.):
+        </p>
+<div class="code"><pre class="contents ">ssl_cert = &lt;/etc/dovecot/private/dovecot.pem
+ssl_key = &lt;/etc/dovecot/private/dovecot.key
+</pre></div>
+<p class="para">
+      You can get the SSL certificate from a Certificate Issuing
+      Authority or you can create self signed SSL certificate.
+      Please refer to <a class="xref" href="certificates-and-security.html" title="Certificates">Certificates</a>
+      for details about how to create self signed SSL certificate. Once
+      you create the certificate, you will have a key file and a
+      certificate file that you want to make known in the config shown above.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect"><div class="inner">
+<div class="hgroup"><h2 class="title">Firewall Configuration for an Email Server</h2></div>
+<div class="region"><div class="contents"><p class="para">
+          To access your mail server from another computer, you must
+          configure your firewall to allow connections to the server on
+          the necessary ports.
+            <div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para">IMAP - 143</p></li>
+<li class="list itemizedlist"><p class="para">IMAPS - 993</p></li>
+<li class="list itemizedlist"><p class="para">POP3 - 110</p></li>
+<li class="list itemizedlist"><p class="para">POP3S - 995</p></li>
+</ul></div>
+          </p></div></div>
+</div></div>
+<div class="sect2 sect" id="dovecot-references"><div class="inner">
+<div class="hgroup"><h2 class="title">References</h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+              <p class="para">
+              See the <a href="http://www.dovecot.org/" class="ulink" title="http://www.dovecot.org/">Dovecot website</a> for more information.
+              </p>
+            </li>
+<li class="list itemizedlist">
+              <p class="para">
+              Also, the <a href="https://help.ubuntu.com/community/Dovecot" class="ulink" title="https://help.ubuntu.com/community/Dovecot">Dovecot Ubuntu Wiki</a> page has more details.
+              </p>
+            </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="exim4.html" title="Exim4">Previous</a><a class="nextlinks-next" href="mailman.html" title="Mailman">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

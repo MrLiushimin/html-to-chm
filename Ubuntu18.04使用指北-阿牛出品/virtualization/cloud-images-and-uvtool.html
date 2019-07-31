@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>云图像和uvtool</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="virtualization.html" title="虚拟化"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虚拟化</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="qemu.html" title="QEMU"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="ubuntucloud.html" title="Ubuntu Cloud"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">云图像和uvtool</font></font></h1></div>
+<div class="region">
+<div class="contents"></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="cloud-images-and-uvtool.html#cloud-image-introduction" title="介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">介绍</font></font></a></li>
+<li class="links"><a class="xref" href="cloud-images-and-uvtool.html#creating-virtual-machines-using-uvtool" title="使用uvtool创建虚拟机"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用uvtool创建虚拟机</font></font></a></li>
+<li class="links"><a class="xref" href="cloud-images-and-uvtool.html#resources" title="资源"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="cloud-image-introduction"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">介绍</font></font></h2></div>
+<div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">由于Ubuntu是许多云平台上最常用的操作系统之一，稳定和安全的云图像的可用性变得非常重要。</font><font style="vertical-align: inherit;">截至12.04，云基础设施之外的云图像的利用率已得到改善。</font><font style="vertical-align: inherit;">现在可以使用这些映像创建虚拟机而无需完整安装。</font></font></p></div></div>
+</div></div>
+<div class="sect2 sect" id="creating-virtual-machines-using-uvtool"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用uvtool创建虚拟机</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">从14.04 LTS开始，一个名为uvtool的工具极大地促进了使用云图像生成虚拟机（VM）的任务。 
+      </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uvtool</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提供了一种简单的机制，可以在本地同步云图像，并在几分钟内使用它们创建新的VM。</font></font></p></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uvtool包</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为了使用uvtool，将需要以下包及其依赖项：</font></font></p>
+<p class="para"></p>
+<div class="list itemizedlist"><ul class="list itemizedlist" style="list-style-type: disc">
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uvtool</font></font></p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uvtool-libvirt的</font></font></p>
+          </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uvtool</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请运行：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ sudo apt -y install uvtool</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这将安装uvtool的主要命令： </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist" style="list-style-type: disc">
+<li class="list itemizedlist"><p class="para"><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UVT-simplestreams，libvirt的</font></font></span></p></li>
+<li class="list itemizedlist"><p class="para"><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UVT-KVM</font></font></span></p></li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font><span class="app application"><font style="vertical-align: inherit;">uvt-simplestreams-libvirt</font></span><font style="vertical-align: inherit;">获取Ubuntu Cloud Image</font></font><span class="app application"><font style="vertical-align: inherit;"></font></span>
+</h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这是</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uvtool</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">带来</font><font style="vertical-align: inherit;">的主要简化</font><span class="app application"><font style="vertical-align: inherit;">之一</font></span><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">它知道在哪里可以找到云图像，因此只需要一个命令即可获得新的云图像。</font><font style="vertical-align: inherit;">例如，如果要同步amd64体系结构的所有云映像，则uvtool命令将为：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ uvt-simplestreams-libvirt sync arch = amd64</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在从Internet下载所有图像所需的时间之后，您将在本地存储一组完整的云图像。</font><font style="vertical-align: inherit;">要查看已下载的内容，请使用以下命令：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ uvt-simplestreams-libvirt查询</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+release = oneiric arch = amd64 label = release（20130509）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+release = precise arch = amd64 label = release（20160315）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+release = quantal arch = amd64 label = release（20140409）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+release = raring arch = amd64 label = release（20140111）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+release = saucy arch = amd64 label = release（20140709）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+release = trusty arch = amd64 label = release（20160314）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+release = utopic arch = amd64 label = release（20150723）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+release = vivid arch = amd64 label = release（20160203）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+release = wily arch = amd64 label = release（20160315）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+release = xenial arch = amd64 label = beta1（20160223.1）</font></font><font></font>
+<font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您只想同步一个特定的云图像，则需要使用release =和arch =过滤器来识别需要同步的图像。</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ uvt-simplestreams-libvirt sync release = bionic arch = amd64
+</font></font></pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用uvt-kvm创建VM</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为了在创建虚拟机后连接到虚拟机，您必须具有可用于Ubuntu用户的有效SSH密钥。</font><font style="vertical-align: inherit;">如果您的环境没有SSH密钥，则可以使用以下命令轻松创建一个：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ ssh-keygen</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+生成公钥/私钥rsa密钥对。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+输入要保存密钥的文件（/home/ubuntu/.ssh/id_rsa）： </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+输入密码（无密码短语为空）： </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+再次输入相同的密码： </font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+您的身份证明已保存在/home/ubuntu/.ssh/id_rsa中。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+您的公钥已保存在/home/ubuntu/.ssh/id_rsa.pub中。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+关键指纹是：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4d：ba：5d：57：c9：49：ef：b5：ab：71：14：56：6e：2b：ad：9b ubuntu @ bionicS</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+密钥的randomart图像是：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
++  -  [RSA 2048] ---- +</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+| </font><font style="vertical-align: inherit;">.. |</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+| </font><font style="vertical-align: inherit;">O =。|</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+| </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">** |</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+| </font><font style="vertical-align: inherit;">+ o + = |</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+| </font><font style="vertical-align: inherit;">S. </font><font style="vertical-align: inherit;">... =。|</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+| </font><font style="vertical-align: inherit;">o。</font><font style="vertical-align: inherit;">。+。|</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+| </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">oo |</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+| </font><font style="vertical-align: inherit;">* |</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+| </font><font style="vertical-align: inherit;">E |</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
++ ----------------- +</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要使用uvtool创建新虚拟机，请在终端中运行以下命令：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ uvt-kvm创建第一个</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">这将</font><font style="vertical-align: inherit;">使用本地可用的当前LTS云图像</font><font style="vertical-align: inherit;">创建名为</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">firsttest</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的VM </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果要指定用于创建VM的版本，则需要使用</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">release =</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> filter：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ uvt-kvm创建secondtest release = bionic</font></font></pre></div>
+<p class="para"><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uvt-kvm等待</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以用来等待VM的创建完成：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ uvt-kvm等secondttest --insecure</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+警告：安全等待启动完成尚未实现; </font><font style="vertical-align: inherit;">使用--insecure。</font></font><font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">连接到正在运行的VM</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">完成虚拟机创建后，您可以使用SSH连接到它：
+</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ uvt-kvm ssh secondtest --insecure</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目前，</font><font style="vertical-align: inherit;">需要使用</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--insecure</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，因此只有在完全信任您的网络基础架构时才使用此机制连接到VM。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您还可以使用VM的IP地址使用常规SSH会话连接到VM。</font><font style="vertical-align: inherit;">可以使用以下命令查询地址：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ uvt-kvm ip secondtest</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+192.168.122.199</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ ssh -i~ / .ssh / id_rsa ubuntu@192.168.122.199</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+无法建立主机'192.168.122.199（192.168.122.199）'的真实性。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ECDSA密钥指纹是SHA256：8oxaztRWzTMtv8SC9LYyjuqBu79Z9JP8bUGh6G8R8cw。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+您确定要继续连接（是/否）吗？</font><font style="vertical-align: inherit;">是</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+警告：永久性地将“192.168.122.199”（ECDSA）添加到已知主机列表中。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+欢迎来到Ubuntu Bionic Beaver（开发分支）（GNU / Linux 4.14.0-X-generic ARCH）</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ *文档：https：//help.ubuntu.com/</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  通过Ubuntu Advantage Cloud Guest获得云支持：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    http://www.ubuntu.com/business/services/cloud</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+0包可以更新。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+0更新是安全更新。</font></font><font></font>
+<font></font>
+<font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+Ubuntu系统附带的程序是免费软件;</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+每个程序的确切分布条款在中描述</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+/ usr / share / doc / * / copyright中的单个文件。</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+在允许的范围内，Ubuntu绝对不提供任何担保</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+适用法律。</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+要以管理员身份（用户“root”）运行命令，请使用“sudo &lt;command&gt;”。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+有关详细信息，请参阅“man sudo_root”。</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+Ubuntu的@ secondtest：〜$ </font></font><font></font>
+<font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">获取正在运行的VM列表</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可以使用以下命令获取系统上运行的VM列表：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ uvt-kvm列表</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+secondtest</font></font><font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">销毁你的VM</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">完成VM后，可以使用以下命令销毁它：</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ uvt-kvm摧毁第二次测试</font></font></pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更多uvt-kvm选项</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下选项可用于更改您正在创建的VM的某些特征：</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist" style="list-style-type: disc">
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--memory：RAM的数量，以兆字节为单位。</font><font style="vertical-align: inherit;">默认值：512。</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--disk：操作系统磁盘的大小（以GB为单位）。</font><font style="vertical-align: inherit;">默认值：8。</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--cpu：CPU核心数。</font><font style="vertical-align: inherit;">默认值：1。</font></font></p></li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他一些参数会对cloud-init配置产生影响：</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist" style="list-style-type: disc">
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--password密码：允许使用Ubuntu帐户和提供的密码登录VM。</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--run-script-once script_file：第一次启动时，在VM上以root身份运行script_file，但永远不会再次运行。</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--packages package_list：在首次启动时安装package_list中指定的逗号分隔的包。</font></font></p></li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关所有可用修饰符的完整说明，请参见uvt-kvm的联机帮助页。</font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="resources"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">资源</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果您有兴趣了解更多信息，请提出问题或建议，请联系Ubuntu服务器团队：</font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IRC：freenode上的＃ubuntu-server</font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮件列表：</font></font><a href="https://lists.ubuntu.com/mailman/listinfo/ubuntu-server" class="ulink" title="https://lists.ubuntu.com/mailman/listinfo/ubuntu-server"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lists.ubuntu.com上的ubuntu-server</font></font></a></p>
+        </li>
+</ul></div>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="qemu.html" title="QEMU"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="ubuntucloud.html" title="Ubuntu Cloud"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

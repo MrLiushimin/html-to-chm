@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LXD</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="virtualization.html" title="Virtualization">Virtualization</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="ubuntucloud.html" title="Ubuntu Cloud">Previous</a><a class="nextlinks-next" href="lxc.html" title="LXC">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">LXD</h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+    LXD (pronounced lex-dee) is the lightervisor, or lightweight container
+    hypervisor.  While this claim has been controversial, it has been <a href="http://blog.dustinkirkland.com/2015/09/container-summit-presentation-and-live.html" class="ulink" title="http://blog.dustinkirkland.com/2015/09/container-summit-presentation-and-live.html">quite
+    well justified</a> based on the original academic paper.  It also
+    nicely distinguishes LXD from <a href="lxc.html" class="ulink" title="https://help.ubuntu.com/lts/serverguide/lxc.html">LXC</a>.
+    </p>
+<p class="para">
+    LXC (lex-see) is a program which creates and administers "containers" on a
+    local system.  It also provides an API to allow higher level managers, such
+    as LXD, to administer containers.  In a sense, one could compare LXC to
+    QEMU, while comparing LXD to libvirt.
+    </p>
+<p class="para">
+    The LXC API deals with a 'container'.  The LXD API deals with 'remotes',
+    which serve images and containers.  This extends the LXC functionality over
+    the network, and allows concise management of tasks like container
+    migration and container image publishing.
+    </p>
+<p class="para">
+    LXD uses LXC under the covers for some container management tasks.
+    However, it keeps its own container configuration information and has its
+    own conventions, so that it is best not to use classic LXC commands by hand
+    with LXD containers.  This document will focus on how to configure and
+    administer LXD on Ubuntu systems.
+    </p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="lxd.html#lxd-resources" title="Online Resources">Online Resources</a></li>
+<li class="links"><a class="xref" href="lxd.html#lxd-installation" title="Installation">Installation</a></li>
+<li class="links"><a class="xref" href="lxd.html#lxd-kernel-prep" title=" Kernel preparation "> Kernel preparation </a></li>
+<li class="links"><a class="xref" href="lxd.html#lxd-configuration" title=" Configuration "> Configuration </a></li>
+<li class="links"><a class="xref" href="lxd.html#lxd-first-container" title=" Creating your first container "> Creating your first container </a></li>
+<li class="links"><a class="xref" href="lxd.html#lxd-server-config" title=" LXD Server Configuration "> LXD Server Configuration </a></li>
+<li class="links"><a class="xref" href="lxd.html#lxd-container-config" title=" Container configuration "> Container configuration </a></li>
+<li class="links"><a class="xref" href="lxd.html#lxd-profiles" title=" Profiles "> Profiles </a></li>
+<li class="links"><a class="xref" href="lxd.html#lxd-nesting" title=" Nesting "> Nesting </a></li>
+<li class="links"><a class="xref" href="lxd.html#lxd-limits" title=" Limits "> Limits </a></li>
+<li class="links"><a class="xref" href="lxd.html#lxd-uid" title=" UID mappings and Privileged containers "> UID mappings and Privileged containers </a></li>
+<li class="links"><a class="xref" href="lxd.html#lxd-aa" title=" Apparmor "> Apparmor </a></li>
+<li class="links"><a class="xref" href="lxd.html#lxd-seccomp" title=" Seccomp "> Seccomp </a></li>
+<li class="links"><a class="xref" href="lxd.html" title=" Raw LXC configuration "> Raw LXC configuration </a></li>
+<li class="links"><a class="xref" href="lxd.html" title=" Images and containers "> Images and containers </a></li>
+<li class="links"><a class="xref" href="lxd.html#lxd-troubleshooting" title=" Troubleshooting "> Troubleshooting </a></li>
+</ul></div>
+<div class="sect2 sect" id="lxd-resources"><div class="inner">
+<div class="hgroup"><h2 class="title">Online Resources</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      There is excellent documentation for <a href="http://github.com/lxc/lxd" class="ulink" title="http://github.com/lxc/lxd">getting started with LXD</a> in the online LXD README.
+      There is also an online server allowing you to <a href="http://linuxcontainers.org/lxd/try-it" class="ulink" title="http://linuxcontainers.org/lxd/try-it">try out LXD remotely</a>.
+      Stephane Graber also has an <a href="https://www.stgraber.org/2016/03/11/lxd-2-0-blog-post-series-012/" class="ulink" title="https://www.stgraber.org/2016/03/11/lxd-2-0-blog-post-series-012/">excellent blog series</a> on LXD 2.0.
+      Finally, there is great documentation on how to <a href="https://docs.jujucharms.com/devel/en/clouds-lxd" class="ulink" title="https://docs.jujucharms.com/devel/en/clouds-lxd">drive lxd using juju</a>.
+      </p>
+<p class="para">
+      This document will offer an Ubuntu Server-specific view of LXD, focusing
+      on administration.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxd-installation"><div class="inner">
+<div class="hgroup"><h2 class="title">Installation</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      LXD is pre-installed on Ubuntu Server cloud images.  On other systems, the lxd
+      package can be installed using:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+sudo apt install lxd
+</span>
+</pre></div>
+<p class="para">
+      This will install LXD as well as the recommended dependencies, including the LXC
+      library and lxcfs.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxd-kernel-prep"><div class="inner">
+<div class="hgroup"><h2 class="title"> Kernel preparation </h2></div>
+<div class="region"><div class="contents"><p class="para">
+      In general, Ubuntu 16.04 should have all the desired features enabled by
+      default.  One exception to this is that in order to enable swap
+      accounting the boot argument <span class="cmd command">swapaccount=1</span> must be set.  This can be
+      done by appending it to the <span class="cmd command">GRUB_CMDLINE_LINUX_DEFAULT=</span>variable in
+      /etc/default/grub, then running 'update-grub' as root and rebooting.
+      </p></div></div>
+</div></div>
+<div class="sect2 sect" id="lxd-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"> Configuration </h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      By default, LXD is installed listening on a local UNIX socket, which
+      members of group LXD can talk to.  It has no trust password setup.  And
+      it uses the filesystem at <span class="file filename">/var/lib/lxd</span> to store
+      containers.  To configure LXD with different settings, use <span class="cmd command">lxd
+      init</span>.  This will allow you to choose:
+      </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para">Directory or <a href="http://open-zfs.org" class="ulink" title="http://open-zfs.org">ZFS</a> container
+          backend.  If you choose ZFS, you can choose which block devices to use,
+          or the size of a file to use as backing store.</p>
+        </li>
+<li class="list itemizedlist">
+<p class="para">Availability over the network</p>
+        </li>
+<li class="list itemizedlist">
+<p class="para">A 'trust password' used by remote clients to vouch for their client certificate</p>
+        </li>
+</ul></div>
+<p class="para">
+      You must run 'lxd init' as root.  'lxc' commands can be run as any
+      user who is member of group lxd.  If user joe is not a member of group 'lxd',
+      you may run:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+adduser joe lxd
+</span>
+</pre></div>
+<p class="para">
+      as root to change it.  The new membership will take effect on the next login, or after
+      running 'newgrp lxd' from an existing login.
+      </p>
+<p class="para">
+      For more information on server, container, profile, and device configuration,
+      please refer to the definitive configuration provided with the source code,
+      which can be found <a href="https://github.com/lxc/lxd/blob/master/doc/configuration.md" class="ulink" title="https://github.com/lxc/lxd/blob/master/doc/configuration.md">online</a>
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxd-first-container"><div class="inner">
+<div class="hgroup"><h2 class="title"> Creating your first container </h2></div>
+<div class="region">
+<div class="contents"><p class="para">
+      This section will describe the simplest container tasks.
+      </p></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"> Creating a container </h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+        Every new container is created based on either an image, an existing container,
+        or a container snapshot.  At install time, LXD is configured with the following
+        image servers:
+        </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+            <p class="para"><span class="file filename">ubuntu</span>: this serves official Ubuntu server cloud image releases.</p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><span class="file filename">ubuntu-daily</span>: this serves official Ubuntu server cloud images of the daily
+            development releases.</p>
+          </li>
+<li class="list itemizedlist">
+            <p class="para"><span class="file filename">images</span>: this is a default-installed alias for images.linuxcontainers.org.
+            This is serves classical lxc images built using the same images which the
+            LXC 'download' template uses.  This includes various distributions and
+            minimal custom-made Ubuntu images.  This is not the recommended
+            server for Ubuntu images.</p>
+          </li>
+</ul></div>
+<p class="para">
+        The command to create and start a container is
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc launch remote:image containername
+</span>
+</pre></div>
+<p class="para">
+        Images are identified by their hash, but are also aliased.  The 'ubuntu'
+        server knows many aliases such as '16.04' and 'xenial'.  A list of all
+        images available from the Ubuntu Server can be seen using:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc image list ubuntu:
+</span>
+</pre></div>
+<p class="para">
+        To see more information about a particular image, including all the aliases it
+        is known by, you can use:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc image info ubuntu:xenial
+</span>
+</pre></div>
+<p class="para">
+        You can generally refer to an Ubuntu image using the release name ('xenial') or
+        the release number (16.04).  In addition, 'lts' is an alias for the latest
+        supported LTS release.  To choose a different architecture, you can specify the
+        desired architecture:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc image info ubuntu:lts/arm64
+</span>
+</pre></div>
+<p class="para">
+        Now, let's start our first container:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc launch ubuntu:xenial x1
+</span>
+</pre></div>
+<p class="para">
+        This will download the official current Xenial cloud image for your current
+        architecture, then create a container using that image, and finally start it.
+        Once the command returns, you can see it using:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc list
+lxc info x1
+</span>
+</pre></div>
+<p class="para">
+        and open a shell in it using:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc exec x1 bash
+</span>
+</pre></div>
+<p class="para">
+        The try-it page gives a full synopsis of the commands you can use to administer
+        containers.
+      </p>
+<p class="para">
+        Now that the 'xenial' image has been downloaded, it will be kept in sync until
+        no new containers have been created based on it for (by default) 10 days.  After
+        that, it will be deleted.
+      </p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="lxd-server-config"><div class="inner">
+<div class="hgroup"><h2 class="title"> LXD Server Configuration </h2></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+        By default, LXD is socket activated and configured to listen only on a
+        local UNIX socket.  While LXD may not be running when you first look at the
+        process listing, any LXC command will start it up.  For instance:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc list
+</span>
+</pre></div>
+<p class="para">
+        This will create your client certificate and contact the LXD server for a
+        list of containers.  To make the server accessible over the network you can
+        set the http port using:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc config set core.https_address :8443
+</span>
+</pre></div>
+<p class="para">
+        This will tell LXD to listen to port 8843 on all addresses.
+      </p>
+</div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"> Authentication</h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+        By default, LXD will allow all members of group 'lxd' (which by default includes
+        all members of group admin) to talk to it over the UNIX socket.  Communication
+        over the network is authorized using server and client certificates.
+      </p>
+<p class="para">
+        Before client c1 wishes to use remote r1, r1 must be registered using:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc remote add r1 r1.example.com:8443
+</span>
+</pre></div>
+<p class="para">
+        The fingerprint of r1's certificate will be shown, to allow the user at
+        c1 to reject a false certificate.  The server in turn will verify that
+        c1 may be trusted in one of two ways.  The first is to register it in advance
+        from any already-registered client, using:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc config trust add r1 certfile.crt
+</span>
+</pre></div>
+<p class="para">
+        Now when the client adds r1 as a known remote, it will not need to provide
+        a password as it is already trusted by the server.
+      </p>
+<p class="para">
+        The other is to configure a 'trust password' with r1, either at initial
+        configuration using 'lxd init', or after the fact using
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc config set core.trust_password PASSWORD
+</span>
+</pre></div>
+<p class="para">
+        The password can then be provided when the client registers
+        r1 as a known remote.
+      </p>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"> Backing store </h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+LXD supports several backing stores.  The recommended backing store is ZFS,
+however this is not available on all platforms.  Supported backing stores
+include:
+      </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+        <p class="para">
+          ext4: this is the default, and easiest to use.  With an ext4 backing store,
+          containers and images are simply stored as directories on the host filesystem.
+          Launching new containers requires copying a whole filesystem, and 10 containers
+          will take up 10 times as much space as one container.
+        </p>
+      </li>
+<li class="list itemizedlist">
+        <p class="para">
+          ZFS: if ZFS is supported on your architecture (amd64, arm64, or ppc64le), you
+          can set LXD up to use it using 'lxd init'.  If you already have a ZFS pool
+          configured, you can tell LXD to use it by setting the zfs_pool_name configuration
+          key:
+        </p>
+
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc config set storage.zfs_pool_name lxd
+</span>
+</pre></div>
+
+        <p class="para">
+          With ZFS, launching a new container
+          is fast because the filesystem starts as a copy on write clone of the images'
+          filesystem.  Note that unless the container is privileged (see below) LXD will
+          need to change ownership of all files before the container can start, however
+          this is fast and change very little of the actual filesystem data.
+        </p>
+      </li>
+<li class="list itemizedlist">
+        <p class="para">
+          Btrfs: btrfs can be used with many of the same advantages as
+          ZFS.  To use BTRFS as a LXD backing store, simply mount a Btrfs
+          filesystem under <span class="file filename">/var/lib/lxd</span>.  LXD will detect
+          this and exploit the Btrfs subvolume feature whenever launching a new
+          container or snapshotting a container.
+        </p>
+      </li>
+<li class="list itemizedlist">
+        <p class="para">
+          LVM: To use a LVM volume group called 'lxd', you may tell LXD to use that
+          for containers and images using the command
+        </p>
+
+<div class="screen"><pre class="contents "><span class="cmd command">
+	lxc config set storage.lvm_vg_name lxd
+</span>
+</pre></div>
+
+        <p class="para">
+          When launching a new container, its rootfs will start as a lv clone.  It is
+          immediately mounted so that the file uids can be shifted, then unmounted.
+          Container snapshots also are created as lv snapshots.
+        </p>
+      </li>
+</ul></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="lxd-container-config"><div class="inner">
+<div class="hgroup"><h2 class="title"> Container configuration </h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+        Containers are configured according to a set of profiles, described in the
+        next section, and a set of container-specific configuration.  Profiles are
+        applied first, so that container specific configuration can override profile
+        configuration.
+      </p>
+<p class="para">
+        Container configuration includes properties like the architecture, limits
+        on resources such as CPU and RAM, security details including apparmor
+        restriction overrides, and devices to apply to the container.
+      </p>
+<p class="para">
+        Devices can be of several types, including UNIX character, UNIX block,
+        network interface, or 'disk'.  In order to insert a host mount into a
+        container, a 'disk' device type would be used.  For instance, to mount
+        /opt in container c1 at /opt, you could use:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc config device add c1 opt disk source=/opt path=opt
+</span>
+</pre></div>
+<p class="para">
+        See:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc help config
+</span>
+</pre></div>
+<p class="para">
+        for more information about editing container configurations.  You may
+        also use:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc config edit c1
+</span>
+</pre></div>
+<p class="para">
+        to edit the whole of c1's configuration in your specified $EDITOR.
+        Comments at the top of the configuration will show examples of
+        correct syntax to help administrators hit the ground running.  If
+        the edited configuration is not valid when the $EDITOR is exited,
+        then $EDITOR will be restarted.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxd-profiles"><div class="inner">
+<div class="hgroup"><h2 class="title"> Profiles </h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+      Profiles are named collections of configurations which may be applied
+      to more than one container.  For instance, all containers created with
+      'lxc launch', by default, include the 'default' profile, which provides a
+      network interface 'eth0'.
+      </p>
+<p class="para">
+        To mask a device which would be inherited from a profile but which should
+        not be in the final container, define a device by the same name but of
+        type 'none':
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc config device add c1 eth1 none
+</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxd-nesting"><div class="inner">
+<div class="hgroup"><h2 class="title"> Nesting </h2></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+        Containers all share the same host kernel.  This means that there is always
+        an inherent trade-off between features exposed to the container and host
+        security from malicious containers.  Containers by default are therefore
+        restricted from features needed to nest child containers.  In order to
+        run lxc or lxd containers under a lxd container, the
+        'security.nesting' feature must be set to true:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc config set container1 security.nesting true
+</span>
+</pre></div>
+<p class="para">
+        Once this is done, container1 will be able to start sub-containers.
+      </p>
+<p class="para">
+        In order to run unprivileged (the default in LXD) containers nested under an
+        unprivileged container, you will need to ensure a wide enough UID mapping.
+        Please see the 'UID mapping' section below.
+      </p>
+</div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"> Docker </h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+        In order to facilitate running docker containers inside a LXD container,
+        a 'docker' profile is provided.  To launch a new container with the
+        docker profile, you can run:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc launch xenial container1 -p default -p docker
+</span>
+</pre></div>
+<p class="para">
+        Note that currently the docker package in Ubuntu 16.04 is patched to
+        facilitate running in a container.  This support is expected to land
+        upstream soon.
+      </p>
+<p class="para">
+        Note that 'cgroup namespace' support is also required.  This is
+        available in the 16.04 kernel as well as in the 4.6 upstream
+        source.
+      </p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="lxd-limits"><div class="inner">
+<div class="hgroup"><h2 class="title"> Limits </h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+        LXD supports flexible constraints on the resources which containers
+        can consume.  The limits come in the following categories:
+      </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para">CPU: limit cpu available to the container in several ways.</p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">Disk: configure the priority of I/O requests under load</p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">RAM: configure memory and swap availability</p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">Network: configure the network priority under load</p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">Processes: limit the number of concurrent processes in the container.</p>
+        </li>
+</ul></div>
+<p class="para">
+        For a full list of limits known to LXD, see
+        <a href="https://github.com/lxc/lxd/blob/master/doc/configuration.md" class="ulink" title="https://github.com/lxc/lxd/blob/master/doc/configuration.md">
+        the configuration documentation</a>.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxd-uid"><div class="inner">
+<div class="hgroup"><h2 class="title"> UID mappings and Privileged containers </h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+        By default, LXD creates unprivileged containers.  This means that root
+        in the container is a non-root UID on the host.  It is privileged against
+        the resources owned by the container, but unprivileged with respect to
+        the host, making root in a container roughly equivalent to an unprivileged
+        user on the host.  (The main exception is the increased attack surface
+        exposed through the system call interface)
+      </p>
+<p class="para">
+        Briefly, in an unprivileged container, 65536 UIDs are 'shifted' into the
+        container.  For instance, UID 0 in the container may be 100000 on the host,
+        UID 1 in the container is 100001, etc, up to 165535.  The starting value
+        for UIDs and GIDs, respectively, is determined by the 'root' entry the
+        <span class="file filename">/etc/subuid</span> and <span class="file filename">/etc/subgid</span> files.  (See the
+        <a href="http://manpages.ubuntu.com/manpages/xenial/en/man5/subuid.5.html" class="ulink" title="http://manpages.ubuntu.com/manpages/xenial/en/man5/subuid.5.html">
+        subuid(5) manual page</a>.
+      </p>
+<p class="para">
+        It is possible to request a container to run without a UID mapping by
+        setting the security.privileged flag to true:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc config set c1 security.privileged true
+</span>
+</pre></div>
+<p class="para">
+        Note however that in this case the root user in the container is the
+        root user on the host.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxd-aa"><div class="inner">
+<div class="hgroup"><h2 class="title"> Apparmor </h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+        LXD confines containers by default with an apparmor profile which protects
+        containers from each other and the host from containers.  For instance
+        this will prevent root in one container from signaling root in another
+        container, even though they have the same uid mapping.  It also prevents
+        writing to dangerous, un-namespaced files such as many sysctls and
+        <span class="file filename"> /proc/sysrq-trigger</span>.
+      </p>
+<p class="para">
+        If the apparmor policy for a container needs to be modified for a container
+        c1, specific apparmor policy lines can be added in the 'raw.apparmor'
+        configuration key.
+      </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="lxd-seccomp"><div class="inner">
+<div class="hgroup"><h2 class="title"> Seccomp </h2></div>
+<div class="region"><div class="contents"><p class="para">
+        All containers are confined by a default seccomp policy.  This policy
+        prevents some dangerous actions such as forced umounts, kernel module
+        loading and unloading, kexec, and the open_by_handle_at system call.
+        The seccomp configuration cannot be modified, however a completely
+        different seccomp policy - or none - can be requested using raw.lxc
+        (see below).
+      </p></div></div>
+</div></div>
+<div class="sect2 sect"><div class="inner">
+<div class="hgroup"><h2 class="title"> Raw LXC configuration </h2></div>
+<div class="region"><div class="contents"><p class="para">
+        LXD configures containers for the best balance of host safety and
+        container usability.  Whenever possible it is highly recommended to
+        use the defaults, and use the LXD configuration keys to request LXD
+        to modify as needed.  Sometimes, however, it may be necessary to talk
+        to the underlying lxc driver itself.  This can be done by specifying
+        LXC configuration items in the 'raw.lxc' LXD configuration key.  These
+        must be valid items as documented in
+        <a href="http://manpages.ubuntu.com/manpages/xenial/en/man5/lxc.container.conf.5.html" class="ulink" title="http://manpages.ubuntu.com/manpages/xenial/en/man5/lxc.container.conf.5.html">
+        the lxc.container.conf(5) manual page</a>.
+      </p></div></div>
+</div></div>
+<div class="sect2 sect"><div class="inner">
+<div class="hgroup"><h2 class="title"> Images and containers </h2></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+LXD is image based.  When you create your first container, you will
+generally do so using an existing image.  LXD comes pre-configured
+with three default image remotes:
+      </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para">ubuntu: This is a <a href="https://launchpad.net/simplestreams" class="ulink" title="https://launchpad.net/simplestreams">simplestreams-based</a>
+          remote serving released ubuntu cloud images.</p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">ubuntu-daily: This is another simplestreams based remote which serves
+          'daily' ubuntu cloud images.  These provide quicker but potentially less
+          stable images.</p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">images: This is a remote publishing best-effort container images for
+          many distributions, created using community-provided build scripts.</p>
+        </li>
+</ul></div>
+<p class="para">
+        To view the images available on one of these servers, you can use:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc image list ubuntu:
+</span>
+</pre></div>
+<p class="para">
+        Most of the images are known by several aliases for easier reference.  To
+        see the full list of aliases, you can use
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc image alias list images:
+</span>
+</pre></div>
+<p class="para">
+        Any alias or image fingerprint can be used to specify how to create the new
+        container.  For instance, to create an amd64 Ubuntu 14.04 container, some
+        options are:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc launch ubuntu:14.04 trusty1
+lxc launch ubuntu:trusty trusty1
+lxc launch ubuntu:trusty/amd64 trusty1
+lxc launch ubuntu:lts trusty1
+</span>
+</pre></div>
+<p class="para">
+        The 'lts' alias always refers to the latest released LTS image.
+      </p>
+</div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"> Snapshots </h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+          Containers can be renamed and live-migrated using the 'lxc move' command:
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc move c1 final-beta
+</span>
+</pre></div>
+<p class="para">
+          They can also be snapshotted:
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc snapshot c1 YYYY-MM-DD
+</span>
+</pre></div>
+<p class="para">
+          Later changes to c1 can then be reverted by restoring the snapshot:
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc restore u1 YYYY-MM-DD
+</span>
+</pre></div>
+<p class="para">
+          New containers can also be created by copying a container or snapshot:
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc copy u1/YYYY-MM-DD testcontainer
+</span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"> Publishing images </h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+          When a container or container snapshot is ready for consumption by others,
+          it can be published as a new image using;
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc publish u1/YYYY-MM-DD --alias foo-2.0
+</span>
+</pre></div>
+<p class="para">
+          The published image will be private by default, meaning that LXD will not
+          allow clients without a trusted certificate to see them.  If the image
+          is safe for public viewing (i.e. contains no private information), then
+          the 'public' flag can be set, either at publish time using
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc publish u1/YYYY-MM-DD --alias foo-2.0 public=true
+</span>
+</pre></div>
+<p class="para">
+          or after the fact using
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc image edit foo-2.0
+</span>
+</pre></div>
+<p class="para">
+          and changing the value of the public field.
+        </p>
+</div></div>
+</div></div>
+<div class="sect3 sect"><div class="inner">
+<div class="hgroup"><h3 class="title"> Image export and import </h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+          Image can be exported as, and imported from, tarballs:
+        </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc image export foo-2.0 foo-2.0.tar.gz
+lxc image import foo-2.0.tar.gz --alias foo-2.0 --public
+</span>
+</pre></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="lxd-troubleshooting"><div class="inner">
+<div class="hgroup"><h2 class="title"> Troubleshooting </h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+        To view debug information about LXD itself, on a systemd based host use
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+journalctl -u lxd
+</span>
+</pre></div>
+<p class="para">
+        On an Upstart-based system, you can find the log in
+        <span class="file filename">/var/log/upstart/lxd.log</span>.  To make LXD provide
+        much more information about requests it is serving, add '--debug' to
+        LXD's arguments.  In systemd, append '--debug' to the 'ExecStart=' line
+        in <span class="file filename">/lib/systemd/system/lxd.service</span>.  In Upstart,
+        append it to the <span class="cmd command">exec /usr/bin/lxd</span> line in
+        <span class="file filename">/etc/init/lxd.conf</span>.
+      </p>
+<p class="para">
+        Container logfiles for container c1 may be seen using:
+      </p>
+<div class="screen"><pre class="contents "><span class="cmd command">
+lxc info c1 --show-log
+</span>
+</pre></div>
+<p class="para">
+        The configuration file which was used may be found under <span class="file filename"> /var/log/lxd/c1/lxc.conf</span>
+        while apparmor profiles can be found in <span class="file filename"> /var/lib/lxd/security/apparmor/profiles/c1</span>
+        and seccomp profiles in <span class="file filename"> /var/lib/lxd/security/seccomp/c1</span>.
+      </p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="ubuntucloud.html" title="Ubuntu Cloud">Previous</a><a class="nextlinks-next" href="lxc.html" title="LXC">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>

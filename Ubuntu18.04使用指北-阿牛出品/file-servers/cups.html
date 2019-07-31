@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CUPS  - 打印服务器</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="file-servers.html" title="文件服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件服务器</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="iscsi-initiator.html" title="iSCSI启动器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="../email-services/email-services.html" title="电邮服务"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CUPS  - 打印服务器</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            Ubuntu打印和打印服务的主要机制是 
+			 </font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通用UNIX打印系统</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（CUPS）。</font><font style="vertical-align: inherit;">该打印系统是免费提供的便携式打印层，已成为大多数Linux发行版中打印的新标准。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          CUPS管理打印作业和队列，并使用标准的Internet打印协议（IPP）提供网络打印，同时支持从点阵到激光以及介于两者之间的各种打印机。</font><font style="vertical-align: inherit;">CUPS还支持PostScript打印机描述（PPD）和网络打印机的自动检测，并具有简单的基于Web的配置和管理工具。 
+          </font></font></p>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="cups.html#cups-installation" title="安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></a></li>
+<li class="links"><a class="xref" href="cups.html#cups-configuration" title="组态"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></a></li>
+<li class="links"><a class="xref" href="cups.html#cups-web" title="Web界面"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Web界面</font></font></a></li>
+<li class="links"><a class="xref" href="cups.html#cups-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="cups-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            要在Ubuntu计算机上安装CUPS，只需</font><font style="vertical-align: inherit;">在</font><span class="app application"><font style="vertical-align: inherit;">apt</font></span><font style="vertical-align: inherit;">命令中</font><font style="vertical-align: inherit;">使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font><font style="vertical-align: inherit;">并将包安装为第一个参数。</font><font style="vertical-align: inherit;">完整的CUPS安装具有许多程序包依赖性，但它们可能都在同一命令行中指定。</font><font style="vertical-align: inherit;">在终端提示符处输入以下内容以安装CUPS：
+          </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<p class="para">
+</p><div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt安装杯子</font></font></span>
+</pre></div>
+          <p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          使用您的用户密码进行身份验证后，应该下载并安装这些软件包而不会出现错误。</font><font style="vertical-align: inherit;">安装结束后，CUPS服务器将自动启动。 
+ 	  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          出于故障排除目的，您可以通过错误日志文件访问CUPS服务器错误：</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / log / cups / error_log</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果错误日志没有显示足够的信息来解决您遇到的任何问题，可以通过将</font><font style="vertical-align: inherit;">配置文件（下面讨论）中</font><font style="vertical-align: inherit;">的</font></font><span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LogLevel</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令</font><font style="vertical-align: inherit;">更改</font><font style="vertical-align: inherit;">为“debug”甚至“debug2” </font><font style="vertical-align: inherit;">来增加CUPS日志的详细程度，</font><font style="vertical-align: inherit;">一切，从默认的“信息”。</font><font style="vertical-align: inherit;">如果进行此更改，请记住在解决问题后将其更改回来，以防止日志文件变得过大。
+          </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="cups-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            通用UNIX打印系统服务器的行为是通过文件</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/cups/cupsd.conf中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含的指令配置的</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">CUPS配置文件遵循与Apache HTTP服务器的主配置文件相同的语法，因此熟悉编辑Apache配置文件的用户在编辑CUPS配置文件时应该感到轻松。</font><font style="vertical-align: inherit;">您最初可能希望更改的一些设置示例将在此处显示。
+          </font></font></p>
+<div class="note note-tip" title="小费"><div class="inner"><div class="region"><div class="contents">
+               <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在编辑配置文件之前，您应该复制原始文件并保护其不被写入，因此您将原始设置作为参考，并在必要时重复使用。
+               </font></font></p>
+               <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">复制</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/cups/cupsd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件并使用在终端提示符下发出的以下命令保护它不被写入：
+               </font></font></p>
+               </div></div></div></div>
+<p class="para">
+</p><div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo cp /etc/cups/cupsd.conf /etc/cups/cupsd.conf.original </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chmod aw /etc/cups/cupsd.conf.original</font></font></span>
+</pre></div>
+               <p></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+                <p class="para">
+                <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ServerAdmin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：要配置CUPS服务器的指定管理员的电子邮件地址，只需</font><font style="vertical-align: inherit;">使用首选文本编辑器</font><font style="vertical-align: inherit;">编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/cups/cupsd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件，然后相应地添加或修改</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ServerAdmin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">行。</font><font style="vertical-align: inherit;">例如，如果您是CUPS服务器的管理员，并且您的电子邮件地址是“bjoy@somebigco.com”，那么您将修改ServerAdmin行以显示为：
+                </font></font></p>
+                <p class="para">
+</p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ServerAdmin bjoy@somebigco.com
+</font></font></pre></div>
+                <p></p>
+                </li>
+<li class="list itemizedlist">
+                <p class="para">
+                <span class="em em-bold emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">侦听</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：默认情况下，在Ubuntu上，CUPS服务器安装仅侦听IP地址为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">127.0.0.1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的环回接口 
+				 </font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">为了指示CUPS服务器侦听实际网络适配器的IP地址，您必须通过添加Listen指令指定主机名，IP地址或可选的IP地址/端口配对。</font><font style="vertical-align: inherit;">例如，如果您的CUPS服务器位于IP地址为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">192.168.10.250</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的本地网络上，</font><font style="vertical-align: inherit;">并且您希望该子网上的其他系统可以访问它，则可以编辑 
+				 </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/cups/cupsd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并添加一个Listen指令，如下：
+                </font></font></p>
+                <p class="para">
+</p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">听127.0.0.1:631＃现有的环回听</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+听/var/run/cups/cups.sock#现有套接字听</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+听192.168.10.250:631＃在LAN接口上侦听，端口631（IPP）</font></font><font></font>
+</pre></div>
+                <p></p>
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                在上面的示例中，如果您不希望</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cupsd
+				</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在该接口上侦听</font><font style="vertical-align: inherit;">，则可以注释掉或删除对Loopback地址（127.0.0.1）的引用</font><font style="vertical-align: inherit;">，但是宁愿它只在局域网的以太网接口上侦听（LAN）。</font><font style="vertical-align: inherit;">要启用侦听绑定了某个主机名的所有网络接口（包括Loopback），您可以为主机名</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">socrates</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建一个Listen条目 
+				 </font><font style="vertical-align: inherit;">：
+                </font></font></p>
+                <p class="para">
+</p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">听socrates：631＃在所有界面上搜索主机名'socrates'
+</font></font></pre></div>
+                <p></p> 
+				<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或者省略Listen指令并</font><font style="vertical-align: inherit;">改为</font><font style="vertical-align: inherit;">使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Port</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，如：</font></font></p>
+<p class="para">
+</p><div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">端口631＃在所有接口上侦听端口631
+</font></font></pre></div>
+<p></p>
+                </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                有关CUPS服务器配置文件中配置指令的更多示例，请通过在终端提示符处输入以下命令来查看关联的系统手册页：
+               </font></font></p>
+<p class="para">
+</p><div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">男人cupsd.conf</font></font></span>
+</pre></div>
+               <p></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                每当您对</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/cups/cupsd.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件</font><font style="vertical-align: inherit;">进行更改时</font><font style="vertical-align: inherit;">，您都需要通过在终端提示符下键入以下命令来重新启动CUPS服务器：
+                </font></font></p>
+                </div></div></div></div>
+<p class="para">
+</p><div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart cups.service</font></font></span>
+</pre></div>
+                <p></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="cups-web"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Web界面</font></font></h2></div>
+<div class="region"><div class="contents">
+<div class="note note-tip" title="小费"><div class="inner"><div class="region"><div class="contents">
+	    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    可以使用Web界面配置和监视CUPS，默认情况下，该界面位于</font></font><a href="http://localhost:631/admin" class="ulink" title="HTTP：//本地主机：631 /管理员"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http：// localhost：631 / admin</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">Web界面可用于执行所有打印机管理任务。
+	    </font></font></p>
+	  </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  要通过Web界面执行管理任务，您必须在服务器上启用root帐户，或者在</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lpadmin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组中</font><font style="vertical-align: inherit;">以用户身份进行身份验证</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">出于安全原因，CUPS不会对没有密码的用户进行身份验证。
+	  </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	  要将用户添加到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lpadmin</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组，请在终端提示符下运行：
+</font></font></p><div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo usermod -aG lpadmin用户名</font></font></span>
+</pre></div>
+	  <p></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Web界面</font><font style="vertical-align: inherit;">
+	    的“ </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文档/帮助”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项卡中</font><font style="vertical-align: inherit;">提供了更多文档</font><font style="vertical-align: inherit;">。
+	  </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="cups-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+        <a href="http://www.cups.org/" class="ulink" title="http://www.cups.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CUPS网站</font></font></a>
+        </p>
+<p class="para">
+        <a href="http://wiki.debian.org/SAN/iSCSI/open-iscsi" class="ulink" title="http://wiki.debian.org/SAN/iSCSI/open-iscsi"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Debian Open-iSCSI页面</font></font></a>
+        </p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="iscsi-initiator.html" title="iSCSI启动器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="email-services.html" title="电邮服务"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

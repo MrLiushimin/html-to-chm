@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>火墙</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="security.html" title="安全"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安全性</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="console-security.html" title="控制台安全"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="apparmor.html" title="AppArmor的"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">火墙</font></font></h1></div>
+<div class="region">
+<div class="contents"></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="firewall.html#firewall-introduction" title="介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">介绍</font></font></a></li>
+<li class="links"><a class="xref" href="firewall.html#firewall-ufw" title="ufw  - 简单的防火墙"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw  - 简单的防火墙</font></font></a></li>
+<li class="links"><a class="xref" href="firewall.html#ip-masquerading" title="IP伪装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IP伪装</font></font></a></li>
+<li class="links"><a class="xref" href="firewall.html#firewall-logs" title="日志"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">日志</font></font></a></li>
+<li class="links"><a class="xref" href="firewall.html#other-firewall-tools" title="其他工具"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他工具</font></font></a></li>
+<li class="links"><a class="xref" href="firewall.html#firewall-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="firewall-introduction"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">介绍</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+             Linux内核包括</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Netfilter</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">子系统，该子系统用于操纵或决定进入或通过服务器的网络流量的命运。</font><font style="vertical-align: inherit;">所有现代Linux防火墙解决方案都使用此系统进行数据包过
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              内核的数据包过滤系统对没有用户空间接口来管理它的管理员几乎没用。</font><font style="vertical-align: inherit;">这是iptables的目的：当数据包到达您的服务器时，它将被传递到Netfilter子系统，以便根据从用户空间通过iptables提供给它的规则进行接受，操作或拒绝。</font><font style="vertical-align: inherit;">因此，如果您熟悉iptables，那么就是管理防火墙所需的全部内容，但许多前端可用于简化任务。
+            </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="firewall-ufw"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw  - 简单的防火墙</font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    Ubuntu的默认防火墙配置工具是</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">为了简化iptables防火墙配置，
+	     </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">提供了一种用户友好的方式来创建基于IPv4或IPv6主机的防火墙。
+	    </font></font></p>
+<p class="para">
+            <span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认情况下，</font><span class="app application"><font style="vertical-align: inherit;">ufw</font></span><font style="vertical-align: inherit;">最初被禁用。</font><font style="vertical-align: inherit;">从</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手册页： 
+	    </font></font></p>
+<p class="para">
+<span class="quote"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“ufw并不打算通过其命令界面提供完整的防火墙功能，而是提供了一种添加或删除简单规则的简便方法。</font><font style="vertical-align: inherit;">它目前主要用于基于主机的防火墙。</font><font style="vertical-align: inherit;">”</font></font></span>
+	    </p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    以下是如何使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一些示例</font><font style="vertical-align: inherit;">：
+	    </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                首先，</font><font style="vertical-align: inherit;">需要启用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">从终端提示输入：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw enable</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                要打开端口（本例中为SSH）：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw允许22</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                也可以使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">编号</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">格式</font><font style="vertical-align: inherit;">添加规则</font><font style="vertical-align: inherit;">：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw insert 1允许80</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                同样，要关闭打开的端口：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw deny 22</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                要删除规则，请使用delete后跟规则：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw删除拒绝22</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		也可以允许从特定主机或网络访问端口。</font><font style="vertical-align: inherit;">以下示例允许从主机192.168.0.2进行SSH访问到此主机上的任何IP地址：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw允许proto tcp从192.168.0.2到任何端口22</font></font></span>
+</pre></div>
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		将192.168.0.2替换为192.168.0.0/24以允许从整个子网进行SSH访问。
+		</font></font></p>
+	      </li>
+<li class="list itemizedlist">
+
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-dry-run</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">添加</font><font style="vertical-align: inherit;">到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令将输出生成的规则，但不应用它们。</font><font style="vertical-align: inherit;">例如，以下是打开HTTP端口时应用的内容：
+                </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> sudo ufw --dry-run允许http</font></font></span>
+</pre></div>
+
+<div class="screen"><pre class="contents "><span class="output computeroutput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">*过滤</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+：ufw-user-input  -  [0：0]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+：ufw-user-output  -  [0：0]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+：ufw-user-forward  -  [0：0]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+：ufw-user-limit  -  [0：0]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+：ufw-user-limit-accept  -  [0：0]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+### RULES ###</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+### tuple ### allow tcp 80 0.0.0.0/0 any 0.0.0.0/0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+-A ufw-user-input -p tcp --dport 80 -j ACCEPT</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+### END RULES ###</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+-A ufw-user-input -j RETURN</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+-A ufw-user-output -j RETURN</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+-A ufw-user-forward -j RETURN</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+-A ufw-user-limit -m limit --limit 3 / minute -j LOG --log-prefix“[UFW LIMIT]：”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+-A ufw-user-limit -j REJECT</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+-A ufw-user-limit-accept -j ACCEPT</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+承诺</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+规则已更新</font></font></span>
+</pre></div>
+
+              </li>
+<li class="list itemizedlist">
+                <p class="para">
+                <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以通过以下方式禁用：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw禁用</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                要查看防火墙状态，请输入：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw status</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                有关更详细的状态信息，请使用：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw status verbose</font></font></span>
+</pre></div>
+	      </li>
+<li class="list itemizedlist">
+                <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                要查看</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">编号</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">格式：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw状态编号</font></font></span>
+</pre></div>
+	      </li>
+</ul></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      如果要在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / services中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">定义要打开或关闭</font><font style="vertical-align: inherit;">的端口，则可以使用端口名称而不是数字。</font><font style="vertical-align: inherit;">在上面的例子中，</font><font style="vertical-align: inherit;">用</font><span class="em emphasis"><font style="vertical-align: inherit;">ssh</font></span><font style="vertical-align: inherit;">替换</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">22</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。 
+              </font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+	    </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	    这是使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的快速介绍</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有关更多信息，</font><font style="vertical-align: inherit;">请参阅</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手册页。
+	    </font></font></p>
+</div>
+<div class="sect3 sect" id="ufw-application-integration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw应用程序集成</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              打开端口的应用程序可以包含</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件，该配置文件详细说明了应用程序正常运行所需的端口。</font><font style="vertical-align: inherit;">配置文件保存在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ufw/applications.d中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，如果默认端口已更改，则可以对其进行编辑。
+              </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  要查看已安装配置文件的应用程序，请在终端中输入以下内容：
+                  </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw app list</font></font></span>
+</pre></div>
+
+                </li>
+<li class="list itemizedlist">
+
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  与允许流量到端口类似，使用应用程序配置文件通过输入以下内容来完成：
+                  </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw允许Samba</font></font></span>
+</pre></div>
+
+                </li>
+<li class="list itemizedlist">
+
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  还提供了扩展语法：
+                  </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw允许从192.168.0.0/24到任何应用程序Samba</font></font></span>
+</pre></div>
+
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Samba</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">192.168.0.0/24</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">替换</font><font style="vertical-align: inherit;">为您正在使用的应用程序配置文件以及网络的IP范围。 
+                  </font></font></p>
+
+                  <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+                    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    无需</font><font style="vertical-align: inherit;">为应用程序</font><font style="vertical-align: inherit;">指定</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">协议</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，因为该信息在配置文件中有详细说明。</font><font style="vertical-align: inherit;">另请注意，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">应用</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">名称将替换</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">端口</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">号。
+                    </font></font></p>
+                  </div></div></div></div>
+
+                </li>
+<li class="list itemizedlist">
+
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  要查看有关为应用程序定义的端口，协议等的详细信息，请输入：
+                  </font></font></p>
+
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw app info Samba</font></font></span>
+</pre></div>
+
+                </li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              并非所有需要打开网络端口的应用程序都带有</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">配置文件，但是如果您已经分析了一个应用程序并希望该文件包含在该软件包中，请在Launchpad中针对该软件包提交错误。
+              </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ubuntu-bug nameofpackage</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="ip-masquerading"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IP伪装</font></font></h2></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              IP伪装的目的是允许网络上具有专用，不可路由IP地址的计算机通过伪装的机器访问Internet。</font><font style="vertical-align: inherit;">必须操纵来自专用于Internet的专用网络的流量，以便将回复路由回发出请求的计算机。</font><font style="vertical-align: inherit;">为此，内核必须修改</font><font style="vertical-align: inherit;">
+			  每个数据包</font><font style="vertical-align: inherit;">的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">源</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> IP地址，以便将回复路由回到它，而不是发送到请求的私有IP地址，这在Internet上是不可能的。</font><font style="vertical-align: inherit;">Linux使用</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">连接跟踪</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+			  （conntrack）跟踪哪些连接属于哪些机器并相应地重新路由每个返回数据包。</font><font style="vertical-align: inherit;">因此，离开您的专用网络的流量“伪装”为源自您的Ubuntu网关机器。</font><font style="vertical-align: inherit;">此过程在Microsoft文档中称为Internet连接共享。
+            </font></font></p></div>
+<div class="sect3 sect" id="ip-masquerade-ufw"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw伪装</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      可以使用自定义</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">规则</font><font style="vertical-align: inherit;">实现IP伪装</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这是可能的，因为</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的当前后端</font><font style="vertical-align: inherit;">是</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iptables-restore，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其中的规则文件位于 
+	       </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ufw/*.rules中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这些文件是添加没有</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用的旧iptables规则的好地方</font><font style="vertical-align: inherit;">，以及更多网络网关或网桥相关的规则。
+	      </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      规则分为两个不同的文件，应该在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令行规则</font><font style="vertical-align: inherit;">之前执行的
+	       </font><font style="vertical-align: inherit;">规则，以及在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令行规则</font><font style="vertical-align: inherit;">之后执行的</font><font style="vertical-align: inherit;">规则。
+	      </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+		  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		  首先，需要在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">启用数据包转发</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">需要调整两个配置文件，在
+		   </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / default / ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DEFAULT_FORWARD_POLICY</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更改</font><font style="vertical-align: inherit;">为</font></font><span class="quote"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">“ACCEPT”</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DEFAULT_FORWARD_POLICY = “接受”
+</font></font></pre></div>
+		  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		  然后编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ufw/sysctl.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并取消注释：
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">净/的IPv4 / IP_FORWARD = 1
+</font></font></pre></div>
+		  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		  同样，对于IPv6转发取消注释：
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">净/ IPV6 / CONF /默认/转发= 1
+</font></font></pre></div>
+		</li>
+<li class="list itemizedlist">
+		  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		  现在将规则添加到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ufw/before.rules</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件中。</font><font style="vertical-align: inherit;">默认规则仅配置</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">过滤器</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+	          表，并且需要配置伪装</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nat</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表。</font><font style="vertical-align: inherit;">在标题注释之后将以下内容添加到文件的顶部：	          
+		  </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#nat表规则</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+* NAT</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+：POSTROUTING ACCEPT [0：0]</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃从eth1到eth0转发流量。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+-A POSTROUTING -s 192.168.0.0/24 -o eth0 -j MASQUERADE</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃不要删除'COMMIT'行，否则不会处理这些nat表规则</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+承诺</font></font><font></font>
+</pre></div>
+	          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	          这些注释并非绝对必要，但记录您的配置被认为是一种很好的做法。</font><font style="vertical-align: inherit;">此外，在修改</font><span class="file filename"><font style="vertical-align: inherit;">/ etc / ufw中的</font></span><font style="vertical-align: inherit;">任何</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">规则</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件时</font><font style="vertical-align: inherit;">，请确保这些行是每个修改的表的最后一行：
+	          </font></font><span class="file filename"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃不要删除'COMMIT'行，否则不会处理这些规则</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+承诺</font></font><font></font>
+</pre></div>
+
+                  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                  对于每个</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表，</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">都需要</font><font style="vertical-align: inherit;">相应的</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">COMMIT</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">语句。</font><font style="vertical-align: inherit;">在这些示例中，仅显示了</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nat</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">过滤器</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表，但您也可以为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">raw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表</font><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mangle</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表</font><font style="vertical-align: inherit;">添加规则 
+                   </font><font style="vertical-align: inherit;">。
+                  </font></font></p>
+
+                  <div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+                   <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                   在上面的示例中，将</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eth0</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eth1</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">192.168.0.0/24</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+                   替换为适用于您的网络的接口和IP范围。
+                   </font></font></p>
+                  </div></div></div></div>
+
+		</li>
+<li class="list itemizedlist">
+		  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		  最后，禁用并重新启用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以应用更改：
+		  </font></font></p>
+<div class="code"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw disable &amp;&amp; sudo ufw enable</font></font></span>
+</pre></div>
+		</li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      现在应该启用IP伪装。</font><font style="vertical-align: inherit;">您还可以向</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/ufw/before.rules</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加任何其他FORWARD规则</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">建议将这些附加规则添加到</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw-before-forward</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">链中。
+	      </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="ip-masquerading-iptables"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iptables伪装</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para">
+	    <span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iptables</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">也可用于启用伪装。  
+	    </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+  	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 	        与</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">类似</font><font style="vertical-align: inherit;">，第一步是通过编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/sysctl.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">启用IPv4数据包转发， 
+		 </font><font style="vertical-align: inherit;">并取消注释以下行：
+	        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">把net.ipv4.ip_forward = 1
+</font></font></pre></div>
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	        如果您希望启用IPv6转发，请取消注释： 
+	        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">net.ipv6.conf.default.forwarding = 1
+</font></font></pre></div>
+ 	      </li>
+<li class="list itemizedlist">
+		  <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		  接下来，执行</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sysctl</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">命令以在配置文件中启用新设置：
+		  </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo sysctl -p</font></font></span>
+</pre></div>
+		</li>
+<li class="list itemizedlist">
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                现在可以使用单个iptables规则完成IP伪装，根据您的网络配置，该规则可能略有不同：
+	        </font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo iptables -t nat -A POSTROUTING -s 192.168.0.0/16 -o ppp0 -j MASQUERADE
+</font></font></pre></div>
+	        <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	        以上命令假定您的专用地址空间为192.168.0.0/16，并且您的面向Internet的设备是ppp0。</font><font style="vertical-align: inherit;">语法分解如下：
+		</font></font></p>
+		<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -t nat  - 规则是进入nat表</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -A POSTROUTING  - 将规则附加（-A）到POSTROUTING链</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -s 192.168.0.0/16  - 该规则适用于源自指定地址空间的流量</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -o ppp0  - 该规则适用于计划通过指定网络设备路由的流量</font></font></p></li>
+<li class="list itemizedlist">
+                    <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                    -j MASQUERADE  - 匹配此规则的流量是“跳转”（-j）到要操纵的MASQUERADE目标，如上所述
+                    </font></font></p>
+                  </li>
+</ul></div>
+	      </li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	        此外，过滤器表中的每个链（默认表以及发生大多数或所有数据包过滤的位置）都具有默认</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">策略</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ACCEPT，但如果您要创建除网关设备之外的防火墙，则可能已将策略设置为DROP或REJECT，在这种情况下，您需要通过FORWARD链允许伪装流量以使上述规则起作用：
+		</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo iptables -A FORWARD -s 192.168.0.0/16 -o ppp0 -j ACCEPT</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+sudo iptables -A FORWARD -d 192.168.0.0/16 -m state \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+--state ESTABLISHED，RELATED -i ppp0 -j ACCEPT</font></font><font></font>
+</pre></div>
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+		上述命令将允许从本地网络到Internet的所有连接以及与这些连接相关的所有流量返回到启动它们的计算机。
+		</font></font></p>
+	      </li>
+<li class="list itemizedlist">
+		<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	        如果你想在重启时启用伪装，你可能会这样做，编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/rc.local</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并添加上面使用的任何命令。</font><font style="vertical-align: inherit;">例如，添加第一个没有过滤的命令：
+		</font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iptables -t nat -A POSTROUTING -s 192.168.0.0/16 -o ppp0 -j MASQUERADE
+</font></font></pre></div>
+	      </li>
+</ul></div>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="firewall-logs"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">日志</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            防火墙日志对于识别攻击，对防火墙规则进行故障排除以及注意网络上的异常活动至关重要。</font><font style="vertical-align: inherit;">但是，必须在防火墙中包含日志记录规则才能生成它们，并且日志记录规则必须在任何适用的终止规则（具有决定数据包命运的目标的规则，例如ACCEPT，DROP或REJECT）之前。  
+	     </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     如果您使用的是</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，则可以通过在终端中输入以下内容来打开日志记录：
+	     </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo ufw登录</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     要在</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">关闭注销</font><font style="vertical-align: inherit;">，只需</font><font style="vertical-align: inherit;">在上面的命令</font><font style="vertical-align: inherit;">中用</font><span class="em emphasis"><font style="vertical-align: inherit;">off</font></span><font style="vertical-align: inherit;">替换为</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">on</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	     </font></font><span class="em emphasis"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     如果使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iptables</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">而不是</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请输入：
+	     </font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo iptables -A INPUT -m state --state new -p tcp --dport 80 \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+-j LOG --log-prefix“NEW_HTTP_CONN：”</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	     然后，来自本地计算机的端口80上的请求将生成一个类似于此的dmesg日志（单行拆分为3以适合此文档）：
+	     </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">[4304885.870000] NEW_HTTP_CONN：IN = lo OUT = MAC = 00：00：00：00：00：00：00：00：00：00：00：00：08：00</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+SRC = 127.0.0.1 DST = 127.0.0.1 LEN = 60 TOS = 0x00 PREC = 0x00 TTL = 64 ID = 58288 DF PROTO = TCP</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+SPT = 53981 DPT = 80 WINDOW = 32767 RES = 0x00 SYN URGP = 0</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              上述日志也将出现在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / log / messages</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，
+			   </font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ var / log / syslog</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/var/log/kern.log中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">可以通过</font><font style="vertical-align: inherit;">
+			  适当地</font><font style="vertical-align: inherit;">编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/syslog.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或通过安装和配置</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ulogd</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+			  并使用ULOG目标而不是LOG </font><font style="vertical-align: inherit;">来修改此行为</font><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">该</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ULOGD</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+			  守护进程是侦听来自内核的日志说明专为防火墙用户空间的服务器，并且可以登录到你喜欢的，甚至到任何文件
+			   </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的PostgreSQL</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">MySQL的</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+			  数据库。</font><font style="vertical-align: inherit;">通过使用日志分析工具（如</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">logwatch）</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以简化对防火墙日志的理解</font><font style="vertical-align: inherit;">，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fwanalog</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，
+			   </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fwlogwatch</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">lire</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+            </font></font></p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="other-firewall-tools"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他工具</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            有许多工具可以帮助您构建完整的防火墙，而无需熟悉iptables。</font><font style="vertical-align: inherit;">具有纯文本配置文件的命令行工具： 
+	    </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist"><li class="list itemizedlist">
+		<p class="para">
+		<a href="http://www.shorewall.net/" class="ulink" title="http://www.shorewall.net/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Shorewall</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是一个非常强大的解决方案，可帮助您为任何网络配置高级防火墙。  
+		</font></font></p>
+	      </li></ul></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="firewall-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      在</font></font><a href="https://wiki.ubuntu.com/UncomplicatedFirewall" class="ulink" title="https://wiki.ubuntu.com/UncomplicatedFirewall"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu的防火墙</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> wiki页面包含了开发中的信息</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UFW</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          此外，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">手册页包含一些非常有用的信息：</font></font><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">man ufw</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      有关</font><font style="vertical-align: inherit;">
+	      使用</font><span class="app application"><font style="vertical-align: inherit;">iptables的</font></span><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a href="http://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO.html" class="ulink" title="http://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">packet-filtering-HOWTO</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。
+	      </font></font><span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	      在</font></font><a href="http://www.netfilter.org/documentation/HOWTO/NAT-HOWTO.html" class="ulink" title="http://www.netfilter.org/documentation/HOWTO/NAT-HOWTO.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NAT-HOWTO</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包含伪装的进一步细节。
+	      </font></font></p>
+	    </li>
+<li class="list itemizedlist">
+	      <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu wiki中</font><font style="vertical-align: inherit;">
+	      的</font></font><a href="https://help.ubuntu.com/community/IptablesHowTo" class="ulink" title="https://help.ubuntu.com/community/IptablesHowTo"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">IPTables HowTo</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是一个很好的资源。
+	      </font></font></p>
+	    </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="console-security.html" title="控制台安全"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="apparmor.html" title="AppArmor的"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

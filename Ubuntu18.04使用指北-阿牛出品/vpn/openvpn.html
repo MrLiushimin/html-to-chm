@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>OpenVPN的</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="vpn.html" title="VPN"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VPN</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="vpn.html" title="VPN"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="../other-useful-applications/other-useful-applications.html" title="其他有用的应用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVPN的</font></font></h1></div>
+<div class="region">
+<div class="contents"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    如果您不仅需要预共享密钥，</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVPN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">   可以轻松设置和使用公钥基础结构（PKI）来使用SSL / TLS证书进行VPN服务器和客户端之间的身份验证和密钥交换。
+    </font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVPN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以在路由或桥接VPN模式下使用，并且可以配置为使用UDP或TCP。</font><font style="vertical-align: inherit;">端口号也可以配置，但端口1194是官方端口号。</font><font style="vertical-align: inherit;">并且它只使用该单个端口进行所有通信。</font><font style="vertical-align: inherit;">VPN客户端实现几乎适用于所有Linux发行版，OS X，Windows和基于OpenWRT的WLAN路由器。
+    </font></font></p></div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="openvpn.html#openvpn-server-installation" title="服务器安装"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器安装</font></font></a></li>
+<li class="links"><a class="xref" href="openvpn.html#openvpn-pki-setup" title="公钥基础设施设置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">公钥基础设施设置</font></font></a></li>
+<li class="links"><a class="xref" href="openvpn.html#openvpn-simple-server-configuration" title="简单服务器配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">简单服务器配置</font></font></a></li>
+<li class="links"><a class="xref" href="openvpn.html#openvpn-simple-client-configuration" title="简单客户端配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">简单客户端配置</font></font></a></li>
+<li class="links"><a class="xref" href="openvpn.html#openvpn-first-troubleshooting" title="第一次遇到麻烦"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第一次遇到麻烦</font></font></a></li>
+<li class="links"><a class="xref" href="openvpn.html#openvpn-advanced-config" title="高级配置"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高级配置</font></font></a></li>
+<li class="links"><a class="xref" href="openvpn.html#openvpn-client-implementations" title="客户端软件实现"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">客户端软件实现</font></font></a></li>
+<li class="links"><a class="xref" href="openvpn.html#openvpn-references" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></a></li>
+</ul></div>
+<div class="sect2 sect" id="openvpn-server-installation"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器安装</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      要</font><font style="vertical-align: inherit;">在终端中</font><font style="vertical-align: inherit;">安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">openvpn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请输入：
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install openvpn easy-rsa</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="openvpn-pki-setup"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">公钥基础设施设置</font></font></h2></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+构建OpenVPN配置的第一步是建立PKI（公钥基础结构）。</font><font style="vertical-align: inherit;">PKI包括：
+      </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    一个单独的证书（也称为公钥）和服务器以及每个客户端的私钥，以及
+          </font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    主证书颁发机构（CA）证书和密钥，用于签署每个服务器和客户端证书。
+          </font></font></p></li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+OpenVPN支持基于证书的双向身份验证，这意味着客户端必须对服务器证书进行身份验证，并且服务器必须在建立相互信任之前对客户端证书进行身份验证。
+      </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+服务器和客户端都将通过首先验证提供的证书是否由主证书颁发机构（CA）签名，然后通过测试现已验证的证书头中的信息（例如证书公用名或证书类型（客户端）来验证另一个或服务器）。
+      </font></font></p>
+</div>
+<div class="sect3 sect" id="openvpn-ca-setup"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">证书颁发机构设置</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+要设置自己的证书颁发机构（CA）并为OpenVPN服务器和多个客户端生成证书和密钥，请首先将</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">easy-rsa</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录</font><font style="vertical-align: inherit;">复制</font><font style="vertical-align: inherit;">到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / openvpn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这将确保在更新程序包时不会丢失对脚本的任何更改。</font><font style="vertical-align: inherit;">从终端更改到用户root并：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mkdir / etc / openvpn / easy-rsa / </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cp -r / usr / share / easy-rsa / * / etc / openvpn / easy-rsa /</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        接下来，编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / openvpn / easy-rsa / vars</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将以下内容调整到您的环境：
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">出口KEY_COUNTRY =“美国”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+export KEY_PROVINCE =“NC”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+export KEY_CITY =“Winston-Salem”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+export KEY_ORG =“示例公司”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+导出KEY_EMAIL =“steve@example.com”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+导出KEY_CN = MyVPN</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+export KEY_ALTNAMES = AltMyVPN</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+导出KEY_NAME = MyVPN</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+导出KEY_OU = MyVPN</font></font><font></font>
+<font></font>
+<font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        输入以下内容以生成主证书颁发机构（CA）证书和密钥：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cd / etc / openvpn / easy-rsa / </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">source vars </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">./clean-all </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">./build-ca</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="openvpn-server-cert"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器证书</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+接下来，我们将为服务器生成证书和私钥：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">./build-key-server myservername</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+与上一步一样，大多数参数都可以默认。</font><font style="vertical-align: inherit;">另外两个查询需要肯定响应，“签署证书？[y / n]”和“1个证书请求中的1个已经认证，提交？[y / n]”。
+</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+必须为OpenVPN服务器生成Diffie Hellman参数：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">./build-dh</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        所有证书和密钥都已在子目录keys /中生成。</font><font style="vertical-align: inherit;">通常的做法是将它们复制到/ etc / openvpn /：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cd keys / </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cp myservername.crt myservername.key ca.crt dh2048.pem / etc / openvpn /</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="openvpn-client-cert"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">客户证书</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        VPN客户端还需要一个证书来向服务器验证自身。</font><font style="vertical-align: inherit;">通常，您为每个客户端创建不同的证书。</font><font style="vertical-align: inherit;">要创建证书，请在用户root用户的终端中输入以下内容：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cd / etc / openvpn / easy-rsa / </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">source vars </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">./build-key client1</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        使用安全方法将以下文件复制到客户端：
+        </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/openvpn/ca.crt</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/openvpn/easy-rsa/keys/client1.crt</font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/openvpn/easy-rsa/keys/client1.key</font></font></p></li>
+</ul></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        由于仅在客户端计算机上需要客户端证书和密钥，因此应将其从服务器中删除。
+        </font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="openvpn-simple-server-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">简单服务器配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+除了您的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVPN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">   安装</font><font style="vertical-align: inherit;">，您还   </font><span class="app application"><font style="vertical-align: inherit;">可以获得</font></span><font style="vertical-align: inherit;">这些示例配置文件（如果您检查，还有更多）：
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">root @ server：/＃ls -l / usr / share / doc / openvpn / examples / sample-config-files /</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+共68</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+-rw-r  -  r-- 1 root root 3427 2011-07-04 15:09 client.conf</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+-rw-r  -  r-- 1 root root 4141 2011-07-04 15:09 server.conf.gz</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+首先将server.conf.gz复制并解压缩到/etc/openvpn/server.conf。
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz / etc / openvpn / </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo gzip -d /etc/openvpn/server.conf.gz</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/openvpn/server.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以确保以下行指向您在上一节中创建的证书和密钥。
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ca ca.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cert myservername.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+关键myservername.key</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dh dh2048.pem</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/sysctl.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并取消注释以下行以启用IP转发。</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃把net.ipv4.ip_forward = 1
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然后重新加载sysctl。</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo sysctl -p /etc/sysctl.conf</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       这是您必须配置以获得有效的OpenVPN服务器的最小值。</font><font style="vertical-align: inherit;">您可以使用示例server.conf文件中的所有默认设置。</font><font style="vertical-align: inherit;">现在启动服务器。</font><font style="vertical-align: inherit;">您可以在via journal中找到日志记录和错误消息。</font><font style="vertical-align: inherit;">取决于你寻找的东西：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo journalctl -xe</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+如果您启动了模板化服务openvpn @ server，则可以使用以下命令过滤此特定消息源：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo journalctl --identifier ovpn-server</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+请注意，“systemctl start openvpn”并未启动您刚刚定义的openvpn。</font><font style="vertical-align: inherit;">Openvpn使用模板化的systemd作业，openvpn @CONFIGFILENAME。</font><font style="vertical-align: inherit;">因此，如果您的配置文件是“server.conf”，则您的服务称为openvpn @ server。</font><font style="vertical-align: inherit;">您可以针对像openvpn @ server这样的模板化服务运行所有类型的服务和systemctl命令，例如启动/停止/启用/禁用/预设。
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ubuntu @ testopenvpn-server：〜$ sudo systemctl start openvpn @ server</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ubuntu @ testopenvpn-server：〜$ sudo systemctl status openvpn @ server</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+。</font><font style="vertical-align: inherit;">openvpn@server.service  - 与服务器的OpenVPN连接</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+已加载（/lib/systemd/system/openvpn@.service;已启用;供应商预设：已启用）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      活跃：自2016年12月12日星期四08:51:14 UTC开始活跃（正在运行）; </font><font style="vertical-align: inherit;">1s ago</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        文件：man：openvpn（8）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              https://community.openvpn.net/openvpn/wiki/Openvpn23ManPage</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              https://community.openvpn.net/openvpn/wiki/HOWTO</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     过程：1573 ExecStart = / usr / sbin / openvpn --daemon ovpn-％i --status /run/openvpn/%i.status 10 --cd / etc / openvpn --script-security 2 --config / etc / openvpn /％i.conf --writep</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    主PID：1575（openvpn）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       任务：1（限制：512）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+      CGroup：/system.slice/system-openvpn.slice/openvpn@server.service</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              | -1575 / usr / sbin / openvpn --daemon ovpn-server --status /run/openvpn/server.status 10 --cd / etc / openvpn --script-security 2 --config / etc / openvpn / server。 conf  -  wr</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:51:14 testopenvpn-server ovpn-server [1575]：/ sbin / ip route add 10.8.0.0/24 via 10.8.0.2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:51:14 testopenvpn-server ovpn-server [1575]：UDPv4链接本地（绑定）：[undef]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:51:14 testopenvpn-server ovpn-server [1575]：UDPv4链接远程：[undef]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:51:14 testopenvpn-server ovpn-server [1575]：MULTI：调用multi_init，r = 256 v = 256</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:51:14 testopenvpn-server ovpn-server [1575]：IFCONFIG POOL：base = 10.8.0.4 size = 62，ipv6 = 0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:51:14 testopenvpn-server ovpn-server [1575]：ifconfig_pool_read（），in ='client1,10.8.0.4'，TODO：IPv6</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:51:14 testopenvpn-server ovpn-server [1575]：成功 - &gt; ifconfig_pool_set（）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:51:14 testopenvpn-server ovpn-server [1575]：IFCONFIG POOL列表</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:51:14 testopenvpn-server ovpn-server [1575]：client1,10.8.0.4</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:51:14 testopenvpn-server ovpn-server [1575]：初始化序列已完成</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+您可以在一个系统上启用/禁用各种openvpn服务，但您也可以让Ubuntu完成繁重的工作。</font><font style="vertical-align: inherit;">在/ etc / default / openvpn中有AUTOSTART的配置。</font><font style="vertical-align: inherit;">允许的值是“全部”，“无”或空格分隔的VPN名称列表。</font><font style="vertical-align: inherit;">如果为空，则假定为“全部”。</font><font style="vertical-align: inherit;">VPN名称是指VPN配置文件名。</font><font style="vertical-align: inherit;">即“home”将是/etc/openvpn/home.conf如果您正在运行systemd，更改此变量将需要运行“systemctl daemon-reload”，然后重新启动openvpn服务（如果您删除了条目，则可能需要手动停止那些）“systemctl daemon-reload”之后重新启动“通用”
+        </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+这是您必须配置以获得有效的OpenVPN服务器的最小值。</font><font style="vertical-align: inherit;">您可以使用示例server.conf文件中的所有默认设置。</font><font style="vertical-align: inherit;">现在启动服务器。</font><font style="vertical-align: inherit;">您将在日记中找到日志记录和错误消息。
+        </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+       现在检查OpenVPN是否创建了tun0接口：
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">root @ server：/ etc / openvpn #ifconfig tun0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+tun0链接封装：UNSPEC HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          inet addr：10.8.0.1 PtP：10.8.0.2掩码：255.255.255.255</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          UP POINTOPOINT运行NOARP MULTICAST MTU：1500公制：1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+[...]</font></font><font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="openvpn-simple-client-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">简单客户端配置</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+有</font><font style="vertical-align: inherit;">和没有GUI的</font><font style="vertical-align: inherit;">各种不同的</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVPN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">客户端实现。</font><font style="vertical-align: inherit;">您可以在后面的部分中阅读有关客户的更多信息。</font><font style="vertical-align: inherit;">目前我们使用</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVPN</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">客户端用于Ubuntu，它与服务器的可执行文件相同。</font><font style="vertical-align: inherit;">所以你必须在客户端机器上再次安装openvpn包：
+
+      </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install openvpn</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+这次将client.conf示例配置文件复制到/ etc / openvpn /。
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf / etc / openvpn /</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        将客户端密钥和您在上一节中创建的CA的证书复制到例如/ etc / openvpn /并编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/openvpn/client.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，以确保以下行指向这些文件。</font><font style="vertical-align: inherit;">如果你有/ etc / openvpn /中的文件，你可以省略路径。
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ca ca.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cert client1.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+key client1.key</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+您必须至少指定OpenVPN服务器名称或地址。</font><font style="vertical-align: inherit;">确保关键字客户端在配置中。</font><font style="vertical-align: inherit;">这就是启用客户端模式的原因。
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">客户</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+remote vpnserver.example.com 1194</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+此外，请确保指定从服务器复制的密钥文件名
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ca ca.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cert client1.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+key client1.key</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+现在启动OpenVPN客户端：
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ubuntu @ testopenvpn-client：〜$ sudo systemctl start openvpn @ client</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ubuntu @ testopenvpn-client：〜$ sudo systemctl status openvpn @ client</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+。</font><font style="vertical-align: inherit;">openvpn@client.service  - 与客户端的OpenVPN连接</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   已加载：已加载（/lib/systemd/system/openvpn@.service;已禁用;供应商预设：已启用）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   活动：自2016年12月12日星期二08:50:50 UTC开始活跃（正在运行）; </font><font style="vertical-align: inherit;">3s ago</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+     文件：man：openvpn（8）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+           https://community.openvpn.net/openvpn/wiki/Openvpn23ManPage</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+           https://community.openvpn.net/openvpn/wiki/HOWTO</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 过程：1677 ExecStart = / usr / sbin / openvpn --daemon ovpn-％i --status /run/openvpn/%i.status 10 --cd / etc / openvpn --script-security 2 --config / etc / openvpn /％i.conf --writep</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+主PID：1679（openvpn）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+   任务：1（限制：512）</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  CGroup：/system.slice/system-openvpn.slice/openvpn@client.service</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          | -1679 / usr / sbin / openvpn --daemon ovpn-client --status /run/openvpn/client.status 10 --cd / etc / openvpn --script-security 2 --config / etc / openvpn / client。 conf  -  wr</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:50:52 testopenvpn-client ovpn-client [1679]：OPTIONS IMPORT：--ifconfig / up options modified</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:50:52 testopenvpn-client ovpn-client [1679]：OPTIONS IMPORT：修改路由选项</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:50:52 testopenvpn-client ovpn-client [1679]：ROUTE_GATEWAY 192.168.122.1/255.255.255.0 IFACE = eth0 HWADDR = 52：54：00：89：ca：89</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:50:52 testopenvpn-client ovpn-client [1679]：TUN / TAP设备tun0打开</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:50:52 testopenvpn-client ovpn-client [1679]：TUN / TAP TX队列长度设置为100</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:50:52 testopenvpn-client ovpn-client [1679]：do_ifconfig，tt-&gt; ipv6 = 0，tt-&gt; did_ifconfig_ipv6_setup = 0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:50:52 testopenvpn-client ovpn-client [1679]：/ sbin / ip link set dev tun0 up mtu 1500</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:50:52 testopenvpn-client ovpn-client [1679]：/ sbin / ip addr add dev tun0 local 10.8.0.6 peer 10.8.0.5</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:50:52 testopenvpn-client ovpn-client [1679]：/ sbin / ip route add 10.8.0.1/32 via 10.8.0.5</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+4月12日08:50:52 testopenvpn-client ovpn-client [1679]：初始化序列已完成</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+检查它是否创建了tun0接口：
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">root @ client：/ etc / openvpn #ifconfig tun0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+tun0链接封装：UNSPEC HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          inet addr：10.8.0.6 PtP：10.8.0.5掩码：255.255.255.255</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          UP POINTOPOINT运行NOARP MULTICAST MTU：1500公制：1</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+检查您是否可以ping OpenVPN服务器：
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">root @ client：/ etc / openvpn #ping 10.8.0.1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+PING 10.8.0.1（10.8.0.1）56（84）字节的数据。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+来自10.8.0.1的64字节：icmp_req = 1 ttl = 64时间= 0.920 ms</font></font><font></font>
+</pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+         OpenVPN服务器始终使用客户端网络中的第一个可用IP地址，并且只有该IP可ping。</font><font style="vertical-align: inherit;">例如，如果您为客户端网络掩码配置了/ 24，则将使用.1地址。</font><font style="vertical-align: inherit;">您在上面的ifconfig输出中看到的PtP地址通常不会回应ping请求。
+          </font></font></p>
+        </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+看看你的路线：
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">root @ client：/ etc / openvpn #netstat -rn</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+内核IP路由表</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+目标网关Genmask标志MSS Window irtt Iface</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+10.8.0.5 0.0.0.0 255.255.255.255 UH 0 0 0 tun0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+10.8.0.1 10.8.0.5 255.255.255.255 UGH 0 0 0 tun0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+192.168.42.0 0.0.0.0 255.255.255.0 U 0 0 0 eth0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+0.0.0.0 192.168.42.1 0.0.0.0 UG 0 0 0 eth0</font></font><font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="openvpn-first-troubleshooting"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第一次遇到麻烦</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+如果上述方法不适合您，请检查以下内容：
+        </font></font></p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+检查你的日志，例如journalctl --identifier ovpn-server（对于server.conf）
+          </font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+检查是否在client.conf和server.conf中正确指定了密钥文件名。
+          </font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+客户端可以连接到服务器机器吗？</font><font style="vertical-align: inherit;">也许防火墙会阻止访问？</font><font style="vertical-align: inherit;">检查服务器上的日志。
+          </font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+客户端和服务器必须使用相同的协议和端口，例如UDP端口1194，请参阅端口和proto配置选项
+          </font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+客户端和服务器必须使用相同的压缩配置，请参阅comp-lzo配置选项
+          </font></font></p></li>
+<li class="list itemizedlist"><p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+客户端和服务器必须使用有关桥接模式与路由模式的相同配置，请参阅server vs server-bridge config选项
+          </font></font></p></li>
+</ul></div>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="openvpn-advanced-config"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高级配置</font></font></h2></div>
+<div class="region">
+<div class="contents"></div>
+<div class="sect3 sect" id="openvpn-routed-server-configuration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器上的高级路由VPN配置</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+以上是一个非常简单的工作VPN。</font><font style="vertical-align: inherit;">客户端可以通过加密隧道访问VPN服务器计算机上的服务。</font><font style="vertical-align: inherit;">如果要访问更多服务器或其他网络中的任何内容，请将某些路由推送到客户端。</font><font style="vertical-align: inherit;">例如，如果您公司的网络可以汇总到网络192.168.0.0/16，您可以将此路由推送到客户端。</font><font style="vertical-align: inherit;">但是您还必须更改回路的路由 - 您的服务器需要知道到VPN客户端网络的路由。
+</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ 或者您可以将默认网关推送到所有客户端，以便首先将所有互联网流量发送到VPN网关，然后通过公司防火墙将其发送到互联网。</font><font style="vertical-align: inherit;">本节向您展示了一些可能的选项。
+</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+将路由推送到客户端以允许它到达服务器后面的其他私有子网。</font><font style="vertical-align: inherit;">请记住，这些私有子网还需要知道将OpenVPN客户端地址池（10.8.0.0/24）路由回OpenVPN服务器。
+</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">按“路线10.0.0.0 255.0.0.0”
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+如果启用，该指令将配置所有客户端通过VPN重定向其默认网络网关，导致所有IP流量（如Web浏览和DNS查找）通过VPN（OpenVPN服务器计算机或您的中央防火墙可能需要NAT TUN / TAP接口到互联网，以使其正常工作）。
+</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">推送“redirect-gateway def1 bypass-dhcp”
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+配置服务器模式并为OpenVPN提供VPN子网以从中提取客户端地址。</font><font style="vertical-align: inherit;">服务器将自己获取10.8.0.1，其余的将提供给客户端。</font><font style="vertical-align: inherit;">每个客户端都可以通过10.8.0.1访问服务器。</font><font style="vertical-align: inherit;">如果您是以太网桥接，请注释此行。
+</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">server 10.8.0.0 255.255.255.0
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+在此文件中维护客户端到虚拟IP地址关联的记录。</font><font style="vertical-align: inherit;">如果OpenVPN关闭或重新启动，则可以从先前分配的池中为重新连接的客户端分配相同的虚拟IP地址。
+</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ifconfig-pool-persist ipp.txt
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+将DNS服务器推送到客户端。
+</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">按“dhcp-option DNS 10.0.0.2”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+推送“dhcp-option DNS 10.1.0.2”</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+允许客户端与客户端通信。
+</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">客户端到客户端
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+在VPN链路上启用压缩。
+</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">COMP-LZO
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+该</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">存活</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指令导致，这样，当对方已经下降每侧都知道平类似消息发送来回的链接。</font><font style="vertical-align: inherit;">每1秒Ping一次，如果在3秒的时间段内没有收到ping，则认为远程对等体已关闭。
+</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">keepalive 1 3
+</font></font></pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+初始化后减少OpenVPN守护程序的权限是个好主意。
+</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户没人</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+集团nogroup</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+OpenVPN 2.0包含一项功能，允许OpenVPN服务器从连接客户端安全地获取用户名和密码，并将该信息用作验证客户端的基础。</font><font style="vertical-align: inherit;">要使用此身份验证方法，请首先将auth-user-pass指令添加到客户端配置。</font><font style="vertical-align: inherit;">它将指示OpenVPN客户端向用户查询用户名/密码，并通过安全TLS通道将其传递给服务器。
+</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">#client config！</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+AUTH-用户通</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+这将告诉OpenVPN服务器使用登录PAM模块验证客户端输入的用户名/密码。</font><font style="vertical-align: inherit;">如果您使用Kerberos进行集中身份验证，则非常有用。
+</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">插件/usr/lib/openvpn/openvpn-plugin-auth-pam.so登录
+</font></font></pre></div>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents"> <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+请阅读OpenVPN </font></font><a href="http://openvpn.net/index.php/open-source/documentation/howto.html#security" class="ulink" title="http://openvpn.net/index.php/open-source/documentation/howto.html#security"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">强化安全指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以获得进一步的安全建议。
+</font></font></p>
+</div></div></div></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="openvpn-bridged-server-configuration"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器上的高级桥接VPN配置</font></font></h3></div>
+<div class="region">
+<div class="contents"><p class="para">
+        <span class="app application"><font style="vertical-align: inherit;"></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以为路由或桥接VPN模式设置</font><span class="app application"><font style="vertical-align: inherit;">OpenVPN</font></span><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有时这也被称为OSI第2层与第3层VPN。</font><font style="vertical-align: inherit;">在桥接VPN中，所有第2层帧（例如所有以太网帧）都被发送到VPN伙伴，并且在路由VPN中，只有第3层数据包被发送到VPN伙伴。</font><font style="vertical-align: inherit;">在桥接模式中，包括传统上LAN本地的流量（如本地网络广播，DHCP请求，ARP请求等）的所有流量都被发送到VPN伙伴，而在路由模式下，这将被过滤。
+        </font></font></p></div>
+<div class="sect4 sect" id="openvpn-bridged-server-configuration-interface"><div class="inner">
+<div class="hgroup"><h4 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">准备接口配置以在服务器上进行桥接</font></font></h4></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首先，使用netplan使用所需的以太网设备配置网桥设备。</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ cat /etc/netplan/01-netcfg.yaml</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃此文件描述了系统上可用的网络接口</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃有关更多信息，请参阅netplan（5）。</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+网络：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    版本：2</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    渲染器：networkd</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    以太网：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        enp0s31f6：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            dhcp4：没有</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    桥梁：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        BR0：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            接口：[enp0s31f6]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            dhcp4：没有</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            地址：[10.0.1.100/24]</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            gateway4：10.0.1.1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+            域名服务器：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                地址：[10.0.1.1]</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">强烈建议使用静态IP寻址。</font><font style="vertical-align: inherit;">DHCP寻址也可以工作，但您仍需要在OpenVPN配置文件中编码静态地址。</font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服务器上的下一步是在启动时将以太网设备配置为混杂模式。</font><font style="vertical-align: inherit;">为此，请确保
+ </font><font style="vertical-align: inherit;">已安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">networkd-dispatcher</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件包并创建以下配置脚本。</font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt update </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install networkd-dispatcher </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo touch /usr/lib/networkd-dispatcher/dormant.d/promisc_bridge </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo chmod + x /usr/lib/networkd-dispatcher/dormant.d/promisc_bridge</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然后添加以下内容。</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃！/ bin / sh的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+设置-e</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+if [“$ IFACE”= br0]; </font><font style="vertical-align: inherit;">然后</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    ＃物理接口上没有'carrier'的networkd-dispatcher事件</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    ip link set eth0 up promisc on</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+科幻</font></font><font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect4 sect" id="openvpn-bridged-server-configuration-server"><div class="inner">
+<div class="hgroup"><h4 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">准备服务器配置以进行桥接</font></font></h4></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/openvpn/server.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以使用tap而不是tun并将服务器设置为使用server-bridge指令：
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">; dev tun</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+开发</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+;服务器10.8.0.0 255.255.255.0</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+server-bridge 10.0.0.4 255.255.255.0 10.0.0.128 10.0.0.254</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        配置服务器后，</font><font style="vertical-align: inherit;">输入以下命令</font><font style="vertical-align: inherit;">重启</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">openvpn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl restart openvpn @ server</font></font></span>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect4 sect" id="openvpn-client-configuration"><div class="inner">
+<div class="hgroup"><h4 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">客户端配置</font></font></h4></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        首先，</font><font style="vertical-align: inherit;">在客户端上</font><font style="vertical-align: inherit;">安装</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">openvpn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo apt install openvpn</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        然后，在配置服务器并将客户端证书复制到</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/ etc / openvpn /</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录的情况下，通过复制示例来创建客户端配置文件。</font><font style="vertical-align: inherit;">在客户端计算机上的终端中输入：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf / etc / openvpn</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        现在编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/openvpn/client.conf</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">更改以下选项：
+        </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">开发</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+; dev tun</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ca ca.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cert client1.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+key client1.key</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        最后，重启</font></font><span class="app application"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">openvpn</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：
+        </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sudo systemctl重启openvpn @ client</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        您现在应该可以通过VPN连接到远程LAN。
+        </font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="openvpn-client-implementations"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">客户端软件实现</font></font></h2></div>
+<div class="region">
+<div class="contents"></div>
+<div class="sect3 sect" id="openvpn-client-networkmanager"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">适用于OpenVPN的Linux Network-Manager GUI</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+包括Ubuntu桌面变体在内的许多Linux发行版都附带了Network Manager，这是一个很好的GUI来配置您的网络设置。</font><font style="vertical-align: inherit;">它还可以管理您的VPN连接。</font><font style="vertical-align: inherit;">确保安装了network-manager-openvpn软件包。</font><font style="vertical-align: inherit;">在这里，您可以看到安装程序还安装了所有其他必需的软件包：
+    </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">root @ client：〜＃apt install network-manager-openvpn</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+阅读包裹清单......完成</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+构建依赖树</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+阅读国家信息......完成</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+将安装以下额外包：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  liblzo2-2 libpkcs11-helper1 network-manager-openvpn-gnome openvpn</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+推荐套餐：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  需要resolvconf</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+将安装以下新包：</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  liblzo2-2 libpkcs11-helper1 network-manager-openvpn</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  network-manager-openvpn-gnome openvpn</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+0升级，5新安装，0删除，631未升级。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+需要获得700 kB的档案。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+完成此操作后，将使用3,031 kB的额外磁盘空间。</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+你想继续[Y / n]吗？</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+要通知网络管理员有关新安装的软件包，您必须重新启动它：
+    </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">root @ client：〜＃restart network-manager</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+网络管理器启动/运行，过程3078</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+打开网络管理器GUI，选择VPN选项卡，然后选择“添加”按钮。</font><font style="vertical-align: inherit;">在开放请求者中选择OpenVPN作为VPN类型，然后按“创建”。</font><font style="vertical-align: inherit;">在下一个窗口中，将OpenVPN的服务器名称添加为“网关”，将“类型”设置为“证书（TLS）”，将“用户证书”指向您的用户证书，将“CA证书”指向您的CA证书和“私钥”到您的私钥文件。</font><font style="vertical-align: inherit;">使用高级按钮启用压缩（例如comp-lzo），dev tap或您在服务器上设置的其他特殊设置。</font><font style="vertical-align: inherit;">现在尝试建立您的VPN。
+    </font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="openvpn-client-osx"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">适用于Mac OS X的OpenVPN和GUI：Tunnelblick</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+Tunnelblick是OpenVPN for OS X的一个优秀的免费开源实现。该项目的主页位于</font></font><a href="http://code.google.com/p/tunnelblick/" class="ulink" title="http://code.google.com/p/tunnelblick/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http://code.google.com/p/tunnelblick/</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">从那里下载最新的OS X安装程序并进行安装。</font><font style="vertical-align: inherit;">然后将您的client.ovpn配置文件与/ Users / username / Library / Application Support / Tunnelblick / Configurations /中的证书和密钥以及来自Application文件夹的lauch Tunnelblick放在一起。
+    </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于Tunnelblick的＃sample client.ovpn</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+客户</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+远程blue.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+港口1194</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+proto udp</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+开发</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dev-type tun</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ns-cert-type服务器</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+reneg-sec 86400</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+AUTH-用户通</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+AUTH-非缓存</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+auth-retry互动</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+comp-lzo是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+动词3</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ca ca.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cert client.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+关键client.key</font></font><font></font>
+</pre></div>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="openvpn-client-win"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用于Win 7的OpenVPN和GUI</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+首先下载并安装最新的</font></font><a href="http://www.openvpn.net/index.php/open-source/downloads.html" class="ulink" title="http://www.openvpn.net/index.php/open-source/downloads.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVPN Windows Installer</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">OpenVPN 2.3.2是写这篇文章的最新版本。</font><font style="vertical-align: inherit;">在撰写本文时，管理GUI包含在Windows二进制安装程序中。
+    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+您需要启动OpenVPN服务。</font><font style="vertical-align: inherit;">转到开始&gt;计算机&gt;管理&gt;服务和应用程序&gt;服务。</font><font style="vertical-align: inherit;">找到OpenVPN服务并启动它。</font><font style="vertical-align: inherit;">将其启动类型设置为自动。</font><font style="vertical-align: inherit;">首次启动OpenVPN MI GUI时，需要以管理员身份运行它。</font><font style="vertical-align: inherit;">你必须右键单击它，你会看到该选项。
+    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+您必须在文本文件中编写OpenVPN配置，并将其与CA证书一起放在C：\ Program Files \ OpenVPN \ config \ client.ovpn中。</font><font style="vertical-align: inherit;">您可以将用户证书放在用户的主目录中，如下面的示例所示。
+    </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃C：\ Program Files \ OpenVPN \ config \ client.ovpn</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+客户</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+远程server.example.com</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+港口1194</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+proto udp</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+开发</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dev-type tun</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ns-cert-type服务器</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+reneg-sec 86400</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+AUTH-用户通</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+auth-retry互动</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+comp-lzo是的</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+动词3</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+ca ca.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+cert“C：\\ Users \\ username \\ My Documents \\ openvpn \\ client.crt”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+键“C：\\ Users \\ username \\ My Documents \\ openvpn \\ client.key”</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+管理127.0.0.1 1194</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+管理保持</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+管理，查询密码</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+auth-retry互动</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+; </font><font style="vertical-align: inherit;">在此处设置Windows TAP网络接口设备的名称</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+dev-node MyTAP</font></font><font></font>
+<font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+注意：如果您未使用用户身份验证和/或想要在没有用户交互的情况下运行服务，请注释掉以下选项：
+</font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">AUTH-用户通</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+auth-retry互动</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+管理127.0.0.1 1194</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+管理保持</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+管理，查询密码</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">您可能希望将Windows服务设置为“自动”。</font></font></p>
+</div></div>
+</div></div>
+<div class="sect3 sect" id="openvpn-client-openwrt"><div class="inner">
+<div class="hgroup"><h3 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVPN for OpenWRT</font></font></h3></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+OpenWRT被描述为用于WLAN路由器等嵌入式设备的Linux发行版。</font><font style="vertical-align: inherit;">某些类型的WLAN路由器可以闪存以运行OpenWRT。</font><font style="vertical-align: inherit;">根据OpenWRT路由器上的可用内存，您可以运行OpenVPN等软件，例如，您可以构建一个小型廉价的分支机构路由器，其VPN连接到中心局。</font><font style="vertical-align: inherit;">有关OpenWRT OpenVPN的更多信息，请</font></font><a href="http://wiki.openwrt.org/doc/howto/vpn.overview" class="ulink" title="http://wiki.openwrt.org/doc/howto/vpn.overview"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">点击此处</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">这是OpenWRT项目的主页：</font><a href="http://openwrt.org" class="ulink" title="http://openwrt.org"><font style="vertical-align: inherit;">http</font></a><font style="vertical-align: inherit;">：//openwrt.org</font></font><a href="http://openwrt.org" class="ulink" title="http://openwrt.org"><font style="vertical-align: inherit;"></font></a>
+    </p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+登录您的OpenWRT路由器并安装OpenVPN：
+    </font></font></p>
+<div class="screen"><pre class="contents "><span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opkg update </font></font></span>
+<span class="cmd command"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opkg install openvpn</font></font></span>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    检查/ etc / config / openvpn并将您的客户端配置放在那里。</font><font style="vertical-align: inherit;">将证书和密钥复制到/ etc / openvpn /
+    </font></font></p>
+<div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">config openvpn client1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        选项启用1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        期权客户1</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+＃选项dev tap</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        选项开发</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        选项proto udp</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        选项ca /etc/openvpn/ca.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        选项证书/etc/openvpn/client.crt</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        选项键/etc/openvpn/client.key</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        选项comp_lzo 1</font></font><font></font>
+</pre></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+在OpenWRT路由器上重启OpenVPN以获取配置
+    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+您必须查看是否需要调整路由器的路由和防火墙规则。
+    </font></font></p>
+</div></div>
+</div></div>
+</div>
+</div></div>
+<div class="sect2 sect" id="openvpn-references"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">参考</font></font></h2></div>
+<div class="region"><div class="contents"><div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关</font><font style="vertical-align: inherit;">其他信息，</font><font style="vertical-align: inherit;">请参阅</font></font><a href="http://openvpn.net/" class="ulink" title="http://openvpn.net/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVPN</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">网站。
+          </font></font></p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para">
+          <a href="http://openvpn.net/index.php/open-source/documentation/howto.html#security" class="ulink" title="http://openvpn.net/index.php/open-source/documentation/howto.html#security"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVPN强化安全指南</font></font></a>
+          </p>
+        </li>
+<li class="list itemizedlist">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          此外，Pakt的</font></font><a href="http://www.packtpub.com/openvpn/book" class="ulink" title="http://www.packtpub.com/openvpn/book"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OpenVPN：构建和集成虚拟专用网络</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+          是一个很好的资源。
+          </font></font></p>
+        </li>
+</ul></div></div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="vpn.html" title="VPN"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="other-useful-applications.html" title="其他有用的应用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html class="translated-ltr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>组态</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">伙伴</font></font></a></li>
+<li><a href="https://www.ubuntu.com/support/community-support"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持</font></font></a></li>
+<li><a href="https://community.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区</font></font></a></li>
+<li><a href="https://www.ubuntu.com"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu.com</font></font></a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档</font></font></a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">官方文件</font></font></a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社区帮助Wiki</font></font></a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有助于</font></font></a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 18.04</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="../index.html" title="Ubuntu服务器指南"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu服务器指南</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;» </font></font><a class="trail" href="package-management.html" title="包管理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">包管理</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> &nbsp;»</font></font></div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="automatic-updates.html" title="自动更新"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="package-management-references.html" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="hgroup"><h1 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">组态</font></font></h1></div>
+<div class="region">
+<div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    在配置</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高级包装工具</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（APT）系统信息库存储在</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apt/sources.list中</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件和</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apt/sources.list.d</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">目录。</font><font style="vertical-align: inherit;">此处引用此文件的示例，以及有关在文件中添加或删除存储库引用的信息。
+    </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    您可以编辑该文件以启用存储库或禁用它们。</font><font style="vertical-align: inherit;">例如，要在发生包操作时禁用插入Ubuntu CD-ROM的要求，只需注释掉CD-ROM的相应行，该行显示在文件的顶部：
+    </font></font></p>
+<div class="screen"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">＃请不要再提示CD-ROM了</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+#deb cdrom：[Ubuntu 18.04 _Bionic Beaver_  - 发布i386（20111013.1）] /仿生主要限制</font></font><font></font>
+</pre></div>
+</div>
+<div class="links sectionlinks" role="navigation"><ul><li class="links"><a class="xref" href="configuration.html#extra-repositories" title="额外的存储库"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">额外的存储库</font></font></a></li></ul></div>
+<div class="sect2 sect" id="extra-repositories"><div class="inner">
+<div class="hgroup"><h2 class="title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">额外的存储库</font></font></h2></div>
+<div class="region"><div class="contents">
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          除了可供Ubuntu使用的官方支持的软件包存储库之外，还有其他社区维护的存储库，可以为潜在的安装添加数千个软件包。</font><font style="vertical-align: inherit;">最受欢迎的两个是</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Universe</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Multiverse</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">存储库。</font><font style="vertical-align: inherit;">Ubuntu不正式支持这些存储库，但由于它们由社区维护，因此它们通常提供可安全用于Ubuntu计算机的软件包。 
+          </font></font></p>
+<div class="note" title="注意"><div class="inner"><div class="region"><div class="contents"><p class="para"><font style="vertical-align: inherit;"></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Multiverse</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">存储库</font><font style="vertical-align: inherit;">中的软件包</font><font style="vertical-align: inherit;">通常存在许可问题，导致它们无法通过免费操作系统进行分发，并且在您所在的位置可能是非法的。</font></font></p></div></div></div></div>
+<div class="note note-warning" title="警告"><div class="inner"><div class="region"><div class="contents">
+          <p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          请注意，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Universe</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Multiverse</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">存储库</font><font style="vertical-align: inherit;">都不</font><font style="vertical-align: inherit;">包含官方支持的软件包。</font><font style="vertical-align: inherit;">特别是，这些软件包可能没有安全更新。
+          </font></font></p>
+          </div></div></div></div>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          许多其他软件包源都可用，有时甚至只提供一个软件包，就像单个应用程序的开发人员提供的软件包源一样。</font><font style="vertical-align: inherit;">但是，在使用非标准包源时，您应该始终非常小心和谨慎。</font><font style="vertical-align: inherit;">在执行任何安装之前仔细研究源代码和软件包，因为某些软件包源及其软件包可能会在某些方面使您的系统不稳定或无法正常运行。
+          </font></font></p>
+<p class="para"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          默认情况下，</font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Universe</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和
+           </font></font><span class="em emphasis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Multiverse</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">存储库已启用，但如果您要禁用它们，请编辑</font></font><span class="file filename"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/etc/apt/sources.list</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  
+	  并注释以下行：
+          </font></font></p>
+<p class="para">
+</p><div class="code"><pre class="contents "><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">deb http://archive.ubuntu.com/ubuntu仿生宇宙多元宇宙</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+deb-src http://archive.ubuntu.com/ubuntu仿生宇宙多元宇宙</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+deb http://us.archive.ubuntu.com/ubuntu/仿生宇宙</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+deb-src http://us.archive.ubuntu.com/ubuntu/仿生宇宙</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+deb http://us.archive.ubuntu.com/ubuntu/ bionic-updates universe</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+deb-src http://us.archive.ubuntu.com/ubuntu/ bionic-updates universe</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+deb http://us.archive.ubuntu.com/ubuntu/ bionic multiverse</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+deb-src http://us.archive.ubuntu.com/ubuntu/ bionic multiverse</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+deb http://us.archive.ubuntu.com/ubuntu/ bionic-updates多重宇宙</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+deb-src http://us.archive.ubuntu.com/ubuntu/ bionic-updates multiverse</font></font><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+deb http://security.ubuntu.com/ubuntu仿生安全宇宙</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+deb-src http://security.ubuntu.com/ubuntu仿生安全宇宙</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+deb http://security.ubuntu.com/ubuntu bionic-security multiverse</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+deb-src http://security.ubuntu.com/ubuntu bionic-security multiverse</font></font><font></font>
+</pre></div>
+          <p></p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="automatic-updates.html" title="自动更新"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></a><a class="nextlinks-next" href="package-management-references.html" title="参考"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">本文档中的资料可在免费许可下获得，</font><font style="vertical-align: inherit;">有关详细信息</font><font style="vertical-align: inherit;">，请参阅</font></font><a href="https://help.ubuntu.com/legal.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Legal</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+          有关贡献的信息，请参阅</font></font><a href="https://wiki.ubuntu.com/DocumentationTeam"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu文档团队Wiki页面</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">要报告此serverguide文档中</font></font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的错误</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，请</font><a href="https://bugs.launchpad.net/serverguide"><font style="vertical-align: inherit;">提交错误报告</font></a><font style="vertical-align: inherit;">。</font></font></p></div>
+</div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+
+
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Network File System (NFS)</title>
+<link rel="stylesheet" type="text/css" href="../C.css">
+<script type="text/javascript" src="../jquery.js"></script><script type="text/javascript" src="../jquery.syntax.js"></script><script type="text/javascript" src="../yelp.js"></script>
+</head>
+<body id="home">
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">
+        _uacct = "UA-1018242-8";
+        urchinTracker();
+      </script><script>
+      function englishPageVersion() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = "index.html.en";
+        } else {
+                window.location = href.replace(/\.html.*/, ".html.en");
+        }
+         return false;
+      }
+      function browserPreferredLanguage() {
+        var href = window.location.href;
+        if (href.slice(-1) == "/") {
+                window.location = href;
+        } else {
+                window.location = href.replace(/\.html.*/, ".html");
+        }
+        return false;
+      }
+      </script>--><div id="container">
+<div id="container-inner">
+<div id="mothership"><ul>
+<li><a href="https://partners.ubuntu.com">Partners</a></li>
+<li><a href="https://www.ubuntu.com/support/community-support">Support</a></li>
+<li><a href="https://community.ubuntu.com">Community</a></li>
+<li><a href="https://www.ubuntu.com">Ubuntu.com</a></li>
+</ul></div>
+<div id="header">
+<h1 id="ubuntu-header"><a href="https://help.ubuntu.com/">Ubuntu Documentation</a></h1>
+<ul id="main-menu">
+<li><a class="main-menu-item current" href="https://help.ubuntu.com/">Official Documentation</a></li>
+<li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+<li><a href="https://community.ubuntu.com/t/contribute/26">Contribute</a></li>
+</ul>
+</div>
+<div id="menu-search"><div id="search-box">
+<noscript><form action="https://www.google.com/cse" id="cse-search-box"><div>
+<input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq"><input type="hidden" name="ie" value="UTF-8"><input type="text" name="q" size="21"><input type="submit" name="sa" value="Search">
+</div></form></noscript><!--
+<script>
+                document.write('<form action="https://help.ubuntu.com/search.html" id="cse-search-box">');
+                document.write('  <div>');
+                document.write('    <input type="hidden" name="cof" value="FORID:9">');
+                document.write('    <input type="hidden" name="cx" value="003883529982892832976:e2vwumte3fq">');
+                document.write('    <input type="hidden" name="ie" value="UTF-8">');
+                document.write('    <input type="text" name="q" size="21">');
+                document.write('    <input type="submit" name="sa" value="Search">');
+                document.write('  </div>');
+                document.write('</form>');
+              </script>-->
+</div></div>
+<div class="trails"><div class="trail">
+<a href="https://help.ubuntu.com/18.04" class="trail">Ubuntu 18.04</a> » <a class="trail" href="../index.html" title="Ubuntu Server Guide">Ubuntu Server Guide</a> » <a class="trail" href="file-servers.html" title="File Servers">File Servers</a> » </div></div>
+<div id="cwt-content" class="clearfix content-area"><div id="page">
+<div id="content">
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="ftp-server.html" title="FTP Server">Previous</a><a class="nextlinks-next" href="iscsi-initiator.html" title="iSCSI Initiator">Next</a>
+</div>
+<div class="hgroup"><h1 class="title">Network File System (NFS)</h1></div>
+<div class="region">
+<div class="contents">
+<p class="para">
+          NFS allows a system to share directories and files with others
+          over a network. By using NFS, users and programs can access
+          files on remote systems almost as if they were local files.
+          </p>
+<p class="para">
+          Some of the most notable benefits that NFS can provide are:
+          </p>
+<div class="list itemizedlist"><ul class="list itemizedlist">
+<li class="list itemizedlist">
+      <p class="para">Local workstations use less disk space because commonly used data
+can be stored on a single machine and still remain accessible to others
+over the network.</p>
+          </li>
+<li class="list itemizedlist">
+      <p class="para">There is no need for users to have separate home directories on
+every network machine. Home directories could be set up on the NFS
+server and made available throughout the network.</p>
+          </li>
+<li class="list itemizedlist">
+
+      <p class="para">Storage devices such as floppy disks, CDROM drives, and USB
+Thumb drives can be used by other machines on the network. This may
+reduce the number of removable media drives throughout the
+network.</p>
+          </li>
+</ul></div>
+</div>
+<div class="links sectionlinks" role="navigation"><ul>
+<li class="links"><a class="xref" href="network-file-system.html#nfs-installation" title="Installation">Installation</a></li>
+<li class="links"><a class="xref" href="network-file-system.html#nfs-configuration" title="Configuration">Configuration</a></li>
+<li class="links"><a class="xref" href="network-file-system.html#nfs-client-configuration" title="NFS Client Configuration">NFS Client Configuration</a></li>
+<li class="links"><a class="xref" href="network-file-system.html#nfs-references" title="References">References</a></li>
+</ul></div>
+<div class="sect2 sect" id="nfs-installation"><div class="inner">
+<div class="hgroup"><h2 class="title">Installation</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+          At a terminal prompt enter the following command to install the NFS
+          Server:
+          </p>
+<p class="para">
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install nfs-kernel-server</span>
+</pre></div>
+          </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="nfs-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">Configuration</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+          You can configure the directories to be exported by adding them to
+          the <span class="file filename">/etc/exports</span> file. For example:
+          </p>
+<p class="para">
+<div class="screen"><pre class="contents ">/ubuntu  *(ro,sync,no_root_squash)
+/home    *(rw,sync,no_root_squash)
+</pre></div>
+          </p>
+<p class="para">
+          You can replace * with one of the hostname formats. Make the
+          hostname declaration as specific as possible so unwanted
+          systems cannot access the NFS mount.
+          </p>
+<p class="para">
+          To start the NFS server, you can run the following command at a terminal prompt:
+          </p>
+<p class="para">
+<div class="screen"><pre class="contents "><span class="cmd command">sudo systemctl start nfs-kernel-server.service</span>
+</pre></div>
+          </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="nfs-client-configuration"><div class="inner">
+<div class="hgroup"><h2 class="title">NFS Client Configuration</h2></div>
+<div class="region"><div class="contents">
+<p class="para">
+          Use the <span class="app application">mount</span> command to mount a shared NFS directory from
+          another machine, by typing a command line similar to the following at a terminal prompt:
+          </p>
+<p class="para">
+<div class="screen"><pre class="contents "><span class="cmd command">sudo mount example.hostname.com:/ubuntu /local/ubuntu</span>
+</pre></div>
+</p>
+<div class="note note-warning" title="Warning"><div class="inner"><div class="region"><div class="contents">
+      <p class="para">
+      The mount point directory <span class="file filename">/local/ubuntu</span> must
+      exist. There should be no files or subdirectories in the
+      <span class="file filename">/local/ubuntu</span> directory.
+      </p>
+      </div></div></div></div>
+<p class="para">
+       An alternate way to mount an NFS share from another machine is to
+       add a line to the <span class="file filename">/etc/fstab</span> file. The line must state the
+       hostname of the NFS server, the directory on the server being
+       exported, and the directory on the local machine where the NFS
+       share is to be mounted.
+      </p>
+<p class="para">
+      The general syntax for the line in <span class="file filename">/etc/fstab</span>
+      file is as follows:
+      </p>
+<div class="code"><pre class="contents ">example.hostname.com:/ubuntu /local/ubuntu nfs rsize=8192,wsize=8192,timeo=14,intr
+</pre></div>
+<p class="para">
+          If you have trouble mounting an NFS share, make sure the <span class="app application">nfs-common</span> package is 
+          installed on your client.  To install
+          <span class="app application">nfs-common</span> enter the following
+          command at the terminal
+          prompt:
+<div class="screen"><pre class="contents "><span class="cmd command">sudo apt install nfs-common</span>
+</pre></div>
+          </p>
+</div></div>
+</div></div>
+<div class="sect2 sect" id="nfs-references"><div class="inner">
+<div class="hgroup"><h2 class="title">References</h2></div>
+<div class="region"><div class="contents">
+<p class="para"><a href="http://nfs.sourceforge.net/" class="ulink" title="http://nfs.sourceforge.net/">Linux NFS faq</a></p>
+<p class="para">
+                <a href="https://help.ubuntu.com/community/NFSv4Howto" class="ulink" title="https://help.ubuntu.com/community/NFSv4Howto">Ubuntu Wiki NFS Howto</a>
+                </p>
+</div></div>
+</div></div>
+</div>
+<div class="links nextlinks">
+<a class="nextlinks-prev" href="ftp-server.html" title="FTP Server">Previous</a><a class="nextlinks-next" href="iscsi-initiator.html" title="iSCSI Initiator">Next</a>
+</div>
+<div class="clear"></div>
+</div>
+<div id="pagebottom"></div>
+</div></div>
+</div>
+<div id="footer"><p>The material in this document is available under a free license, see <a href="https://help.ubuntu.com/legal.html">Legal</a> for details.<br>
+          For information on contributing see the <a href="https://wiki.ubuntu.com/DocumentationTeam">Ubuntu Documentation Team wiki page</a>.
+          To report errors in this serverguide documentation, <a href="https://bugs.launchpad.net/serverguide">file a bug report</a>.</p></div>
+</div>
+</body>
+</html>
